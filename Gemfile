@@ -25,9 +25,17 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
+# Using devise gem for auth
+gem 'devise'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
+end
+
+group :development do
+  # to convert the erbs in to haml
+  gem 'erb2haml'
 end
 
 # Use ActiveModel has_secure_password
