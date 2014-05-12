@@ -5,4 +5,6 @@ class StaticPagesController < ApplicationController
   def new_participant
   end
 
+  def show
+  end
 end

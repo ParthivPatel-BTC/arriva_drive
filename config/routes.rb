@@ -4,4 +4,5 @@ ArrivaDrive::Application.routes.draw do
   devise_for :participants
 
   get '/new_participant' => 'static_pages#new_participant'
+  get '/show' => 'static_pages#show'
 end
