@@ -5,5 +5,17 @@
     = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
-  %body
+%body{style: 'margin-top: 50px;'}
+  .navbar.navbar-inverse.navbar-fixed-top{role: "navigation"}
+    .container
+      .navbar-header{style: 'margin-top: 5px;'}
+        %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", type: "button"}
+          %span.sr-only Toggle navigation
+          %span.icon-bar
+          %span.icon-bar
+          %span.icon-bar
+        = image_tag('logo1.png')
+        %span.logo-span-by by
+        = image_tag('logo2.png')
+  .container
     = yield
