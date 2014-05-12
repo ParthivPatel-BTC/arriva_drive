@@ -10,12 +10,21 @@
 
 Rails.logger = Logger.new(STDOUT)
 
-admin = Admin.create(email: 'admin@drive.com')
-admin.password = "password"
-admin.password_confirmation = "password"
-admin.save
-if admin.errors.empty?
-	Rails.logger.info("Admin with #{admin.email} created.")
-else
-	Rails.logger.error(admin.errors.full_messages)
+def find_or_create_instance(class_name, attr_map, find_by_attr)
+  instance  = class_name.where(find_by_attr => attr_map[find_by_attr])
+  if instance.blank?
+    instance = class_name.create(attr_map)
+    name = instance.try(:name) ? instance.name : class_name
+    Rails.logger.info "#{name} created successfully"
+  else
+    Rails.logger.info "#{class_name} already exist, so did not created"
+  end
+  instance
 end
+
+# =========================== Create Admin
+admin_attr = {
+  email:      'admin@drive.com',
+  password:   'password',
+}
+find_or_create_instance(Admin, admin_attr, :email)

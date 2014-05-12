@@ -1,0 +1,25 @@
+.panel-heading
+  .row
+    .col-md-6.col-xs-6
+      %h3
+        %strong.dark-blue= title
+    .col-md-6.col-xs-6
+      %button.dark-blue-btn.panel-btn.pull-right
+        Create New
+.panel-box
+  - if collections.blank?
+    %strong= t('common.panel.msg.collection_empty', collection_type: title)
+  - else
+    - collections.each_with_index do |obj, index|
+      .row
+        .col-md-8
+          = obj.send(title_method)
+        .col-md-4.text-right.light-blue
+          view/edit
+      .row
+        .col-md-12.light-blue
+          = obj.send(subtitle_method)
+        - unless collections.count == index+1
+          - # Vertical space after each object except the last one
+          .spacer30
+          .spacer5
