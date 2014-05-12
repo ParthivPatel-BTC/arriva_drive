@@ -33,11 +33,6 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-group :development do
-  # to convert the erbs in to haml
-  gem 'erb2haml'
-end
-
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
