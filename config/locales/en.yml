@@ -14,6 +14,7 @@ en:
     msg:
       success:
         creation: "%{name} created successfully"
+        update: "%{name} updated successfully"
   activity:
     fields:
       title: 'Activity Title'

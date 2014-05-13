@@ -21,7 +21,8 @@ class ActivitiesController < ApplicationController
 
   def update
     @activity.update_attributes(activity_params)
-    render :edit
+    flash[:notice] = t('admin.msg.success.update', name: @activity.title)
+    redirect_to admin_dashboard_path
   end
 
   private
