@@ -3,4 +3,6 @@ class Activity < ActiveRecord::Base
 	has_one :multiple_choice_question
 
 	ACTIVITY_TYPE = [['Book', '1'], ['Video', '2'], ['App', '3'], ['Magazine', '4']]
+
+	scope :completed, -> { where(complete: true) }
 end

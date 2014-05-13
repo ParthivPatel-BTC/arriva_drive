@@ -8,5 +8,6 @@ ArrivaDrive::Application.routes.draw do
 
   scope '/admins' do
     get 'dashboard', to: 'admins#dashboard', as: :admin_dashboard
+    get 'overview', to: 'admins#overview', as: :overview
   end
 end
