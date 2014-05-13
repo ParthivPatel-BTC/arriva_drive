@@ -3,7 +3,7 @@ class Participant < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-
+  has_many :scores
   paperclip_options = {
       styles: {
           medium: "#{Settings.paperclip.style.medium}>",
