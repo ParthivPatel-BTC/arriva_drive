@@ -1,0 +1,125 @@
+.row
+  .col-xs-12.col-md-12
+    %h2.dark-blue.pull-left.page-header
+      %b New Participant
+.row
+  .col-xs-4.col-md-4
+    %h3.dark-blue
+      %b Profile
+    .form-group
+      %label.common-font-color
+        %b First Name
+      .input
+        %input.form-control{name: "InputName", placeholder: "First Name", required: "", type: "text"}/
+    .form-group
+      %label.common-font-color Surname
+      .input
+        %input.form-control{name: "InputEmail", placeholder: "Surname", required: "", type: "email"}/
+    .form-group
+      %label.common-font-color Job Title
+      .input
+        %input.form-control{name: "InputEmail", placeholder: "Job Title", required: "", type: "email"}/
+    .form-group
+      %label.common-font-color Division
+      %div
+        %label.checkbox-inline
+          %input#optionsRadios3{checked: "checked", name: "optionsRadiosinline", type: "radio", value: "option1"}/
+          UK Bus
+        %label.checkbox-inline
+          %input#optionsRadios4{name: "optionsRadiosinline", type: "radio", value: "option2"}/
+          UK Trains
+        %label.checkbox-inline
+          %input#optionsRadios4{name: "optionsRadiosinline", type: "radio", value: "option2"}/
+          Mainiand Europe
+    .form-group
+      %label.common-font-color Year Started
+      .input
+        %input.form-control{name: "InputEmail", placeholder: "Year Started", required: "", type: "text", style: 'width: 28%;'}/
+    .form-group
+      %label.common-font-color Email (this will also be their User Name)
+      .input
+        %input.form-control{name: "InputEmail", placeholder: "Email", required: "", type: "email"}/
+    .form-group
+      %label.common-font-color Password
+      .input
+        %input.form-control{name: "InputEmail", placeholder: "Password", required: "", type: "password"}/
+    .form-group
+      %label.common-font-color Photo
+      .spacer5.spacer-width
+      %span.btn.btn-sign-in.btn-file
+        Choose File
+        %input{multiple: "", type: "file"}/
+
+  .col-xs-1.col-md-1
+  .col-xs-4.col-md-4
+    %h3.dark-blue
+      %b Fit Plan Results
+    .col-xs-10.col-md-10
+      .row
+        %b.common-font-color Behaviour
+    .col-xs-2.col-md-2
+      %b.common-font-color Score
+    .row
+      .col-xs-9.col-md-9
+        .common-font-color Customer Orientation
+      .col-xs-3.col-md-3
+        %input.form-control.score-text-box{type: "text"}/
+    .spacer5.spacer-width
+    .row
+      .col-xs-9.col-md-9
+        .common-font-color Target & Results Focus
+      .col-xs-3.col-md-3
+        %input.form-control.score-text-box{type: "text"}/
+    .spacer5.spacer-width
+    .row
+      .col-xs-9.col-md-9
+        .common-font-color Strategic Focus
+      .col-xs-3.col-md-3
+        %input.form-control.score-text-box{type: "text"}/
+    .spacer5.spacer-width
+    .row
+      .col-xs-9.col-md-9
+        .common-font-color Managing & Developing People
+      .col-xs-3.col-md-3
+        %input.form-control.score-text-box{type: "text"}/
+    .spacer5.spacer-width
+    .row
+      .col-xs-9.col-md-9
+        .common-font-color Striving For Innovation
+      .col-xs-3.col-md-3
+        %input.form-control.score-text-box{type: "text"}/
+    .spacer5.spacer-width
+    .row
+      .col-xs-9.col-md-9
+        .common-font-color Change Management
+      .col-xs-3.col-md-3
+        %input.form-control.score-text-box{type: "text"}/
+    .spacer5.spacer-width
+    .row
+      .col-xs-9.col-md-9
+        .common-font-color Corporate Responsibility
+      .col-xs-3.col-md-3
+        %input.form-control.score-text-box{type: "text"}/
+    .spacer5.spacer-width
+    .row
+      .col-xs-9.col-md-9
+        .common-font-color Role Model Function
+      .col-xs-3.col-md-3
+        %input.form-control.score-text-box{type: "text"}/
+    .spacer5.spacer-width
+    .row
+      .col-xs-9.col-md-9
+        .common-font-color Dealing With Complexity
+      .col-xs-3.col-md-3
+        %input.form-control.score-text-box{type: "text"}/
+    .spacer65.spacer-width
+    .row
+      .col-xs-12.col-md-12
+        .form-group
+          %label.common-font-color
+            %b Performance Summary
+          %textarea.input-xlarge{cols: "48", placeholder: "Performance Summary", rows: "8"}
+          %span.pull-right.common-font-color 0/500
+  .col-xs-3.col-md-3{style:'position: relative; height: 600px;'}
+    %button.btn.btn-sign-in.pull-left{style: 'position: absolute; top: 92%; right: 0%; width: 72%;'} Save Participant Only
+    %button.btn.btn-sign-in.pull-left{style: 'position: absolute; top: 98%; right: 0%;'} Save Participant & Send Invite

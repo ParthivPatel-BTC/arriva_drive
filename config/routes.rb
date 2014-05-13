@@ -3,6 +3,9 @@ ArrivaDrive::Application.routes.draw do
   devise_for :admins
   devise_for :participants
 
+  get '/new_participant' => 'static_pages#new_participant'
+  get '/show' => 'static_pages#show'
+
   scope '/admins' do
     resources :activities, except: [:index, :destroy, :show]
 

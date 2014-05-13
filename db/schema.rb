@@ -119,4 +119,12 @@ ActiveRecord::Schema.define(version: 20140513072249) do
   add_index "participants", ["email"], name: "index_participants_on_email", unique: true, using: :btree
   add_index "participants", ["reset_password_token"], name: "index_participants_on_reset_password_token", unique: true, using: :btree
 
+  create_table "scores", force: true do |t|
+    t.integer  "participant_id"
+    t.integer  "behaviour_id"
+    t.integer  "score"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
 end
