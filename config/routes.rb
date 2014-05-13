@@ -5,4 +5,8 @@ ArrivaDrive::Application.routes.draw do
 
   get '/new_participant' => 'static_pages#new_participant'
   get '/show' => 'static_pages#show'
+
+  scope '/admins' do
+    get 'dashboard', to: 'admins#dashboard', as: :admin_dashboard
+  end
 end

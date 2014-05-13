@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140512090516) do
+ActiveRecord::Schema.define(version: 20140512120529) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20140512090516) do
   create_table "activities", force: true do |t|
     t.string   "title"
     t.string   "link"
-    t.integer  "type"
+    t.integer  "activity_type"
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -98,6 +98,16 @@ ActiveRecord::Schema.define(version: 20140512090516) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "job_title"
+    t.integer  "division"
+    t.integer  "year_started"
+    t.string   "performance_summary"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
   end
 
   add_index "participants", ["email"], name: "index_participants_on_email", unique: true, using: :btree

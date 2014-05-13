@@ -36,8 +36,36 @@ body {
   width: 100%; font-size: 0; margin: 0; padding: 0; border: 0; display: block;
 }
 
-.common-font-color {
+// =========Common classes
+
+/* Common colors*/
+.round-btn {
+  border-radius: 8px;
+}
+
+.common-font-color, .light-blue {
   color: #008091;
+}
+
+.dark-blue {
+  color: #00445A;
+}
+
+.grey {
+  color: #C0C0C0;
+}
+
+/* Common Buttons*/
+.dark-blue-btn {
+  @extend .round-btn;
+  background-color: #00445A;
+  border-color: #00445A;
+  font-weight: bold;
+  color: #FFFFFF;
+}
+.dark-blue-btn:hover {
+  background-color: #006B8D;
+  border-color: #006B8D;
 }
 
 .btn-sign-in {
@@ -48,6 +76,22 @@ body {
 
 .btn-sign-in:hover {
   color: #FFFFFF;
+}
+
+.panel-heading {
+
+}
+
+.panel-btn {
+  margin-bottom: 10px;
+  margin-top: 20px;
+}
+
+.panel-box {
+  border-style: solid;
+  border-width: 1px;
+  border-color: #C0C0C0;
+  padding: 18px 12px;
 }
 
 .logo-span-by {
