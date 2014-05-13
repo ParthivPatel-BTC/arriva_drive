@@ -1,6 +1,6 @@
 class ActivitiesController < ApplicationController
-  before_filter :set_behaviours, only: [:new, :create, :edit, :update]
-  before_filter :find_activity, only: [:edit, :update]
+  before_filter :set_behaviours, only: [:new, :create, :show, :edit, :update]
+  before_filter :find_activity, only: [:edit, :update, :show]
 
   def new
     @activity   = Activity.new
@@ -14,6 +14,9 @@ class ActivitiesController < ApplicationController
     else
       render :new
     end
+  end
+
+  def show
   end
 
   def edit

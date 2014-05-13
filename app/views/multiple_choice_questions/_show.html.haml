@@ -1,0 +1,16 @@
+= mcq.question_text
+.spacer10
+- mcq.answers.each_with_index do |answer, index|
+  .row
+    .col-md-9
+      %h4
+        %strong.dark-blue= "Answer #{number_to_string(index+1)}"
+    .col-md-3
+      - if index == 0
+        %h4
+          %strong.dark-blue= 'Correct?'
+  .row
+    .col-md-9
+      = answer.answer_text
+    .col-md-3
+      = radio_button_tag "answers_attributes[correct]", true, answer.correct, class: 'pull-right', disabled: defined?(disable) && disable

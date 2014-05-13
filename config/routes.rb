@@ -7,7 +7,7 @@ ArrivaDrive::Application.routes.draw do
   get '/show' => 'static_pages#show'
 
   scope '/admins' do
-    resources :activities, except: [:index, :destroy, :show]
+    resources :activities, except: [:index, :destroy]
 
     get 'dashboard', to: 'admins#dashboard', as: :admin_dashboard
   end
