@@ -2,6 +2,8 @@ en:
   common:
     caption:
       edit: 'Edit'
+      back: 'Back'
+      show: 'View'
     panel:
       msg:
         collection_empty: "No %{collection_type} Found."

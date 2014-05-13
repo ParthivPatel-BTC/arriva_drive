@@ -6,11 +6,14 @@
 
 = form_tag(form_action, method: form_method, class: 'form-horizontal', id: 'activityForm', multipart: true) do
   .row
+    - # Left Panel (Behaviours)
     .col-xs-12.col-md-4
       .panel-padding
         %h4
           %strong.dark-blue= t('activity.fields.behaviour')
         = render partial: 'behaviours/forms/radio', locals: { behaviours: @behaviours, radio_btn_name: 'activity[behaviour_id]', activity: @activity }
+
+    - # Middle Panel (Activity attrs)
     .col-xs-12.col-md-4
       .panel-padding
         %h4
@@ -28,6 +31,8 @@
         %h4
           %strong.dark-blue= t('activity.fields.description')
         = text_area_tag 'activity[description]', @activity.description, rows: 6, class: text_field_class
+
+    - # Right Panel (MCQ and it's answers)
     .col-xs-12.col-md-4
       .panel-padding
         %h4
