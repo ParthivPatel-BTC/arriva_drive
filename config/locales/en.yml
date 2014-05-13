@@ -9,3 +9,26 @@ en:
         participant: 'Participants'
         activities: 'Activities'
         events: 'Events'
+    participant:
+      caption:
+        profile: 'Profile'
+        first_name: 'First Name'
+        last_name: 'Last Name'
+        job_title: 'Job Title'
+        division: 'Division'
+        year_started: 'Year Started'
+        email: 'Email (this will also be their User Name)'
+        password: 'Password'
+        photo: 'Photo'
+        fit_plan_results: 'Fit Plan Results'
+        behaviour: 'Behaviour'
+        score: 'Score'
+        performance_summary: 'Performance Summary'
+        button:
+         choose_file: 'Choose File'
+         save_participant_only: 'Save Participant Only'
+         save_participant_&_send: 'Save Participant & Send Invite'
+      page_content:
+        header:
+          new: 'New Participant'
+

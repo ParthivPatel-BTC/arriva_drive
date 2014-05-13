@@ -26,6 +26,8 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
+#RailsConfig helps you easily manage environment specific Rails settings in an easy and usable manner
+gem "rails_config", "~> 0.3.3"
 # Using devise gem for auth
 gem 'devise'
 
