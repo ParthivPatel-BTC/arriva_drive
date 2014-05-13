@@ -2,7 +2,7 @@
   .col-xs-12.col-md-12
     %h2.dark-blue.pull-left.page-header
       %b= t('admin.participant.page_content.header.new')
-= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+= form_for(resource, as: resource_name, url: participant_registration_path) do |f|
   .row
     .col-xs-4.col-md-4
       %h3.dark-blue
