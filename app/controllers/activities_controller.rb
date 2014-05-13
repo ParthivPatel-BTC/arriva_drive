@@ -1,0 +1,45 @@
+class ActivitiesController < ApplicationController
+  before_filter :set_behaviours, only: [:new, :create, :edit, :update]
+  before_filter :find_activity, only: [:edit, :update]
+
+  def new
+    @activity   = Activity.new
+  end
+
+  def create
+    @activity = Activity.create(activity_params)
+    if @activity.persisted?
+      flash[:notice] = t('admin.msg.success.creation', name: @activity.title)
+      redirect_to admin_dashboard_path
+    else
+      render :new
+    end
+  end
+
+  def edit
+  end
+
+  def update
+    @activity.update_attributes(activity_params)
+    render :edit
+  end
+
+  private
+
+  def activity_params
+    params.require(:activity).permit(
+      :behaviour_id, :title, :link, :activity_type, :description,
+      multiple_choice_question_attributes: [
+        :id, :question_text, answers_attributes: [:id, :answer_text, :correct]
+      ]
+    )
+  end
+
+  def set_behaviours
+    @behaviours = Behaviour.all
+  end
+
+  def find_activity
+    @activity = Activity.find_by_id(params[:id])
+  end
+end
