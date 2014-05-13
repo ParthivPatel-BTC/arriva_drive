@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140512120529) do
+ActiveRecord::Schema.define(version: 20140513072249) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,7 +49,10 @@ ActiveRecord::Schema.define(version: 20140512120529) do
     t.boolean  "correct"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "multiple_choice_question_id"
   end
+
+  add_index "answers", ["multiple_choice_question_id"], name: "index_answers_on_multiple_choice_question_id", using: :btree
 
   create_table "behaviours", force: true do |t|
     t.string   "title"
@@ -83,7 +86,10 @@ ActiveRecord::Schema.define(version: 20140512120529) do
     t.string   "question_text"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "activity_id"
   end
+
+  add_index "multiple_choice_questions", ["activity_id"], name: "index_multiple_choice_questions_on_activity_id", using: :btree
 
   create_table "participants", force: true do |t|
     t.string   "email",                  default: "", null: false

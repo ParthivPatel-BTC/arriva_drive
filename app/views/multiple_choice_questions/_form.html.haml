@@ -1,0 +1,20 @@
+- text_field_class = 'col-md-9'
+- 4.times { mcq.answers.build } if mcq.answers.blank?
+
+= hidden_field_tag "#{name_prefix}[id]", mcq.id
+= text_area_tag "#{name_prefix}[question_text]", mcq.question_text, rows: 6, class: text_field_class
+- mcq.answers.each_with_index do |answer, index|
+  .row
+    .col-md-9
+      %h4
+        %strong.dark-blue= "Answer #{number_to_string(index+1)}"
+    .col-md-3
+      - if index == 0
+        %h4
+          %strong.dark-blue= 'Correct?'
+  .row
+    = hidden_field_tag "#{name_prefix}[answers_attributes][][id]", answer.id
+    .col-md-9
+      = text_field_tag "#{name_prefix}[answers_attributes][][answer_text]", answer.answer_text, class: 'col-md-12'
+    .col-md-3
+      = radio_button_tag "#{name_prefix}[answers_attributes][][correct]", true, answer.correct, class: 'pull-right'

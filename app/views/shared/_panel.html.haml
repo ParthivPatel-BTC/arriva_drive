@@ -4,8 +4,7 @@
       %h3
         %strong.dark-blue= title
     .col-md-6.col-xs-6
-      %button.dark-blue-btn.panel-btn.pull-right
-        Create New
+      = link_to 'Create New', new_path, class: 'btn dark-blue-btn panel-btn pull-right'
 .panel-box
   - if collections.blank?
     %strong= t('common.panel.msg.collection_empty', collection_type: title)
@@ -15,7 +14,9 @@
         .col-md-8
           = obj.send(title_method)
         .col-md-4.text-right.light-blue
-          view/edit
+          view
+          \/
+          = link_to t('common.caption.edit'), self.send(edit_path, obj)
       .row
         .col-md-12.light-blue
           = obj.send(subtitle_method)
