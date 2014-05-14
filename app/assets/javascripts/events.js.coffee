@@ -14,3 +14,4 @@ readURL = (input, previewContainerSelector) ->
       $(previewContainerSelector).attr("src", e.target.result).width(100).height('auto').show()
 
     reader.readAsDataURL input.files[0]
+    $('#existingEventImage').hide()

@@ -3,5 +3,6 @@
   - behaviours.each do |behaviour|
     .light-blue
       = behaviour.title
+      = hidden_field_tag "#{check_box_name}[][id]", @event.behaviours_events.find_by_behaviour_id(behaviour.id).id rescue nil
       = check_box_tag "#{check_box_name}[][behaviour_id]", behaviour.id, selected_behaviours_ids.include?(behaviour.id), class: 'pull-right', disabled: defined?(disable) && disable
     .spacer10

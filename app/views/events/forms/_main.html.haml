@@ -21,7 +21,7 @@
         .col-md-12.spacer15
         %h4
           %strong.dark-blue= t('event.fields.location')
-        = text_field_tag 'event[location]', @event.link, class: text_field_class
+        = text_field_tag 'event[location]', @event.location, class: text_field_class
         .col-md-12.spacer15
         %h4
           %strong.dark-blue= t('event.fields.date')
@@ -35,8 +35,8 @@
         .row
           .col-md-4
             %img#previewEventImage
-            - if image_present?(@event, 'image') && valid_logo_link?(@event)
-              = image_tag event.image.url, class: 'existingEventImage'
+            - if image_present?(@event, 'image') && image_link_valid?(@event)
+              = image_tag @event.image.url, class: 'image-thumb', id: 'existingEventImage'
           .col-md-8
             = file_field_tag 'event[image]', accept: 'image/png,image/gif,image/jpeg'
 

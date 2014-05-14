@@ -1,6 +1,6 @@
 class ActivitiesController < ApplicationController
   before_filter :set_behaviours, only: [:new, :create, :show, :edit, :update]
-  before_filter :find_activity, only: [:edit, :update, :show]
+  before_filter :find_set_activity, only: [:edit, :update, :show]
 
   def new
     @activity   = Activity.new
@@ -39,7 +39,7 @@ class ActivitiesController < ApplicationController
     )
   end
 
-  def find_activity
+  def find_set_activity
     @activity = Activity.find_by_id(params[:id])
   end
 end
