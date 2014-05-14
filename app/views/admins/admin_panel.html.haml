@@ -10,4 +10,4 @@
   .col-md-4.col-xs-12
     = render partial: "shared/panel", locals: { collections: @activities, title: t('admin.panel.titles.activities'), title_method: 'title', subtitle_method: 'activity_type', new_path: new_activity_path, edit_path: 'edit_activity_path', show_path: 'activity_path' }
   .col-md-4.col-xs-12
-    = render partial: "shared/panel", locals: { collections: @events, title: t('admin.panel.titles.events'), title_method: 'title', subtitle_method: 'event_date', new_path: '#', edit_path: 'edit_activity_path' }
+    = render partial: "shared/panel", locals: { collections: @events, title: t('admin.panel.titles.events'), title_method: 'title', subtitle_method: 'event_date', new_path: new_event_path, edit_path: 'edit_event_path', show_path: false }

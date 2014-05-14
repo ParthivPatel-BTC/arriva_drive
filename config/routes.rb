@@ -8,6 +8,7 @@ ArrivaDrive::Application.routes.draw do
 
   scope '/admins' do
     resources :activities, except: [:index, :destroy]
+    resources :events, except: [:index, :destroy, :show]
 
     get 'dashboard', to: 'admins#dashboard', as: :admin_dashboard
   end
