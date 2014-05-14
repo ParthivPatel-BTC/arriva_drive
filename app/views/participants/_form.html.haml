@@ -51,6 +51,10 @@
           = f.file_field(:photo)
       - if @participant.photo.present?
         = image_tag(@participant.photo.url(:medium))
+        .spacer5
+        .form-group
+          %label.control-label.no-padding-right
+            %img(src='' id='preview_participant_photo')
       .form-group
         %label.control-label.no-padding-right
           %img(src='' id='preview_participant_photo')
@@ -83,7 +87,7 @@
             %label.common-font-color
               %b= t('admin.participant.caption.performance_summary')
             = f.text_area(:performance_summary, cols: 48, rows: 8, class: 'input-xlarge')
-            %span.pull-right.common-font-color 0/500
+            %span.pull-right.common-font-color 0/200
     .col-xs-3.col-md-3{style:'position: relative; height: 600px;'}
       = f.submit(submit_btn_caption, class: 'btn btn_sign_in pull_left', style: 'position: absolute; top: 92%; right: 0%; width: 72%;')
 

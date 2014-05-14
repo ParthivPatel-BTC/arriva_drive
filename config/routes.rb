@@ -18,6 +18,6 @@ ArrivaDrive::Application.routes.draw do
     resources :events, except: [:index, :destroy, :show]
 
     get 'dashboard', to: 'admins#dashboard', as: :admin_dashboard
-    get 'overview', to: 'admins#overview', as: :overview
+    get 'overview/:id', to: 'admins#overview', as: :overview
   end
 end

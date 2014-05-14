@@ -10,6 +10,7 @@ class ParticipantsController < Devise::RegistrationsController
 
   def update
     if @participant.update_attributes(activity_params)
+      flash[:notice] = t('admin.msg.success.update', name: @participant.full_name)
       redirect_to show_participant_path(@participant)
     end
   end
@@ -21,6 +22,7 @@ class ParticipantsController < Devise::RegistrationsController
   end
 
   def after_sign_up_path_for(resource)
+    flash[:notice] = t('admin.msg.success.creation', name: resource)
     show_participant_path(resource)
   end
 
