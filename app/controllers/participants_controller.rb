@@ -22,7 +22,7 @@ class ParticipantsController < Devise::RegistrationsController
   end
 
   def after_sign_up_path_for(resource)
-    flash[:notice] = t('admin.msg.success.creation', name: resource)
+    flash[:notice] = t('admin.msg.success.creation', name: resource.full_name)
     show_participant_path(resource)
   end
 
