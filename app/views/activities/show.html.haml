@@ -1,0 +1,44 @@
+.row
+  .col-xs-12.col-md-12
+    %h2.dark-blue.page-header
+      %b= @activity.title
+
+  .row
+    - # Left Panel (Behaviours)
+    .col-xs-12.col-md-4
+      .panel-padding
+        %h4
+          %strong.dark-blue= t('activity.fields.behaviour')
+        = render partial: 'behaviours/forms/radio', locals: { behaviours: @behaviours, radio_btn_name: 'activity[behaviour_id]', activity: @activity, disable: true }
+
+    - # Middle Panel (Activity attrs)
+    .col-xs-12.col-md-4
+      .panel-padding
+        %h4
+          %strong.dark-blue= t('activity.fields.title')
+        = @activity.title
+        .col-md-12.spacer15
+        %h4
+          %strong.dark-blue= t('activity.fields.link')
+        = @activity.link
+        .col-md-12.spacer15
+        %h4
+          %strong.dark-blue= t('activity.fields.type')
+        = render partial: 'activities/forms/activity_type_radio', locals: { disable: true }
+        .spacer10
+        %h4
+          %strong.dark-blue= t('activity.fields.description')
+        = @activity.description
+
+    - # Right Panel (MCQ and it's answers)
+    .col-xs-12.col-md-4
+      .panel-padding
+        %h4
+          %strong.dark-blue= t('activity.fields.multiple_choice_question')
+        = render partial: 'multiple_choice_questions/show', locals: { mcq: @activity.multiple_choice_question, disable: true }
+
+  .row
+    .col-md-12.spacer40
+    .pull-right
+      = link_to t('common.caption.back'), admin_dashboard_path,class: 'btn btn-sm submit-btn dark-blue-btn'
+    .col-md-12.spacer30

@@ -78,8 +78,9 @@ body {
   color: #FFFFFF;
 }
 
-.panel-heading {
-
+.submit-btn {
+  padding-left: 80px;
+  padding-right: 80px;
 }
 
 .panel-btn {
@@ -89,9 +90,13 @@ body {
 
 .panel-box {
   border-style: solid;
-  border-width: 1px;
+  border-width: 2px;
   border-color: #C0C0C0;
   padding: 18px 12px;
+}
+
+.panel-padding {
+  padding: 18px 25px;
 }
 
 .logo-span-by {

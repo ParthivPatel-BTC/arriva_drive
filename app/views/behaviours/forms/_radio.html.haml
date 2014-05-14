@@ -1,0 +1,7 @@
+- unless behaviours.blank?
+  - selected_id = activity.try(:behaviour_id)
+  - behaviours.each do |behaviour|
+    .light-blue
+      = behaviour.title
+      = radio_button_tag radio_btn_name, behaviour.id, selected_id == behaviour.id, class: 'pull-right', disabled: defined?(disable) && disable
+    .spacer10

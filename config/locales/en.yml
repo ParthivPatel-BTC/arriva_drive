@@ -1,5 +1,9 @@
 en:
   common:
+    caption:
+      edit: 'Edit'
+      back: 'Back'
+      show: 'View'
     panel:
       msg:
         collection_empty: "No %{collection_type} Found."
@@ -38,4 +42,18 @@ en:
         header:
           new: 'New Participant'
           edit: 'Edit Participant'
+    msg:
+      success:
+        creation: "%{name} created successfully"
+        update: "%{name} updated successfully"
+  activity:
+    fields:
+      title: 'Activity Title'
+      link: 'Activity Link'
+      type: 'Activity Type'
+      description: 'Activity Description'
+      behaviour: 'Related Behaviour'
+      multiple_choice_question: 'Multiple Choice Question'
+    btn:
+      save: 'Save Activity'
 
