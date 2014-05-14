@@ -54,12 +54,12 @@
   .col-xs-3.col-md-3{style:'position: relative; height: 590px;'}
     %h3.dark-blue
       %b= t('admin.participant.caption.performance_summary')
-    %p= @participant.performance_summary
+    %p= simple_format(@participant.performance_summary)
     .row
-      %button.btn.btn_sign_in.pull_left{style: 'position: absolute; top: 400px; right: 0%; width: 72%;'}= t('admin.participant.caption.button.view_activity')
+      = link_to(t('admin.participant.caption.button.view_activity'), overview_path(@participant) , class: 'btn btn_sign_in pull_left', style: 'position: absolute; top: 400px; right: 0%; width: 72%;')
     .row
       %button.btn.btn_sign_in.pull_left{style: 'position: absolute; top: 440px; right: 0%; width: 72%;'}= t('admin.participant.caption.button.disable_acount')
     .row
       %button.btn.btn_sign_in.pull_left{style: 'position: absolute; top: 480px; right: 0%; width: 72%;'}= t('admin.participant.caption.button.re_send_participant_invite')
     .row
-      %button.btn.btn_sign_in.pull_left{style: 'position: absolute; top: 520px; right: 0%; width: 72%;'}= t('admin.participant.caption.button.done')
+      = link_to(t('admin.participant.caption.button.done'), admin_dashboard_path, class: 'btn btn_sign_in pull_left', style: 'position: absolute; top: 520px; right: 0%; width: 72%;')

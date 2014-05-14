@@ -18,4 +18,6 @@
         %span.logo-span-by by
         = image_tag('logo2.png')
   .container
+    #message-container
+      = render partial: "shared/flash_messages"
     = yield

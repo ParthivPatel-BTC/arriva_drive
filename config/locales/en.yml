@@ -67,4 +67,14 @@ en:
       description: 'Event Description'
     btn:
       save: 'Save Event'
+  sign_in:
+    caption:
+      email: 'Email address'
+      password: 'Password'
+      forgot_password: 'Forgot Pasword?'
+      button:
+        sign_in: 'Sign in'
+    page_content:
+      header:
+        'please_sign_in': 'Please sign in'
 
