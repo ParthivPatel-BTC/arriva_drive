@@ -56,4 +56,15 @@ en:
       multiple_choice_question: 'Multiple Choice Question'
     btn:
       save: 'Save Activity'
+  event:
+    fields:
+      behaviour: 'Related Behaviour'
+      title: 'Event Title'
+      location: 'Event Location'
+      date: 'Event Date'
+      link: 'Event Link'
+      image: 'Event Image'
+      description: 'Event Description'
+    btn:
+      save: 'Save Event'
 
