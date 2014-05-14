@@ -34,7 +34,7 @@ gem 'devise'
 gem "paperclip", "~> 4.1"
 
 # Access attr_accessible
-gem 'protected_attributes'
+# gem 'protected_attributes'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

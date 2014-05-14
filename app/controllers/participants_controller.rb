@@ -9,7 +9,7 @@ class ParticipantsController < Devise::RegistrationsController
   end
 
   def update
-    if @participant.update_attributes(params[:participant])
+    if @participant.update_attributes(activity_params)
       redirect_to show_participant_path(@participant)
     end
   end

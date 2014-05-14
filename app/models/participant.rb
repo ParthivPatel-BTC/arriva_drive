@@ -12,14 +12,11 @@ class Participant < ActiveRecord::Base
       :url => Settings.paperclip.image_path
   }
 
-  attr_accessible :first_name, :last_name, :job_title, :division, :year_started, :performance_summary, :email, :password, :photo
-
-  attr_accessible :scores_attributes
   accepts_nested_attributes_for :scores
 
   has_attached_file :photo, Paperclip::Attachment.default_options.merge(paperclip_options)
   validates_attachment_content_type :photo, content_type:  /\Aimage\/.*\Z/
-  
+
   def full_name
     "#{first_name} #{last_name}"
   end
