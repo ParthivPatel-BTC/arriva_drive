@@ -1,6 +1,8 @@
 ArrivaDrive::Application.routes.draw do
-  root :to => 'static_pages#index'
-  devise_for :admins
+  # root :to => 'static_pages#index'
+  devise_for :admins do
+    root :to => 'devise/sessions#new'
+  end
   devise_for :participants, :controllers => { :registrations => "participants" }, :skip => [:sessions]
 
   devise_for :participants do

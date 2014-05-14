@@ -4,6 +4,22 @@ module ApplicationHelper
     NUMBER_STR_MAP[number]
   end
 
+  # For flash messages
+  def bootstrap_class_for flash_type
+    case flash_type
+    when :success
+      "alert-success" # Green
+    when :error
+      "alert-danger" # Red
+    when :alert
+      "alert-warning" # Yellow
+    when :notice
+      "alert-info" # Blue
+    else
+      flash_type.to_s
+    end
+  end
+
   def image_present?(obj, image_attr_name)
     return false if obj.blank?
     !obj.try(image_attr_name).blank?
