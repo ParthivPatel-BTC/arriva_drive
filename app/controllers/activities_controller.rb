@@ -39,10 +39,6 @@ class ActivitiesController < ApplicationController
     )
   end
 
-  def set_behaviours
-    @behaviours = Behaviour.all
-  end
-
   def find_activity
     @activity = Activity.find_by_id(params[:id])
   end
