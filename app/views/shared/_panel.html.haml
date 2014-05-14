@@ -14,9 +14,8 @@
         .col-md-8
           = obj.send(title_method)
         .col-md-4.text-right.light-blue
-          - if show_path
-            = link_to t('common.caption.view'), self.try(show_path, obj)
-            \/
+          = link_to t('common.caption.view'), self.try(show_path, obj)
+          \/
           = link_to t('common.caption.edit'), self.send(edit_path, obj)
       .row
         .col-md-12.light-blue

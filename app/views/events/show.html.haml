@@ -1,0 +1,45 @@
+.row
+  .col-xs-12.col-md-12
+    %h2.dark-blue.page-header
+      %b= @event.title
+
+.row
+  - # Left Panel (Behaviours)
+  .col-xs-12.col-md-4
+    .panel-padding
+      %h4
+        %strong.dark-blue= t('event.fields.behaviour')
+      = render partial: 'behaviours/forms/check_box', locals: { behaviours: @behaviours, check_box_name: 'event[behaviours_events_attributes]', event: @event, selected_behaviours_ids: @event.behaviours.pluck(:id), disable: true }
+
+  - # Middle Panel (event attrs)
+  .col-xs-12.col-md-4
+    .panel-padding
+      %h4
+        %strong.dark-blue= t('event.fields.title')
+      = @event.title
+      .col-md-12.spacer15
+      %h4
+        %strong.dark-blue= t('event.fields.location')
+      = @event.location
+      .col-md-12.spacer15
+      %h4
+        %strong.dark-blue= t('event.fields.date')
+      = @event.event_date
+      .col-md-12.spacer15
+      %h4
+        %strong.dark-blue= t('event.fields.link')
+      = @event.link
+      %h4
+        %strong.dark-blue= t('event.fields.image')
+      .row
+        .col-md-12
+          %img#previewEventImage
+          - if image_present?(@event, 'image') && image_link_valid?(@event)
+            = image_tag @event.image.url, class: 'image-thumb', id: 'existingEventImage'
+
+  - # Right Panel (Text are for Description)
+  .col-xs-12.col-md-4
+    .panel-padding
+      %h4
+        %strong.dark-blue= t('event.fields.description')
+      = @event.description
