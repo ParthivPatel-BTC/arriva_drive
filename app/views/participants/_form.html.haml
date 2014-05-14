@@ -1,8 +1,8 @@
-.row
-  .col-xs-12.col-md-12
-    %h2.dark-blue.pull-left.page-header
-      %b= t('admin.participant.page_content.header.new')
-= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+- participant = @participant || Participant.new
+- create_view = participant.new_record?
+- submit_btn_caption = ( create_view ? t('admin.participant.caption.button.save_participant_only') : t('admin.participant.caption.button.update') )
+= form_for(resource, as: resource_name, url: participant_registration_path) do |f|
+  = hidden_field_tag('id', participant[:id])
   .row
     .col-xs-4.col-md-4
       %h3.dark-blue
@@ -38,16 +38,22 @@
         %label.common-font-color= t('admin.participant.caption.email')
         .input
           = f.email_field :email, class: 'form-control'
-      .form-group
-        %label.common-font-color= t('admin.participant.caption.password')
-        .input
-          = f.password_field :password, class: 'form-control'
+      - if !params[:id].present?
+        .form-group
+          %label.common-font-color= t('admin.participant.caption.password')
+          .input
+            = f.password_field :password, class: 'form-control'
       .form-group
         %label.common-font-color= t('admin.participant.caption.photo')
         .spacer5.spacer-width
         %span.btn.btn_sign_in.btn-file
           = t('admin.participant.caption.button.choose_file')
           = f.file_field(:photo)
+      - if @participant.photo.present?
+        = image_tag(@participant.photo.url(:medium))
+      .form-group
+        %label.control-label.no-padding-right
+          %img(src='' id='preview_participant_photo')
 
     .col-xs-1.col-md-1
     .col-xs-4.col-md-4
@@ -59,13 +65,17 @@
       .col-xs-2.col-md-2
         %b.common-font-color= t('admin.participant.caption.score')
       - Behaviour.all.each do |behaviour|
+        - score = @participant.id.present? ? get_score_value(behaviour, @participant) : ''
+        - score_id = score.present? ? score.id : ''
+        - score_value = score.present? ? score.score : ''
         .row
           .col-xs-9.col-md-9
             .common-font-color
               = behaviour.title
           .col-xs-3.col-md-3
             = hidden_field_tag('participant[scores_attributes][][behaviour_id]', behaviour.id)
-            = text_field_tag 'participant[scores_attributes][][score]', '', class: 'form-control score_text_box'
+            = hidden_field_tag('participant[scores_attributes][][id]', score_id)
+            = text_field_tag 'participant[scores_attributes][][score]', score_value, class: 'form-control score_text_box'
         .spacer5.spacer-width
       .row
         .col-xs-12.col-md-12
@@ -75,7 +85,7 @@
             = f.text_area(:performance_summary, cols: 48, rows: 8, class: 'input-xlarge')
             %span.pull-right.common-font-color 0/500
     .col-xs-3.col-md-3{style:'position: relative; height: 600px;'}
-      = f.submit(t('admin.participant.caption.button.save_participant_only'), class: 'btn btn_sign_in pull_left', style: 'position: absolute; top: 92%; right: 0%; width: 72%;')
+      = f.submit(submit_btn_caption, class: 'btn btn_sign_in pull_left', style: 'position: absolute; top: 92%; right: 0%; width: 72%;')
 
       %button.btn.btn_sign_in.pull_left{style: 'position: absolute; top: 98%; right: 0%;'}
         = t('admin.participant.caption.button.save_participant_&_send')

@@ -1,0 +1,16 @@
+app_name: 'ArrivaDrive'
+default_password: 'password'
+
+pagination:
+  per_page: 10
+
+defaults:
+  date_format_in_views: '%d/%m/%Y'
+
+paperclip:
+  style:
+    medium: '300x300'
+    thumb: '100x100'
+    activity:
+      small: '55x55'
+  image_path: '/system/:class/:photos/:id/:style/:basename.:extension'

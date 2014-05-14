@@ -6,5 +6,7 @@ class Activity < ActiveRecord::Base
 
 	ACTIVITY_TYPE = [['Book', '1'], ['Video', '2'], ['App', '3'], ['Magazine', '4']]
 
+	scope :completed, -> { where(complete: true) }
+
   validates_presence_of :title
 end

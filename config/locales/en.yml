@@ -13,6 +13,35 @@ en:
         participant: 'Participants'
         activities: 'Activities'
         events: 'Events'
+    participant:
+      caption:
+        profile: 'Profile'
+        first_name: 'First Name'
+        last_name: 'Last Name'
+        job_title: 'Job Title'
+        division: 'Division'
+        year_started: 'Year Started'
+        email: 'Email (this will also be their User Name)'
+        email_without_note: 'Email'
+        password: 'Password'
+        photo: 'Photo'
+        fit_plan_results: 'Fit Plan Results'
+        behaviour: 'Behaviour'
+        score: 'Score'
+        performance_summary: 'Performance Summary'
+        button:
+         choose_file: 'Choose File'
+         save_participant_only: 'Save Participant Only'
+         save_participant_&_send: 'Save Participant & Send Invite'
+         view_activity: 'View Activity'
+         disable_acount: 'Disable Acount'
+         re_send_participant_invite: 'Re-send Participant Invite'
+         done: 'Done'
+         update: 'Update'
+      page_content:
+        header:
+          new: 'New Participant'
+          edit: 'Edit Participant'
     msg:
       success:
         creation: "%{name} created successfully"
@@ -38,3 +67,4 @@ en:
       description: 'Event Description'
     btn:
       save: 'Save Event'
+

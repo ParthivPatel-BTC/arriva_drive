@@ -29,7 +29,6 @@ admin_attr = {
 }
 find_or_create_instance(Admin, admin_attr, :email)
 
-#==================================================Create Behaviours===================================================
 behaviours = [
     { title: 'Customer orientation', description: 'Entails knowing customer expectations and implementing customer-oriented solutions. For executives this also means acting in a manner that has a positive effect on the customer orientation of the employees.' },
     { title: 'Target & results focus', description: 'Is the endeavour to achieve outstanding results in one’s own area. This also includes setting oneself challenging targets, reviewing these and setting priorities to ensure company success.' },

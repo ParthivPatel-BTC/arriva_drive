@@ -1,0 +1,65 @@
+- division = check_and_set_division(@participant.division)
+.row
+  .col-xs-12.col-md-12
+    %h2.dark-blue.pull-left.page-header
+      %b= @participant.full_name.titleize
+      .btn-group.pull-right.edit_profile_link
+        = link_to 'Edit', edit_participant_path(@participant), class: 'pull-right'
+.row
+  .col-xs-4.col-md-4
+    %h3.dark-blue
+      %b= t('admin.participant.caption.profile')
+    .form-group
+      %label.dark-blue= t('admin.participant.caption.job_title')
+      .input
+        %span.common-font-color= @participant.job_title.titleize
+    .form-group
+      %label.dark-blue= t('admin.participant.caption.division')
+      .input
+        %span.common-font-color= division
+    .form-group
+      %label.dark-blue= t('admin.participant.caption.year_started')
+      .input
+        %span.common-font-color= @participant.year_started
+    .form-group
+      %label.dark-blue= t('admin.participant.caption.email_without_note')
+      .input
+        %span.common-font-color= @participant.email
+    .form-group
+      %label.dark-blue= t('admin.participant.caption.photo')
+      - if @participant.photo.present?
+        .input
+          = image_tag(@participant.photo.url(:medium))
+      - else
+        .input
+          =image_tag('no_image.png')
+
+  .col-xs-3.col-md-4
+    %h3.dark-blue
+      %b= t('admin.participant.caption.fit_plan_results')
+    .col-xs-9.col-md-9
+      .row
+        %b.common-font-color= t('admin.participant.caption.behaviour')
+    .col-xs-2.col-md-2
+      %b.common-font-color= t('admin.participant.caption.score')
+    - Behaviour.all.each do |behaviour|
+      - score = @participant.id.present? ? get_score_value(behaviour, @participant) : ''
+      .row
+        .col-xs-9.col-md-9
+          .common-font-color=behaviour.title
+        .col-xs-1.col-md-1
+          =score.score
+      .spacer5.spacer-width
+    .spacer65.spacer-width
+  .col-xs-3.col-md-3{style:'position: relative; height: 590px;'}
+    %h3.dark-blue
+      %b= t('admin.participant.caption.performance_summary')
+    %p= @participant.performance_summary
+    .row
+      %button.btn.btn_sign_in.pull_left{style: 'position: absolute; top: 400px; right: 0%; width: 72%;'}= t('admin.participant.caption.button.view_activity')
+    .row
+      %button.btn.btn_sign_in.pull_left{style: 'position: absolute; top: 440px; right: 0%; width: 72%;'}= t('admin.participant.caption.button.disable_acount')
+    .row
+      %button.btn.btn_sign_in.pull_left{style: 'position: absolute; top: 480px; right: 0%; width: 72%;'}= t('admin.participant.caption.button.re_send_participant_invite')
+    .row
+      %button.btn.btn_sign_in.pull_left{style: 'position: absolute; top: 520px; right: 0%; width: 72%;'}= t('admin.participant.caption.button.done')
