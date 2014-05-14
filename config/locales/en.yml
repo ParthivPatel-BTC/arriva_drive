@@ -33,7 +33,9 @@ en:
          disable_acount: 'Disable Acount'
          re_send_participant_invite: 'Re-send Participant Invite'
          done: 'Done'
+         update: 'Update'
       page_content:
         header:
           new: 'New Participant'
+          edit: 'Edit Participant'
 
