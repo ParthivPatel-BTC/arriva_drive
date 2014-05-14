@@ -19,7 +19,25 @@ class Participant < ActiveRecord::Base
 
   has_attached_file :photo, Paperclip::Attachment.default_options.merge(paperclip_options)
   validates_attachment_content_type :photo, content_type:  /\Aimage\/.*\Z/
+  
   def full_name
     "#{first_name} #{last_name}"
+  end
+
+  def level_for(behaviour_id)
+    score = scores.where(behaviour_id: behaviour_id, participant_id: id).first
+    if (0..110).include?(score)
+      1
+    elsif (111..1999).include?(score)
+      2
+    elsif (2000..2999).include?(score)
+      3
+    elsif (3000..3999).include?(score)
+      4
+    elsif (4000..5000).include?(score)
+      5
+    else
+      0
+    end
   end
 end
