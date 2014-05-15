@@ -49,6 +49,14 @@ class Participant < ActiveRecord::Base
     end
   end
 
+  def deactivate!
+    update_attribute(:active, false)
+  end
+
+  def activate!
+    update_attribute(:active, true)
+  end
+
   private
 
   def numericality_of_nested_scores

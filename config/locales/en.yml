@@ -39,7 +39,8 @@ en:
          save_participant_only: 'Save Participant Only'
          save_participant_&_send: 'Save Participant & Send Invite'
          view_activity: 'View Activity'
-         disable_acount: 'Disable Acount'
+         disable_account: 'Disable Account'
+         enable_account: 'Enable Account'
          re_send_participant_invite: 'Re-send Participant Invite'
          done: 'Done'
          update: 'Update'
@@ -47,6 +48,10 @@ en:
         header:
           new: 'New Participant'
           edit: 'Edit Participant'
+      msg:
+        success:
+          deactivated: "%{name} disabled successfully"
+          activated: "%{name} enabled successfully"
     msg:
       success:
         creation: "%{name} created successfully"

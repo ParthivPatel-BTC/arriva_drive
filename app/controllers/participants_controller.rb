@@ -1,6 +1,6 @@
 class ParticipantsController < Devise::RegistrationsController
-  before_filter :find_participant_from_params, only: [ :show, :edit, :update ]
-  skip_before_filter :authenticate_scope!, :only => [:edit, :update, :destroy]
+  before_filter :find_participant_from_params, only: [ :show, :edit, :update, :deactivate, :activate ]
+  skip_before_filter :authenticate_scope!, :only => [:edit, :update, :destroy, :deactivate, :activate]
   before_filter :admin_user_required!
 
   def new
@@ -31,6 +31,18 @@ class ParticipantsController < Devise::RegistrationsController
     else
       render 'edit'
     end
+  end
+
+  def deactivate
+    @participant.deactivate!
+    flash[:notice] = t('admin.participant.msg.success.deactivated', name: @participant.full_name)
+    redirect_to admin_dashboard_path
+  end
+
+  def activate
+    @participant.activate!
+    flash[:notice] = t('admin.participant.msg.success.activated', name: @participant.full_name)
+    redirect_to admin_dashboard_path
   end
 
   protected
