@@ -101,6 +101,10 @@ body {
   border-width: 2px;
   border-color: #C0C0C0;
   padding: 18px 12px;
+  display: block;
+  height: 375px;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .panel-padding {

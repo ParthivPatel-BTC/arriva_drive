@@ -1,4 +1,6 @@
 class AdminsController < ApplicationController
+  before_filter :admin_user_required!
+
   def admin_panel
     @participants = Participant.all
     @activities   = Activity.all
@@ -6,10 +8,10 @@ class AdminsController < ApplicationController
     render 'admin_panel'
   end
 
-  alias :dashboard :admin_panel
-
   def overview
   	@participant = Participant.find(params[:id])
   	@behaviours = @participant.scores.collect { |score| score.behaviour }
   end
+
+  alias :dashboard :admin_panel
 end
