@@ -4,7 +4,7 @@
     %h2.dark-blue.pull-left.page-header
       %b= @participant.full_name.titleize
       .btn-group.pull-right.edit_profile_link
-        = link_to 'Edit', edit_participant_path(@participant), class: 'pull-right'
+        = link_to t('common.caption.edit'), edit_participant_path(@participant), class: 'pull-right', title: t('common.caption.edit')
 .row
   .col-xs-4.col-md-4
     %h3.dark-blue
