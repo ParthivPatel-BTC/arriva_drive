@@ -32,4 +32,8 @@ module ApplicationHelper
   def find_field_length(str)
     str.try(:size) || 0
   end
+
+  def date_formatted(date)
+    date.strftime('%d/%m/%Y') rescue nil
+  end
 end
