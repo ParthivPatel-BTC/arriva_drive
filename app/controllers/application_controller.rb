@@ -47,4 +47,19 @@ class ApplicationController < ActionController::Base
     end
     params
   end
+
+  def require_admin
+    msg = (current_user.is_admin? ? '' : t('permissions.not_permitted'))
+    access_denied_redirect(msg)
+  end
+
+  def is_admin?
+    current_user.email == Admin.first.email
+  end
+
+  def required_access
+    unless current_user.has_permission?(params[:controller].to_sym)
+      access_denied_redirect(t('permissions.not_permitted'))
+    end
+  end
 end

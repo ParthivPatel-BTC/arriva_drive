@@ -8,15 +8,16 @@
 %body
   .navbar.navbar-inverse.navbar-fixed-top{role: "navigation"}
     .container
-      .navbar-header{style: 'margin-top: 5px;'}
+      .navbar-header
         %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", type: "button"}
           %span.sr-only Toggle navigation
           %span.icon-bar
           %span.icon-bar
           %span.icon-bar
-        = image_tag('logo1.png')
-        %span.logo-span-by by
-        = image_tag('logo2.png')
+        .logo-margin-top
+          = image_tag('logo1.png')
+          %span.logo-span-by by
+          = image_tag('logo2.png')
   .container
     #message-container
       = render partial: "shared/flash_messages"

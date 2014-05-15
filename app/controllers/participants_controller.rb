@@ -1,5 +1,20 @@
 class ParticipantsController < Devise::RegistrationsController
   before_filter :find_participant_from_params, only: [ :show, :edit, :update ]
+  skip_before_filter :authenticate_scope!, :only => [:edit, :update, :destroy]
+
+  def new
+    @participant = Participant.new
+  end
+
+  def create
+    @participant = Participant.new(activity_params)
+    if @participant.save
+      flash[:notice] = t('admin.msg.success.update', name: @participant.full_name)
+      redirect_to admin_dashboard_path
+    else
+      render :new
+    end
+  end
 
   def show
   end
