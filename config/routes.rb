@@ -11,6 +11,8 @@ ArrivaDrive::Application.routes.draw do
     get '/participants/new' => 'participants#new', :as => :new_participant
     post '/participants' => 'participants#create'
     post '/participants' => 'participants#update', :as => :update_participant
+    put '/participants/:id/deactivate' => 'participants#deactivate', :as => :participant_deactivate
+    put '/participants/:id/activate' => 'participants#activate', :as => :participant_activate
   end
   get '/new_participant' => 'static_pages#new_participant'
   get '/show' => 'static_pages#show'
