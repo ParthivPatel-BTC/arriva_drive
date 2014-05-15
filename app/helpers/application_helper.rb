@@ -28,4 +28,8 @@ module ApplicationHelper
   def image_link_valid?(obj)
     !obj.new_record?
   end
+
+  def find_field_length(str)
+    str.try(:size) || 0
+  end
 end
