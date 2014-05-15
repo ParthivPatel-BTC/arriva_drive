@@ -4,6 +4,9 @@ en:
       edit: 'Edit'
       back: 'Back'
       show: 'View'
+    msg:
+      warning:
+        unauthorize: 'Sorry, You are not authorize to access this page'
     panel:
       msg:
         collection_empty: "No %{collection_type} Found."
