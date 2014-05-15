@@ -5,6 +5,7 @@
 - max_length_of_desc_field = 200
 
 = form_tag(form_action, method: form_method, class: 'form-horizontal', id: 'eventForm', multipart: true) do
+  = render partial: "shared/error_messages", locals: { target: @event }
   .row
     - # Left Panel (Behaviours)
     .col-xs-12.col-md-4
