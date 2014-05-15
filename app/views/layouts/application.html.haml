@@ -14,10 +14,11 @@
           %span.icon-bar
           %span.icon-bar
           %span.icon-bar
-        .logo-margin-top
-          = image_tag('logo1.png')
-          %span.logo-span-by by
-          = image_tag('logo2.png')
+        = link_to determine_root_path do
+          .logo-margin-top
+            = image_tag('logo1.png')
+            %span.logo-span-by by
+            = image_tag('logo2.png')
       - if current_admin.present?
         .logo-margin-top
           %ul.nav.navbar-nav.navbar-right
