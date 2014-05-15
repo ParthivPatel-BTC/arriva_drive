@@ -6,6 +6,7 @@ en:
       edit: 'Edit'
       back: 'Back'
       show: 'View'
+      button: 'Create New'
     msg:
       warning:
         unauthorize: 'Sorry, You are not authorize to access this page'
