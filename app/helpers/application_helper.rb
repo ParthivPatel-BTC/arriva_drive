@@ -36,4 +36,9 @@ module ApplicationHelper
   def date_formatted(date)
     date.strftime('%d/%m/%Y') rescue nil
   end
+
+  def determine_root_path
+    return root_path if current_admin.blank?
+    admin_dashboard_path
+  end
 end
