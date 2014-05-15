@@ -15,3 +15,8 @@ readURL = (input, previewContainerSelector) ->
 
     reader.readAsDataURL input.files[0]
     $('#existingEventImage').hide()
+
+alert($('#eventFormDatePicker').datepicker.initialized)
+unless $('#eventFormDatePicker').datepicker.initialized
+  $(document).mousedown($('#eventFormDatePicker').datepicker._checkExternalClick).find(document.body).append $('#eventFormDatePicker').datepicker.dpDiv
+  $('#eventFormDatePicker').datepicker.initialized = true
