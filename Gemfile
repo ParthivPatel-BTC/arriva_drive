@@ -33,8 +33,8 @@ gem 'devise'
 
 gem "paperclip", "~> 4.1"
 
-# Access attr_accessible
-# gem 'protected_attributes'
+# For load all javascript. Read more: http://stackoverflow.com/questions/17881384/jquery-gets-loaded-only-on-page-refresh-in-rails-4-application
+gem 'jquery-turbolinks'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
