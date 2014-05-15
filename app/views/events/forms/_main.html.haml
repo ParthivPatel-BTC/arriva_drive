@@ -2,6 +2,7 @@
 - create_view = @event.new_record?
 - form_action = create_view ? events_path : event_path(@event)
 - form_method = create_view ? :post : :put
+- max_length_of_desc_field = 200
 
 = form_tag(form_action, method: form_method, class: 'form-horizontal', id: 'eventForm', multipart: true) do
   .row
@@ -45,7 +46,10 @@
       .panel-padding
         %h4
           %strong.dark-blue= t('event.fields.description')
-        = text_area_tag 'event[description]', @event.description, rows: 6, class: text_field_class
+
+        = text_area_tag 'event[description]', @event.description, rows: 6, class: text_field_class, id: 'eventDescTextField', maxlength: max_length_of_desc_field
+        .input-field-subtext#eventDescSubText
+          #{find_field_length(@event.description)}/#{max_length_of_desc_field}
 
     .col-md-12.spacer40
     .pull-right
