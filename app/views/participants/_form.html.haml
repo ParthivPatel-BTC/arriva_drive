@@ -1,6 +1,8 @@
 - participant = @participant || Participant.new
 - create_view = participant.new_record?
 - submit_btn_caption = ( create_view ? t('admin.participant.caption.button.save_participant_only') : t('admin.participant.caption.button.update') )
+- max_length_of_performance_summary = 250
+
 = form_for(resource, as: resource_name, url: participant_registration_path) do |f|
   = hidden_field_tag('id', participant[:id])
   .row
@@ -86,8 +88,9 @@
           .form-group
             %label.common-font-color
               %b= t('admin.participant.caption.performance_summary')
-            = f.text_area(:performance_summary, cols: 48, rows: 8, class: 'input-xlarge')
-            %span.pull-right.common-font-color 0/200
+            = f.text_area(:performance_summary, cols: 48, rows: 8, class: 'input-xlarge', id: 'participantperformanceSummaryInput', maxlength: max_length_of_performance_summary)
+            .input-field-subtext#participantperformanceSummarySubText
+              #{find_field_length(resource.performance_summary)}/#{max_length_of_performance_summary}
     .col-xs-3.col-md-3{style:'position: relative; height: 600px;'}
       = f.submit(submit_btn_caption, class: 'btn btn_sign_in pull_left', style: 'position: absolute; top: 92%; right: 0%; width: 72%;')
 
