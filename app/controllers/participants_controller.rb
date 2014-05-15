@@ -28,6 +28,8 @@ class ParticipantsController < Devise::RegistrationsController
     if @participant.update_attributes(activity_params)
       flash[:notice] = t('admin.msg.success.update', name: @participant.full_name)
       redirect_to show_participant_path(@participant)
+    else
+      render 'edit'
     end
   end
 
