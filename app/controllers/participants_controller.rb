@@ -1,5 +1,6 @@
 class ParticipantsController < Devise::RegistrationsController
   before_filter :find_participant_from_params, only: [ :show, :edit, :update ]
+  before_filter :admin_user_required!
 
   def show
   end

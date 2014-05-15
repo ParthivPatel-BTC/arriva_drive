@@ -47,4 +47,14 @@ class ApplicationController < ActionController::Base
     end
     params
   end
+
+  def admin_user_required!
+    return true unless current_admin.blank?
+    access_denied_redirect
+  end
+
+  def access_denied_redirect
+    flash[:error] = t('common.msg.warning.unauthorize')
+    redirect_to root_path
+  end
 end
