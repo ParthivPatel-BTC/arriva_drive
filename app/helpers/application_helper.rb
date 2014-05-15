@@ -41,4 +41,9 @@ module ApplicationHelper
     return root_path if current_admin.blank?
     admin_dashboard_path
   end
+
+  # For display admin full name in header after sign in
+  def full_name(first_name, last_name)
+    "#{first_name} #{last_name}"
+  end
 end

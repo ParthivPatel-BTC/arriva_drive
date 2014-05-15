@@ -26,6 +26,8 @@ end
 admin_attr = {
   email:      'admin@drive.com',
   password:   'password',
+  first_name: 'Lee',
+  last_name: 'Sommerville'
 }
 find_or_create_instance(Admin, admin_attr, :email)
 
