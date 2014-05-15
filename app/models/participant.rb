@@ -12,10 +12,21 @@ class Participant < ActiveRecord::Base
       :url => Settings.paperclip.image_path
   }
 
-  accepts_nested_attributes_for :scores
-
+  accepts_nested_attributes_for :scores, allow_destroy: true, :reject_if => proc {|attrs| attrs['score'].blank? }
   has_attached_file :photo, Paperclip::Attachment.default_options.merge(paperclip_options)
   validates_attachment_content_type :photo, content_type:  /\Aimage\/.*\Z/
+
+  validates_presence_of :first_name, :last_name, :job_title, :year_started, :scores
+  validate :must_have_enter_one_score
+  validate :scores,:numericality => { :only_integer => true }
+
+  def must_have_enter_one_score
+    errors.add(:scores, 'must have one score') if scores_empty?
+  end
+
+  def scores_empty?
+    scores.empty?
+  end
 
   def full_name
     "#{first_name} #{last_name}"
