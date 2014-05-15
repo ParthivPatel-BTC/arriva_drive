@@ -36,4 +36,9 @@ module ApplicationHelper
   def date_formatted(date)
     date.strftime('%d/%m/%Y') rescue nil
   end
+
+  # For display admin full name in header after sign in
+  def full_name(first_name, last_name)
+    "#{first_name} #{last_name}"
+  end
 end
