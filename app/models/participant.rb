@@ -67,12 +67,12 @@ class Participant < ActiveRecord::Base
   end
 
   def send_participant_invitation
-    # begin
+    begin
       ArriveDriveMailer.send_participant_invitation(self).deliver
-    # rescue Exception => e
-    #   Rails.logger.error "Failed to send email, email address: #{self.email}"
-    #   Rails.logger.error "#{e.backtrace.first}: #{e.message} (#{e.class})"
-    # end
+    rescue Exception => e
+      Rails.logger.error "Failed to send email, email address: #{self.email}"
+      Rails.logger.error "#{e.backtrace.first}: #{e.message} (#{e.class})"
+    end
   end
 
 end
