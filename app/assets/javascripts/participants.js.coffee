@@ -11,4 +11,6 @@ $(document).ready ->
   $("#participant_photo").change ->
     readURL $(this)[0], "#preview_participant_photo"
     return
-  return
+
+  $('#participantperformanceSummaryInput').keyup ->
+    countAndUpdateCharCount($(this), $('#participantperformanceSummarySubText'))

@@ -55,6 +55,14 @@ body {
   color: #C0C0C0;
 }
 
+/* Common text-classes */
+
+.input-field-subtext {
+  @extend .light-blue;
+  float: right !important;
+  font-size: 85%;
+}
+
 /* Common Buttons*/
 .dark-blue-btn {
   @extend .round-btn;

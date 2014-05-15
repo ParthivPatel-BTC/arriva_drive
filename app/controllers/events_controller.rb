@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
   before_filter :set_behaviours, only: [:new, :create, :show, :edit, :update]
   before_filter :find_set_event, only: [:edit, :update, :show]
+  before_filter :admin_user_required!
 
   def new
     @event = Event.new

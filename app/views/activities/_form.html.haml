@@ -3,6 +3,7 @@
 - create_view = @activity.new_record?
 - form_action = create_view ? activities_path : activity_path(@activity)
 - form_method = create_view ? :post : :put
+- max_length_of_desc_field = 200
 
 = form_tag(form_action, method: form_method, class: 'form-horizontal', id: 'activityForm', multipart: true) do
   .row
@@ -30,7 +31,9 @@
         .spacer10
         %h4
           %strong.dark-blue= t('activity.fields.description')
-        = text_area_tag 'activity[description]', @activity.description, rows: 6, class: text_field_class
+        = text_area_tag 'activity[description]', @activity.description, rows: 6, class: text_field_class, id: 'activityDescTextField', maxlength: max_length_of_desc_field
+        .input-field-subtext#activityDescSubText
+          #{find_field_length(@activity.description)}/#{max_length_of_desc_field}
 
     - # Right Panel (MCQ and it's answers)
     .col-xs-12.col-md-4
