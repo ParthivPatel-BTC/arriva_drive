@@ -31,3 +31,6 @@
           %td{ :style => "border-top: 0px;" }
             .text-center
               =@participant.last_sign_in_at.strftime("#{@participant.last_sign_in_at.day.ordinalize} %b %Y") rescue nil if index == 0
+              - if index == 0
+                .row
+                  =link_to t('admin.participant.caption.button.done'), admin_dashboard_path, class: "btn btn_sign_in pull_left", style: "position: absolute; bottom: 10%; right: 7%; width: 210px;"
