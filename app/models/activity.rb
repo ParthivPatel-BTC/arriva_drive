@@ -8,5 +8,5 @@ class Activity < ActiveRecord::Base
 
 	scope :completed, -> { where(complete: true) }
 
-  validates_presence_of :title
+  validates_presence_of :title, :link, :activity_type
 end
