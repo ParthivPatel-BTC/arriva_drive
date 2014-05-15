@@ -72,6 +72,10 @@ en:
       description: 'Event Description'
     btn:
       save: 'Save Event'
+  participant:
+    msg:
+      error:
+        score_validation: 'Scores must be numeric'
   sign_in:
     caption:
       email: 'Email address'
