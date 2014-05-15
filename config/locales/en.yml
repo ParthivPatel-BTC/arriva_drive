@@ -1,4 +1,6 @@
 en:
+  permissions:
+    not_permitted: "You are not authorized to access this page."
   common:
     caption:
       edit: 'Edit'

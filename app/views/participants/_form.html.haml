@@ -1,9 +1,9 @@
 - participant = @participant || Participant.new
 - create_view = participant.new_record?
+- form_url = create_view ? participant : update_participant_path
 - submit_btn_caption = ( create_view ? t('admin.participant.caption.button.save_participant_only') : t('admin.participant.caption.button.update') )
 - max_length_of_performance_summary = 250
-
-= form_for(resource, as: resource_name, url: participant_registration_path) do |f|
+= form_for participant, :url => form_url do |f|
   = hidden_field_tag('id', participant[:id])
   .row
     .col-xs-4.col-md-4

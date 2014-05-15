@@ -8,8 +8,10 @@ ArrivaDrive::Application.routes.draw do
   devise_for :participants do
     get '/participant/:id/edit' => 'participants#edit', :as => :edit_participant
     get '/participant/:id' => 'participants#show', :as => :show_participant
+    get '/participants/new' => 'participants#new', :as => :new_participant
+    post '/participants' => 'participants#create'
+    post '/participants' => 'participants#update', :as => :update_participant
   end
-
   get '/new_participant' => 'static_pages#new_participant'
   get '/show' => 'static_pages#show'
 
