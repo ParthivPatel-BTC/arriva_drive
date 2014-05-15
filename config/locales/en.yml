@@ -79,6 +79,7 @@ en:
       forgot_password: 'Forgot Pasword?'
       button:
         sign_in: 'Sign in'
+        log_out: 'Log Out'
     page_content:
       header:
         'please_sign_in': 'Please sign in'

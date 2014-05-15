@@ -2,7 +2,7 @@
 %html
   %head
     %title ArrivaDrive
-    = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+    = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
 %body
@@ -18,6 +18,11 @@
           = image_tag('logo1.png')
           %span.logo-span-by by
           = image_tag('logo2.png')
+      - if current_admin.present?
+        .logo-margin-top
+          %ul.nav.navbar-nav.navbar-right
+            %li
+              = link_to t('sign_in.caption.button.log_out'), destroy_admin_session_path, class: 'btn btn_sign_in pull-left btn-xs', method: 'delete'
   .container
     #message-container
       = render partial: "shared/flash_messages"
