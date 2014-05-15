@@ -24,7 +24,7 @@
       .col-md-12.spacer15
       %h4
         %strong.dark-blue= t('event.fields.date')
-      = @event.event_date
+      = date_formatted(@event.event_date)
       .col-md-12.spacer15
       %h4
         %strong.dark-blue= t('event.fields.link')

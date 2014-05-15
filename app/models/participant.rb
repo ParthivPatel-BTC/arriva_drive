@@ -18,7 +18,7 @@ class Participant < ActiveRecord::Base
 
   validates_presence_of :first_name, :last_name, :job_title, :year_started, :scores
   validate :must_have_enter_one_score
-  validate :scores,:numericality => { :only_integer => true }
+  # validate :numericality_of_nested_scores
 
   def must_have_enter_one_score
     errors.add(:scores, 'must have one score') if scores_empty?
@@ -47,5 +47,15 @@ class Participant < ActiveRecord::Base
     else
       0
     end
+  end
+
+  private
+
+  def numericality_of_nested_scores
+    error_found = false
+    scores.each do |score|
+      error_found = true unless score.score.kind_of?(Integer)
+    end
+    errors.add(:scores, I18n.t('participant.msg.error.score_validation')) if error_found
   end
 end
