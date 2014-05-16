@@ -178,3 +178,12 @@ body {
   margin: 10px 10px 10px 0;
   color: #FFFFFF;
 }
+
+//===========Override Header Logout Button
+.navbar-inverse .navbar-nav > li > a {
+  color: #FFFFFF !important;
+}
+
+.navbar-inverse .navbar-nav > li > a:hover {
+  background-color: #00445A !important;
+}
