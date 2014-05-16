@@ -12,5 +12,6 @@
  *= require jquery-ui-1.10.3.custom.min
  *= require datepicker
  *= require_self
+ *= require_directory ./participants
  *= require_tree .
  */

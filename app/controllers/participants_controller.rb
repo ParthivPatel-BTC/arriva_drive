@@ -1,7 +1,10 @@
 class ParticipantsController < Devise::RegistrationsController
   before_filter :find_participant_from_params, only: [ :show, :edit, :update, :deactivate, :activate ]
   skip_before_filter :authenticate_scope!, :only => [:edit, :update, :destroy, :deactivate, :activate]
-  before_filter :admin_user_required!
+  before_filter :admin_user_required!, only: [:new, :create, :show, :edit, :update, :deactivate, :activate]
+  before_filter :participant_user_required!, except: [:new, :create, :show, :edit, :update, :deactivate, :activate]
+
+  layout :participant, except: [:new, :create, :show, :edit, :update, :deactivate, :activate]
 
   def new
     @participant = Participant.new
@@ -44,6 +47,11 @@ class ParticipantsController < Devise::RegistrationsController
     flash[:notice] = t('admin.participant.msg.success.activated', name: @participant.full_name)
     redirect_to admin_dashboard_path
   end
+
+  def welcome
+    
+  end
+  alias :dashboard :welcome
 
   protected
 

@@ -22,7 +22,8 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    admin_dashboard_path
+    admin_dashboard_path if current_admin
+    participant_dashboard_path
   end
 
   private
@@ -50,6 +51,11 @@ class ApplicationController < ActionController::Base
 
   def admin_user_required!
     return true unless current_admin.blank?
+    access_denied_redirect
+  end
+
+  def participant_user_required!
+    return true unless current_participant.blank?
     access_denied_redirect
   end
 

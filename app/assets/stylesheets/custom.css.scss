@@ -1,5 +1,5 @@
 //========Override boostrap
-body {
+.pad-top-50 {
   padding-top: 50px;
 }
 .starter-template {
@@ -14,6 +14,21 @@ body {
 
 .page-content{
   padding: 40px;
+}
+
+// =========Participants theme overrides
+.loginbox input[type="password"], .loginbox input[type="email"] {
+    background: none repeat scroll 0 0 #677D7B;
+    border: 0 none;
+    border-radius: 15px;
+    color: #FFFFFF;
+    font-size: 12px;
+    height: 33px;
+    line-height: 33px;
+    margin-bottom: 0;
+    padding: 0 15px;
+    text-transform: uppercase;
+    width: 100%;
 }
 
 // =========Helpers for vertical spacing

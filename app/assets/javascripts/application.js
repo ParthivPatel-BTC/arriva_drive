@@ -15,4 +15,5 @@
 //= require jquery.turbolinks
 //= require bootstrap.min
 //= require bootstrap-datepicker.min
+//= require_directory ./participants
 //= require_tree .
