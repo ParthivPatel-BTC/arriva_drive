@@ -49,7 +49,7 @@ class ParticipantsController < Devise::RegistrationsController
 
   def resend_invitation
     if @participant.send_participant_invitation
-      flash[:notice] = t('admin.participant.msg.success.send_invitation', name: @participant.full_name)
+      flash[:notice] = t('admin.participant.msg.success.send_invitation', email: @participant.email)
       redirect_to admin_dashboard_path
     end
   end

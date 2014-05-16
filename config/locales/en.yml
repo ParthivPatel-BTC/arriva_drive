@@ -53,7 +53,7 @@ en:
         success:
           deactivated: "%{name} disabled successfully"
           activated: "%{name} enabled successfully"
-          send_invitation: "Invitation send to %{name} successfully"
+          send_invitation: "Invitation send to %{email} successfully"
     msg:
       success:
         creation: "%{name} created successfully"
