@@ -1,4 +1,4 @@
-- text_field_class = 'col-md-12'
+- text_field_class = 'form-control'
 - @activity.build_multiple_choice_question if @activity.multiple_choice_question.blank?
 - create_view = @activity.new_record?
 - form_action = create_view ? activities_path : activity_path(@activity)
@@ -42,8 +42,9 @@
         %h4
           %strong.dark-blue= t('activity.fields.multiple_choice_question')
         = render partial: 'multiple_choice_questions/form', locals: { name_prefix: 'activity[multiple_choice_question_attributes]', mcq: @activity.multiple_choice_question }
+        .spacer40
+        .pull-right
+          = submit_tag(t('activity.btn.save'), class: 'btn btn-sm submit-btn dark-blue-btn')
 
-    .col-md-12.spacer40
-    .pull-right
-      = submit_tag(t('activity.btn.save'), class: 'btn btn-sm submit-btn dark-blue-btn')
+
     .col-md-12.spacer30
