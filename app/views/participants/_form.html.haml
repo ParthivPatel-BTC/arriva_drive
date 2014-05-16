@@ -53,11 +53,11 @@
           = t('admin.participant.caption.button.choose_file')
           = f.file_field(:photo)
       - if @participant.photo.present?
-        = image_tag(@participant.photo.url(:medium))
-        .spacer5
-        .form-group
-          %label.control-label.no-padding-right
-            %img(src='' id='preview_participant_photo')
+        = image_tag(@participant.photo.url(:medium), id: 'preview_participant_photo')
+        / .spacer5
+        / .form-group
+        /   %label.control-label.no-padding-right
+        /     %img(src='' id='preview_participant_photo')
       .form-group
         %label.control-label.no-padding-right
           %img(src='' id='preview_participant_photo')
@@ -70,7 +70,7 @@
         .row
           %b.common-font-color= t('admin.participant.caption.behaviour')
       .col-xs-2.col-md-2
-        %b.common-font-color= t('admin.participant.caption.score')
+        %b.common-font-color.score_lbl_margin_left= t('admin.participant.caption.score')
       - Behaviour.all.each do |behaviour|
         - score = @participant.id.present? ? get_score_value(behaviour, @participant) : ''
         - score_id = score.present? ? score.id : ''
