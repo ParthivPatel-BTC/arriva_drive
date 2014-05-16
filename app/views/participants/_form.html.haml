@@ -89,7 +89,7 @@
           .form-group
             %label.common-font-color
               %b= t('admin.participant.caption.performance_summary')
-            = f.text_area(:performance_summary, cols: 48, rows: 8, class: 'input-xlarge', id: 'participantperformanceSummaryInput', maxlength: max_length_of_performance_summary)
+            = f.text_area(:performance_summary, rows: 7, cols: 10, class: 'col-xs-12 col-sm-12', id: 'participantperformanceSummaryInput', maxlength: max_length_of_performance_summary)
             .input-field-subtext#participantperformanceSummarySubText
               #{find_field_length(resource.performance_summary)}/#{max_length_of_performance_summary}
     .col-xs-3.col-md-3{style:'position: relative; height: 600px;'}
