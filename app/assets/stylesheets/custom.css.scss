@@ -40,7 +40,7 @@ body {
 
 /* Common colors*/
 .round-btn {
-  border-radius: 8px;
+  border-radius: 4px;
 }
 
 .common-font-color, .light-blue {
@@ -72,6 +72,7 @@ body {
   color: #FFFFFF;
 }
 .dark-blue-btn:hover {
+  color: #FFFFFF;
   background-color: #006B8D;
   border-color: #006B8D;
 }
@@ -87,6 +88,8 @@ body {
 
 .btn_sign_in:hover {
   color: #FFFFFF;
+  background-color: #006B8D;
+  border-color: #006B8D;
 }
 
 .submit-btn {
@@ -96,7 +99,7 @@ body {
 
 .panel-btn {
   margin-bottom: 10px;
-  margin-top: 20px;
+  margin-top: 16px;
 }
 
 .panel-box {
