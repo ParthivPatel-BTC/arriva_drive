@@ -3,7 +3,7 @@
 - form_url = create_view ? participant : update_participant_path
 - submit_btn_caption = ( create_view ? t('admin.participant.caption.button.save_participant_only') : t('admin.participant.caption.button.update') )
 - max_length_of_performance_summary = 250
-= form_for participant, :url => form_url do |f|
+= form_for participant, :url => form_url, :html => {:class => "participantForm"} do |f|
   = render partial: 'shared/error_messages', locals: { target: f.object }
   = hidden_field_tag('id', participant[:id])
   .row
@@ -95,5 +95,4 @@
     .col-xs-3.col-md-3{style:'position: relative; height: 600px;'}
       = f.submit(submit_btn_caption, class: 'btn btn_sign_in pull_left btn_forms_width', style: 'position: absolute; top: 92%; right: 0%;')
 
-      %button.btn.btn_sign_in.pull_left.btn_forms_width{style: 'position: absolute; top: 98%; right: 0%; '}
-        = t('admin.participant.caption.button.save_participant_&_send')
+      = f.submit(t('admin.participant.caption.button.save_participant_&_send'), class: 'btn btn_sign_in pull_left btn_forms_width', style: 'position: absolute; top: 98%; right: 0%;', id: 'send_participant_invitation')

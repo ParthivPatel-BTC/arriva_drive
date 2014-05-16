@@ -62,7 +62,9 @@
         = link_to(t('admin.participant.caption.button.disable_account'), participant_deactivate_path(@participant) , class: 'btn btn_sign_in pull_left', style: 'position: absolute; top: 440px; right: 0%; width: 72%;', method: :put, title: t('admin.participant.caption.button.disable_account'))
       - else
         = link_to(t('admin.participant.caption.button.enable_account'), participant_activate_path(@participant) , class: 'btn btn_sign_in pull_left', style: 'position: absolute; top: 440px; right: 0%; width: 72%;', method: :put, title: t('admin.participant.caption.button.enable_account'))
-    .row
-      %button.btn.btn_sign_in.pull_left{style: 'position: absolute; top: 480px; right: 0%; width: 72%;'}= t('admin.participant.caption.button.re_send_participant_invite')
+    = form_tag(participants_resend_invitation_path) do
+      = hidden_field_tag('id', @participant[:id])
+      .row
+      = submit_tag(t('admin.participant.caption.button.re_send_participant_invite'), class: 'btn btn_sign_in pull_left', style: 'position: absolute; top: 480px; right: 0%; width: 72%;', id: 'send_participant_invitation')
     .row
       = link_to(t('admin.participant.caption.button.done'), admin_dashboard_path, class: 'btn btn_sign_in pull_left', style: 'position: absolute; top: 520px; right: 0%; width: 72%;', title: t('admin.participant.caption.button.done'))

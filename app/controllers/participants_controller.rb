@@ -1,5 +1,5 @@
 class ParticipantsController < Devise::RegistrationsController
-  before_filter :find_participant_from_params, only: [ :show, :edit, :update, :deactivate, :activate ]
+  before_filter :find_participant_from_params, only: [ :show, :edit, :update, :deactivate, :activate, :resend_invitation]
   skip_before_filter :authenticate_scope!, :only => [:edit, :update, :destroy, :deactivate, :activate]
   before_filter :admin_user_required!
 
@@ -10,7 +10,8 @@ class ParticipantsController < Devise::RegistrationsController
   def create
     @participant = Participant.new(activity_params)
     if @participant.save
-      flash[:notice] = t('admin.msg.success.update', name: @participant.full_name)
+      is_send_invitation?
+      flash[:notice] = t('admin.msg.success.creation', name: @participant.full_name)
       redirect_to admin_dashboard_path
     else
       render :new
@@ -26,6 +27,7 @@ class ParticipantsController < Devise::RegistrationsController
 
   def update
     if @participant.update_attributes(activity_params)
+      is_send_invitation?
       flash[:notice] = t('admin.msg.success.update', name: @participant.full_name)
       redirect_to show_participant_path(@participant)
     else
@@ -45,6 +47,12 @@ class ParticipantsController < Devise::RegistrationsController
     redirect_to admin_dashboard_path
   end
 
+  def resend_invitation
+    if @participant.send_participant_invitation
+      flash[:notice] = t('admin.participant.msg.success.send_invitation', name: @participant.full_name)
+      redirect_to admin_dashboard_path
+    end
+  end
   protected
 
   def after_sign_in_path_for(resource)
@@ -65,5 +73,9 @@ class ParticipantsController < Devise::RegistrationsController
       :first_name, :last_name, :job_title, :division, :year_started, :photo, :performance_summary, :email, :password, :password_confirmation,
         scores_attributes:[:id, :behaviour_id, :score]
     )
+  end
+
+  def is_send_invitation?
+    @participant.send_participant_invitation if params[:send_invitation]
   end
 end

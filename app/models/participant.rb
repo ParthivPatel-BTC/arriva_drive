@@ -1,6 +1,4 @@
 class Participant < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :scores
@@ -55,6 +53,15 @@ class Participant < ActiveRecord::Base
 
   def activate!
     update_attribute(:active, true)
+  end
+
+  def send_participant_invitation
+    begin
+      ArriveDriveMailer.send_participant_invitation(self).deliver
+    rescue Exception => e
+      Rails.logger.error "Failed to send email, email address: #{self.email}"
+      Rails.logger.error "#{e.backtrace.first}: #{e.message} (#{e.class})"
+    end
   end
 
   private
