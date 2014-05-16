@@ -93,7 +93,7 @@
             .input-field-subtext#participantperformanceSummarySubText
               #{find_field_length(resource.performance_summary)}/#{max_length_of_performance_summary}
     .col-xs-3.col-md-3{style:'position: relative; height: 600px;'}
-      = f.submit(submit_btn_caption, class: 'btn btn_sign_in pull_left', style: 'position: absolute; top: 92%; right: 0%; width: 72%;')
+      = f.submit(submit_btn_caption, class: 'btn btn_sign_in pull_left btn_forms_width', style: 'position: absolute; top: 92%; right: 0%;')
 
-      %button.btn.btn_sign_in.pull_left{style: 'position: absolute; top: 98%; right: 0%;'}
+      %button.btn.btn_sign_in.pull_left.btn_forms_width{style: 'position: absolute; top: 98%; right: 0%; '}
         = t('admin.participant.caption.button.save_participant_&_send')
