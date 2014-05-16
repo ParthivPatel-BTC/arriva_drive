@@ -1,5 +1,4 @@
 class Participant < ActiveRecord::Base
-  after_create :send_participant_invitation
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :scores
@@ -56,16 +55,6 @@ class Participant < ActiveRecord::Base
     update_attribute(:active, true)
   end
 
-  private
-
-  def numericality_of_nested_scores
-    error_found = false
-    scores.each do |score|
-      error_found = true unless score.score.kind_of?(Integer)
-    end
-    errors.add(:scores, I18n.t('participant.msg.error.score_validation')) if error_found
-  end
-
   def send_participant_invitation
     begin
       ArriveDriveMailer.send_participant_invitation(self).deliver
@@ -75,4 +64,13 @@ class Participant < ActiveRecord::Base
     end
   end
 
+  private
+
+  def numericality_of_nested_scores
+    error_found = false
+    scores.each do |score|
+      error_found = true unless score.score.kind_of?(Integer)
+    end
+    errors.add(:scores, I18n.t('participant.msg.error.score_validation')) if error_found
+  end
 end
