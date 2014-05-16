@@ -11,6 +11,11 @@
  *= require bootstrap.min
  *= require jquery-ui-1.10.3.custom.min
  *= require datepicker
+ *= require participants/modal
+ *= require participants/modal-darktheme
+ *= require participants/uniform.aristo
+ *= require participants/style
+ *= require participants/responsive
  *= require_self
  *= require_directory ./participants
  *= require_tree .

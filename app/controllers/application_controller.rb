@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+  layout :decide_layout
 
   # Add Custom Field/Column to Devise with Rails 4
   # Reference : http://stackoverflow.com/questions/16297797/add-custom-field-column-to-devise-with-rails-4
@@ -62,5 +63,10 @@ class ApplicationController < ActionController::Base
   def access_denied_redirect
     flash[:error] = t('common.msg.warning.unauthorize')
     redirect_to root_path
+  end
+
+  def decide_layout
+    return 'participant' if controller_name == 'sessions' && request.original_fullpath =~ /^\/participants/
+    'application'
   end
 end

@@ -2,9 +2,8 @@ class ParticipantsController < Devise::RegistrationsController
   before_filter :find_participant_from_params, only: [ :show, :edit, :update, :deactivate, :activate ]
   skip_before_filter :authenticate_scope!, :only => [:edit, :update, :destroy, :deactivate, :activate]
   before_filter :admin_user_required!, only: [:new, :create, :show, :edit, :update, :deactivate, :activate]
-  before_filter :participant_user_required!, except: [:new, :create, :show, :edit, :update, :deactivate, :activate]
-
-  layout :participant, except: [:new, :create, :show, :edit, :update, :deactivate, :activate]
+  before_filter :participant_user_required!, only: [:welcome, :dashboard]
+  layout 'participant', only: [:welcome, :dashboard]
 
   def new
     @participant = Participant.new
@@ -49,7 +48,7 @@ class ParticipantsController < Devise::RegistrationsController
   end
 
   def welcome
-    
+    render :welcome
   end
   alias :dashboard :welcome
 

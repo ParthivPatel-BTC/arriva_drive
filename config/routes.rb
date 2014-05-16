@@ -14,6 +14,11 @@ ArrivaDrive::Application.routes.draw do
     put '/participants/:id/deactivate' => 'participants#deactivate', :as => :participant_deactivate
     put '/participants/:id/activate' => 'participants#activate', :as => :participant_activate
   end
+
+  devise_scope :participant do
+    get '/participants/dashboard', to: 'participants#dashboard', as: :participant_dashboard
+  end
+
   get '/new_participant' => 'static_pages#new_participant'
   get '/show' => 'static_pages#show'
 
@@ -24,4 +29,5 @@ ArrivaDrive::Application.routes.draw do
     get 'dashboard', to: 'admins#dashboard', as: :admin_dashboard
     get 'overview/:id', to: 'admins#overview', as: :overview
   end
+
 end
