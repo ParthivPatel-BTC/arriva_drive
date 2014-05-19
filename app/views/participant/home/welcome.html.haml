@@ -2,15 +2,13 @@
   = render partial: 'participants/components/left_side_bar'
   .contentarea
     .welcomerow
-      %h3
-        welcome back
-        = current_participant.first_name
+      %h3= t('participant.headings.welcome', name: current_participant.first_name)
       %p Cume nonsequas aribusa ndelessita es soluptio. Ximiliq uatusam esendellant, sit, volor as eatem quuntent eum consequas sim essi autasit qui as di odit et aligendiatio coratet fuga. Re officta ercium autempos magnam et ommos ium eaquate cullent od ut volorup taturer umquos voluptio velitas eosae nihil im sendem coreptatis et eosam.
     .welcomeboxrow
       .welcomeboxrowleft
         .boxbg.smallbox
           %p.number= current_participant_notes_count
-          %p notes
+          %p= t('participant.caption.notes')
           %p.view
             %a{:href => "#"} VIEW
         .boxbg.smallbox
