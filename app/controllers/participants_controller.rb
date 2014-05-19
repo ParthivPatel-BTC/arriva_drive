@@ -79,5 +79,3 @@ class ParticipantsController < Devise::RegistrationsController
     @participant.send_invitation_to_participant if params[:send_invitation]
   end
 end
-
-#send_invitation_to_participant
