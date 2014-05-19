@@ -54,7 +54,13 @@ class ApplicationController < ActionController::Base
 
   def access_denied_redirect
     flash[:error] = t('common.msg.warning.unauthorize')
-    redirect_to root_path
+    if !current_admin.blank?
+      admin_dashboard_path
+    elsif
+      participant_dashboard_path
+    else
+      redirect_to root_path
+    end
   end
 
   def permission_for_create_update_participant(action)
