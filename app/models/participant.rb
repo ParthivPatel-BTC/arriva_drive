@@ -14,23 +14,13 @@ class Participant < ActiveRecord::Base
   has_attached_file :photo, Paperclip::Attachment.default_options.merge(paperclip_options)
   validates_attachment_content_type :photo, content_type:  /\Aimage\/.*\Z/
 
-  validates_presence_of :first_name, :last_name, :job_title, :year_started, :scores
-  validate :must_have_enter_one_score
-  # validate :numericality_of_nested_scores
-
-  def must_have_enter_one_score
-    errors.add(:scores, 'must have one score') if scores_empty?
-  end
-
-  def scores_empty?
-    scores.empty?
-  end
+  validates_presence_of :first_name, :last_name, :job_title, :year_started
 
   def full_name
     "#{first_name} #{last_name}"
   end
 
-  def level_for(behaviour_id)
+  def behaviour_score_level(behaviour_id)
     score = scores.where(behaviour_id: behaviour_id, participant_id: id).first
     if (0..110).include?(score)
       1
@@ -55,22 +45,12 @@ class Participant < ActiveRecord::Base
     update_attribute(:active, true)
   end
 
-  def send_participant_invitation
+  def send_invitation_to_participant
     begin
-      ArriveDriveMailer.send_participant_invitation(self).deliver
+      ArriveDriveMailer.send_invitation_to_participant(self).deliver
     rescue Exception => e
       Rails.logger.error "Failed to send email, email address: #{self.email}"
       Rails.logger.error "#{e.backtrace.first}: #{e.message} (#{e.class})"
     end
-  end
-
-  private
-
-  def numericality_of_nested_scores
-    error_found = false
-    scores.each do |score|
-      error_found = true unless score.score.kind_of?(Integer)
-    end
-    errors.add(:scores, I18n.t('participant.msg.error.score_validation')) if error_found
   end
 end

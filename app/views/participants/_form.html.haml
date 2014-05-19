@@ -54,10 +54,6 @@
           = f.file_field(:photo)
       - if @participant.photo.present?
         = image_tag(@participant.photo.url(:medium), id: 'preview_participant_photo')
-        / .spacer5
-        / .form-group
-        /   %label.control-label.no-padding-right
-        /     %img(src='' id='preview_participant_photo')
       .form-group
         %label.control-label.no-padding-right
           %img(src='' id='preview_participant_photo')
@@ -74,7 +70,7 @@
       - Behaviour.all.each do |behaviour|
         - score = @participant.id.present? ? get_score_value(behaviour, @participant) : ''
         - score_id = score.present? ? score.id : ''
-        - score_value = score.present? ? score.score : ''
+        - score_value = score.present? ? score.score : 0
         .row
           .col-xs-9.col-md-9
             .common-font-color
