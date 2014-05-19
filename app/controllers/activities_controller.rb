@@ -24,7 +24,6 @@ class ActivitiesController < ApplicationController
 
   def edit
     build_nested_mcq_resource
-    @activity.build_multiple_choice_question if @activity.multiple_choice_question.blank?
   end
 
   def update
