@@ -98,4 +98,8 @@ en:
     participant:
       subject:
         welcome: 'Welcome'
+  pagination:
+    caption:
+      next: 'Next'
+      back: 'Back'
 
