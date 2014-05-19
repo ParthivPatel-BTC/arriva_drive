@@ -18,3 +18,8 @@ paperclip:
 mail:
   default_url_options:
     support_email: 'support@arrivedrive.in'
+
+field_length_limit:
+  performance_summary: 250
+  event_description: 200
+  activity_description: 200

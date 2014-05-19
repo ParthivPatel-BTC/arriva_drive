@@ -1,11 +1,6 @@
-- participant = @participant || Participant.new
-- create_view = participant.new_record?
-- form_url = create_view ? participant : update_participant_path
-- submit_btn_caption = ( create_view ? t('admin.participant.caption.button.save_participant_only') : t('admin.participant.caption.button.update') )
-- max_length_of_performance_summary = 250
-= form_for participant, :url => form_url, :html => {:class => "participantForm"} do |f|
+= form_for @participant || Participant.new, url: decide_participant_form_url(@participant), html: {:class => "participantForm"} do |f|
   = render partial: 'shared/error_messages', locals: { target: f.object }
-  = hidden_field_tag('id', participant[:id])
+  = hidden_field_tag('id', @participant[:id])
   .row
     .col-xs-4.col-md-4
       %h3.dark-blue
@@ -85,10 +80,10 @@
           .form-group
             %label.common-font-color
               %b= t('admin.participant.caption.performance_summary')
-            = f.text_area(:performance_summary, rows: 7, cols: 10, class: 'form-control', id: 'participantperformanceSummaryInput', maxlength: max_length_of_performance_summary)
+            = f.text_area(:performance_summary, rows: 7, cols: 10, class: 'form-control', id: 'participantperformanceSummaryInput', maxlength: performance_summary_length_limit)
             .input-field-subtext#participantperformanceSummarySubText
-              #{find_field_length(resource.performance_summary)}/#{max_length_of_performance_summary}
+              #{find_field_length(resource.performance_summary)}/#{performance_summary_length_limit}
     .col-xs-3.col-md-3{style:'position: relative; height: 600px;'}
-      = f.submit(submit_btn_caption, class: 'btn btn_sign_in pull_left btn_forms_width', style: 'position: absolute; top: 92%; right: 0%;')
+      = f.submit(participant_submit_btn_caption(@participant), class: 'btn btn_sign_in pull_left btn_forms_width', style: 'position: absolute; top: 92%; right: 0%;')
 
       = f.submit(t('admin.participant.caption.button.save_participant_&_send'), class: 'btn btn_sign_in pull_left btn_forms_width', style: 'position: absolute; top: 98%; right: 0%;', id: 'send_participant_invitation')
