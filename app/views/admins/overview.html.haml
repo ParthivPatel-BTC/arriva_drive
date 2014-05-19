@@ -27,7 +27,7 @@
               =Score.find_by_behaviour_id_and_participant_id(behaviour.id, @participant.id).score
           %td{ :style => "border-top: 0px;" }
             .text-center
-              =@participant.level_for(behaviour.id)
+              =@participant.behaviour_score_level(behaviour.id)
           %td{ :style => "border-top: 0px;" }
             .text-center
               =@participant.last_sign_in_at.strftime("#{@participant.last_sign_in_at.day.ordinalize} %b %Y") rescue nil if index == 0
