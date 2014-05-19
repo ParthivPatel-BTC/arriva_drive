@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     admin_dashboard_path if current_admin
-    participant_dashboard_path
+    participant_events_path
   end
 
   private
@@ -56,8 +56,8 @@ class ApplicationController < ActionController::Base
     flash[:error] = t('common.msg.warning.unauthorize')
     if !current_admin.blank?
       admin_dashboard_path
-    elsif
-      participant_dashboard_path
+    elsif !current_participant.blank?
+      participant_events_path
     else
       redirect_to root_path
     end
