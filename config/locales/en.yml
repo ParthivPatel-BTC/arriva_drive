@@ -83,6 +83,10 @@ en:
     msg:
       error:
         score_validation: 'Scores must be numeric'
+    headings:
+      welcome: "welcome back %{name}"
+    caption:
+      notes: 'notes'
   sign_in:
     caption:
       email: 'Email address'

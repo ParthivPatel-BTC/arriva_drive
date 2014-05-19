@@ -1,44 +1,15 @@
 .rightsidebar
   .profilebox
     .profilepic
-      = image_tag 'images/profile-pic.png'
-    %p.name name surname
-    %p JOB TITLe
-    %p DIVIsIOn
+      = image_tag (current_participant.photo.url(:medium))
+    %p.name= current_participant.full_name
+    %p= current_participant.job_title
+    %p= get_division_name(current_participant.division)
   .yourlevel
     %ul
-      %li
-        customer Orientation
-        %span.green 5
-      %li
-        Target & results focus
-        %span.green 5
-      %li
-        Strategic focus
-        %span.green 5
-      %li
-        managing & Developing people
-        %span.green 4
-      %li
-        striving for Innovation
-        %span.green 4
-      %li
-        change management
-        %span.green 3
-      %li
-        cross-unit co-Operation
-        %span.green 3
-      %li
-        corporate responsibility
-        %span.green 2
-      %li
-        role model function
-        %span.green 2
-      %li
-        Dealing with complexity
-        %span.green 1
-      %li
-        score
-        %span.green 28.04.14
+      - current_participant.scores.each do |score|
+        %li
+          = score.behaviour.title
+          %span.green= score.score
   .arriva
     = image_tag 'images/logo-arriva.png'

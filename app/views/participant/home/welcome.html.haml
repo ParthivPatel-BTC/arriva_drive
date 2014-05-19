@@ -1,0 +1,44 @@
+%section.mainsection
+  = render partial: 'participants/components/left_side_bar'
+  .contentarea
+    .welcomerow
+      %h3= t('participant.headings.welcome', name: current_participant.first_name)
+      %p Cume nonsequas aribusa ndelessita es soluptio. Ximiliq uatusam esendellant, sit, volor as eatem quuntent eum consequas sim essi autasit qui as di odit et aligendiatio coratet fuga. Re officta ercium autempos magnam et ommos ium eaquate cullent od ut volorup taturer umquos voluptio velitas eosae nihil im sendem coreptatis et eosam.
+    .welcomeboxrow
+      .welcomeboxrowleft
+        .boxbg.smallbox
+          %p.number= current_participant_notes_count
+          %p= t('participant.caption.notes')
+          %p.view
+            %a{:href => "#"} VIEW
+        .boxbg.smallbox
+          %p.number
+            = "#{0}"
+            %span><= "/#{Activity.count}"
+          %p activities
+          %p.view
+            %a{:href => "#"} VIEW
+        .leadership
+          %h2 LEADERSHIP Behaviours
+          %span.leaderblock
+            %input{:type => "checkbox"}
+              YOU
+          %span.leaderblock
+            %input{:type => "checkbox"}
+              top performer
+      .welcomeboxrowright
+        .boxbg.mediumbox
+          %h4 performance summary
+          %p= current_participant.performance_summary
+    .progressbarsection
+      - current_participant.scores.each_slice(5) do |slice|
+        .progressbarblock
+          - slice.each do |score|
+            .progressbarlabel= score.behaviour.title
+            .progressbarchat
+              .progress
+                .progress-bar.progress-bar-success{:style => "width: #{score.percentile_score}%"}
+                  %span.sr-only= "#{score.percentile_score}% Complete (success)"
+                .progress-bar.progress-bar-warning{:style => "width: #{score.percentile_difference_with_top_score}%"}
+                  %span.sr-only= "#{score.percentile_difference_with_top_score}% Complete (warning)"
+  = render partial: 'participants/components/right_side_bar'
