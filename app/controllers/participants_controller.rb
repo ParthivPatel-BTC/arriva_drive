@@ -10,7 +10,7 @@ class ParticipantsController < Devise::RegistrationsController
   def create
     @participant = Participant.new(activity_params)
     if @participant.save
-      is_send_invitation?
+      send_invitation
       flash[:notice] = t('admin.msg.success.creation', name: @participant.full_name)
       redirect_to admin_dashboard_path
     else
@@ -27,7 +27,7 @@ class ParticipantsController < Devise::RegistrationsController
 
   def update
     if @participant.update_attributes(activity_params)
-      is_send_invitation?
+      send_invitation
       flash[:notice] = t('admin.msg.success.update', name: @participant.full_name)
       redirect_to show_participant_path(@participant)
     else
@@ -48,7 +48,7 @@ class ParticipantsController < Devise::RegistrationsController
   end
 
   def resend_invitation
-    if @participant.send_participant_invitation
+    if @participant.send_invitation_to_participant
       flash[:notice] = t('admin.participant.msg.success.send_invitation', email: @participant.email)
       redirect_to admin_dashboard_path
     end
@@ -75,7 +75,7 @@ class ParticipantsController < Devise::RegistrationsController
     )
   end
 
-  def is_send_invitation?
-    @participant.send_participant_invitation if params[:send_invitation]
+  def send_invitation
+    @participant.send_invitation_to_participant if params[:send_invitation]
   end
 end

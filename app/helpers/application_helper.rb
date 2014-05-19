@@ -33,7 +33,7 @@ module ApplicationHelper
     str.try(:size) || 0
   end
 
-  def date_formatted(date)
+  def formatted_date(date)
     date.strftime('%d/%m/%Y') rescue nil
   end
 

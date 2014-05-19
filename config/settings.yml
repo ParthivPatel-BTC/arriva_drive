@@ -15,6 +15,10 @@ paperclip:
       small: '55x55'
   image_path: '/system/:class/:photos/:id/:style/:basename.:extension'
 
+mail:
+  default_url_options:
+    support_email: 'support@arrivedrive.in'
+
 field_length_limit:
   performance_summary: 250
   event_description: 200

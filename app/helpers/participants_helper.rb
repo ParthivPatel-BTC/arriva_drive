@@ -1,6 +1,6 @@
 module ParticipantsHelper
-  def check_and_set_division(division)
-    case division
+  def get_division_name(division_number)
+    case division_number
     when 1
       'Uk Bus'
     when 2

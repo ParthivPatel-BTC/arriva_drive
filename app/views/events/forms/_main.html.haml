@@ -21,7 +21,7 @@
         .col-md-12.spacer15
         %h4
           %strong.dark-blue= t('event.fields.date')
-        = text_field_tag 'event[event_date]', date_formatted(@event.event_date), id: 'eventFormDatePicker', class: common_text_field_class
+        = text_field_tag 'event[event_date]', formatted_date(@event.event_date), id: 'eventFormDatePicker', class: common_text_field_class
         .col-md-12.spacer15
         %h4
           %strong.dark-blue= t('event.fields.link')

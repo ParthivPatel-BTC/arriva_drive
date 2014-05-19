@@ -94,4 +94,8 @@ en:
     page_content:
       header:
         'please_sign_in': 'Please sign in'
+  mailer:
+    participant:
+      subject:
+        welcome: 'Welcome'
 

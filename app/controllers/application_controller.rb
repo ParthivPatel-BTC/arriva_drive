@@ -10,15 +10,7 @@ class ApplicationController < ActionController::Base
   def configure_devise_permitted_parameters
     registration_params = [:first_name, :last_name, :job_title, :division, :year_started, :photo, :performance_summary, :email, :password, :password_confirmation, scores_attributes: [:id, :behaviour_id, :score] ]
 
-    if params[:action] == 'update'
-      devise_parameter_sanitizer.for(:account_update) {
-        |u| u.permit(registration_params << :current_password)
-      }
-    elsif params[:action] == 'create'
-      devise_parameter_sanitizer.for(:sign_up) {
-        |u| u.permit(registration_params)
-      }
-    end
+    permission_for_create_update_participant(params[:action])
   end
 
   def after_sign_in_path_for(resource)
@@ -56,5 +48,18 @@ class ApplicationController < ActionController::Base
   def access_denied_redirect
     flash[:error] = t('common.msg.warning.unauthorize')
     redirect_to root_path
+  end
+
+  def permission_for_create_update_participant(action)
+    if action == 'update'
+      devise_parameter_sanitizer.for(:account_update) {
+        |u| u.permit(registration_params << :current_password)
+      }
+    end
+    if action == 'create'
+      devise_parameter_sanitizer.for(:sign_up) {
+        |u| u.permit(registration_params)
+      }
+    end
   end
 end

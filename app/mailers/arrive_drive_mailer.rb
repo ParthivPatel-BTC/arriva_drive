@@ -1,5 +1,5 @@
 class ArriveDriveMailer < ActionMailer::Base
-  def send_participant_invitation(participant)
-    mail(from: 'arriva@drive.com', to: participant.email, subject: 'Welcom')
+  def send_invitation_to_participant(participant)
+    mail(from: Settings.mail.default_url_options.support_email, to: participant.email, subject: t('mailer.participant.subject.welcome'))
   end
 end
