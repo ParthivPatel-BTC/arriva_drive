@@ -46,4 +46,8 @@ module ApplicationHelper
   def full_name(first_name, last_name)
     "#{first_name} #{last_name}"
   end
+
+  def common_text_field_class
+    'col-md-12'
+  end
 end

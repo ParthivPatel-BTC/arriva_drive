@@ -14,3 +14,8 @@ paperclip:
     activity:
       small: '55x55'
   image_path: '/system/:class/:photos/:id/:style/:basename.:extension'
+
+field_length_limit:
+  performance_summary: 250
+  event_description: 200
+  activity_description: 200

@@ -25,9 +25,12 @@ class EventsController < ApplicationController
 
   def update
     processed_params = mark_nested_attr_for_destroy(event_params, 'behaviours_events_attributes', 'behaviour_id')
-    @event.update_attributes(processed_params)
-    flash[:notice] = t('admin.msg.success.update', name: @event.title)
-    redirect_to admin_dashboard_path
+    if @event.update_attributes(processed_params)
+      flash[:notice] = t('admin.msg.success.update', name: @event.title)
+      redirect_to admin_dashboard_path
+    else
+      render :edit
+    end
   end
 
   private

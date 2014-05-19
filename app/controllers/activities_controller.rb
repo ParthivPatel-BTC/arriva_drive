@@ -5,6 +5,7 @@ class ActivitiesController < ApplicationController
 
   def new
     @activity   = Activity.new
+    @activity.build_multiple_choice_question if @activity.multiple_choice_question.blank?
   end
 
   def create
@@ -13,6 +14,7 @@ class ActivitiesController < ApplicationController
       flash[:notice] = t('admin.msg.success.creation', name: @activity.title)
       redirect_to admin_dashboard_path
     else
+      @activity.build_multiple_choice_question if @activity.multiple_choice_question.blank?
       render :new
     end
   end
@@ -21,6 +23,7 @@ class ActivitiesController < ApplicationController
   end
 
   def edit
+    @activity.build_multiple_choice_question if @activity.multiple_choice_question.blank?
   end
 
   def update

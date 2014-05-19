@@ -1,10 +1,4 @@
-- text_field_class = 'col-md-12'
-- create_view = @event.new_record?
-- form_action = create_view ? events_path : event_path(@event)
-- form_method = create_view ? :post : :put
-- max_length_of_desc_field = 200
-
-= form_tag(form_action, method: form_method, class: 'form-horizontal', id: 'eventForm', multipart: true) do
+= form_tag(decide_event_form_action(@event), method: decide_event_form_method(@event), class: 'form-horizontal', id: 'eventForm', multipart: true) do
   = render partial: "shared/error_messages", locals: { target: @event }
   .row
     - # Left Panel (Behaviours)
@@ -19,19 +13,19 @@
       .panel-padding
         %h4
           %strong.dark-blue= t('event.fields.title')
-        = text_field_tag 'event[title]', @event.title, class: text_field_class
+        = text_field_tag 'event[title]', @event.title, class: common_text_field_class
         .col-md-12.spacer15
         %h4
           %strong.dark-blue= t('event.fields.location')
-        = text_field_tag 'event[location]', @event.location, class: text_field_class
+        = text_field_tag 'event[location]', @event.location, class: common_text_field_class
         .col-md-12.spacer15
         %h4
           %strong.dark-blue= t('event.fields.date')
-        = text_field_tag 'event[event_date]', date_formatted(@event.event_date), id: 'eventFormDatePicker', class: text_field_class
+        = text_field_tag 'event[event_date]', date_formatted(@event.event_date), id: 'eventFormDatePicker', class: common_text_field_class
         .col-md-12.spacer15
         %h4
           %strong.dark-blue= t('event.fields.link')
-        = text_field_tag 'event[link]', @event.link, class: text_field_class
+        = text_field_tag 'event[link]', @event.link, class: common_text_field_class
         %h4
           %strong.dark-blue= t('event.fields.image')
         .row
@@ -48,9 +42,9 @@
         %h4
           %strong.dark-blue= t('event.fields.description')
 
-        = text_area_tag 'event[description]', @event.description, rows: 6, class: text_field_class, id: 'eventDescTextField', maxlength: max_length_of_desc_field
+        = text_area_tag 'event[description]', @event.description, rows: 6, class: common_text_field_class, id: 'eventDescTextField', maxlength: event_description_length_limit
         .input-field-subtext#eventDescSubText
-          #{find_field_length(@event.description)}/#{max_length_of_desc_field}
+          #{find_field_length(@event.description)}/#{event_description_length_limit}
 
     .col-md-12.spacer40
     .pull-right
