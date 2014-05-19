@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
     if current_admin
       admin_dashboard_path
     else
-      participant_events_path
+      participant_activities_path
     end
   end
 

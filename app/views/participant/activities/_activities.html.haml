@@ -7,7 +7,7 @@
           .activitiesinfo
             %h5
               = link_to(activity.title, '#')
-            %p.black strategic focus
+            %p.black= activity.behaviour.title if activity.behaviour.present?
             %p 500 points
     .pagingrow
       = paginate @activities, :exclude => [:first, :last]

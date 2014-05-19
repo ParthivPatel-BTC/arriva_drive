@@ -27,6 +27,6 @@ ArrivaDrive::Application.routes.draw do
     get 'overview/:id', to: 'admins#overview', as: :overview
   end
   scope '/participants' do
-    resources :events, controller: 'participant/events', as: 'participant_events'
+    resources :activities, controller: 'participant/activities', as: 'participant_activities'
   end
 end

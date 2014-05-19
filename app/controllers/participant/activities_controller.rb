@@ -1,4 +1,4 @@
-class Participant::EventsController < ApplicationController
+class Participant::ActivitiesController < ApplicationController
   layout 'participant'
 
   def index
