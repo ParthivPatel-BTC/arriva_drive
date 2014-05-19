@@ -1,7 +1,7 @@
 class ParticipantsController < Devise::RegistrationsController
   before_filter :find_participant_from_params, only: [ :show, :edit, :update, :deactivate, :activate, :resend_invitation]
   skip_before_filter :authenticate_scope!, :only => [:edit, :update, :destroy, :deactivate, :activate]
-  before_filter :admin_user_required!
+  before_filter :admin_user_required!, only: [:new, :create, :show, :edit, :update, :deactivate, :activate]
 
   def new
     @participant = Participant.new

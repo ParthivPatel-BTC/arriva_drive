@@ -15,6 +15,7 @@ ArrivaDrive::Application.routes.draw do
     put '/participants/:id/activate' => 'participants#activate', :as => :participant_activate
     post '/participants/resend_invitation' => 'participants#resend_invitation'
   end
+
   get '/new_participant' => 'static_pages#new_participant'
   get '/show' => 'static_pages#show'
 
@@ -24,5 +25,9 @@ ArrivaDrive::Application.routes.draw do
 
     get 'dashboard', to: 'admins#dashboard', as: :admin_dashboard
     get 'overview/:id', to: 'admins#overview', as: :overview
+  end
+  scope '/participants' do
+    resources :participants, controller: 'participant/events', as: 'participant_events'
+    get '/dashboard' => 'participant/home#dashboard', as: 'participant_dashboard_path'
   end
 end

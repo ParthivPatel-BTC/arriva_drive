@@ -2,6 +2,8 @@ class Participant < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :scores
+  has_many :notes, foreign_key: 'owner_id'
+
   paperclip_options = {
       styles: {
           medium: "#{Settings.paperclip.style.medium}>",

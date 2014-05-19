@@ -8,15 +8,12 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
- *= require bootstrap.min
- *= require jquery-ui-1.10.3.custom.min
- *= require datepicker
+ *= require participants/fonts
  *= require participants/modal
  *= require participants/modal-darktheme
  *= require participants/uniform.aristo
  *= require participants/style
  *= require participants/responsive
+ *= require participants/custom
  *= require_self
- *= require_directory ./participants
- *= require_tree .
  */

@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+  layout :decide_layout
 
   # Add Custom Field/Column to Devise with Rails 4
   # Reference : http://stackoverflow.com/questions/16297797/add-custom-field-column-to-devise-with-rails-4
@@ -14,7 +15,8 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    admin_dashboard_path
+    admin_dashboard_path if current_admin
+    participant_events_path
   end
 
   private
@@ -45,9 +47,20 @@ class ApplicationController < ActionController::Base
     access_denied_redirect
   end
 
+  def participant_user_required!
+    return true unless current_participant.blank?
+    access_denied_redirect
+  end
+
   def access_denied_redirect
     flash[:error] = t('common.msg.warning.unauthorize')
-    redirect_to root_path
+    if !current_admin.blank?
+      admin_dashboard_path
+    elsif !current_participant.blank?
+      participant_events_path
+    else
+      redirect_to root_path
+    end
   end
 
   def permission_for_create_update_participant(action)
@@ -61,5 +74,10 @@ class ApplicationController < ActionController::Base
         |u| u.permit(registration_params)
       }
     end
+  end
+
+  def decide_layout
+    return 'participant' if controller_name == 'sessions' && request.original_fullpath =~ /^\/participants/
+    'application'
   end
 end

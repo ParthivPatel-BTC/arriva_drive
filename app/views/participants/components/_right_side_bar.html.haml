@@ -1,0 +1,15 @@
+.rightsidebar
+  .profilebox
+    .profilepic
+      = image_tag 'images/profile-pic.png'
+    %p.name= current_participant.full_name
+    %p= current_participant.job_title
+    %p= get_division_name(current_participant.division)
+  .yourlevel
+    %ul
+      - current_participant.scores.each do |score|
+        %li
+          = score.behaviour.title
+          %span.green= score.score
+  .arriva
+    = image_tag 'images/logo-arriva.png'
