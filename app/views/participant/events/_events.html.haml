@@ -1,0 +1,19 @@
+.contentarea
+  .activities
+    %ul
+      - @activities.each do |activity|
+        %li
+          %i{class: get_activity_icon_class(activity.activity_type)}
+          .activitiesinfo
+            %h5
+              = link_to(activity.title, '#')
+            %p.black strategic focus
+            %p 500 points
+    .pagingrow
+      = render partial: 'kaminari/prev_page'
+      / %a.left{:href => "#"}
+      /   %i.icon-previus
+      /   BACK
+      %a.right{:href => "#"}
+        NEXT
+        %i.icon-next

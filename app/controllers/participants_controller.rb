@@ -49,10 +49,10 @@ class ParticipantsController < Devise::RegistrationsController
     redirect_to admin_dashboard_path
   end
 
-  def welcome
-    render :welcome
-  end
-  alias :dashboard :welcome
+  # def welcome
+  #   render :welcome
+  # end
+  # alias :dashboard :welcome
 
   def resend_invitation
     if @participant.send_invitation_to_participant
