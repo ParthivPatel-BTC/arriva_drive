@@ -5,6 +5,7 @@ class ActivitiesController < ApplicationController
 
   def new
     @activity   = Activity.new
+    build_nested_mcq_resource
   end
 
   def create
@@ -13,6 +14,7 @@ class ActivitiesController < ApplicationController
       flash[:notice] = t('admin.msg.success.creation', name: @activity.title)
       redirect_to admin_dashboard_path
     else
+      build_nested_mcq_resource
       render :new
     end
   end
@@ -21,6 +23,7 @@ class ActivitiesController < ApplicationController
   end
 
   def edit
+    build_nested_mcq_resource
   end
 
   def update
@@ -30,6 +33,10 @@ class ActivitiesController < ApplicationController
   end
 
   private
+
+  def build_nested_mcq_resource
+    @activity.build_multiple_choice_question if @activity.multiple_choice_question.blank?
+  end
 
   def activity_params
     params.require(:activity).permit(

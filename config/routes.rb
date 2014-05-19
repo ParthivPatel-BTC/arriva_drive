@@ -13,6 +13,7 @@ ArrivaDrive::Application.routes.draw do
     post '/participants' => 'participants#update', :as => :update_participant
     put '/participants/:id/deactivate' => 'participants#deactivate', :as => :participant_deactivate
     put '/participants/:id/activate' => 'participants#activate', :as => :participant_activate
+    post '/participants/resend_invitation' => 'participants#resend_invitation'
   end
 
   devise_scope :participant do

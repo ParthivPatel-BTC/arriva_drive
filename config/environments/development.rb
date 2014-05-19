@@ -21,10 +21,18 @@ ArrivaDrive::Application.configure do
 
   # Raise an error on page load if there are pending migrations
   config.active_record.migration_error = :page_load
-
-  # Debug mode disables concatenation and preprocessing of assets.
-  # This option may cause significant delays in view rendering with a large
-  # number of complex assets.
+  config.action_mailer.delivery_method = :letter_opener
+  # config.action_mailer.perform_deliveries = true
+  # config.action_mailer.raise_delivery_errors = true
+  # config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.smtp_settings = {
+  #     address: 'smtp.gmail.com',
+  #     port: 587,
+  #     domain: 'gmail.com',
+  #     user_name: 'demo4582@gmail.com',
+  #     password: 'demo12345',
+  #     authentication: 'plain'
+  # }
   config.assets.debug = true
 
   # Defining default url options for mailer so that devise mails works well

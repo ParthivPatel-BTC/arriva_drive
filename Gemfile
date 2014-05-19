@@ -36,6 +36,8 @@ gem "paperclip", "~> 4.1"
 # For load all javascript. Read more: http://stackoverflow.com/questions/17881384/jquery-gets-loaded-only-on-page-refresh-in-rails-4-application
 gem 'jquery-turbolinks'
 
+gem "letter_opener", :group => :development
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false

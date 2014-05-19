@@ -8,6 +8,12 @@ readURL = (input, previewContainerSelector) ->
     reader.readAsDataURL input.files[0]
   return
 $(document).ready ->
+  $("#send_participant_invitation").on "click", ->
+    input = $("<input>").attr("type", "hidden").attr("name", "send_invitation").val("true")
+    $(".participantForm").append $(input)
+    $(".participantForm").submit()
+    return
+
   $("#participant_photo").change ->
     readURL $(this)[0], "#preview_participant_photo"
     return

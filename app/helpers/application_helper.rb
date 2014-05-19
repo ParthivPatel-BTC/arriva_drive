@@ -33,7 +33,7 @@ module ApplicationHelper
     str.try(:size) || 0
   end
 
-  def date_formatted(date)
+  def formatted_date(date)
     date.strftime('%d/%m/%Y') rescue nil
   end
 
@@ -45,6 +45,10 @@ module ApplicationHelper
   # For display admin full name in header after sign in
   def full_name(first_name, last_name)
     "#{first_name} #{last_name}"
+  end
+
+  def common_text_field_class
+    'col-md-12'
   end
 
   def link_to_submit(*args, &block)

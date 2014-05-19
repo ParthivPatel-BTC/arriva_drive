@@ -1,11 +1,6 @@
-- participant = @participant || Participant.new
-- create_view = participant.new_record?
-- form_url = create_view ? participant : update_participant_path
-- submit_btn_caption = ( create_view ? t('admin.participant.caption.button.save_participant_only') : t('admin.participant.caption.button.update') )
-- max_length_of_performance_summary = 250
-= form_for participant, :url => form_url do |f|
+= form_for @participant || Participant.new, url: decide_participant_form_url(@participant), html: {:class => "participantForm"} do |f|
   = render partial: 'shared/error_messages', locals: { target: f.object }
-  = hidden_field_tag('id', participant[:id])
+  = hidden_field_tag('id', @participant[:id])
   .row
     .col-xs-4.col-md-4
       %h3.dark-blue
@@ -53,14 +48,10 @@
           = t('admin.participant.caption.button.choose_file')
           = f.file_field(:photo)
       - if @participant.photo.present?
-        = image_tag(@participant.photo.url(:medium))
-        .spacer5
-        .form-group
-          %label.control-label.no-padding-right
-            %img#preview_participant_photo
+        = image_tag(@participant.photo.url(:medium), id: 'preview_participant_photo')
       .form-group
         %label.control-label.no-padding-right
-          %img#preview_participant_photo
+          %img(src='' id='preview_participant_photo')
 
     .col-xs-1.col-md-1
     .col-xs-4.col-md-4
@@ -70,11 +61,11 @@
         .row
           %b.common-font-color= t('admin.participant.caption.behaviour')
       .col-xs-2.col-md-2
-        %b.common-font-color= t('admin.participant.caption.score')
+        %b.common-font-color.score_lbl_margin_left= t('admin.participant.caption.score')
       - Behaviour.all.each do |behaviour|
         - score = @participant.id.present? ? get_score_value(behaviour, @participant) : ''
         - score_id = score.present? ? score.id : ''
-        - score_value = score.present? ? score.score : ''
+        - score_value = score.present? ? score.score : 0
         .row
           .col-xs-9.col-md-9
             .common-font-color
@@ -82,18 +73,17 @@
           .col-xs-3.col-md-3
             = hidden_field_tag('participant[scores_attributes][][behaviour_id]', behaviour.id)
             = hidden_field_tag('participant[scores_attributes][][id]', score_id)
-            = text_field_tag 'participant[scores_attributes][][score]', score_value, class: 'form-control score_text_box'
+            = text_field_tag 'participant[scores_attributes][][score]', score_value, class: 'form-control score_text_box text-align-right', style: "text-align: center"
         .spacer5.spacer-width
       .row
         .col-xs-12.col-md-12
           .form-group
             %label.common-font-color
               %b= t('admin.participant.caption.performance_summary')
-            = f.text_area(:performance_summary, cols: 48, rows: 8, class: 'input-xlarge', id: 'participantperformanceSummaryInput', maxlength: max_length_of_performance_summary)
+            = f.text_area(:performance_summary, rows: 7, cols: 10, class: 'form-control', id: 'participantperformanceSummaryInput', maxlength: performance_summary_length_limit)
             .input-field-subtext#participantperformanceSummarySubText
-              #{find_field_length(resource.performance_summary)}/#{max_length_of_performance_summary}
+              #{find_field_length(resource.performance_summary)}/#{performance_summary_length_limit}
     .col-xs-3.col-md-3{style:'position: relative; height: 600px;'}
-      = f.submit(submit_btn_caption, class: 'btn btn_sign_in pull_left', style: 'position: absolute; top: 92%; right: 0%; width: 72%;')
+      = f.submit(participant_submit_btn_caption(@participant), class: 'btn btn_sign_in pull_left btn_forms_width', style: 'position: absolute; top: 92%; right: 0%;')
 
-      %button.btn.btn_sign_in.pull_left{style: 'position: absolute; top: 98%; right: 0%;'}
-        = t('admin.participant.caption.button.save_participant_&_send')
+      = f.submit(t('admin.participant.caption.button.save_participant_&_send'), class: 'btn btn_sign_in pull_left btn_forms_width', style: 'position: absolute; top: 98%; right: 0%;', id: 'send_participant_invitation')

@@ -53,6 +53,7 @@ en:
         success:
           deactivated: "%{name} disabled successfully"
           activated: "%{name} enabled successfully"
+          send_invitation: "Invitation send to %{email} successfully"
     msg:
       success:
         creation: "%{name} created successfully"
@@ -93,4 +94,8 @@ en:
     page_content:
       header:
         'please_sign_in': 'Please sign in'
+  mailer:
+    participant:
+      subject:
+        welcome: 'Welcome'
 
