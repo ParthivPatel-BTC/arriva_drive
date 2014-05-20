@@ -15,7 +15,7 @@
       %ul
         - Behaviour.all.order(:id).each do |behaviour|
           %li
-            %span.label= behaviour.title
+            %span.label.leftsidebar_activity_label_font_size= behaviour.title
             %span.checkbox
               = check_box_tag 'behaviour', behaviour.id
     %li
@@ -38,8 +38,13 @@
 :javascript
   $(document).ready(function() {
     $("input#behaviour[type=checkbox]").on("change", function() {
+
+    var checkeditems = $('input#behaviour:checked')
+                       .map(function() { return $(this).val() })
+                       .get()
+                       .join(",");
       $.ajax({
-        url: "/participants/activities?behaviour_id=" + $(this).val(),
+        url: "/participants/activities?behaviour_id="+checkeditems,
         dataType: "script"
       });
     });

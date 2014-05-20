@@ -15,6 +15,10 @@
 
 :javascript
   $(document).ready(function() {
+    var checkeditems = $('input#behaviour:checked')
+                       .map(function() { return $(this).val() })
+                       .get()
+                       .join(",");
     $('.right, .left').on( "click", function(e) {
       e.preventDefault();
       if ($(this).attr("href").split("page").length > 1) {
@@ -24,7 +28,7 @@
         var pageNum = '1';
       }
       $.ajax({
-        url: "/participants/activities?page="+pageNum,
+        url: "/participants/activities?page="+pageNum+"&behaviour_id="+checkeditems,
         dataType: "script"
       });
     });

@@ -10,5 +10,5 @@ class Activity < ActiveRecord::Base
 
   validates_presence_of :title, :link, :activity_type
 
-  scope :find_activities_by_behaviour_id, -> (behaviour_id) { joins(:behaviour).where("activities.behaviour_id= ?", behaviour_id)}
+  scope :find_activities_by_behaviour_id, -> (behaviour_id) { joins(:behaviour).where("activities.behaviour_id in (?)", behaviour_id)}
 end

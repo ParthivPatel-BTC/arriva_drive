@@ -87,6 +87,9 @@ en:
       welcome: "welcome back %{name}"
     caption:
       notes: 'notes'
+    activities:
+      msg:
+        no_activities_found: 'No Activities Found'
   sign_in:
     caption:
       email: 'Email address'

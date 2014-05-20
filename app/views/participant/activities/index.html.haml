@@ -1,6 +1,5 @@
 %section.mainsection
   = render partial: 'participants/components/left_side_bar'
   #activities_content
-    - if @activities.present?
-      = render partial: 'participant/activities/activities'
+    = render partial: 'participant/activities/activities'
   = render partial: 'participants/components/right_side_bar'
