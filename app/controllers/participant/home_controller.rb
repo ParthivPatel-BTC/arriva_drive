@@ -1,6 +1,6 @@
 class Participant::HomeController < ApplicationController
   layout 'participant'
-  before_filter :participant_user_required!, only: [:welcome, :dashboard]
+  before_filter :participant_user_required!
 
   def welcome
     render :welcome

@@ -1,36 +1,32 @@
 %section.mainsection
   = render partial: 'participants/components/left_side_bar'
   .contentarea
-    .activities
-      %ul
-        %li
-          %i.bigicon-sustainable
-          .activitiesinfo
-            %h5
-              %a{:href => "activities-details.html"} sustainable business PRACTICE
-            %p.black strategic focus
-            %p 500 points
-        %li
-          %i.bigicon-delivering
-          .activitiesinfo
-            %h5
-              %a{:href => "activities-details.html"} delivering successful results
-            %p.black striving for innovation
-            %p 500 points
-        %li
-          %i.bigicon-brain
-          .activitiesinfo
-            %h5
-              %a{:href => "activities-details.html"} brain training - memory
-            %p.black dealing with complexity
-            %p 500 points
-        %li
-          %i.bigicon-putting
-          .activitiesinfo
-            %h5
-              %a{:href => "activities-details.html"} putting people first
-            %p.black customer orientation
-            %p 500 points
+    .eventssection
+      #about.nano
+        .nano-content
+          .events
+            %ul
+              - @events.each do |event|
+                %li{class: event_listing_class(event)}
+                  .left
+                    %h5.uppercase
+                      %span.date= event.event_date
+                      %span.time 16.23
+                      %span.eventname= event.location
+                    %p= event.description
+                    %p.links
+                      %a.left{:href => "#"}
+                        %i.icon-notes
+                      %a.right{:href => "#"}
+                        share
+                        %i.icon-share
+                  .right= image_tag event.image.url
+                  - if event.is_completed?
+                    .completed completed
+          .monthright
+            %a.first{:href => "#"} April
+            %a.last{:href => "#"} Mar
+            %br
       .pagingrow
         %a.left{:href => "#"}
           %i.icon-previus

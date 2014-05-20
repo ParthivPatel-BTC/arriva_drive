@@ -11,4 +11,8 @@ class Event < ActiveRecord::Base
   def event_date_formatted
     event_date.strftime('%d/%m/%Y') rescue nil
   end
+
+  def is_completed?
+    Date.today > event_date
+  end
 end

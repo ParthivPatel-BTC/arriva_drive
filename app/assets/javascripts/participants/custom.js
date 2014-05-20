@@ -10,8 +10,10 @@ $(document).ready(function () {
         });
     });
 $(function(){
-  $('.nano').nanoScroller({
-    preventPageScrolling: true
+  $(window).load(function () {
+    $('.nano').nanoScroller({
+      preventPageScrolling: true
+    });
   });
   $("#main").find('.description').load("readme.html", function(){
     setTimeout(function() {
