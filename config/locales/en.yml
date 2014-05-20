@@ -89,6 +89,7 @@ en:
       email: 'Email address'
       password: 'Password'
       confirm_password: 'Confirm Password'
+      forgot_password: 'Forgot Pasword?'
       button:
         sign_in: 'Sign in'
         log_out: 'Log Out'
@@ -96,7 +97,6 @@ en:
       header:
         please_sign_in: 'Please sign in'
         change_password: 'Change Password'
-        forgot_password: 'Forgot Pasword?'
   mailer:
     participant:
       subject:
