@@ -23,11 +23,11 @@
         %label.common-font-color= t('admin.participant.caption.division')
         %div
           = f.radio_button :division, '1'
-          = label :division, 'Uk Bus'
+          %span.light-blue Uk Bus
           = f.radio_button :division, '2'
-          = label :division, 'Uk Trains'
+          %span.light-blue Uk Trains
           = f.radio_button :division, '3'
-          = label :division, 'Mainland Europe'
+          %span.light-blue Mainland Europe
       .form-group
         %label.common-font-color= t('admin.participant.caption.year_started')
         .input

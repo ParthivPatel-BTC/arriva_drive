@@ -39,22 +39,22 @@
       %b= t('admin.participant.caption.fit_plan_results')
     .col-xs-9.col-md-9
       .row
-        %b.common-font-color= t('admin.participant.caption.behaviour')
+        %b.dark-blue= t('admin.participant.caption.behaviour')
     .col-xs-2.col-md-2
-      %b.common-font-color= t('admin.participant.caption.score')
+      %b.dark-blue= t('admin.participant.caption.score')
     - Behaviour.all.each do |behaviour|
       - score = @participant.id.present? ? get_score_value(behaviour, @participant) : ''
       .row
         .col-xs-9.col-md-9
           .common-font-color=behaviour.title
         .col-xs-1.col-md-1
-          = score.present? ? score.score : 0
+          .light-blue= score.present? ? score.score : 0
       .spacer5.spacer-width
     .spacer65.spacer-width
   .col-xs-3.col-md-3{style:'position: relative; height: 590px;'}
     %h3.dark-blue
       %b= t('admin.participant.caption.performance_summary')
-    %p= simple_format(@participant.performance_summary)
+    %p.light-blue.center-justified= @participant.performance_summary
     .row
       = link_to(t('admin.participant.caption.button.view_activity'), overview_path(@participant) , class: 'btn btn_sign_in pull_left', style: 'position: absolute; top: 400px; right: 0%; width: 72%;', title: t('admin.participant.caption.button.view_activity'))
     .row
