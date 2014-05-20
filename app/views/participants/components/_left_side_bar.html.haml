@@ -11,48 +11,13 @@
     %li.active
       %a{:href => "activities.html"}
         %i.icon-activities
-        Activities
+        = t('admin.panel.titles.activities')
       %ul
-        %li
-          %span.label customer orientation
-          %span.checkbox
-            %input{:type => "checkbox"}
-        %li
-          %span.label target & results focus
-          %span.checkbox
-            %input{:type => "checkbox"}
-        %li
-          %span.label strategic focus
-          %span.checkbox
-            %input{:type => "checkbox"}
-        %li
-          %span.label managing & developing people
-          %span.checkbox
-            %input{:type => "checkbox"}
-        %li
-          %span.label striving for innovation
-          %span.checkbox
-            %input{:type => "checkbox"}
-        %li
-          %span.label change management
-          %span.checkbox
-            %input{:type => "checkbox"}
-        %li
-          %span.label cross-unit co-operation
-          %span.checkbox
-            %input{:type => "checkbox"}
-        %li
-          %span.label corporate responsibility
-          %span.checkbox
-            %input{:type => "checkbox"}
-        %li
-          %span.label role model function
-          %span.checkbox
-            %input{:type => "checkbox"}
-        %li
-          %span.label dealing with complexity
-          %span.checkbox
-            %input{:type => "checkbox"}
+        - Behaviour.all.order(:id).each do |behaviour|
+          %li
+            %span.label= behaviour.title
+            %span.checkbox
+              = check_box_tag 'behaviour', behaviour.id
     %li
       %a{:href => "events.html"}
         %i.icon-events
@@ -69,3 +34,13 @@
       %a{:href => "index.html"}
         %i.icon-logout
         LOGOUT
+
+:javascript
+  $(document).ready(function() {
+    $("input#behaviour[type=checkbox]").on("change", function() {
+      $.ajax({
+        url: "/participants/activities?behaviour_id=" + $(this).val(),
+        dataType: "script"
+      });
+    });
+  });

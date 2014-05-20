@@ -9,4 +9,6 @@ class Activity < ActiveRecord::Base
 	scope :completed, -> { where(complete: true) }
 
   validates_presence_of :title, :link, :activity_type
+
+  scope :find_activities_by_behaviour_id, -> (behaviour_id) { joins(:behaviour).where("activities.behaviour_id= ?", behaviour_id)}
 end

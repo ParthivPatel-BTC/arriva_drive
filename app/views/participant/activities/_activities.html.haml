@@ -1,13 +1,32 @@
-.contentarea
-  .activities
-    %ul
-      - @activities.each do |activity|
-        %li
-          %i{class: get_activity_icon_class(activity.activity_type)}
-          .activitiesinfo
-            %h5
-              = link_to(activity.title, '#')
-            %p.black= activity.behaviour.title if activity.behaviour.present?
-            %p 500 points
-    .pagingrow
-      = paginate @activities, :exclude => [:first, :last]
+= form_tag(participant_activities_path, remote: true)  do
+  .contentarea
+    .activities
+      %ul
+        - @activities.each do |activity|
+          %li
+            %i{class: get_activity_icon_class(activity.activity_type)}
+            .activitiesinfo
+              %h5
+                = link_to(activity.title, '#')
+              %p.black= activity.behaviour.title if activity.behaviour.present?
+              %p 500 points
+      .pagingrow
+        = paginate @activities, exclude: [:first, :last], remote: true
+
+:javascript
+  $(document).ready(function() {
+    $('.right, .left').on( "click", function(e) {
+      e.preventDefault();
+      if ($(this).attr("href").split("page").length > 1) {
+        var pageNum = $(this).attr("href").match(/page=([0-9]+)/)[1];
+      }
+      else {
+        var pageNum = '1';
+      }
+      $.ajax({
+        url: "/participants/activities?page="+pageNum,
+        dataType: "script"
+      });
+    });
+  });
+
