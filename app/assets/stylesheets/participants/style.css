@@ -3,14 +3,15 @@
 body{ font-size: 11px; color:#fff; margin:0px; padding:0px; font-family: 'Open Sans', sans-serif;}
 h1, h2, h3, h4, h5, h6, p, ul, li{ margin:0px; padding:0px; font-family: 'Open Sans', sans-serif; font-weight:normal;}
 input, textare{ margin:0px; padding:0px;}
-a{ color:#fff; text-decoration:none;}
-a:hover{ color:#c2d52b;}
+a{ color:#fff; text-decoration:none; transition: all 0.7s ease 0s;}
+a:hover, a:focus{ color:#c2d52b; outline:none;}
 .clearfix:after {visibility: hidden; display: block; font-size: 0; content: " "; clear: both; height: 0;}
 * html .clearfix { height: 1%; }
 .clearfix{display:block;}
 header, section{ display:block;}
 img{max-width: 100%;}
 .green{ color:#c8d92b;}
+.black{ color:#000;}
 .left{ float:left;}
 .right{ float:right;}
 .uppercase{ text-transform:uppercase;}
@@ -37,12 +38,18 @@ header{ margin-top:50px; margin-bottom:80px;}
 .icon-sustainable{background-position: -240px -30px;}
 .icon-amazon{background-position: -270px -0px;}
 .icon-write{background-position: -300px -0px;}
-.icon-backtoactivities{ background-position:-330px 0px; margin-left:5px;}
+.icon-backtoactivities{ background-position:-330px 0px;}
 .icon-share{ background-position:-360px 0px;}
+.icon-save{ background-position:-420px 0px;}
+.icon-attach{ background-position:-450px 0px;}
 .icon-delete{ background-position:-480px 0px;}
 .icon-watchvideo{ background-position: -510px -30px; }
-.icon-previus{ background-position:-540px 0px; margin-right:5px;}
-.icon-next{ background-position:-570px 0px; margin-left:5px;}
+.icon-previus{ background-position:-540px 0px;}
+.icon-next{ background-position:-570px 0px;}
+.icon-info{ background-position:-600px 0px;}
+
+
+
 
 
 .loginpage{ padding-left:100px;}
@@ -166,9 +173,11 @@ header{ margin-top:50px; margin-bottom:80px;}
 .pagingrow a:hover .icon-previus{background-position:-540px -30px; }
 .pagingrow a:hover .icon-next{background-position:-570px -30px; }
 .pagingrow a:hover .icon-backtoactivities{background-position:-330px -30px;}
+.pagingrow a:hover .icon-info{ background-position:-600px -30px;}
+.pagingrow a:hover .icon-notes{background-position:-120px -30px;}
 
 .sustainablesection{ margin-bottom:20px; display:block;}
-.sustainablesection h4{border-radius:15px; -moz-border-radius:15px; -webkit-border-radius:15px; background:rgba(255,255,255,0.3); padding:2px; font-size:16px; color:#c7da2c; text-transform:uppercase; margin-bottom:15px;}
+.sustainablesection h4{border-radius:15px; -moz-border-radius:15px; -webkit-border-radius:15px; background:rgba(255,255,255,0.3); padding:2px; font-size:16px; color:#c7da2c; text-transform:uppercase; margin-bottom:15px; line-height:30px;}
 .sustainablesection h4.writereview{ color:#fff;}
 .sustainablesection h4.writereview:hover .icon-write{ background-position:-300px -30px;;}
 .sustainablesection h4.writereview:hover a{color:#c2d52b;}
@@ -176,7 +185,8 @@ header{ margin-top:50px; margin-bottom:80px;}
 .sustainablesection ul li{ padding:10px; margin-bottom:10px; display:inline-block;}
 .sustainablesection ul li div.leftblock{ width:70%; float:left;}
 .sustainablesection ul li div.leftblock p{ margin-bottom:5px;}
-.sustainablesection ul li div.leftblock p.purchase{ font-size:12px; text-transform:uppercase;}
+.sustainablesection ul li div.leftblock p.purchase{ font-size:12px; text-transform:uppercase; line-height:30px;}
+.sustainablesection ul li div.leftblock [class^="icon"]{ margin-right:5px;}
 .sustainablesection ul li div.leftblock p.reading{ font-size:12px; text-transform:uppercase;}
 .sustainablesection ul li div.leftblock p.reading span{color:#c7da2c;}
 .sustainablesection ul li div.rightblock{ width:30%; float:left;}
@@ -201,7 +211,7 @@ header{ margin-top:50px; margin-bottom:80px;}
 .events ul li div.left h5 span.time{}
 .events ul li div.left h5 span.eventname{ display:block;}
 .events ul li div.left p{ margin-bottom:7px; font-size:9px;}
-.events ul li div.left p.links{ font-size:12px; text-transform:uppercase;}
+.events ul li div.left p.links{ font-size:12px; text-transform:uppercase; line-height:30px;}
 .events ul li a:hover .icon-notes{ background-position:-120px -30px;}
 .events ul li a:hover .icon-share{ background-position:-360px -30px;}
 
@@ -212,11 +222,14 @@ header{ margin-top:50px; margin-bottom:80px;}
 .monthright .first{ position:absolute; top:0px; right:0px;}
 .monthright .last{ position:absolute; bottom:0px; right:0px; margin-bottom:0px;}
 
+.monthalpha{ width:20%; float:left; text-transform:uppercase; font-size:8px;}
+.monthalpha a{ margin-bottom:4.5px; display:block; text-align:right; margin-right:10px;}
+
 
 .notes{ width:80%; float:left;}
 .notes ul{ margin:0px; padding:0px; list-style:none;}
 .notes ul li{ padding:5px; margin-bottom:10px; position:relative;border-radius:5px; -moz-border-radius:5px; -webkit-border-radius:5px; background:rgba(255,255,255,0.3); width:100%; display:inline-block;}
-.notes ul li div.notesicon{ float:right; width:30px; margin-left:10px;}
+.notes ul li div.notesicon{ width:30px; margin-left:10px; position:absolute; right:5px; bottom:0px;}
 .notes ul li div.notesicon a{ display:inline-block; margin-bottom:5px;}
 .notes ul li a:hover .icon-share{ background-position:-360px -30px;}
 .notes ul li a:hover .icon-delete{ background-position:-480px -30px;}
@@ -227,3 +240,45 @@ header{ margin-top:50px; margin-bottom:80px;}
 .notes ul li div.notedetails h5 span.time{}
 .notes ul li div.notedetails h5 span.eventname{ display:block;}
 .notes ul li div.notedetails p{ margin-bottom:7px; font-size:9px;}
+
+.writenotes{ display:block;}
+.writenotesinfo{ padding:5px;}
+.commentarea{display:block; margin-bottom:20px;}
+.commentarea .textarea{ margin:0px; padding:0px; border:0px; height:350px; background:none; width:100%; color:#fff;}
+.writeicon [class^="icon"]{ margin-right:5px;}
+.writeicon a:hover .icon-share{ background-position:-360px -30px;}
+.writeicon a:hover .icon-save{ background-position:-420px -30px;}
+.writeicon a:hover .icon-attach{ background-position:-450px -30px;}
+.writeicon a:hover .icon-delete{ background-position:-480px -30px;}
+.writeicon a:hover .icon-info{ background-position:-600px -30px;}
+
+.mynetwork{ position:relative;}
+.mynetworklist{width:80%; float:left;}
+.mynetworklist ul{ margin:0px; padding:0px; list-style:none;}
+.mynetworklist ul li{ padding:10px; margin-bottom:10px; border-radius:5px; -moz-border-radius:5px; -webkit-border-radius:5px; background:rgba(255,255,255,0.3); display:block; position:relative; padding-right:40px;}
+.mynetworklist ul li:hover{ background:rgba(199,218,44,0.3);}
+
+.mynetworklist ul li div.profilepic{width:55px; height:55px; display:inline-block; margin-right:10px;}
+.mynetworklist ul li div.profilepic img{border-radius:100%; -moz-border-radius:100%; -webkit-border-radius:100%;}
+.mynetworklist ul li div.mynetworkdetails{ display:inline-block; text-transform:uppercase;}
+.mynetworklist ul li div.mynetworkdetails h5{ color:#b1c84c; font-size:12px; margin-bottom:10px;}
+.mynetworklist ul li div.mynetworkdetails p{ margin:0px; font-size:10px;}
+.mynetworklist ul li a.noteslinks{ position:absolute; bottom:10px; right:0px;}
+
+.values{ position:relative; display:block;}
+.values img.colorbg{position:absolute; left:0px; top:0px; z-index:-1; display:none;}
+.circulcolordefult{ background:#ffffff; color:#1d747f;}
+.circulcolor1{ background:#008090; color:#fff;}
+.circulcolor2{ background:#f37830;}
+.circulcolor3{ background:#00446a;}
+.circulcolor4{ background:#c6d92c;}
+.circulcolor5{ background:#9561a8;}
+.values .row{ clear:both; margin-bottom:10px;}
+.circulbox{position:relative; width:75px; height:75px; border-radius:100%; -moz-border-radius:100%; -webkit-border-radius:100%; display:inline-block; margin-right:74px; text-align:center;}
+.circulbox span{display: table-cell; vertical-align: middle; height:75px; text-transform:uppercase; font-size:10px;}
+.circulbox a{ color:#1d747f;}
+.circulcolor1 a, .circulcolor2 a, .circulcolor3 a, .circulcolor4 a, .circulcolor5 a{ color:#fff;}
+.circulbox:last-child{ margin-right:0px;}
+.circulbox .circulplus{ display:none; border-radius:100%; -moz-border-radius:100%; -webkit-border-radius:100%; width:160px; background:#fff; vertical-align: middle; position:absolute; padding:10px; left:-52px; bottom:-14px; color:#1d747f; font-size:8px; text-transform:uppercase;}
+.circulbox .circulplus .valigncenter{display: table-cell; vertical-align: middle; height:160px;}
+.circulbox:hover .circulplus{ display:block;}

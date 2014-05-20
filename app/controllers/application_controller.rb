@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     admin_dashboard_path if current_admin
-    participant_events_path
+    participant_dashboard_path
   end
 
   private
