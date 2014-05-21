@@ -30,5 +30,6 @@ ArrivaDrive::Application.routes.draw do
     get '/dashboard' => 'participant/home#dashboard', as: 'participant_dashboard'
     resources :activities, controller: 'participant/activities', as: 'participant_activities'
     resources :events, only: [:index], controller: 'participant/events', as: 'participant_events'
+    resources :networks, only: [:index], controller: 'participant/networks', as: 'participant_networks'
   end
 end
