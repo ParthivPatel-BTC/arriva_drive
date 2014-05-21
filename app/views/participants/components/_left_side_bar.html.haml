@@ -9,50 +9,15 @@
         %i.icon-values
         Values / behaviours
     %li.active
-      %a{:href => "activities.html"}
+      = link_to(participant_activities_path) do
         %i.icon-activities
-        Activities
+        = t('admin.panel.titles.activities')
       %ul
-        %li
-          %span.label customer orientation
-          %span.checkbox
-            %input{:type => "checkbox"}
-        %li
-          %span.label target & results focus
-          %span.checkbox
-            %input{:type => "checkbox"}
-        %li
-          %span.label strategic focus
-          %span.checkbox
-            %input{:type => "checkbox"}
-        %li
-          %span.label managing & developing people
-          %span.checkbox
-            %input{:type => "checkbox"}
-        %li
-          %span.label striving for innovation
-          %span.checkbox
-            %input{:type => "checkbox"}
-        %li
-          %span.label change management
-          %span.checkbox
-            %input{:type => "checkbox"}
-        %li
-          %span.label cross-unit co-operation
-          %span.checkbox
-            %input{:type => "checkbox"}
-        %li
-          %span.label corporate responsibility
-          %span.checkbox
-            %input{:type => "checkbox"}
-        %li
-          %span.label role model function
-          %span.checkbox
-            %input{:type => "checkbox"}
-        %li
-          %span.label dealing with complexity
-          %span.checkbox
-            %input{:type => "checkbox"}
+        - Behaviour.all.order(:id).each do |behaviour|
+          %li
+            %span.label.leftsidebar_activity_label_font_size= behaviour.title
+            %span.checkbox
+              = check_box_tag 'behaviour', behaviour.id
     %li
       %a{href: participant_events_path}
         %i.icon-events

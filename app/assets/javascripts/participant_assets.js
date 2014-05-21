@@ -14,5 +14,6 @@
 //= require participants/modal
 //= require participants/jquery.uniform
 //= require participants/jquery.nanoscroller
+//= require participants/left_bar
 //= require participants/custom
 //= require jquery_ujs

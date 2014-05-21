@@ -94,6 +94,9 @@ en:
       new_note: 'NEW note'
     place_holder:
       note_content: 'write note_'
+    activities:
+      msg:
+        no_activities_found: 'No Activities Found'
   sign_in:
     caption:
       email: 'Email address'
@@ -109,4 +112,8 @@ en:
     participant:
       subject:
         welcome: 'Welcome'
+  pagination:
+    caption:
+      next: 'Next'
+      back: 'Back'
 

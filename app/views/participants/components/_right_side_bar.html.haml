@@ -1,7 +1,7 @@
 .rightsidebar
   .profilebox
     .profilepic
-      = image_tag 'images/profile-pic.png'
+      = image_tag (current_participant.photo.url(:medium))
     %p.name= current_participant.full_name
     %p= current_participant.job_title
     %p= get_division_name(current_participant.division)
