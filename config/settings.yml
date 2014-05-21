@@ -4,6 +4,11 @@ default_password: 'password'
 pagination:
   per_page: 10
 
+# Pagination for participants
+participants:
+  pagination:
+    per_page: 4
+
 defaults:
   date_format_in_views: '%d/%m/%Y'
 

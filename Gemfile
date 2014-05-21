@@ -38,6 +38,9 @@ gem 'jquery-turbolinks'
 
 gem "letter_opener", :group => :development
 
+# For pagination
+gem 'kaminari'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
