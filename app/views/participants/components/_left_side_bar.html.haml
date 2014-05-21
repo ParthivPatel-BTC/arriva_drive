@@ -1,7 +1,7 @@
 .leftsidebar
   %ul
     %li
-      = link_to '#' do
+      = link_to participant_dashboard_path do
         %i.icon-home
         Home
     %li
@@ -19,7 +19,7 @@
             %span.checkbox
               = check_box_tag 'behaviour', behaviour.id
     %li
-      %a{:href => "events.html"}
+      %a{href: participant_events_path}
         %i.icon-events
         Events
     %li

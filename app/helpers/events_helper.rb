@@ -10,4 +10,8 @@ module EventsHelper
   def decide_event_form_method(event)
     event.new_record? ? :post : :put
   end
+
+  def event_listing_class(event)
+    event.is_completed? ? 'active' : ''
+  end
 end
