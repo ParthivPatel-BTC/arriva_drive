@@ -34,18 +34,3 @@
       %a{:href => "index.html"}
         %i.icon-logout
         LOGOUT
-
-:javascript
-  $(document).ready(function() {
-    $("input#behaviour[type=checkbox]").on("change", function() {
-
-    var checkeditems = $('input#behaviour:checked')
-                       .map(function() { return $(this).val() })
-                       .get()
-                       .join(",");
-      $.ajax({
-        url: "/participants/activities?behaviour_id="+checkeditems,
-        dataType: "script"
-      });
-    });
-  });

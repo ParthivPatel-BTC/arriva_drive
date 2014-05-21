@@ -3,35 +3,18 @@ class Participant::ActivitiesController < ApplicationController
 
   def index
     respond_to do |format|
-      if params[:page] && !params[:behaviour_id].present?
-        @activities = Activity.page(params[:page]).per(Settings.participants.pagination.per_page).order('title ASC')
-        format.js{
-        render file: 'participant/activities/index'
-      }
-      elsif params[:behaviour_id]
-        if params[:behaviour_id].present?
-          @activities = Activity.find_activities_by_behaviour_id(split_params_for_filter(params[:behaviour_id])).page(params[:page]).per(Settings.participants.pagination.per_page)
-        else
-          @activities = Activity.page(params[:page]).per(Settings.participants.pagination.per_page).order('title ASC')
-        end
-        format.js{
-        render file: 'participant/activities/index'
-      }
-      elsif params[:behaviour_id] && params[:page]
-        @activities = Activity.find_activities_by_behaviour_id(split_params_for_filter(params[:behaviour_id])).page(params[:page]).per(Settings.participants.pagination.per_page)
+      @activities = Activity.get_activities(params)
+      if params[:page] || params[:behaviour_id].present?
         format.js{
         render file: 'participant/activities/index'
       }
       else
-      @activities = Activity.page(params[:page]).per(Settings.participants.pagination.per_page).order('title ASC')
-        format.html
+        @activities = Activity.get_activities_for_pagination(params)
+        format.js{
+        render file: 'participant/activities/index'
+      }
+      format.html
       end
     end
-  end
-
-  private
-
-  def split_params_for_filter(params)
-    params.split(',')
   end
 end

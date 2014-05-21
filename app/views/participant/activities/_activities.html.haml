@@ -1,21 +1,24 @@
 = form_tag(participant_activities_path, remote: true)  do
-  .contentarea
-    .activities
-      %ul
-        - @activities.each do |activity|
-          %li
-            %i{class: get_activity_icon_class(activity.activity_type)}
-            .activitiesinfo
-              %h5
-                = link_to(activity.title, '#')
-              %p.black= activity.behaviour.title if activity.behaviour.present?
-              %p 500 points
-      .pagingrow
-        = paginate @activities, exclude: [:first, :last], remote: true
+  - if @activities.present?
+    .contentarea
+      .activities
+        %ul
+          - @activities.each do |activity|
+            %li
+              %i{class: get_activity_icon_class(activity.activity_type)}
+              .activitiesinfo
+                %h5
+                  = link_to(activity.title, '#')
+                %p.black= activity.behaviour.title if activity.behaviour.present?
+                %p 500 points
+        .pagingrow
+          = paginate @activities, exclude: [:first, :last], remote: true
+  - else
+    = render partial: 'participant/activities/no_activities_found'
 
 :javascript
   $(document).ready(function() {
-    var checkeditems = $('input#behaviour:checked')
+    var checkedBehaviours = $('input#behaviour:checked')
                        .map(function() { return $(this).val() })
                        .get()
                        .join(",");
@@ -28,7 +31,7 @@
         var pageNum = '1';
       }
       $.ajax({
-        url: "/participants/activities?page="+pageNum+"&behaviour_id="+checkeditems,
+        url: "/participants/activities?page="+pageNum+"&behaviour_id="+checkedBehaviours,
         dataType: "script"
       });
     });
