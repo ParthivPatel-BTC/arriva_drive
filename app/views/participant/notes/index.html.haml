@@ -1,0 +1,37 @@
+%section.mainsection
+  = render partial: 'participants/components/left_side_bar'
+  .contentarea
+    .eventssection
+      #about.nano
+        .nano-content
+          .notes
+            %ul
+              - @notes.each do |note|
+                %li
+                  .notesicon
+                    %a{ href: 'javascript:void(null);' }
+                      %i.icon-share
+                    = link_to participant_note_path(note), method: :delete, confirm: t('common.msg.confirm') do
+                      %i.icon-delete
+                  .notedetails
+                    %h5.uppercase
+                      %span.date= formatted_date(note.updated_at, true)
+                      %span.time= formatted_time(note.updated_at)
+                      %span.eventname= note.content
+                    %p.uppercase
+                      %span.green TAGS:
+                      =# note.tags.each do |tags|
+          .monthright
+            %a{:href => "#"} PRESENT
+            %a{:href => "#"} Mar
+            %a{:href => "#"} FEB
+            %a{:href => "#"} JAN
+            %a{:href => "#"} DEC
+            %a{:href => "#"} NOV
+            %br
+      .pagingrow.notes
+        %span.left.countnote= pluralize(@notes.count, 'note')
+        %a.right{ href: new_participant_note_path }
+          = t('participant.caption.new_note')
+          %i.icon-notes
+  = render partial: 'participants/components/right_side_bar'
