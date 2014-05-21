@@ -7,6 +7,7 @@ en:
       back: 'Back'
       show: 'View'
       button: 'Create New'
+      submit: 'Submit'
     msg:
       warning:
         unauthorize: 'Sorry, You are not authorize to access this page'
@@ -101,13 +102,15 @@ en:
     caption:
       email: 'Email address'
       password: 'Password'
+      confirm_password: 'Confirm Password'
       forgot_password: 'Forgot Pasword?'
       button:
         sign_in: 'Sign in'
         log_out: 'Log Out'
     page_content:
       header:
-        'please_sign_in': 'Please sign in'
+        please_sign_in: 'Please sign in'
+        change_password: 'Change Password'
   mailer:
     participant:
       subject:

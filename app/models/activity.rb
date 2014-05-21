@@ -26,6 +26,10 @@ class Activity < ActiveRecord::Base
     end
   end
 
+  def behaviour_name
+    behaviour.try(:title)
+  end
+
   private
 
   def self.split_params_for_filter(params)

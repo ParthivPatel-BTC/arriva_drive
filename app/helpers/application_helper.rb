@@ -53,7 +53,7 @@ module ApplicationHelper
   end
 
   def common_text_field_class
-    'col-md-12'
+    'form-control'
   end
 
   def link_to_submit(*args, &block)
