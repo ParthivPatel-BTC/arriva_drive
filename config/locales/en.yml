@@ -10,6 +10,7 @@ en:
     msg:
       warning:
         unauthorize: 'Sorry, You are not authorize to access this page'
+      confirm: 'Are you sure?'
     panel:
       msg:
         collection_empty: "No %{collection_type} Found."
@@ -83,10 +84,16 @@ en:
     msg:
       error:
         score_validation: 'Scores must be numeric'
+      success:
+        note_creation: 'Note created successfully'
+        note_destroy: 'Note removed successfully'
     headings:
       welcome: "welcome back %{name}"
     caption:
       notes: 'notes'
+      new_note: 'NEW note'
+    place_holder:
+      note_content: 'write note_'
   sign_in:
     caption:
       email: 'Email address'

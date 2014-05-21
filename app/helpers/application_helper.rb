@@ -33,8 +33,13 @@ module ApplicationHelper
     str.try(:size) || 0
   end
 
-  def formatted_date(date)
+  def formatted_date(date, participant_view=false)
+    return date.try(:strftime, '%d.%m.%Y') if participant_view
     date.strftime('%d/%m/%Y') rescue nil
+  end
+
+  def formatted_time(time)
+    time.strftime('%H.%M')
   end
 
   def determine_root_path
