@@ -9,7 +9,7 @@
         %i.icon-values
         Values / behaviours
     %li.active
-      %a{:href => "activities.html"}
+      = link_to(participant_activities_path) do
         %i.icon-activities
         = t('admin.panel.titles.activities')
       %ul
