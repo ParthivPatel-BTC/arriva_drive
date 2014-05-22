@@ -91,6 +91,7 @@ en:
     headings:
       welcome: "welcome back %{name}"
     caption:
+      present: 'PRESENT'
       notes: 'notes'
       new_note: 'NEW note'
     place_holder:

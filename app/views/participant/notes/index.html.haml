@@ -4,31 +4,32 @@
     .eventssection
       #about.nano
         .nano-content
-          .notes
+          .notes-custom
             %ul
-              - @notes.each do |note|
+              - last_month = nil
+              - @notes.each_with_index do |note, index|
                 %li
-                  .notesicon
-                    %a{ href: 'javascript:void(null);' }
-                      %i.icon-share
-                    = link_to participant_note_path(note), method: :delete, confirm: t('common.msg.confirm') do
-                      %i.icon-delete
-                  .notedetails
-                    %h5.uppercase
-                      %span.date= formatted_date(note.updated_at, true)
-                      %span.time= formatted_time(note.updated_at)
-                      %span.eventname= note.content
-                    %p.uppercase
-                      %span.green TAGS:
-                      =# note.tags.each do |tags|
-          .monthright
-            %a{:href => "#"} PRESENT
-            %a{:href => "#"} Mar
-            %a{:href => "#"} FEB
-            %a{:href => "#"} JAN
-            %a{:href => "#"} DEC
-            %a{:href => "#"} NOV
-            %br
+                  .notes-left
+                    .notesicon
+                      %a{ href: 'javascript:void(null);' }
+                        %i.icon-share
+                      = link_to participant_note_path(note), method: :delete, data: { confirm: t('common.msg.confirm') } do
+                        %i.icon-delete
+                    .notedetails
+                      %h5.uppercase
+                        %span.date= formatted_date(note.updated_at, true)
+                        %span.time= formatted_time(note.updated_at)
+                        %span.eventname= note.content
+                      %p.uppercase
+                        %span.green TAGS:
+                        =# note.tags.each do |tags|
+                  .notes-right
+                    - if index == 0
+                      = t('participant.caption.present')
+                      - last_month = note_creation_month(note)
+                    - else
+                      - month = note_creation_month(note)
+                      = last_month = month if last_month != month
       .pagingrow.notes
         %span.left.countnote= pluralize(@notes.count, 'note')
         %a.right{ href: new_participant_note_path }

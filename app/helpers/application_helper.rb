@@ -63,4 +63,8 @@ module ApplicationHelper
   def current_participant_notes_count
     current_participant.notes.count rescue nil
   end
+
+  def note_creation_month(note)
+    note.created_at.strftime('%B %Y').upcase
+  end
 end
