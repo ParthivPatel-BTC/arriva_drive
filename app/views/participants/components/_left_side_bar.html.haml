@@ -3,15 +3,15 @@
     %li{ class: left_side_bar_class('home') }
       = link_to participant_dashboard_path do
         %i.icon-home
-        Home
+        = t('participant.nav_bar.home')
     %li{ class: left_side_bar_class('behaviours') }
-      %a{ href: "#" }
+      %a{ href: participant_behaviours_path }
         %i.icon-values
-        Values / behaviours
+        = t('participant.nav_bar.behaviours')
     %li{ class: left_side_bar_class('activities') }
       = link_to(participant_activities_path) do
         %i.icon-activities
-        = t('admin.panel.titles.activities')
+        = t('participant.nav_bar.activities')
       - if is_activity_controller?
         %ul
           - Behaviour.all.order(:id).each do |behaviour|
@@ -22,16 +22,16 @@
     %li{ class: left_side_bar_class('events') }
       %a{ href: participant_events_path }
         %i.icon-events
-        Events
+        = t('participant.nav_bar.events')
     %li{ class: left_side_bar_class('notes') }
       %a{ href: participant_notes_path }
         %i.icon-notes
-        NOTES
+        = t('participant.nav_bar.notes')
     %li{ class: left_side_bar_class('networks') }
       %a{ href: "#" }
         %i.icon-network
-        My network
+        = t('participant.nav_bar.network')
     %li.logout
       = link_to destroy_participant_session_path, method: :delete do
         %i.icon-logout
-        LOGOUT
+        = t('participant.nav_bar.logout')
