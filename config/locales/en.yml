@@ -115,6 +115,15 @@ en:
       notes: 'NOTES'
       network: 'My network'
       logout: 'LOGOUT'
+    dashboard:
+      caption:
+        view: 'VIEW'
+    notes:
+      msg:
+       no_notes_found: 'No Notes Found'
+    events:
+      msg:
+       no_events_found: 'No Events Found'
   sign_in:
     caption:
       email: 'Email address'
