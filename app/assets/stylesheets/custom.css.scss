@@ -1,6 +1,7 @@
 //========Override boostrap
 .pad-top-50 {
   padding-top: 50px;
+  font-family: Arial !important;
 }
 .starter-template {
   padding: 40px 15px;
@@ -28,6 +29,7 @@
 .spacer45 { height: 45px; }
 .spacer50 { height: 50px; }
 .spacer65 { height: 65px; }
+.spacer70 { height: 70px; }
 .spacer75 { height: 75px; }
 .spacer100 { height: 100px; }
 .spacer200 { height: 200px; }
@@ -200,4 +202,11 @@
 //===========Buttons in all forms
 .btn_forms_width {
     width: 78% !important;
+}
+
+//===========For Performance Summary
+.center-justified {
+  text-align: justify;
+  margin: 0 auto;
+  width: 26em;
 }

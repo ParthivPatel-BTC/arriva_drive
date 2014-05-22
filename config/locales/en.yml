@@ -7,9 +7,11 @@ en:
       back: 'Back'
       show: 'View'
       button: 'Create New'
+      submit: 'Submit'
     msg:
       warning:
         unauthorize: 'Sorry, You are not authorize to access this page'
+      confirm: 'Are you sure?'
     panel:
       msg:
         collection_empty: "No %{collection_type} Found."
@@ -83,10 +85,17 @@ en:
     msg:
       error:
         score_validation: 'Scores must be numeric'
+      success:
+        note_creation: 'Note created successfully'
+        note_destroy: 'Note removed successfully'
     headings:
       welcome: "welcome back %{name}"
     caption:
+      present: 'PRESENT'
       notes: 'notes'
+      new_note: 'NEW note'
+    place_holder:
+      note_content: 'write note_'
     activities:
       msg:
         no_activities_found: 'No Activities Found'
@@ -98,17 +107,27 @@ en:
         level: 'LEVEl %{level}'
       msg:
         no_networks_found: 'No Networks Found'
+    nav_bar:
+      home: 'Home'
+      behaviours: 'Values / behaviours'
+      activities: 'Activities'
+      events: 'Events'
+      notes: 'NOTES'
+      network: 'My network'
+      logout: 'LOGOUT'
   sign_in:
     caption:
       email: 'Email address'
       password: 'Password'
+      confirm_password: 'Confirm Password'
       forgot_password: 'Forgot Pasword?'
       button:
         sign_in: 'Sign in'
         log_out: 'Log Out'
     page_content:
       header:
-        'please_sign_in': 'Please sign in'
+        please_sign_in: 'Please sign in'
+        change_password: 'Change Password'
   mailer:
     participant:
       subject:

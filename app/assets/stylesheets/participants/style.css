@@ -267,7 +267,8 @@ header{ margin-top:50px; margin-bottom:80px;}
 
 .values{ position:relative; display:block;}
 .values img.colorbg{position:absolute; left:0px; top:0px; z-index:-1; display:none;}
-.circulcolordefult{ background:#ffffff; color:#1d747f;}
+#circulcolor1, #circulcolor2, #circulcolor3, #circulcolor4, #circulcolor5{ cursor:pointer;}
+.circulcolordefult{ background:rgba(255,255,255,0.8); color:#1d747f;}
 .circulcolor1{ background:#008090; color:#fff;}
 .circulcolor2{ background:#f37830;}
 .circulcolor3{ background:#00446a;}
@@ -275,7 +276,7 @@ header{ margin-top:50px; margin-bottom:80px;}
 .circulcolor5{ background:#9561a8;}
 .values .row{ clear:both; margin-bottom:10px;}
 .circulbox{position:relative; width:75px; height:75px; border-radius:100%; -moz-border-radius:100%; -webkit-border-radius:100%; display:inline-block; margin-right:74px; text-align:center;}
-.circulbox span{display: table-cell; vertical-align: middle; height:75px; text-transform:uppercase; font-size:10px;}
+.circulbox span{display: table-cell; vertical-align: middle; height:75px; text-transform:uppercase; font-size:9px; padding:0 5px;}
 .circulbox a{ color:#1d747f;}
 .circulcolor1 a, .circulcolor2 a, .circulcolor3 a, .circulcolor4 a, .circulcolor5 a{ color:#fff;}
 .circulbox:last-child{ margin-right:0px;}

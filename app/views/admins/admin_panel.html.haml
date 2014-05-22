@@ -7,6 +7,6 @@
     = render partial: "shared/panel", locals: { collections: @participants, title: t('admin.panel.titles.participant'), title_method: 'full_name', subtitle_method: 'job_title', new_path: new_participant_path, edit_path: 'edit_participant_path', show_path: 'show_participant_path'}
 
   .col-md-4.col-xs-12
-    = render partial: "shared/panel", locals: { collections: @activities, title: t('admin.panel.titles.activities'), title_method: 'title', subtitle_method: 'activity_type', new_path: new_activity_path, edit_path: 'edit_activity_path', show_path: 'activity_path' }
+    = render partial: "shared/panel", locals: { collections: @activities, title: t('admin.panel.titles.activities'), title_method: 'title', subtitle_method: 'behaviour_name', new_path: new_activity_path, edit_path: 'edit_activity_path', show_path: 'activity_path' }
   .col-md-4.col-xs-12
     = render partial: "shared/panel", locals: { collections: @events, title: t('admin.panel.titles.events'), title_method: 'title', subtitle_method: 'event_date_formatted', new_path: new_event_path, edit_path: 'edit_event_path', show_path: 'event_path' }

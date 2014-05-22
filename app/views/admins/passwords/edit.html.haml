@@ -1,14 +1,14 @@
-%h2 Change your password
-= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
-  = devise_error_messages!
-  = f.hidden_field :reset_password_token
-  %div
-    = f.label :password, "New password"
-    %br/
-    = f.password_field :password, autofocus: true, autocomplete: "off"
-  %div
-    = f.label :password_confirmation, "Confirm new password"
-    %br/
-    = f.password_field :password_confirmation, autocomplete: "off"
-  %div= f.submit "Change my password"
-= render "admins/shared/links"
+.starter-template
+  = form_for(resource, as: resource_name, url: password_path(resource_name), :html => { method: :put, :class => "form-signin"}) do |f|
+    = f.hidden_field :reset_password_token
+    - if devise_error_messages!.present?
+      .alert.alert-danger
+        = devise_error_messages!
+    %h2.form-signin-heading.pull-left
+      %b.dark-blue=t('sign_in.page_content.header.change_password')
+    = f.password_field :password, autofocus: true, placeholder: t('sign_in.caption.password'), class: 'form-control'
+    = f.password_field :password_confirmation, placeholder: t('sign_in.caption.confirm_password'), class: 'form-control'
+    %label.pull-left
+      = render 'admins/shared/links'
+    .spacer45.spacer-width
+    = f.submit t('common.caption.submit'), class: 'btn btn_sign_in pull-left'

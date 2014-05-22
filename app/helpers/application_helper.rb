@@ -33,8 +33,13 @@ module ApplicationHelper
     str.try(:size) || 0
   end
 
-  def formatted_date(date)
+  def formatted_date(date, participant_view=false)
+    return date.try(:strftime, '%d.%m.%Y') if participant_view
     date.strftime('%d/%m/%Y') rescue nil
+  end
+
+  def formatted_time(time)
+    time.strftime('%H.%M')
   end
 
   def determine_root_path
@@ -48,7 +53,7 @@ module ApplicationHelper
   end
 
   def common_text_field_class
-    'col-md-12'
+    'form-control'
   end
 
   def link_to_submit(*args, &block)
@@ -57,5 +62,17 @@ module ApplicationHelper
 
   def current_participant_notes_count
     current_participant.notes.count rescue nil
+  end
+
+  def note_creation_month(note)
+    note.created_at.strftime('%B %Y').upcase
+  end
+
+  def left_side_bar_class(side_bar_name)
+    controller_name == side_bar_name ? 'active' : nil
+  end
+
+  def is_activity_controller?
+    controller_name == 'activities'
   end
 end
