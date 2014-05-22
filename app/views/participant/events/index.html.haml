@@ -7,7 +7,7 @@
           .events
             %ul
               - @events.each do |event|
-                %li{class: event_listing_class(event)}
+                %li#events-li-width{class: event_listing_class(event)}
                   .left
                     %h5.uppercase
                       %span.date= event.event_date
@@ -20,7 +20,7 @@
                       %a.right{:href => "#"}
                         share
                         %i.icon-share
-                  .right= image_tag event.image.url
+                  .right= image_tag event.image.url(:medium)
                   - if event.is_completed?
                     .completed completed
           .monthright
