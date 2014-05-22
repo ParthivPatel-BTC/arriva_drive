@@ -1,6 +1,7 @@
 class Participant::ActivitiesController < ApplicationController
   layout 'participant'
   before_filter :participant_user_required!
+  before_filter :find_set_activity, only: [:show, :new_review, :create_review]
 
   def index
     respond_to do |format|
@@ -20,7 +21,30 @@ class Participant::ActivitiesController < ApplicationController
   end
 
   def show
-    @activity = Activity.find_by_id(params[:id])
     @mcq = @activity.multiple_choice_question
+  end
+
+  def new_review
+    @review = Review.new
+  end
+
+  def create_review
+    @review = current_participant.review.create(review_params)
+    if @review.persisted?
+      flash[:notice] = t('participant.msg.success.review_creation')
+      redirect_to participant_activity_path(@participant)
+    else
+      render :new
+    end
+  end
+
+  private
+
+  def find_set_activity
+    @activity = Activity.find_by_id(params[:id])
+  end
+
+  def review_params
+    params.require(:review).permit(:review_text)
   end
 end
