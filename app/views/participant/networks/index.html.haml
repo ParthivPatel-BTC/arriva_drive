@@ -5,77 +5,32 @@
       #about.nano
         .nano-content
           .mynetworklist
-            %ul
-              %li
-                .profilepic
-                  %img{alt: "", src: "images/img-network1.png", title: ""}/
-                .mynetworkdetails
-                  %h5 ANNCHI CHOW
-                  %p LEVEL 2
-                  %p job title
-                  %p division
-                %a.noteslinks{href: "#"}
-                  %i.icon-notes
-              %li
-                .profilepic
-                  %img{alt: "", src: "images/img-network2.png", title: ""}/
-                .mynetworkdetails
-                  %h5 ANNCHI CHOW
-                  %p LEVEL 2
-                  %p job title
-                  %p division
-                %a.noteslinks{href: "#"}
-                  %i.icon-notes
-              %li
-                .profilepic
-                  %img{alt: "", src: "images/img-network3.png", title: ""}/
-                .mynetworkdetails
-                  %h5 ANNCHI CHOW
-                  %p LEVEL 2
-                  %p job title
-                  %p division
-                %a.noteslinks{href: "#"}
-                  %i.icon-notes
-              %li
-                .profilepic
-                  %img{alt: "", src: "images/img-network4.png", title: ""}/
-                .mynetworkdetails
-                  %h5 ANNCHI CHOW
-                  %p LEVEL 2
-                  %p job title
-                  %p division
-                %a.noteslinks{href: "#"}
-                  %i.icon-notes
+            - if @networks.present?
+              = render partial: 'participant/networks/current_participant_networks'
+            - elsif @participant.present?
+              = render partial: 'participant/networks/networks'
+            - else
+              = render partial: 'participant/networks/no_participant_in_network'
           .monthalpha
-            %a{href: "#"} a
-            %a{href: "#"} b
-            %a{href: "#"} c
-            %a{href: "#"} d
-            %a{href: "#"} e
-            %a{href: "#"} f
-            %a{href: "#"} g
-            %a{href: "#"} h
-            %a{href: "#"} i
-            %a{href: "#"} j
-            %a{href: "#"} k
-            %a{href: "#"} l
-            %a{href: "#"} m
-            %a{href: "#"} n
-            %a{href: "#"} o
-            %a{href: "#"} p
-            %a{href: "#"} q
-            %a{href: "#"} r
-            %a{href: "#"} s
-            %a{href: "#"} t
-            %a{href: "#"} u
-            %a{href: "#"} v
-            %a{href: "#"} w
-            %a{href: "#"} x
-            %a{href: "#"} y
-            %a{href: "#"} z
+            - ('A' .. 'Z').to_a.each do |e|
+              = link_to(e, 'javascript:void(0)', id: 'alpha_search', style: "margin-bottom: #{set_margin_for_alpha_character(@participants.size)}px !important;")
             %br/
-      .pagingrow
-        %a{href: "#"}
-          %i.icon-info
-          ADD to network
   = render partial: 'participants/components/right_side_bar'
+
+:javascript
+  $(document).ready(function() {
+    $("a[id='alpha_search']").on("click", function (e) {
+      $.ajax({
+        url: "/participants/seach_by_alpha_character?alpha_character=" + $(this).text(),
+        dataType: "script"
+      });
+    });
+
+    $("#view_all_participants, .view_all_participants").on("click", function () {
+      $.ajax({
+        url: "/participants/all_participants?view_all=true",
+        dataType: "script"
+      });
+    });
+
+  });
