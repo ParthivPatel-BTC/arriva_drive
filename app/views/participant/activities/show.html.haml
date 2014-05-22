@@ -1,0 +1,37 @@
+%section.mainsection
+  = render partial: 'participants/components/left_side_bar'
+  .contentarea
+    .sustainablesection
+      %h4
+        %i.icon-sustainable>
+        = @activity.title
+      %ul
+        %li.boxbg.participant-box-width
+          .leftblock
+            %p= @activity.description
+            %p.purchase
+              %i.icon-amazon
+              purchase
+          .rightblock
+            %img.right{:src => "images/img-mba.png"}
+        %li.boxbg.participant-box-width
+          .leftblock
+            %p.reading
+              %span after reading...
+              %br
+                = @mcq.question_text
+            %ul.answer.uppercase
+              - @mcq.answers .each do |answer|
+                %li
+                  %label= answer.answer_text
+                  %input{:type => "checkbox"}/
+          .rightblock &nbsp;
+      %h4.writereview
+        %a{:href => "#"}
+          %i.icon-write>
+          write review
+      .pagingrow
+        %a.right{ href: participant_activities_path }
+          BACK to activities
+          %i.icon-backtoactivities
+  = render partial: 'participants/components/right_side_bar'

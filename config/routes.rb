@@ -28,7 +28,7 @@ ArrivaDrive::Application.routes.draw do
   end
   scope '/participants' do
     get '/dashboard' => 'participant/home#dashboard', as: 'participant_dashboard'
-    resources :activities, controller: 'participant/activities', as: 'participant_activities'
+    resources :activities, only: [:index, :show], controller: 'participant/activities', as: 'participant_activities'
     resources :events, only: [:index], controller: 'participant/events', as: 'participant_events'
     resources :notes, except: [:show, :edit, :update], controller: 'participant/notes', as: 'participant_notes'
     resources :behaviours, only: [:index], controller: 'participant/behaviours', as: 'participant_behaviours'

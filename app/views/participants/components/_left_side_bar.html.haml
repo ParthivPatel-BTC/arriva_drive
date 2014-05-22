@@ -12,7 +12,7 @@
       = link_to(participant_activities_path) do
         %i.icon-activities
         = t('participant.nav_bar.activities')
-      - if is_activity_controller?
+      - if is_activity_index_page?
         %ul
           - Behaviour.all.order(:id).each do |behaviour|
             %li

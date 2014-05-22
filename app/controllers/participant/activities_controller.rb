@@ -1,5 +1,6 @@
 class Participant::ActivitiesController < ApplicationController
   layout 'participant'
+  before_filter :participant_user_required!
 
   def index
     respond_to do |format|
@@ -16,5 +17,10 @@ class Participant::ActivitiesController < ApplicationController
       format.html
       end
     end
+  end
+
+  def show
+    @activity = Activity.find_by_id(params[:id])
+    @mcq = @activity.multiple_choice_question
   end
 end

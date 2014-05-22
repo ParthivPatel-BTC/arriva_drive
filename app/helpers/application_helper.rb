@@ -72,7 +72,7 @@ module ApplicationHelper
     controller_name == side_bar_name ? 'active' : nil
   end
 
-  def is_activity_controller?
-    controller_name == 'activities'
+  def is_activity_index_page?
+    controller_name == 'activities' && action_name == 'index'
   end
 end
