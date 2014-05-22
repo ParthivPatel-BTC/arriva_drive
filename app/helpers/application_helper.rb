@@ -67,4 +67,12 @@ module ApplicationHelper
   def note_creation_month(note)
     note.created_at.strftime('%B %Y').upcase
   end
+
+  def left_side_bar_class(side_bar_name)
+    controller_name == side_bar_name ? 'active' : nil
+  end
+
+  def is_activity_controller?
+    controller_name == 'activities'
+  end
 end

@@ -1,36 +1,37 @@
 .leftsidebar
   %ul
-    %li
+    %li{ class: left_side_bar_class('home') }
       = link_to participant_dashboard_path do
         %i.icon-home
         Home
-    %li
-      %a{:href => "#"}
+    %li{ class: left_side_bar_class('behaviours') }
+      %a{ href: "#" }
         %i.icon-values
         Values / behaviours
-    %li.active
+    %li{ class: left_side_bar_class('activities') }
       = link_to(participant_activities_path) do
         %i.icon-activities
         = t('admin.panel.titles.activities')
-      %ul
-        - Behaviour.all.order(:id).each do |behaviour|
-          %li
-            %span.label.leftsidebar_activity_label_font_size= behaviour.title
-            %span.checkbox
-              = check_box_tag 'behaviour', behaviour.id
-    %li
-      %a{href: participant_events_path}
+      - if is_activity_controller?
+        %ul
+          - Behaviour.all.order(:id).each do |behaviour|
+            %li
+              %span.label.leftsidebar_activity_label_font_size= behaviour.title
+              %span.checkbox
+                = check_box_tag 'behaviour', behaviour.id
+    %li{ class: left_side_bar_class('events') }
+      %a{ href: participant_events_path }
         %i.icon-events
         Events
-    %li
+    %li{ class: left_side_bar_class('notes') }
       %a{ href: participant_notes_path }
         %i.icon-notes
         NOTES
-    %li
-      %a{:href => "#"}
+    %li{ class: left_side_bar_class('networks') }
+      %a{ href: "#" }
         %i.icon-network
         My network
     %li.logout
-      %a{:href => "index.html"}
+      = link_to destroy_participant_session_path, method: :delete do
         %i.icon-logout
         LOGOUT
