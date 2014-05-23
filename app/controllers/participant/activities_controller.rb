@@ -1,4 +1,5 @@
 class Participant::ActivitiesController < ApplicationController
+  require 'screen_scraping_service'
   layout 'participant'
   before_filter :participant_user_required!
   before_filter :find_set_activity, only: [:show, :new_review, :create_review]
@@ -22,6 +23,7 @@ class Participant::ActivitiesController < ApplicationController
 
   def show
     @mcq = @activity.multiple_choice_question
+    @activity_image = ScreenScrapingService.fetch_data_from_web(@activity.link)
   end
 
   def new_review

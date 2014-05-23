@@ -97,6 +97,8 @@ en:
     place_holder:
       note_content: 'write note_'
     activities:
+      caption:
+        purchase: 'PURCHASE'
       msg:
         no_activities_found: 'No Activities Found'
     nav_bar:

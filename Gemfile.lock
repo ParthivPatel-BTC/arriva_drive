@@ -79,8 +79,11 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.25.1)
+    mini_portile (0.6.0)
     minitest (4.7.5)
     multi_json (1.10.0)
+    nokogiri (1.6.2.1)
+      mini_portile (= 0.6.0)
     orm_adapter (0.5.0)
     paperclip (4.1.1)
       activemodel (>= 3.0.0)
@@ -163,6 +166,7 @@ DEPENDENCIES
   jquery-turbolinks
   kaminari
   letter_opener
+  nokogiri (~> 1.6.2.1)
   paperclip (~> 4.1)
   pg
   rails (= 4.0.5)

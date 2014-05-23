@@ -3,17 +3,18 @@
   .contentarea
     .sustainablesection
       %h4
-        %i.icon-sustainable>
+        %i{class: "#{deside_icon_class(@activity.link)}"}
         = @activity.title
       %ul
-        %li.boxbg.participant-box-width
+        %li.boxbg.participant-box-width.participant-width-fixed
           .leftblock
             %p= @activity.description
-            %p.purchase
-              %i.icon-amazon
-              purchase
+            %p
+              = link_to(@activity.link, class: 'purchase', target: '_blank') do
+                %i{class: "#{deside_icon_class(@activity.link)}"}
+                = t('participant.activities.caption.purchase')
           .rightblock
-            %img.right{:src => "images/img-mba.png"}
+            = image_tag(@activity_image)
         %li.boxbg.participant-box-width
           .leftblock
             %p.reading

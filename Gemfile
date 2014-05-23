@@ -40,7 +40,7 @@ gem "letter_opener", :group => :development
 
 # For pagination
 gem 'kaminari'
-
+gem 'nokogiri', '~> 1.6.2.1'
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
