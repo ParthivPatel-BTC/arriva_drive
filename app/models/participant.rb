@@ -3,6 +3,7 @@ class Participant < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   has_many :scores
   has_many :notes, foreign_key: 'owner_id'
+  has_many :activity_answer_participants
 
   paperclip_options = {
       styles: {

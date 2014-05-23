@@ -1,7 +1,7 @@
 class Participant::ActivitiesController < ApplicationController
   layout 'participant'
   before_filter :participant_user_required!
-  before_filter :find_set_activity, only: [:show, :new_review, :create_review]
+  before_filter :find_set_activity, only: [:show, :new_review, :create_review, :answer_question]
 
   def index
     respond_to do |format|
@@ -36,6 +36,10 @@ class Participant::ActivitiesController < ApplicationController
     else
       render :new
     end
+  end
+
+  def answer_question
+    
   end
 
   private

@@ -2,6 +2,7 @@ class Activity < ActiveRecord::Base
 	belongs_to :behaviour
 	has_one :multiple_choice_question
   has_one :review
+  has_many :activity_answer_participants
 
   accepts_nested_attributes_for :multiple_choice_question, allow_destroy: true
 
