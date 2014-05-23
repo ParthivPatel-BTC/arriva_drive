@@ -32,7 +32,11 @@ ArrivaDrive::Application.routes.draw do
     resources :notes, except: [:show, :edit, :update], controller: 'participant/notes', as: 'participant_notes'
     resources :behaviours, only: [:index], controller: 'participant/behaviours', as: 'participant_behaviours'
     resources :activities, only: [:index, :show], controller: 'participant/activities', as: 'participant_activities' do
-      post 'answer_question', on: :member
+      member do
+        post 'answer_question'
+        get 'new_review'
+        post 'create_review'
+      end
     end
   end
 end

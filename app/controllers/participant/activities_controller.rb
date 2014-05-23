@@ -29,10 +29,12 @@ class Participant::ActivitiesController < ApplicationController
   end
 
   def create_review
-    @review = current_participant.review.create(review_params)
+    @review = current_participant.reviews.create(review_params.merge(
+      { activity_id: @activity.id }
+    ))
     if @review.persisted?
       flash[:notice] = t('participant.msg.success.review_creation')
-      redirect_to participant_activity_path(@participant)
+      redirect_to participant_activity_path(@activity)
     else
       render :new
     end

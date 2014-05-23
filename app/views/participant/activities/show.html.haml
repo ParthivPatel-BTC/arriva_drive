@@ -15,11 +15,18 @@
           .rightblock
             %img.right{:src => "images/img-mba.png"}
         %li.boxbg.participant-box-width#activity-answers-list
-          = render partial: 'participant/activities/answers_listing'
+          - if current_participant.has_answered_this_activity?(@activity)
+            = render partial: 'participant/activities/answer'
+          - else
+            = render partial: 'participant/activities/answers_listing'
       %h4.writereview
-        %a{:href => "#"}
-          %i.icon-write>
-          write review
+        - if current_participant.has_reviewed_this_activity?(@activity)
+          .font-size-11
+            = current_participant.get_review_text_of_activity(@activity)
+        - else
+          %a{ href: new_review_participant_activity_path(@activity) }
+            %i.icon-write>
+            write review
       .pagingrow
         %a.right{ href: participant_activities_path }
           BACK to activities

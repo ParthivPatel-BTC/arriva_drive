@@ -3,6 +3,7 @@ class Activity < ActiveRecord::Base
 	has_one :multiple_choice_question
   has_one :review
   has_many :activity_answer_participants
+  has_one :review
 
   accepts_nested_attributes_for :multiple_choice_question, allow_destroy: true
 
@@ -30,6 +31,10 @@ class Activity < ActiveRecord::Base
 
   def behaviour_name
     behaviour.try(:title)
+  end
+
+  def correct_answer
+    multiple_choice_question.try(:correct_answer)
   end
 
   private
