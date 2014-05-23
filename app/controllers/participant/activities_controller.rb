@@ -39,11 +39,17 @@ class Participant::ActivitiesController < ApplicationController
   end
 
   def answer_question
+    @mcq = @activity.multiple_choice_question
     @activity_answer_participant = ActivityAnswerParticipant.create(
       activity_id: @activity.id,
       participant_id: current_participant.id,
       answer_id: params[:answer_id]
     )
+    @popup_msg = if @activity_answer_participant.is_correct?
+        t('participant.msg.success.correct_answer')
+      else
+        t('participant.msg.success.wrong_answer')
+    end
   end
 
   private

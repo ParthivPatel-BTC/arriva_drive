@@ -41,3 +41,15 @@
 .participant-box-width{
   min-width:380px;
 }
+
+.correct-answer{
+  background-color: #98A198;
+  border-radius: 7px;
+}
+
+.noTitleStuff .ui-dialog-titlebar {display:none}
+
+#answer-dialog-box > span {
+  font-size: 16px;
+  font-weight: bolder;
+}

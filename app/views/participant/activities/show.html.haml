@@ -14,18 +14,8 @@
               purchase
           .rightblock
             %img.right{:src => "images/img-mba.png"}
-        %li.boxbg.participant-box-width
-          .leftblock
-            %p.reading
-              %span after reading...
-              %br
-                = @mcq.question_text
-            %ul.answer.uppercase
-              - @mcq.answers .each do |answer|
-                %li
-                  %label= answer.answer_text
-                  %input{:type => "checkbox"}/
-          .rightblock &nbsp;
+        %li.boxbg.participant-box-width#activity-answers-list
+          = render partial: 'participant/activities/answers_listing'
       %h4.writereview
         %a{:href => "#"}
           %i.icon-write>
@@ -35,3 +25,6 @@
           BACK to activities
           %i.icon-backtoactivities
   = render partial: 'participants/components/right_side_bar'
+
+#answer-dialog-box
+  %span#answer-popup-msg

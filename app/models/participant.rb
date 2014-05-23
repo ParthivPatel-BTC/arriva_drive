@@ -56,4 +56,12 @@ class Participant < ActiveRecord::Base
       Rails.logger.error "#{e.backtrace.first}: #{e.message} (#{e.class})"
     end
   end
+
+  def has_answered_this_activity?(activity)
+    ActivityAnswerParticipant.filter_by_activity_participant(activity, self).first.present?
+  end
+
+  def activity_answer(activity)
+    ActivityAnswerParticipant.filter_by_activity_participant(activity, self).first.try(:answer)
+  end
 end
