@@ -60,7 +60,7 @@ ArrivaDrive::Application.configure do
   # Precompile additional assets.
   # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
   config.assets.precompile += %w(participant_assets.js participant_assets.css)
-  config.assets.precompile += [ Dir["#{Rails.root}/app/assets/images/**/*"].reject {|fn| File.directory?(fn) } ]
+  config.assets.precompile += [ Dir["#{Rails.root}/app/assets/images/images/**/*"].reject {|fn| File.directory?(fn) } ]
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
