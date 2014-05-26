@@ -15,6 +15,8 @@ class ActivityAnswerParticipant < ActiveRecord::Base
   private
 
   def update_participant_score
-    participant.increase_score(activity, Settings.activity_points.correct_mcq_answer)
+    if is_correct?
+      participant.increase_score(activity, Settings.activity_points.correct_mcq_answer)
+    end
   end
 end
