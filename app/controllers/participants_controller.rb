@@ -71,7 +71,7 @@ class ParticipantsController < Devise::RegistrationsController
   def activity_params
     params.require(:participant).permit(
       :first_name, :last_name, :job_title, :division, :year_started, :photo, :performance_summary, :email, :password, :password_confirmation,
-        scores_attributes:[:id, :behaviour_id, :score]
+        scores_attributes:[:id, :scorable_id, :score, :scorable_type]
     )
   end
 
