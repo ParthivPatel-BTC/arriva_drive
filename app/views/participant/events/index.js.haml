@@ -1,0 +1,4 @@
+- if @events.present?
+  $('#events_content').html("#{escape_javascript(render 'events')}");
+/ - else
+/   $('#activities_content').html("#{escape_javascript(render 'no_activities_found')}");

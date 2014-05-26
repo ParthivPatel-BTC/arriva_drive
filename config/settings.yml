@@ -3,6 +3,7 @@ default_password: 'password'
 
 pagination:
   per_page: 10
+  events_per_page: 3
 
 # Pagination for participants
 participants:

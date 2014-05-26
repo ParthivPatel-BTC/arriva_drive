@@ -3,6 +3,15 @@ class Participant::EventsController < ApplicationController
   before_filter :participant_user_required!
 
   def index
-    @events = Event.order('event_date DESC')
+    respond_to do |format|
+      @events = Event.page(params[:page]).per(Settings.pagination.events_per_page).order('event_date DESC')
+      if params[:page].present?
+        format.js{
+        render file: 'participant/events/index'
+      }
+      else
+      format.html
+      end
+    end
   end
 end

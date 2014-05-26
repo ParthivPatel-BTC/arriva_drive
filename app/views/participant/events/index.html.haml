@@ -1,45 +1,5 @@
 %section.mainsection
   = render partial: 'participants/components/left_side_bar'
-  - if @events.blank?
-    .contentarea
-      .activities
-        %ul
-          %li
-            .activitiesinfo
-              %h5= t('participant.events.msg.no_events_found')
-  - else
-    .contentarea
-      .eventssection
-        #about.nano
-          .nano-content
-            .events
-              %ul
-                - @events.each do |event|
-                  %li#events-li-width{class: event_listing_class(event)}
-                    .left
-                      %h5.uppercase
-                        %span.date= event.event_date
-                        %span.time 16.23
-                        %span.eventname= event.location
-                      %p= event.description
-                      %p.links
-                        %a.left{:href => "#"}
-                          %i.icon-notes
-                        %a.right{:href => "#"}
-                          share
-                          %i.icon-share
-                    .right= image_tag event.image.url(:medium)
-                    - if event.is_completed?
-                      .completed completed
-            .monthright
-              %a.first{:href => "#"} April
-              %a.last{:href => "#"} Mar
-              %br
-        .pagingrow
-          %a.left{:href => "#"}
-            %i.icon-previus
-            BACK
-          %a.right{:href => "#"}
-            NEXT
-            %i.icon-next
+  #events_content
+    = render partial: 'participant/events/events'
   = render partial: 'participants/components/right_side_bar'
