@@ -30,9 +30,9 @@
                   - if event.is_completed?
                     .completed completed
           .monthright
-            %a.first{:href => "#"} April
-            %a.last{:href => "#"} Mar
-            %br
+            - @month_arr.each do |month|
+              = link_to(month)
+              %br
       .pagingrow
         = paginate @events, exclude: [:first, :last], remote: true
 
