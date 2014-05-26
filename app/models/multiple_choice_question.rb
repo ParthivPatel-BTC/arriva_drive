@@ -4,6 +4,10 @@ class MultipleChoiceQuestion < ActiveRecord::Base
 
   accepts_nested_attributes_for :answers, allow_destroy: true, reject_if: :set_blank_answers_to_false
 
+  def correct_answer
+    answers.correct.first
+  end
+
   private
 
   def set_blank_answers_to_false(attrs)

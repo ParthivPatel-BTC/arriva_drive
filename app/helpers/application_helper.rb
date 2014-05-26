@@ -72,7 +72,26 @@ module ApplicationHelper
     controller_name == side_bar_name ? 'active' : nil
   end
 
-  def is_activity_controller?
-    controller_name == 'activities'
+  def is_activity_index_page?
+    controller_name == 'activities' && action_name == 'index'
+  end
+
+  # if question of activity has already been answered by current participant?
+  # then disable the answers otherwise don't disable
+  def answer_disabled_attr(activity)
+    'disabled' if current_participant.has_answered_this_activity?(activity)
+  end
+
+  # only highlight the correct answer if participant has attempted the question
+  def highlighter_class_for_answer(answer, activity)
+    return 'correct-answer' if answer.correct && current_participant.has_answered_this_activity?(activity)
+  end
+
+  def answer_checked_attr(answer, activity)
+    current_participant.activity_answer(activity).try(:id) == answer.id
+  end
+
+  def answer_check_box_class(answer, activity)
+    'correct-answer-chkbox' if answer_checked_attr(answer, activity)
   end
 end

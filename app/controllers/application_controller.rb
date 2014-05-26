@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_devise_permitted_parameters
-    registration_params = [:first_name, :last_name, :job_title, :division, :year_started, :photo, :performance_summary, :email, :password, :password_confirmation, scores_attributes: [:id, :behaviour_id, :score] ]
+    registration_params = [:first_name, :last_name, :job_title, :division, :year_started, :photo, :performance_summary, :email, :password, :password_confirmation, scores_attributes: [:id, :scorable_id, :score, :scorable_type] ]
 
     permission_for_create_update_participant(params[:action])
   end

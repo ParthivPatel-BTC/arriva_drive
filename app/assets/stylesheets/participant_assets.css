@@ -13,6 +13,7 @@
  *= require participants/modal-darktheme
  *= require participants/uniform.aristo
  *= require participants/nanoscroller
+ *= require jquery.ui.all
  *= require participants/style
  *= require participants/responsive
  *= require participants/custom

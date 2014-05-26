@@ -8,9 +8,9 @@
     %p= get_division_name(current_participant.division)
   .yourlevel
     %ul
-      - current_participant.scores.each do |score|
+      - current_participant.scores.behaviour_scores.each do |score|
         %li
-          = score.behaviour.title
+          = score.scorable.title
           %span.green= score.score
   .arriva
     = image_tag 'images/logo-arriva.png'

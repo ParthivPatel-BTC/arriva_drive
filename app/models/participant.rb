@@ -4,6 +4,8 @@ class Participant < ActiveRecord::Base
   has_many :scores
   has_many :networks, foreign_key: 'current_participant_id'
   has_many :notes, foreign_key: 'owner_id'
+  has_many :activity_answer_participants
+  has_many :reviews
 
   paperclip_options = {
       styles: {
@@ -30,7 +32,7 @@ class Participant < ActiveRecord::Base
   end
 
   def behaviour_score_level(behaviour_id)
-    score = scores.where(behaviour_id: behaviour_id, participant_id: id).first
+    score = scores.where(scorable_id: behaviour_id, participant_id: id).first
     if (0..110).include?(score)
       1
     elsif (111..1999).include?(score)
@@ -61,5 +63,59 @@ class Participant < ActiveRecord::Base
       Rails.logger.error "Failed to send email, email address: #{self.email}"
       Rails.logger.error "#{e.backtrace.first}: #{e.message} (#{e.class})"
     end
+  end
+
+  def has_answered_this_activity?(activity)
+    ActivityAnswerParticipant.filter_by_activity_participant(activity, self).first.present?
+  end
+
+  def activity_answer(activity)
+    ActivityAnswerParticipant.filter_by_activity_participant(activity, self).first.try(:answer)
+  end
+
+  def answer_of_activity(activity)
+    activity_answer_participants.find_by_activity_id(activity.id).answer
+  end
+
+  def has_given_correct_answer?(activity)
+    participants_answer = activity_answer_participants.find_by_activity_id(activity.id).answer
+    correct_answer = activity.correct_answer
+    participants_answer == correct_answer
+  end
+
+  def has_given_wrong_answer?(activity)
+    !has_given_correct_answer?(activity)
+  end
+
+  def has_reviewed_this_activity?(activity)
+    get_review_of_activity(activity).present?
+  end
+
+  def get_review_of_activity(activity)
+    reviews.find_by_activity_id(activity.id)
+  end
+
+  def get_review_text_of_activity(activity)
+    get_review_of_activity(activity).try(:review_text)
+  end
+
+  def create_score(scorable)
+    scores.create(
+      scorable_id: scorable.id,
+      scorable_type: scorable.class.to_s,
+      score: 0
+    )
+  end
+
+  def update_participant_score(activity, points, increase=true)
+    score = scores.by_activity(activity).first
+    if score.blank?
+      score = create_score(activity)
+    end
+    score.update_attribute(:score, score.score + points)
+  end
+
+  def increase_score(activity, points)
+    update_participant_score(activity, points, true)
   end
 end

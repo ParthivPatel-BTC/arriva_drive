@@ -23,4 +23,20 @@ module ActivitiesHelper
         'bigicon-putting'
       end
   end
+
+  # For deside icon class on activity detail page
+  def deside_icon_class(activity_link)
+    host = URI.parse(activity_link).host.downcase
+    host_name = host.start_with?('www.') ? host[4..-1] : host
+    if host_name.include? ('amazon')
+      'icon-amazon'
+    elsif host_name.include? ('youtube')
+      'icon-watchvideo'
+    elsif host_name.include?('apple') || host_name.include?('play.google')
+      'icon-watchvideo'
+    elsif host_name.include? ('flipboard')
+      'icon-sustainable'
+    else
+    end
+  end
 end
