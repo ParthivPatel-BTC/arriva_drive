@@ -1,0 +1,14 @@
+%ul
+  - @networks.each do |network|
+    %li
+      .profilepic
+        = image_tag(network.participant.photo.url(:thumb))
+      .mynetworkdetails
+        %h5= network.participant.full_name
+        %p LEVEL 2
+        %p= network.participant.job_title
+        %p= get_division_name(network.participant.division)
+.pagingrow
+  = link_to('javascript:void(0);', id: 'view_all_participants') do
+    %i.icon-previus
+    = t('pagination.caption.back')

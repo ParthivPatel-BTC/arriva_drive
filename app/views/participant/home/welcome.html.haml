@@ -10,14 +10,14 @@
           %p.number= current_participant_notes_count
           %p= t('participant.caption.notes')
           %p.view
-            %a{:href => "#"} VIEW
+            = link_to(t('participant.dashboard.caption.view'), participant_notes_path)
         .boxbg.smallbox
           %p.number
             = "#{0}"
             %span><= "/#{Activity.count}"
           %p activities
           %p.view
-            %a{:href => "#"} VIEW
+            = link_to(t('participant.dashboard.caption.view'), participant_activities_path)
         .leadership
           %h2 LEADERSHIP Behaviours
           %span.leaderblock

@@ -2,6 +2,7 @@ class Participant < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :scores
+  has_many :networks, foreign_key: 'current_participant_id'
   has_many :notes, foreign_key: 'owner_id'
   has_many :activity_answer_participants
   has_many :reviews
@@ -19,6 +20,12 @@ class Participant < ActiveRecord::Base
   validates_attachment_content_type :photo, content_type:  /\Aimage\/.*\Z/
 
   validates_presence_of :first_name, :last_name, :job_title, :year_started
+
+  # For filter with alpha character in my network
+  scope :participant_by_alpha_search, -> (alpha_character) { where("first_name ILIKE ?", "#{alpha_character}%")}
+
+  # For all participants listing
+  scope :all_participants, -> (current_participant_id) { where('id != ?', current_participant_id).order(:first_name) }
 
   def full_name
     "#{first_name} #{last_name}"

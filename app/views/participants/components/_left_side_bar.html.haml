@@ -28,7 +28,7 @@
         %i.icon-notes
         = t('participant.nav_bar.notes')
     %li{ class: left_side_bar_class('networks') }
-      %a{ href: "#" }
+      = link_to(participant_networks_path) do
         %i.icon-network
         = t('participant.nav_bar.network')
     %li.logout

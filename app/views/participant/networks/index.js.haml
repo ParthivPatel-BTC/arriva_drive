@@ -1,0 +1,4 @@
+- if @participants.present?
+  $('.mynetworklist').html("#{escape_javascript(render 'networks')}");
+- else
+  $('.mynetworklist').html("#{escape_javascript(render 'no_networks_found')}");

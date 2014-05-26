@@ -23,6 +23,5 @@
       = image_tag 'images/mainbg1.jpg'
     .wrapper
       %header
-        %a{:href => "index.html"}
-          = image_tag 'images/logo.png'
+        = link_to((image_tag 'images/logo.png'), participant_dashboard_path)
       = yield

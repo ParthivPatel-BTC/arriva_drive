@@ -104,6 +104,14 @@ en:
         purchase: 'PURCHASE'
       msg:
         no_activities_found: 'No Activities Found'
+    networks:
+      caption:
+        add_to_my_network: 'Add To My Network'
+        view_all_participants: 'View all participants'
+        no_participant_msg_text: "You currently have no participants in your network, you can view all paticipants below and add them to your network."
+        level: 'LEVEl %{level}'
+      msg:
+        no_networks_found: 'No Networks Found'
     nav_bar:
       home: 'Home'
       behaviours: 'Values / behaviours'
@@ -112,6 +120,15 @@ en:
       notes: 'NOTES'
       network: 'My network'
       logout: 'LOGOUT'
+    dashboard:
+      caption:
+        view: 'VIEW'
+    notes:
+      msg:
+       no_notes_found: 'No Notes Found'
+    events:
+      msg:
+       no_events_found: 'No Events Found'
   sign_in:
     caption:
       email: 'Email address'
