@@ -107,15 +107,16 @@ class Participant < ActiveRecord::Base
     )
   end
 
-  def update_participant_score(activity, points, increase=true)
-    score = scores.by_activity(activity).first
-    if score.blank?
-      score = create_score(activity)
-    end
-    score.update_attribute(:score, score.score + points)
+  def update_participant_scores(activity, points, increase=true)
+    activity_score = scores.by_activity(activity).first
+    activity_score = create_score(activity) if activity_score.blank?
+    activity_score.update_attribute(:score, activity_score.score + points)
+
+    behaviour_score = scores.by_behaviour(activity).first
+    behaviour_score.update_attribute(:score, behaviour_score.score + points) unless behaviour_score.blank?
   end
 
   def increase_score(activity, points)
-    update_participant_score(activity, points, true)
+    update_participant_scores(activity, points, true)
   end
 end
