@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140521100535) do
+ActiveRecord::Schema.define(version: 20140526060356) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,18 @@ ActiveRecord::Schema.define(version: 20140521100535) do
     t.integer  "behaviour_id"
     t.boolean  "complete"
   end
+
+  create_table "activity_answer_participants", force: true do |t|
+    t.integer  "activity_id"
+    t.integer  "answer_id"
+    t.integer  "participant_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "activity_answer_participants", ["activity_id"], name: "index_activity_answer_participants_on_activity_id", using: :btree
+  add_index "activity_answer_participants", ["answer_id"], name: "index_activity_answer_participants_on_answer_id", using: :btree
+  add_index "activity_answer_participants", ["participant_id"], name: "index_activity_answer_participants_on_participant_id", using: :btree
 
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -142,12 +154,24 @@ ActiveRecord::Schema.define(version: 20140521100535) do
   add_index "participants", ["email"], name: "index_participants_on_email", unique: true, using: :btree
   add_index "participants", ["reset_password_token"], name: "index_participants_on_reset_password_token", unique: true, using: :btree
 
+  create_table "reviews", force: true do |t|
+    t.text     "review_text"
+    t.integer  "participant_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "activity_id"
+  end
+
+  add_index "reviews", ["activity_id"], name: "index_reviews_on_activity_id", using: :btree
+  add_index "reviews", ["participant_id"], name: "index_reviews_on_participant_id", using: :btree
+
   create_table "scores", force: true do |t|
     t.integer  "participant_id"
-    t.integer  "behaviour_id"
+    t.integer  "scorable_id"
     t.integer  "score"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "scorable_type"
   end
 
   create_table "values", force: true do |t|

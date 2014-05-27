@@ -1,0 +1,14 @@
+%section.mainsection
+  = render partial: 'participants/components/left_side_bar'
+  .contentarea
+    .writenotes
+      .writenotesinfo.boxbg
+        = form_tag(create_review_participant_activity_path(@activity), method: :post, id: 'newReviewForm', multipart: true) do
+          .commentarea
+            = text_area_tag 'review[review_text]', nil, class: 'textarea', placeholder: t('participant.place_holder.review_text')
+          .writeicon
+            = link_to_submit create_review_participant_activity_path(@activity) do
+              %i.icon-save
+            %a.right{ href: participant_activity_path(@activity) }
+              %i.icon-delete
+  = render partial: 'participants/components/right_side_bar'

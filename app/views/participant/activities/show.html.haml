@@ -1,0 +1,39 @@
+%section.mainsection
+  = render partial: 'participants/components/left_side_bar'
+  .contentarea
+    .sustainablesection
+      %h4
+        %i{class: "#{deside_icon_class(@activity.link)}"}
+        = @activity.title
+      %ul
+        %li.boxbg.participant-box-width.participant-width-fixed
+          .leftblock
+            %p= @activity.description
+            %p
+              = link_to(@activity.link, class: 'purchase', target: '_blank') do
+                %i{class: "#{deside_icon_class(@activity.link)}"}
+                = t('participant.activities.caption.purchase')
+          .rightblock
+            = image_tag(@activity_image)
+        %li.boxbg.participant-box-width#activity-answers-list
+          - if current_participant.has_answered_this_activity?(@activity)
+            = render partial: 'participant/activities/answer'
+            %br/
+          - else
+            = render partial: 'participant/activities/answers_listing'
+      %h4.writereview
+        - if current_participant.has_reviewed_this_activity?(@activity)
+          .font-size-11
+            = current_participant.get_review_text_of_activity(@activity)
+        - else
+          %a{ href: new_review_participant_activity_path(@activity) }
+            %i.icon-write>
+            write review
+      .pagingrow
+        %a.right{ href: participant_activities_path }
+          BACK to activities
+          %i.icon-backtoactivities
+  = render partial: 'participants/components/right_side_bar'
+
+#answer-dialog-box
+  %span#answer-popup-msg

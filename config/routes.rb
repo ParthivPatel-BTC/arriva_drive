@@ -33,6 +33,14 @@ ArrivaDrive::Application.routes.draw do
     resources :notes, except: [:show, :edit, :update], controller: 'participant/notes', as: 'participant_notes'
     resources :behaviours, only: [:index], controller: 'participant/behaviours', as: 'participant_behaviours'
     resources :networks, only: [:index], controller: 'participant/networks', as: 'participant_networks'
+    resources :activities, only: [:index, :show], controller: 'participant/activities', as: 'participant_activities' do
+      member do
+        post 'answer_question'
+        get 'new_review'
+        post 'create_review'
+      end
+    end
+    
     get '/all_participants' => 'participant/networks#get_all_participants'
     get '/seach_by_alpha_character' => 'participant/networks#seach_by_alpha_character'
     get '/add_to_network' => 'participant/networks#add_to_network'

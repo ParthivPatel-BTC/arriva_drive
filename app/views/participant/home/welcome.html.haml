@@ -13,7 +13,7 @@
             = link_to(t('participant.dashboard.caption.view'), participant_notes_path)
         .boxbg.smallbox
           %p.number
-            = "#{0}"
+            = completed_activities
             %span><= "/#{Activity.count}"
           %p activities
           %p.view
@@ -31,10 +31,10 @@
           %h4 performance summary
           %p= current_participant.performance_summary
     .progressbarsection
-      - current_participant.scores.each_slice(5) do |slice|
+      - current_participant.scores.behaviour_scores.each_slice(5) do |slice|
         .progressbarblock
           - slice.each do |score|
-            .progressbarlabel= score.behaviour.title
+            .progressbarlabel= score.scorable.title
             .progressbarchat
               .progress
                 .progress-bar.progress-bar-success{:style => "width: #{score.percentile_score}%"}

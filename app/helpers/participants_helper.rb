@@ -13,7 +13,7 @@ module ParticipantsHelper
   def get_score_value(behaviour, participant)
     behaviour_id = behaviour.id
     participant_id = participant.id
-    scores = Score.where('participant_id = ? and behaviour_id = ? ', participant_id, behaviour_id)
+    scores = Score.behaviour_scores.where('participant_id = ? and scorable_id = ?', participant_id, behaviour_id)
     scores.first
   end
 
