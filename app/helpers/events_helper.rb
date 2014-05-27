@@ -14,4 +14,12 @@ module EventsHelper
   def event_listing_class(event)
     event.is_completed? ? 'active' : ''
   end
+
+  def participant_event_date_formatted(event_date)
+    event_date.strftime('%d.%m.%Y')
+  end
+
+  def participant_event_time_formatted(event_date)
+    event_date.strftime('%I.%M')
+  end
 end
