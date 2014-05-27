@@ -37,6 +37,10 @@ class Activity < ActiveRecord::Base
     multiple_choice_question.try(:correct_answer)
   end
 
+  def total_score_of_participant(participant)
+    scores.find_by_participant_id(participant.id).try(:score)
+  end
+
   private
 
   def self.split_params_for_filter(params)

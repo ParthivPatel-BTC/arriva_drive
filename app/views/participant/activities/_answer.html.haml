@@ -14,5 +14,11 @@
         %span Correct Answer
       %li.correct-answer
         %label= @activity.correct_answer.try(:answer_text)
+  %br
+  %br
+  %p.reading
+    You have got
+    = @activity.total_score_of_participant(current_participant)
+    points in this activity
 
 .rightblock &nbsp;

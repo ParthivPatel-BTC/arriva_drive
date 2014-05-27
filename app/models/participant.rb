@@ -119,4 +119,8 @@ class Participant < ActiveRecord::Base
   def increase_score(activity, points)
     update_participant_scores(activity, points, true)
   end
+
+  def completed_activities
+    activity_answer_participants
+  end
 end
