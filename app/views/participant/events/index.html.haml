@@ -3,3 +3,109 @@
   #events_content
     = render partial: 'participant/events/events'
   = render partial: 'participants/components/right_side_bar'
+
+
+/ #container
+/   %div{id: "", style: "width: 100%;  height: 20px;\r\n    margin: 0 auto;\r\n    position: fixed;\r\n    top: 0;\r\n    width: 100%;\r\n    z-index: 2147483647; background-color: red;"}
+/   #sidebar
+/     %ul
+/       %li
+/         %a#aboutlink{href: "#"} auck
+/       %li
+/         %a#projectslink{href: "#"} Projects
+/       %li
+/         %a#resumelink{href: "#"} Resume
+/       %li
+/         %a#contactlink{href: "#"} Contact
+/   %br/
+/   %br/
+/   %br/
+/   %br/
+/   %br/
+/   %br/
+/   %br/
+/   %br/
+/   %br/
+/   %br/
+/   %br/
+/   %br/
+/   %br/
+/   %br/
+/   %br/
+/   %br/
+/   %br/
+/   %br/
+/   %br/
+/   %br/
+/   %br/
+/   %br/
+/   %br/
+/   %br/
+/   %br/
+/   %br/
+/   %br/
+/   %br/
+/   %br/
+/   %br/
+/   %br/
+/   %br/
+/   %br/
+/   %br/
+/   %br/
+/   %br/
+/   %br/
+/   %br/
+/   %br/
+/   %br/
+/   %br/
+/   %br/
+/   %br/
+/   %br/
+/   %br/
+/   %br/
+/   %br/
+/   %br/
+/   %br/
+/   %br/
+/   %br/
+/   %br/
+/   %br/
+/   %br/
+/   %br/
+/   %br/
+/   %br/
+/   %br/
+/   %br/
+/   %br/
+/   %br/
+/   %br/
+/   %br/
+/   %br/
+/   %br/
+/   %br/
+/   #content
+/     #about
+/       %p.header uck
+/     #projects.sections
+/       %p.header Projects
+/     #resume.sections
+/       %p.header Resume
+/     #contact.sections
+/       %p.header Contact
+
+/ :javascript
+/   function goToByScroll(id){
+/         // Reove "link" from the ID
+/       id = id.replace("link", "");
+/         // Scroll
+/       $('html,body').animate({
+/           scrollTop: $("#"+id).offset().top},
+/           'slow');
+/   }
+
+/   $("#sidebar > ul > li > a").click(function(e) {
+/         // Prevent a page reload when a link is pressed
+/       e.preventDefault();
+/         // Call the scroll function
+/       goToByScroll($(this).attr("id"));
+/   });
