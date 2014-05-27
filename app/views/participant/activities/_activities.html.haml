@@ -10,7 +10,7 @@
                 %h5
                   = link_to(activity.title, participant_activity_path(activity))
                 %p.black= activity.behaviour.title if activity.behaviour.present?
-                %p 500 points
+                %p= "#{activity.total_score_of_participant(current_participant)} points"
         .pagingrow
           = paginate @activities, exclude: [:first, :last], remote: true
   - else

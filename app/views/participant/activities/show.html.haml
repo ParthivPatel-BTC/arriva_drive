@@ -18,6 +18,7 @@
         %li.boxbg.participant-box-width#activity-answers-list
           - if current_participant.has_answered_this_activity?(@activity)
             = render partial: 'participant/activities/answer'
+            %br/
           - else
             = render partial: 'participant/activities/answers_listing'
       %h4.writereview

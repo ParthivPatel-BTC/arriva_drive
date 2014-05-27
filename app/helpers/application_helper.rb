@@ -94,4 +94,9 @@ module ApplicationHelper
   def answer_check_box_class(answer, activity)
     'correct-answer-chkbox' if answer_checked_attr(answer, activity)
   end
+
+  # returns the integer number of total completed activities of current participants
+  def completed_activities
+    current_participant.completed_activities.count
+  end
 end
