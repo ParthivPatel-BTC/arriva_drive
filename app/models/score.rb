@@ -8,6 +8,7 @@ class Score < ActiveRecord::Base
   scope :activity_scores, -> { where(scorable_type: 'Activity') }
   scope :behaviour_scores, -> { where(scorable_type: 'Behaviour') }
   scope :by_activity, ->(activity) { activity_scores.where(scorable_id: activity) }
+  scope :by_behaviour, ->(activity) { behaviour_scores.where(scorable_id: activity) }
 
   def percentile_score
     score * 20 if score
