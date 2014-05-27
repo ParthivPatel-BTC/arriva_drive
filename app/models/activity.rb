@@ -41,6 +41,10 @@ class Activity < ActiveRecord::Base
     scores.find_by_participant_id(participant.id).try(:score)
   end
 
+  def completed_count
+    activity_answer_participants.count
+  end
+
   private
 
   def self.split_params_for_filter(params)
