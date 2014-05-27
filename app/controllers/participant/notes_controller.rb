@@ -27,6 +27,14 @@ class Participant::NotesController < ApplicationController
     redirect_to participant_notes_path
   end
 
+  def tag_participants_list
+    @participants = Network.participants_in_network(current_participant)
+  end
+
+  def tag_behaviours_list
+    @behaviours = Behaviour.all
+  end
+
   private
 
   def note_params

@@ -6,6 +6,7 @@ class Participant < ActiveRecord::Base
   has_many :notes, foreign_key: 'owner_id'
   has_many :activity_answer_participants
   has_many :reviews
+  has_many :tags, as: :taggable
 
   paperclip_options = {
       styles: {
