@@ -1,0 +1,88 @@
+// =========Participants theme overrides
+.loginbox input[type="password"], .loginbox input[type="email"] {
+    background: none repeat scroll 0 0 #677D7B;
+    border: 0 none;
+    border-radius: 15px;
+    color: #FFFFFF;
+    font-size: 12px;
+    height: 33px;
+    line-height: 33px;
+    margin-bottom: 0;
+    padding: 0 15px;
+    text-transform: uppercase;
+    width: 100%;
+}
+
+.leftsidebar_activity_label_font_size{
+  font-size: 9px !important;
+}
+
+.months-without-anchor{
+  margin-bottom:60px; display:block; text-align:right; margin-right:10px;
+}
+
+// ==========Custom overrided notes
+.notes-custom{ float:left;}
+.notes-custom ul{ margin:0px; padding:0px; list-style:none;}
+.notes-left { width:80% !important; padding:5px; margin-bottom:10px; position:relative;border-radius:5px; -moz-border-radius:5px; -webkit-border-radius:5px; background:rgba(255,255,255,0.3); width:100%; display:inline-block; min-height:75px; }
+.notes-right{ float: right; margin-right: 10px; }
+.notes-custom ul li div.notesicon{ width:30px; margin-left:10px; position:absolute; right:5px; bottom:0px;}
+.notes-custom ul li div.notesicon a{ display:inline-block; margin-bottom:5px;}
+.notes-custom ul li a:hover .icon-share{ background-position:-360px -30px;}
+.notes-custom ul li a:hover .icon-delete{ background-position:-480px -30px;}
+
+.notes-custom ul li div.notedetails{ margin-right:40px;}
+.notes-custom ul li div.notedetails h5{ font-size:11px; margin-bottom:7px;}
+.notes-custom ul li div.notedetails h5 span.date{ color:#b0c64c;}
+.notes-custom ul li div.notedetails h5 span.time{}
+.notes-custom ul li div.notedetails h5 span.eventname{ display:block;}
+.notes-custom ul li div.notedetails p{ margin-bottom:7px; font-size:9px;}
+
+.text-center {
+    margin-left: 86px;
+    margin-top: 10px;
+}
+
+.mynetworklist ul li {
+    min-height: 69px !important;
+}
+
+#events-li-width {
+    width: 304px !important;
+}
+
+.notes-left-width {
+    width:304px !important;
+}
+
+.participant-box-width{
+  min-width:380px;
+}
+
+.correct-answer{
+  background-color: #98A198;
+  border-radius: 7px;
+}
+
+.noTitleStuff .ui-dialog-titlebar {display:none}
+
+#answer-dialog-box > span {
+  font-size: 16px;
+  font-weight: bolder;
+}
+
+.font-size-11{
+  font-size: 11px !important;
+}
+
+.participant-width-fixed {
+  width:360px !important;
+}
+
+.events_overflow_scroll {
+    overflow-x: hidden; overflow-y: visible;
+}
+
+.event_content_height {
+    height: 177px !important;
+}

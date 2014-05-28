@@ -1,0 +1,37 @@
+.leftsidebar
+  %ul
+    %li{ class: left_side_bar_class('home') }
+      = link_to participant_dashboard_path do
+        %i.icon-home
+        = t('participant.nav_bar.home')
+    %li{ class: left_side_bar_class('behaviours') }
+      %a{ href: participant_behaviours_path }
+        %i.icon-values
+        = t('participant.nav_bar.behaviours')
+    %li{ class: left_side_bar_class('activities') }
+      = link_to(participant_activities_path) do
+        %i.icon-activities
+        = t('participant.nav_bar.activities')
+      - if is_activity_index_page?
+        %ul
+          - Behaviour.all.order(:id).each do |behaviour|
+            %li
+              %span.label.leftsidebar_activity_label_font_size= behaviour.title
+              %span.checkbox
+                = check_box_tag 'behaviour', behaviour.id
+    %li{ class: left_side_bar_class('events') }
+      %a{ href: participant_events_path }
+        %i.icon-events
+        = t('participant.nav_bar.events')
+    %li{ class: left_side_bar_class('notes') }
+      %a{ href: participant_notes_path }
+        %i.icon-notes
+        = t('participant.nav_bar.notes')
+    %li{ class: left_side_bar_class('networks') }
+      = link_to(participant_networks_path) do
+        %i.icon-network
+        = t('participant.nav_bar.network')
+    %li.logout
+      = link_to destroy_participant_session_path, method: :delete do
+        %i.icon-logout
+        = t('participant.nav_bar.logout')

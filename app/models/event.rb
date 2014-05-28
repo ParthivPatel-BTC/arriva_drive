@@ -8,7 +8,13 @@ class Event < ActiveRecord::Base
   validates_attachment :image, presence: true, content_type: {content_type: /\Aimage\/.*\Z/}
   validates_presence_of :title, :location, :event_date, :link, :description
 
+  scope :get_monthly_events, -> (month) { where('extract(month from event_date) = ?', Date::MONTHNAMES.index(month)) }
+
   def event_date_formatted
     event_date.strftime('%d/%m/%Y') rescue nil
+  end
+
+  def is_completed?
+    Date.today > event_date
   end
 end

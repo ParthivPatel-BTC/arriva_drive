@@ -1,5 +1,5 @@
 //========Override boostrap
-body {
+.pad-top-50 {
   padding-top: 50px;
   font-family: Arial !important;
 }
@@ -209,4 +209,8 @@ body {
   text-align: justify;
   margin: 0 auto;
   width: 26em;
+}
+
+.borderless td,th {
+  border: none !important;
 }

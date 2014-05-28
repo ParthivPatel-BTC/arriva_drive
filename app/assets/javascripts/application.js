@@ -15,4 +15,8 @@
 //= require jquery.turbolinks
 //= require bootstrap.min
 //= require bootstrap-datepicker.min
-//= require_tree .
+//= require bootstrap-timepicker.min
+//= require common
+//= require events
+//= require participants
+//= require activities

@@ -3,6 +3,12 @@ default_password: 'password'
 
 pagination:
   per_page: 10
+  events_per_page: 3
+
+# Pagination for participants
+participants:
+  pagination:
+    per_page: 4
 
 defaults:
   date_format_in_views: '%d/%m/%Y'
@@ -18,8 +24,16 @@ paperclip:
 mail:
   default_url_options:
     support_email: 'support@arrivedrive.in'
+    web_url: 'http://intense-island-1282.herokuapp.com/'
+    mail_to: 'reevec@arriva.co.uk'
+    contact: '+44 7584 393 586'
 
 field_length_limit:
   performance_summary: 250
   event_description: 200
   activity_description: 200
+
+activity_points:
+  review_completion: 300
+  correct_mcq_answer: 100
+  write_note: 25

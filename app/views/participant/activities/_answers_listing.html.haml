@@ -1,0 +1,13 @@
+.leftblock
+  %p.reading
+    %span after reading...
+    %br
+      = @mcq.question_text
+  %ul.answer.uppercase
+    - disabled_attr_value = answer_disabled_attr(@activity)
+    = hidden_field_tag 'activity_id', @activity.id
+    - @mcq.answers.each do |answer|
+      %li{ class: highlighter_class_for_answer(answer, @activity) }
+        %label= answer.answer_text
+        = check_box_tag 'activity[answer]', answer.id, nil, disabled: disabled_attr_value, class: answer_check_box_class(answer, @activity), id: "activity_answer_#{answer.id}"
+.rightblock &nbsp;

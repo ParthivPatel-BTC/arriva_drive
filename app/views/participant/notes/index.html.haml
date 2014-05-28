@@ -1,0 +1,51 @@
+%section.mainsection
+  = render partial: 'participants/components/left_side_bar'
+  - if @notes.blank?
+    .contentarea
+      .activities
+        %ul
+          %li
+            .activitiesinfo
+              %h5= t('participant.notes.msg.no_notes_found')
+      .pagingrow.notes
+        %span.left.countnote= pluralize(@notes.count, 'note')
+        %a.right{ href: new_participant_note_path }
+          = t('participant.caption.new_note')
+          %i.icon-notes
+  - else
+    .contentarea
+      .eventssection
+        #about.nano
+          .nano-content
+            .notes-custom
+              %ul
+                - last_month = nil
+                - @notes.each_with_index do |note, index|
+                  %li
+                    .notes-left.notes-left-width
+                      .notesicon
+                        %a{ href: 'javascript:void(null);' }
+                          %i.icon-share
+                        = link_to participant_note_path(note), method: :delete, data: { confirm: t('common.msg.confirm') } do
+                          %i.icon-delete
+                      .notedetails
+                        %h5.uppercase
+                          %span.date= formatted_date(note.updated_at, true)
+                          %span.time= formatted_time(note.updated_at)
+                          %span.eventname= note.content
+                        %p.uppercase
+                          %span.green TAGS:
+                          =# note.tags.each do |tags|
+                    .notes-right
+                      - if index == 0
+                        = t('participant.caption.present')
+                        - last_month = note_creation_month(note)
+                      - else
+                        - month = note_creation_month(note)
+                        = last_month = month if last_month != month
+        .pagingrow.notes
+          %span.left.countnote= pluralize(@notes.count, 'note')
+          %a.right{ href: new_participant_note_path }
+            = t('participant.caption.new_note')
+            %i.icon-notes
+  = render partial: 'participants/components/right_side_bar'

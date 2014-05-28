@@ -1,7 +1,29 @@
+- web_url = Settings.mail.default_url_options.web_url
+- mail_to = mail_to Settings.mail.default_url_options.mail_to, nil,traget: '_blank'
+- contact = Settings.mail.default_url_options.contact
 !!!
 %html
   %head
     %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
   %body
-    %h1
-      Welcome
+    %h3= "Dear #{@participant.first_name.titleize}"
+    %p
+      Below is the access information to the on-line tool that will support your development activities as part of the DRIVE programme:
+    %p
+      Web link:
+      = link_to(web_url, web_url, target: '_blank')
+      %br/
+      Username: #{@participant.email}
+      - if @password.present?
+        %br/
+        Password: #{@password}
+    %p
+      Please keep these details safe and we recommend you change your password in the 'edit profile' section at your earliest convenience.
+    %p
+      For any questions or help on how to use this application, please contact Charlie Reeve (#{mail_to} or #{contact}) for assistance.
+
+    %br/
+    %p
+      Kind regards
+    %p
+      The DRIVE Programme Team

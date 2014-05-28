@@ -15,6 +15,7 @@ ArrivaDrive::Application.routes.draw do
     put '/participants/:id/activate' => 'participants#activate', :as => :participant_activate
     post '/participants/resend_invitation' => 'participants#resend_invitation'
   end
+
   get '/new_participant' => 'static_pages#new_participant'
   get '/show' => 'static_pages#show'
 
@@ -24,5 +25,26 @@ ArrivaDrive::Application.routes.draw do
 
     get 'dashboard', to: 'admins#dashboard', as: :admin_dashboard
     get 'overview/:id', to: 'admins#overview', as: :overview
+    get 'overall_cohort_scores', to: 'admins#overall_cohort_scores', as: :overall_cohort_scores
+  end
+  scope '/participants' do
+    get '/dashboard' => 'participant/home#dashboard', as: 'participant_dashboard'
+    resources :activities, controller: 'participant/activities', as: 'participant_activities'
+    resources :events, only: [:index], controller: 'participant/events', as: 'participant_events'
+    resources :notes, except: [:show, :edit, :update], controller: 'participant/notes', as: 'participant_notes'
+    resources :behaviours, only: [:index], controller: 'participant/behaviours', as: 'participant_behaviours'
+    resources :networks, only: [:index], controller: 'participant/networks', as: 'participant_networks'
+    resources :activities, only: [:index, :show], controller: 'participant/activities', as: 'participant_activities' do
+      member do
+        post 'answer_question'
+        get 'new_review'
+        post 'create_review'
+      end
+    end
+    
+    get '/all_participants' => 'participant/networks#get_all_participants'
+    get '/seach_by_alpha_character' => 'participant/networks#seach_by_alpha_character'
+    get '/add_to_network' => 'participant/networks#add_to_network'
+    get '/get_monthly_events' => 'participant/events#get_monthly_events'
   end
 end

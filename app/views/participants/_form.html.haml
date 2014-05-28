@@ -71,8 +71,9 @@
             .common-font-color
               = behaviour.title
           .col-xs-3.col-md-3
-            = hidden_field_tag('participant[scores_attributes][][behaviour_id]', behaviour.id)
+            = hidden_field_tag('participant[scores_attributes][][scorable_id]', behaviour.id)
             = hidden_field_tag('participant[scores_attributes][][id]', score_id)
+            = hidden_field_tag('participant[scores_attributes][][scorable_type]', 'Behaviour')
             = text_field_tag 'participant[scores_attributes][][score]', score_value, class: 'form-control score_text_box text-align-right', style: "text-align: center"
         .spacer5.spacer-width
       .row
@@ -86,4 +87,4 @@
     .col-xs-3.col-md-3{style:'position: relative; height: 600px;'}
       = f.submit(participant_submit_btn_caption(@participant), class: 'btn btn_sign_in pull_left btn_forms_width', style: 'position: absolute; top: 92%; right: 0%;')
 
-      = f.submit(t('admin.participant.caption.button.save_participant_&_send'), class: 'btn btn_sign_in pull_left btn_forms_width', style: 'position: absolute; top: 98%; right: 0%;', id: 'send_participant_invitation')
+      = f.submit(t('admin.participant.caption.button.save_participant_&_send'), class: 'btn btn_sign_in pull_left btn_forms_width', style: 'position: absolute; top: 98%; right: 0%;', id: 'send_participant_invitation', title: t('admin.participant.caption.button.save_participant_&_send'))

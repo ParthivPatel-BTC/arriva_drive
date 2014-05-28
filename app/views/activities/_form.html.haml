@@ -37,7 +37,7 @@
         = render partial: 'multiple_choice_questions/form', locals: { name_prefix: 'activity[multiple_choice_question_attributes]', mcq: @activity.multiple_choice_question }
         .spacer40
         .pull-right
-          = submit_tag(t('activity.btn.save'), class: 'btn btn-sm submit-btn dark-blue-btn')
+          = submit_tag(t('activity.btn.save'), class: 'btn btn-sm submit-btn dark-blue-btn', title: t('activity.btn.save'))
 
 
     .col-md-12.spacer30

@@ -1,0 +1,20 @@
+@media (max-width:767px){
+	.wrapper{ margin:0px auto; width:90%;}
+	.loginpage, .loginsection, .loginwelcome, .loginsection, .contentarea, .leftsidebar, .welcomeboxrowleft, .welcomeboxrowright{ padding:0px; margin:0px; display:inline-block; width:100%;}
+	.mediumbox, .progressbarblock{ width:100%;}
+	.rightsidebar, .arriva{ width:100%; text-align:left;}
+	.values img.colorbg{position:absolute; left:0px; top:0px; z-index:-1; display:none; height:415px;}
+	
+	
+}
+@media (min-width:768px) and (max-width:991px) {
+	body{ font-size:10px;}
+	.wrapper{ margin:0px auto; width:90%;}
+	.loginpage{ padding:0px; margin:0px;}
+	.values img.colorbg{position:absolute; left:0px; top:0px; z-index:-1; display:none; height:415px;}
+	.circulbox{margin-right:50px;}
+}
+
+@media (min-width:992px) and (max-width:1199px) {
+	
+}

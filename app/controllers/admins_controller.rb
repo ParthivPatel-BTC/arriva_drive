@@ -10,7 +10,11 @@ class AdminsController < ApplicationController
 
   def overview
   	@participant = Participant.find(params[:id])
-  	@behaviours = @participant.scores.collect { |score| score.behaviour }
+  	@behaviours  = @participant.scores.behaviour_scores.collect { |score| score.scorable }
+  end
+
+  def overall_cohort_scores
+    @behaviours = Behaviour.all
   end
 
   alias :dashboard :admin_panel

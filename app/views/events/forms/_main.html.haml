@@ -24,6 +24,10 @@
         = text_field_tag 'event[event_date]', formatted_date(@event.event_date), id: 'eventFormDatePicker', class: common_text_field_class
         .col-md-12.spacer15
         %h4
+          %strong.dark-blue= t('event.fields.time')
+        .bootstrap-timepicker
+          = text_field_tag 'event[event_time]', @event.event_time.try(:strftime, '%T%:z'), id: 'timepicker1', class: common_text_field_class
+        %h4
           %strong.dark-blue= t('event.fields.link')
         = text_field_tag 'event[link]', @event.link, class: common_text_field_class
         %h4
@@ -48,5 +52,5 @@
 
     .col-md-12.spacer40
     .pull-right
-      = submit_tag(t('event.btn.save'), class: 'btn btn-sm submit-btn dark-blue-btn')
+      = submit_tag(t('event.btn.save'), class: 'btn btn-sm submit-btn dark-blue-btn', title: t('event.btn.save'))
     .col-md-12.spacer30

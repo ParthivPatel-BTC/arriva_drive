@@ -1,0 +1,20 @@
+%section.mainsection
+  = render partial: 'participants/components/left_side_bar'
+  .contentarea
+    .writenotes
+      .writenotesinfo.boxbg
+        = form_tag(participant_notes_path, method: :post, id: 'newNoteForm', multipart: true) do
+          .commentarea
+            = text_area_tag 'note[content]', nil, class: 'textarea', placeholder: t('participant.place_holder.note_content')
+          .writeicon
+            %a{:href => "#"}
+              %i.icon-share
+            %a{:href => "#"}
+              %i.icon-info
+            = link_to_submit participant_notes_path do
+              %i.icon-save
+            %a{:href => "#"}
+              %i.icon-attach
+            %a.right{:href => "#"}
+              %i.icon-delete
+  = render partial: 'participants/components/right_side_bar'

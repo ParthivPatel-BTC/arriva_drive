@@ -13,7 +13,7 @@ module ParticipantsHelper
   def get_score_value(behaviour, participant)
     behaviour_id = behaviour.id
     participant_id = participant.id
-    scores = Score.where('participant_id = ? and behaviour_id = ? ', participant_id, behaviour_id)
+    scores = Score.behaviour_scores.where('participant_id = ? and scorable_id = ?', participant_id, behaviour_id)
     scores.first
   end
 
@@ -27,5 +27,32 @@ module ParticipantsHelper
 
   def participant_submit_btn_caption(participant)
     participant.new_record? ? t('admin.participant.caption.button.save_participant_only') : t('admin.participant.caption.button.update')
+  end
+
+  # Set margin-top for alpha search right bar in My Network page
+  def set_margin_for_alpha_character(total_participants)
+    return nil if total_participants < 5
+    ((total_participants - 3) * 4) - 1
+  end
+
+  # Deside level for participants in My Network page
+  def deside_level(participant)
+    find_level(participant.scores.sum(:score))
+  end
+
+  def find_level(score)
+    if (0..110).include?(score)
+      1
+    elsif (111..1999).include?(score)
+      2
+    elsif (2000..2999).include?(score)
+      3
+    elsif (3000..3999).include?(score)
+      4
+    elsif (4000..5000).include?(score)
+      5
+    else
+      0
+    end
   end
 end

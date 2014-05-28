@@ -5,12 +5,14 @@ en:
     caption:
       edit: 'Edit'
       back: 'Back'
-      show: 'View'
-      button: 'Create New'
+      view: 'View'
+      button:
+        create_new: 'Create New'
       submit: 'Submit'
     msg:
       warning:
         unauthorize: 'Sorry, You are not authorize to access this page'
+      confirm: 'Are you sure?'
     panel:
       msg:
         collection_empty: "No %{collection_type} Found."
@@ -59,6 +61,8 @@ en:
       success:
         creation: "%{name} created successfully"
         update: "%{name} updated successfully"
+    overall_cohort_score:
+      header: 'Overall Cohort Score'
   activity:
     fields:
       title: 'Activity Title'
@@ -78,12 +82,57 @@ en:
       link: 'Event Link'
       image: 'Event Image'
       description: 'Event Description'
+      time: 'Event Time'
     btn:
       save: 'Save Event'
   participant:
     msg:
       error:
         score_validation: 'Scores must be numeric'
+      success:
+        note_creation: 'Note created successfully'
+        note_destroy: 'Note removed successfully'
+        correct_answer: 'Well done, you have answered the question correctly! You have received 100 points for the (relevant) Leadership Behaviour'
+        wrong_answer: 'Unfortunately that was the wrong answer, please try again on another activity for the (relevant) Leadership Behaviour'
+    headings:
+      welcome: "welcome back %{name}"
+    caption:
+      present: 'PRESENT'
+      notes: 'notes'
+      new_note: 'NEW note'
+    place_holder:
+      note_content: 'write note_'
+      review_text: 'write review_'
+    activities:
+      caption:
+        purchase: 'PURCHASE'
+      msg:
+        no_activities_found: 'No Activities Found'
+    networks:
+      caption:
+        add_to_my_network: 'Add To My Network'
+        view_all_participants: 'View all participants'
+        no_participant_msg_text: "You currently have no participants in your network, you can view all paticipants below and add them to your network."
+        level: 'LEVEl %{level}'
+      msg:
+        no_networks_found: 'No Networks Found'
+    nav_bar:
+      home: 'Home'
+      behaviours: 'Values / behaviours'
+      activities: 'Activities'
+      events: 'Events'
+      notes: 'NOTES'
+      network: 'My network'
+      logout: 'LOGOUT'
+    dashboard:
+      caption:
+        view: 'VIEW'
+    notes:
+      msg:
+       no_notes_found: 'No Notes Found'
+    events:
+      msg:
+       no_events_found: 'No Events Found'
   sign_in:
     caption:
       email: 'Email address'
@@ -100,5 +149,9 @@ en:
   mailer:
     participant:
       subject:
-        welcome: 'Welcome'
+        participant: '[Arriva DRIVE]: Invitation'
+  pagination:
+    caption:
+      next: 'Next'
+      back: 'Back'
 

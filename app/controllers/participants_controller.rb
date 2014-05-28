@@ -1,7 +1,7 @@
 class ParticipantsController < Devise::RegistrationsController
   before_filter :find_participant_from_params, only: [ :show, :edit, :update, :deactivate, :activate, :resend_invitation]
   skip_before_filter :authenticate_scope!, :only => [:edit, :update, :destroy, :deactivate, :activate]
-  before_filter :admin_user_required!
+  before_filter :admin_user_required!, only: [:new, :create, :show, :edit, :update, :deactivate, :activate]
 
   def new
     @participant = Participant.new
@@ -10,7 +10,7 @@ class ParticipantsController < Devise::RegistrationsController
   def create
     @participant = Participant.new(activity_params)
     if @participant.save
-      send_invitation
+      send_invitation(params[:participant])
       flash[:notice] = t('admin.msg.success.creation', name: @participant.full_name)
       redirect_to admin_dashboard_path
     else
@@ -27,7 +27,7 @@ class ParticipantsController < Devise::RegistrationsController
 
   def update
     if @participant.update_attributes(activity_params)
-      send_invitation
+      send_invitation(params[:participant])
       flash[:notice] = t('admin.msg.success.update', name: @participant.full_name)
       redirect_to show_participant_path(@participant)
     else
@@ -48,7 +48,7 @@ class ParticipantsController < Devise::RegistrationsController
   end
 
   def resend_invitation
-    if @participant.send_invitation_to_participant
+    if @participant.send_invitation_to_participant(nil)
       flash[:notice] = t('admin.participant.msg.success.send_invitation', email: @participant.email)
       redirect_to admin_dashboard_path
     end
@@ -71,11 +71,11 @@ class ParticipantsController < Devise::RegistrationsController
   def activity_params
     params.require(:participant).permit(
       :first_name, :last_name, :job_title, :division, :year_started, :photo, :performance_summary, :email, :password, :password_confirmation,
-        scores_attributes:[:id, :behaviour_id, :score]
+        scores_attributes:[:id, :scorable_id, :score, :scorable_type]
     )
   end
 
-  def send_invitation
-    @participant.send_invitation_to_participant if params[:send_invitation]
+  def send_invitation(participant)
+    @participant.send_invitation_to_participant(participant[:password]) if params[:send_invitation]
   end
 end
