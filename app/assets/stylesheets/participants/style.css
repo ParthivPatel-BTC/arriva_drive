@@ -2,7 +2,7 @@
 :before, :after { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box }
 body{ font-size: 11px; color:#fff; margin:0px; padding:0px; font-family: 'Open Sans', sans-serif;}
 h1, h2, h3, h4, h5, h6, p, ul, li{ margin:0px; padding:0px; font-family: 'Open Sans', sans-serif; font-weight:normal;}
-input, textare{ margin:0px; padding:0px;}
+input, textare{ font-family: 'Open Sans', sans-serif; margin:0px; padding:0px;}
 a{ color:#fff; text-decoration:none; transition: all 0.7s ease 0s;}
 a:hover, a:focus{ color:#c2d52b; outline:none;}
 .clearfix:after {visibility: hidden; display: block; font-size: 0; content: " "; clear: both; height: 0;}
@@ -47,6 +47,11 @@ header{ margin-top:50px; margin-bottom:80px;}
 .icon-previus{ background-position:-540px 0px;}
 .icon-next{ background-position:-570px 0px;}
 .icon-info{ background-position:-600px 0px;}
+.icon-behaviour{ background-position:-630px 0px;}
+.icon-somebody{ background-position:-660px 0px;}
+.icon-notesave{ background-position:-690px 0px;}
+.icon-cancel{ background-position:-720px 0px;}
+.icon-done{ background-position:-750px 0px;}
 
 
 
@@ -244,13 +249,22 @@ header{ margin-top:50px; margin-bottom:80px;}
 .writenotes{ display:block;}
 .writenotesinfo{ padding:5px;}
 .commentarea{display:block; margin-bottom:20px;}
-.commentarea .textarea{ margin:0px; padding:0px; border:0px; height:350px; background:none; width:100%; color:#fff;}
+.commentarea .textarea{ margin:0px; padding:0px; border:0px; height:350px; background:none; width:100%; color:#fff; font-family: 'Open Sans', sans-serif; font-size:12px;}
+.writeiconright{ text-align:right; display:block;}
 .writeicon [class^="icon"]{ margin-right:5px;}
+.writeicon a{ position:relative;}
+.writeicon a span{ position:absolute; right:0px; top:-7px; border-radius:100px; -moz-border-radius:100px; -webkit-border-radius:100px; background:#919d1f; width:15px; height:15px; line-height:13px; text-align:center; color:#fff;}
+.writeicon a:hover span{ color:#fff;}
 .writeicon a:hover .icon-share{ background-position:-360px -30px;}
 .writeicon a:hover .icon-save{ background-position:-420px -30px;}
 .writeicon a:hover .icon-attach{ background-position:-450px -30px;}
 .writeicon a:hover .icon-delete{ background-position:-480px -30px;}
 .writeicon a:hover .icon-info{ background-position:-600px -30px;}
+.writeicon a:hover .icon-behaviour{ background-position:-630px -30px;}
+.writeicon a:hover .icon-somebody{ background-position:-660px -30px;}
+.writeicon a:hover .icon-notesave{ background-position:-690px -30px;}
+.writeicon a:hover .icon-cancel{ background-position:-720px -30px;}
+.writeiconright a:hover .icon-done{ background-position:-750px -30px;}
 
 .mynetwork{ position:relative;}
 .mynetworklist{width:80%; float:left;}
@@ -283,3 +297,7 @@ header{ margin-top:50px; margin-bottom:80px;}
 .circulbox .circulplus{ display:none; border-radius:100%; -moz-border-radius:100%; -webkit-border-radius:100%; width:160px; background:#fff; vertical-align: middle; position:absolute; padding:10px; left:-52px; bottom:-14px; color:#1d747f; font-size:8px; text-transform:uppercase;}
 .circulbox .circulplus .valigncenter{display: table-cell; vertical-align: middle; height:160px;}
 .circulbox:hover .circulplus{ display:block;}
+
+.notelist ul{margin:15px 0px 0px 0px; padding:0px; list-style:none;}
+.notelist ul li{ padding:0px; margin-bottom:5px; display:block;}
+.notelist ul li label{ float:left; width:90%;}
