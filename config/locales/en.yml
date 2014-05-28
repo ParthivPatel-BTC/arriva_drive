@@ -79,6 +79,7 @@ en:
       link: 'Event Link'
       image: 'Event Image'
       description: 'Event Description'
+      time: 'Event Time'
     btn:
       save: 'Save Event'
   participant:
