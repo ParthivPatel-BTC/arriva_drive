@@ -25,6 +25,7 @@ ArrivaDrive::Application.routes.draw do
 
     get 'dashboard', to: 'admins#dashboard', as: :admin_dashboard
     get 'overview/:id', to: 'admins#overview', as: :overview
+    get 'overall_cohort_scores', to: 'admins#overall_cohort_scores', as: :overall_cohort_scores
   end
   scope '/participants' do
     get '/dashboard' => 'participant/home#dashboard', as: 'participant_dashboard'

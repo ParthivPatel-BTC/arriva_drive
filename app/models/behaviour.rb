@@ -7,8 +7,13 @@ class Behaviour < ActiveRecord::Base
   has_many :events, through: :behaviours_events
   has_and_belongs_to_many :values
 
-  def total_activities_score(participant)
-    Score.by_activity(activities.pluck(:id)).where(participant_id: participant.id).sum(:score) || 0
+  def total_activities_score(participant=nil)
+    score = if participant.present?
+      Score.by_activity(activities.pluck(:id)).where(participant_id: participant.id).sum(:score)
+    else
+      Score.by_activity(activities.pluck(:id)).sum(:score)
+    end
+    score || 0
   end
 
   def total_activities_levels(participant)

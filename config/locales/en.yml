@@ -5,8 +5,9 @@ en:
     caption:
       edit: 'Edit'
       back: 'Back'
-      show: 'View'
-      button: 'Create New'
+      view: 'View'
+      button:
+        create_new: 'Create New'
       submit: 'Submit'
     msg:
       warning:
@@ -60,6 +61,8 @@ en:
       success:
         creation: "%{name} created successfully"
         update: "%{name} updated successfully"
+    overall_cohort_score:
+      header: 'Overall Cohort Score'
   activity:
     fields:
       title: 'Activity Title'
@@ -146,7 +149,7 @@ en:
   mailer:
     participant:
       subject:
-        welcome: 'Welcome'
+        participant: '[Arriva DRIVE]: Invitation'
   pagination:
     caption:
       next: 'Next'
