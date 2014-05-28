@@ -210,3 +210,7 @@
   margin: 0 auto;
   width: 26em;
 }
+
+.borderless td,th {
+  border: none !important;
+}
