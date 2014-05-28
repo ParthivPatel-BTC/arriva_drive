@@ -13,7 +13,7 @@
             = link_to(t('participant.dashboard.caption.view'), participant_notes_path)
         .boxbg.smallbox
           %p.number
-            = "#{0}"
+            = completed_activities
             %span><= "/#{Activity.count}"
           %p activities
           %p.view

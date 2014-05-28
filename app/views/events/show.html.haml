@@ -27,6 +27,10 @@
       = formatted_date(@event.event_date)
       .col-md-12.spacer15
       %h4
+        %strong.dark-blue= t('event.fields.time')
+      = @event.event_time.strftime("%I:%M %p")
+      .col-md-12.spacer15
+      %h4
         %strong.dark-blue= t('event.fields.link')
       = @event.link
       %h4

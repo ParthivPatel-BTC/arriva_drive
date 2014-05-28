@@ -217,12 +217,12 @@ header{ margin-top:50px; margin-bottom:80px;}
 
 .eventsleft ul li div.right img{ width:100%; height:100%;}
 
-.monthright{ width:20%; float:left; text-transform:uppercase; font-size:12px;}
-.monthright a{ margin-bottom:60px; display:block; text-align:right; margin-right:10px;}
+.monthright{ width:20%; text-transform:uppercase; font-size:12px; position:absolute; top:0px; right:5px; height:400px;}
+.monthright a{ margin-bottom:60px; display:block; text-align:right; margin-right:5px;}
 .monthright .first{ position:absolute; top:0px; right:0px;}
 .monthright .last{ position:absolute; bottom:0px; right:0px; margin-bottom:0px;}
 
-.monthalpha{ width:20%; float:left; text-transform:uppercase; font-size:8px;}
+.monthalpha{ width:20%; text-transform:uppercase; font-size:8px; position:absolute; top:0px; right:5px; height:400px;}
 .monthalpha a{ margin-bottom:4.5px; display:block; text-align:right; margin-right:10px;}
 
 
@@ -276,7 +276,7 @@ header{ margin-top:50px; margin-bottom:80px;}
 .circulcolor5{ background:#9561a8;}
 .values .row{ clear:both; margin-bottom:10px;}
 .circulbox{position:relative; width:75px; height:75px; border-radius:100%; -moz-border-radius:100%; -webkit-border-radius:100%; display:inline-block; margin-right:74px; text-align:center;}
-.circulbox span{display: table-cell; vertical-align: middle; height:75px; text-transform:uppercase; font-size:9px; padding:0 5px;}
+.circulbox span{display: table-cell; vertical-align: middle; height:75px; text-transform:uppercase; font-size:9px; padding:0px 5px;}
 .circulbox a{ color:#1d747f;}
 .circulcolor1 a, .circulcolor2 a, .circulcolor3 a, .circulcolor4 a, .circulcolor5 a{ color:#fff;}
 .circulbox:last-child{ margin-right:0px;}

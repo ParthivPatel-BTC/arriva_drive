@@ -108,16 +108,28 @@ class Participant < ActiveRecord::Base
     )
   end
 
-  def update_participant_scores(activity, points, increase=true)
+  def update_participant_score(activity, points, increase=true)
     activity_score = scores.by_activity(activity).first
     activity_score = create_score(activity) if activity_score.blank?
     activity_score.update_attribute(:score, activity_score.score + points)
 
-    behaviour_score = scores.by_behaviour(activity).first
-    behaviour_score.update_attribute(:score, behaviour_score.score + points) unless behaviour_score.blank?
+    # behaviour_score = scores.by_behaviour(activity).first
+    # behaviour_score.update_attribute(:score, behaviour_score.score + points) unless behaviour_score.blank?
   end
 
   def increase_score(activity, points)
-    update_participant_scores(activity, points, true)
+    update_participant_score(activity, points, true)
+  end
+
+  def completed_activities(behaviour=nil)
+    if behaviour.present?
+      activity_answer_participants.where(activity_id: behaviour.activities.pluck(:id))
+    else
+      activity_answer_participants
+    end
+  end
+
+  def total_activity_score_for_behaviour(behaviour)
+    behaviour.total_activities_score(self)
   end
 end
