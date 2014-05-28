@@ -61,6 +61,8 @@ en:
       success:
         creation: "%{name} created successfully"
         update: "%{name} updated successfully"
+    overall_cohort_score:
+      header: 'Overall Cohort Score'
   activity:
     fields:
       title: 'Activity Title'

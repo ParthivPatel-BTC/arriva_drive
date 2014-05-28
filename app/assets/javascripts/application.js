@@ -19,3 +19,4 @@
 //= require common
 //= require events
 //= require participants
+//= require activities
