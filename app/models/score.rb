@@ -27,6 +27,6 @@ class Score < ActiveRecord::Base
   end
 
   def top_score
-    Score.where(scorable_type: scorable_type).maximum(:score)
+    Score.where(scorable_type: scorable_type, scorable_id: scorable_id).maximum(:score)
   end
 end
