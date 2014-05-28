@@ -5,8 +5,9 @@ en:
     caption:
       edit: 'Edit'
       back: 'Back'
-      show: 'View'
-      button: 'Create New'
+      view: 'View'
+      button:
+        create_new: 'Create New'
       submit: 'Submit'
     msg:
       warning:
@@ -146,7 +147,7 @@ en:
   mailer:
     participant:
       subject:
-        welcome: 'Welcome'
+        participant: '[Arriva DRIVE]: Invitation'
   pagination:
     caption:
       next: 'Next'

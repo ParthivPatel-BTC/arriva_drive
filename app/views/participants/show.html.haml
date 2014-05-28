@@ -65,6 +65,6 @@
     = form_tag(participants_resend_invitation_path) do
       = hidden_field_tag('id', @participant[:id])
       .row
-      = submit_tag(t('admin.participant.caption.button.re_send_participant_invite'), class: 'btn btn_sign_in pull_left', style: 'position: absolute; top: 480px; right: 0%; width: 72%;', id: 'send_participant_invitation')
+      = submit_tag(t('admin.participant.caption.button.re_send_participant_invite'), class: 'btn btn_sign_in pull_left', style: 'position: absolute; top: 480px; right: 0%; width: 72%;', id: 'send_participant_invitation', title: t('admin.participant.caption.button.re_send_participant_invite'))
     .row
       = link_to(t('admin.participant.caption.button.done'), admin_dashboard_path, class: 'btn btn_sign_in pull_left', style: 'position: absolute; top: 520px; right: 0%; width: 72%;', title: t('admin.participant.caption.button.done'))
