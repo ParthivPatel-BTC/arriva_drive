@@ -25,7 +25,7 @@
             %li.header_current_admin_text_margin
               = full_name(current_admin.first_name, current_admin.last_name)
             %li
-              = link_to(t('sign_in.caption.button.log_out'), destroy_admin_session_path, class: 'btn btn_sign_in pull-left btn-xs', method: 'delete')
+              = link_to(t('sign_in.caption.button.log_out'), destroy_admin_session_path, class: 'btn btn_sign_in pull-left btn-xs', method: 'delete', title: t('sign_in.caption.button.log_out'))
   .container
     #message-container
       = render partial: "shared/flash_messages"

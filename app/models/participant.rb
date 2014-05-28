@@ -56,9 +56,9 @@ class Participant < ActiveRecord::Base
     update_attribute(:active, true)
   end
 
-  def send_invitation_to_participant
+  def send_invitation_to_participant(password)
     begin
-      ArriveDriveMailer.send_invitation_to_participant(self).deliver
+      ArriveDriveMailer.send_invitation_to_participant(self, password).deliver
     rescue Exception => e
       Rails.logger.error "Failed to send email, email address: #{self.email}"
       Rails.logger.error "#{e.backtrace.first}: #{e.message} (#{e.class})"
