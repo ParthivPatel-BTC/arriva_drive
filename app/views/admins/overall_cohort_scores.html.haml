@@ -1,0 +1,20 @@
+.row
+  .col-xs-12.col-md-12
+    %h2.dark-blue.pull-left.page-header
+      %b= t('admin.overall_cohort_score.header')
+
+.row
+  .col-md-12
+    .spacer20
+    %table.table.borderless
+      %thead.dark-blue
+        %th{ width: '20%' } Behaviour
+        %th.text-center{ width: '35%' } Total Activities Completed
+        %th.text-center{ width: '35%' } Total Points Achieved
+        %th
+      %tbody.light-blue
+        - @behaviours.each do |behaviour|
+          %tr
+            %td= behaviour.title
+            %td.text-center= behaviour.completed_activities
+            %td.text-center= behaviour.total_activities_score
