@@ -28,6 +28,7 @@ ArrivaDrive::Application.routes.draw do
   end
   scope '/participants' do
     get '/dashboard' => 'participant/home#dashboard', as: 'participant_dashboard'
+    resources :activities, controller: 'participant/activities', as: 'participant_activities'
     resources :events, only: [:index], controller: 'participant/events', as: 'participant_events'
     resources :notes, except: [:show, :edit, :update], controller: 'participant/notes', as: 'participant_notes'
     resources :behaviours, only: [:index], controller: 'participant/behaviours', as: 'participant_behaviours'
@@ -43,5 +44,6 @@ ArrivaDrive::Application.routes.draw do
     get '/all_participants' => 'participant/networks#get_all_participants'
     get '/seach_by_alpha_character' => 'participant/networks#seach_by_alpha_character'
     get '/add_to_network' => 'participant/networks#add_to_network'
+    get '/get_monthly_events' => 'participant/events#get_monthly_events'
   end
 end

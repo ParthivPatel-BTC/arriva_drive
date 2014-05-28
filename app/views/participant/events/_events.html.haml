@@ -1,0 +1,80 @@
+- if @events.blank?
+  .contentarea
+    .activities
+      %ul
+        %li
+          .activitiesinfo
+            %h5= t('participant.events.msg.no_events_found')
+- else
+  .contentarea
+    .eventssection
+      #about.nano
+        .nano-content
+          .events.events_overflow_scroll
+            %ul
+              - @events.each do |event|
+                %li#events-li-width.event_content_height{class: event_listing_class(event)}
+                  .left
+                    %h5.uppercase
+                      %span.date= participant_event_date_formatted(event.event_date)
+                      %span.time= participant_event_time_formatted(event.event_date)
+                      %span.eventname= event.location
+                    %p= event.description
+                    %p.links
+                      %a.left{:href => "#"}
+                        %i.icon-notes
+                      %a.right{:href => "#"}
+                        share
+                        %i.icon-share
+                  .right= image_tag event.image.url(:medium)
+                  - if event.is_completed?
+                    .completed completed
+          .monthright
+            - @month_arr.each do |month|
+              = link_to(month, 'javascript:void(0);', id: 'month')
+              %br
+      .pagingrow
+        = paginate @events, exclude: [:first, :last], remote: true
+
+:javascript
+  $(document).ready(function() {
+    $('.right, .left').on( "click", function(e) {
+      var URL = $("#paginationNext, #paginationBack").attr('href');
+      var month = getURLParameter(URL, 'month');
+
+     e.preventDefault();
+      if ($(this).attr("href").split("page").length > 1) {
+        var pageNum = $(this).attr("href").match(/page=([0-9]+)/)[1];
+      } else { var pageNum = '1'; }
+
+      if(month != null) {
+        var event_path = "/participants/get_monthly_events?month="+month+"&page="+pageNum
+      }
+      else {
+        var event_path = "/participants/events?page="+pageNum
+      }
+      $.ajax({
+        url: event_path,
+        dataType: "script"
+      }).done(function() {
+       $(".nano").nanoScroller();
+      });
+    });
+
+    $("a[id='month']").on("click", function (e) {
+      e.preventDefault();
+      if ($(this).attr("href").split("page").length > 1) {
+        var pageNum = $(this).attr("href").match(/page=([0-9]+)/)[1];
+      } else { var pageNum = '1'; }
+      $.ajax({
+        url: "/participants/get_monthly_events?month="+$(this).text()+"&page="+pageNum,
+        dataType: "script"
+      }).done(function() {
+       $(".nano").nanoScroller();
+      });
+    });
+  });
+
+  function getURLParameter(url, name) {
+      return (RegExp(name + '=' + '(.+?)(&|$)').exec(url)||[,null])[1];
+  }
