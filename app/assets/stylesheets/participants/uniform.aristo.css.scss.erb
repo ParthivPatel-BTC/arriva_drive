@@ -11,7 +11,7 @@ http://uniformjs.com/
 */
 /* General settings */
 div.selector, div.selector span, div.checker span, div.radio span, div.uploader, div.uploader span.action, div.button, div.button span {
-  background-image: url("../images/sprite-aristo.png");
+  background-image: url('<%= asset_path("images/sprite-aristo.png") %>');
   background-repeat: no-repeat;
   -webkit-font-smoothing: antialiased; }
 div.selector, div.checker, div.button, div.radio, div.uploader {
@@ -21,7 +21,7 @@ div.selector, div.checker, div.button, div.radio, div.uploader {
   zoom: 1;
   vertical-align: middle;
   /* Keeping this as :focus to remove browser styles */ }
-div.checker span{background-image: url("../images/btn-checkbox.png");}
+div.checker span{background-image: url('<%= asset_path("images/btn-checkbox.png") %>');}
   div.selector:focus, div.checker:focus, div.button:focus, div.radio:focus, div.uploader:focus {
     outline: 0; }
 div.selector, div.selector *, div.radio, div.radio *, div.checker, div.checker *, div.uploader, div.uploader *, div.button, div.button * {
