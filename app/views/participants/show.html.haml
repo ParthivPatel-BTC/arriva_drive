@@ -54,7 +54,8 @@
   .col-xs-3.col-md-3{style:'position: relative; height: 590px;'}
     %h3.dark-blue
       %b= t('admin.participant.caption.performance_summary')
-    %p.light-blue.center-justified= @participant.performance_summary
+    .break-long-url
+      %p.light-blue.center-justified= @participant.performance_summary
     .row
       = link_to(t('admin.participant.caption.button.view_activity'), overview_path(@participant) , class: 'btn btn_sign_in pull_left', style: 'position: absolute; top: 400px; right: 0%; width: 72%;', title: t('admin.participant.caption.button.view_activity'))
     .row

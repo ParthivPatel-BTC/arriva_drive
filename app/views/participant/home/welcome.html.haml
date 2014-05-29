@@ -29,7 +29,8 @@
       .welcomeboxrowright
         .boxbg.mediumbox
           %h4 performance summary
-          %p= current_participant.performance_summary
+          .break-long-url
+            %p= current_participant.performance_summary
     .progressbarsection
       - current_participant.scores.behaviour_scores.each_slice(5) do |slice|
         .progressbarblock

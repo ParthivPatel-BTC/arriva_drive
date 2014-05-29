@@ -4,4 +4,5 @@ class Tag < ActiveRecord::Base
 
   scope :behaviour_tags, -> { where(taggable_type: 'Behaviour') }
   scope :participants_tags, -> { where(taggable_type: 'Participant') }
+  scope :by_participant, ->(participant) { participants_tags.where(taggable_id: participant) }
 end
