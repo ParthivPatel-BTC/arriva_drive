@@ -35,7 +35,7 @@
                           %span.eventname= note.content
                         %p.uppercase
                           %span.green TAGS:
-                          =# note.tags.each do |tags|
+                          = formatted_tags(note.tags.behaviour_tags)
                     .notes-right
                       - if index == 0
                         = t('participant.caption.present')

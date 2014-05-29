@@ -3,7 +3,7 @@ class Participant::NotesController < ApplicationController
   before_filter :participant_user_required!
   before_filter :find_set_note, only: [:destroy]
   before_filter :set_tagged_behaviours_n_participants, only: [
-    :tag_participants, :tag_behaviours, :tag_participants_behaviours, :create
+    :tag_participants_list, :tag_behaviours_list, :tag_participants_behaviours, :create
   ]
 
   def index
@@ -31,7 +31,7 @@ class Participant::NotesController < ApplicationController
   end
 
   def tag_participants_list
-    @participants = Network.participants_in_network(current_participant)
+    @participants = Network.all_participants_in_network(current_participant)
   end
 
   def tag_participants_behaviours
@@ -64,8 +64,18 @@ class Participant::NotesController < ApplicationController
   end
 
   def set_tagged_behaviours_n_participants
-    @tagged_behaviours = params[:behaviour_ids].try(:split, ',')
-    @tagged_participants = params[:participant_ids].try(:split, ',')
+    @tagged_behaviours = extract_tags_from_params(params[:behaviour_ids])
+    @tagged_participants = extract_tags_from_params(params[:participant_ids])
     @note = Note.new(note_params)
+  end
+
+  def extract_tags_from_params(tag_params)
+    tags = case tag_params
+      when String
+        tag_params.try(:split, ' ')
+      when Array
+        tag_params
+    end
+    tags || []
   end
 end

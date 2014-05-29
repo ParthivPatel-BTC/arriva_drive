@@ -38,4 +38,8 @@ class Behaviour < ActiveRecord::Base
   def completed_activities
     activities.inject(0) { |count, activity| count + activity.completed_count }
   end
+
+  def tag_title
+    title
+  end
 end

@@ -19,4 +19,5 @@
 //= require participants/custom
 //= require participants/behaviours
 //= require participants/activity
+//= require participants/notes
 //= require jquery_ujs

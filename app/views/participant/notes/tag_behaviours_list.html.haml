@@ -1,0 +1,19 @@
+%section.mainsection
+  = render partial: 'participants/components/left_side_bar'
+  .contentarea
+    .writenotes
+      .writenotesinfo.boxbg
+        = form_tag(tag_participants_behaviours_participant_notes_path, method: :post, id: 'tagBehaviourForm', multipart: true) do
+          = hidden_field_tag 'note[content]', @note.content
+          = hidden_field_tag 'participant_ids', @tagged_participants
+          .commentarea.notelist.uppercase
+            %p Tag the Behaviours related to this note...
+            %ul
+              - @behaviours.each do |behaviour|
+                %li
+                  %label= behaviour.title
+                  = check_box_tag "behaviour_ids[]", behaviour.id, @tagged_behaviours.include?(behaviour.id.to_s)
+          .writeiconright
+            = link_to_submit tag_participants_behaviours_participant_notes_path do
+              %i.icon-done
+  = render partial: 'participants/components/right_side_bar'
