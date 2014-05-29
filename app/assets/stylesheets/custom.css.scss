@@ -214,3 +214,7 @@
 .borderless td,th {
   border: none !important;
 }
+
+.break-long-url {
+  word-wrap: break-word;
+}
