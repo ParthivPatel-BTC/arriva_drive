@@ -26,7 +26,7 @@ header{ margin-top:50px; margin-bottom:80px;}
 
 .mainsection{ display:block;}
 
-[class^="icon"]{ display: inline-block; width:30px; height:30px; background: url(../images/icon-sprites.png); background-repeat: no-repeat; margin-right:10px; transition: all 0.7s ease 0s;}
+[class^="icon"]{ display: inline-block; width:30px; height:30px; background: url(images/icon-sprites.png); background-repeat: no-repeat; margin-right:10px; transition: all 0.7s ease 0s;}
 .icon-home{ background-position: 0px 0px;}
 .icon-values{ background-position: -30px 0px;}
 .icon-activities{ background-position: -60px 0px;}
@@ -151,7 +151,7 @@ header{ margin-top:50px; margin-bottom:80px;}
 .sr-only {position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0;	overflow: hidden; clip: rect(0,0,0,0); border: 0;}
 
 
-[class^="bigicon"]{ display: inline-block; width: 70px; height: 70px; background: url(../images/icon-sprites.png); background-repeat: no-repeat; vertical-align:middle; transition: all 0.7s ease 0s;}
+[class^="bigicon"]{ display: inline-block; width: 70px; height: 70px; background: url(images/icon-sprites.png); background-repeat: no-repeat; vertical-align:middle; transition: all 0.7s ease 0s;}
 .bigicon-sustainable{ background-position:0px -140px;}
 .bigicon-delivering{ background-position:-70px -140px;}
 .bigicon-brain{ background-position:-140px -140px;}
