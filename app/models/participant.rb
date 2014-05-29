@@ -6,6 +6,7 @@ class Participant < ActiveRecord::Base
   has_many :notes, foreign_key: 'owner_id'
   has_many :activity_answer_participants
   has_many :reviews
+  has_many :tags, as: :taggable
 
   paperclip_options = {
       styles: {
@@ -107,17 +108,17 @@ class Participant < ActiveRecord::Base
     )
   end
 
-  def update_participant_score(activity, points, increase=true)
-    activity_score = scores.by_activity(activity).first
-    activity_score = create_score(activity) if activity_score.blank?
-    activity_score.update_attribute(:score, activity_score.score + points)
+  def increase_score(activity, points, type=:activity)
+    score = if (type == :activity)
+        scores.by_activity(activity).first
+      else
+        scores.by_behaviour(activity).first
+    end
+    score = create_score(activity) if score.blank?
+    score.update_attribute(:score, score.score + points)
 
     # behaviour_score = scores.by_behaviour(activity).first
     # behaviour_score.update_attribute(:score, behaviour_score.score + points) unless behaviour_score.blank?
-  end
-
-  def increase_score(activity, points)
-    update_participant_score(activity, points, true)
   end
 
   def completed_activities(behaviour=nil)
@@ -130,5 +131,9 @@ class Participant < ActiveRecord::Base
 
   def total_activity_score_for_behaviour(behaviour)
     behaviour.total_activities_score(self)
+  end
+
+  def tag_title
+    full_name
   end
 end

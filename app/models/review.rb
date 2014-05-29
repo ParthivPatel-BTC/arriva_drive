@@ -4,6 +4,8 @@ class Review < ActiveRecord::Base
 
   after_create :update_participant_score
 
+  validates_uniqueness_of :participant_id, scope: :activity_id
+
   private
 
   def update_participant_score

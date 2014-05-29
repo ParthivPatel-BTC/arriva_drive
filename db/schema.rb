@@ -175,6 +175,17 @@ ActiveRecord::Schema.define(version: 20140527121714) do
     t.string   "scorable_type"
   end
 
+  create_table "tags", force: true do |t|
+    t.integer  "taggable_id"
+    t.string   "taggable_type"
+    t.integer  "note_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "tags", ["note_id"], name: "index_tags_on_note_id", using: :btree
+  add_index "tags", ["taggable_id", "taggable_type"], name: "index_tags_on_taggable_id_and_taggable_type", using: :btree
+
   create_table "values", force: true do |t|
     t.string   "title"
     t.string   "description"

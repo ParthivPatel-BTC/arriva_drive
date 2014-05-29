@@ -2,6 +2,7 @@ class Behaviour < ActiveRecord::Base
 	has_many :activities
 	has_and_belongs_to_many :events
   has_many :scores, as: :scorable
+  has_many :tags, as: :taggable
   has_many :behaviours_events
   has_many :events, through: :behaviours_events
   has_and_belongs_to_many :values
@@ -36,5 +37,9 @@ class Behaviour < ActiveRecord::Base
 
   def completed_activities
     activities.inject(0) { |count, activity| count + activity.completed_count }
+  end
+
+  def tag_title
+    title
   end
 end

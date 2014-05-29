@@ -99,4 +99,8 @@ module ApplicationHelper
   def completed_activities
     current_participant.completed_activities.count
   end
+
+  def formatted_tags(tags)
+    tags.inject('') { |str, tag| str << "#{tag.taggable.tag_title}, " }.chop.chop
+  end
 end

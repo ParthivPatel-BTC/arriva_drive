@@ -1,0 +1,21 @@
+%section.mainsection
+  = render partial: 'participants/components/left_side_bar'
+  .contentarea
+    .writenotes
+      .writenotesinfo.boxbg
+        = form_tag(tag_participants_behaviours_participant_notes_path, method: :post, id: 'tagBehaviourForm', multipart: true) do
+          = hidden_field_tag 'note[content]', @note.content
+          = hidden_field_tag 'behaviour_ids', @tagged_behaviours
+          .commentarea.notelist.uppercase
+            %p TAG THE PEOPLE TO SHARE THIS NOTE WITH THEM ...
+            %ul
+              - @participants.each do |participant|
+                %li
+                  %label= participant.full_name
+                  = check_box_tag "participant_ids[]", participant.id, @tagged_participants.include?(participant.id.to_s)
+          - if @participants.blank?
+            %p.lime-color Sorry, There are no participents in your network
+          .writeiconright
+            = link_to_submit tag_participants_behaviours_participant_notes_path do
+              %i.icon-done
+  = render partial: 'participants/components/right_side_bar'

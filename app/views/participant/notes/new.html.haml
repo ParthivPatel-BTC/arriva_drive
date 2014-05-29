@@ -5,16 +5,22 @@
       .writenotesinfo.boxbg
         = form_tag(participant_notes_path, method: :post, id: 'newNoteForm', multipart: true) do
           .commentarea
-            = text_area_tag 'note[content]', nil, class: 'textarea', placeholder: t('participant.place_holder.note_content')
+            = text_area_tag 'note[content]', @note.content, class: 'textarea', placeholder: t('participant.place_holder.note_content')
+            = hidden_field_tag 'behaviour_ids', @tagged_behaviours
+            = hidden_field_tag 'participant_ids', @tagged_participants
           .writeicon
-            %a{:href => "#"}
-              %i.icon-share
-            %a{:href => "#"}
-              %i.icon-info
+            = link_to tag_behaviours_list_participant_notes_path, id: 'behaviourTagListingBtn' do
+              %i.icon-behaviour
+              - if @tagged_behaviours && @tagged_behaviours.count > 0
+                %span= @tagged_behaviours.count
+            = link_to tag_participants_list_participant_notes_path, id: 'participantTagListingBtn' do
+              %i.icon-somebody
+              - if @tagged_participants && @tagged_participants.count > 0
+                %span= @tagged_participants.count
             = link_to_submit participant_notes_path do
-              %i.icon-save
-            %a{:href => "#"}
-              %i.icon-attach
+              %i.icon-notesave
+            / %a{:href => "#"}
+            /   %i.icon-attach
             %a.right{ href: participant_notes_path }
-              %i.icon-delete
+              %i.icon-cancel
   = render partial: 'participants/components/right_side_bar'
