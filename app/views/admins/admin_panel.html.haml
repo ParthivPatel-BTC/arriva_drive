@@ -2,7 +2,6 @@
   .col-md-12
     = link_to overall_cohort_scores_path do
       %button.btn.btn_sign_in Overall Cohort Scores
-      .spacer30
 .row
   .col-md-4.col-xs-12
     = render partial: "shared/panel", locals: { collections: @participants, title: t('admin.panel.titles.participant'), title_method: 'full_name', subtitle_method: 'job_title', new_path: new_participant_path, edit_path: 'edit_participant_path', show_path: 'show_participant_path'}
