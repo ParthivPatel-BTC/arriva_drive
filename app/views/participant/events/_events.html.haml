@@ -19,7 +19,8 @@
                       %span.date= participant_event_date_formatted(event.event_date)
                       %span.time= participant_event_time_formatted(event.event_time)
                       %span.eventname= event.location
-                    %p= event.description
+                    .break-long-url
+                      %p= event.description
                     %p.links
                       = link_to(calendar_feed_participant_event_path(event,  :format => :ics)) do
                         %i.icon-notes
