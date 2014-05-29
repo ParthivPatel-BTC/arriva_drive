@@ -38,7 +38,7 @@ class Activity < ActiveRecord::Base
   end
 
   def total_score_of_participant(participant)
-    scores.find_by_participant_id(participant.id).try(:score)
+    scores.find_by_participant_id(participant.id).try(:score) || 0
   end
 
   def completed_count

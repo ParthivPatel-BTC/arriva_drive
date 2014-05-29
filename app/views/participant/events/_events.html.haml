@@ -9,33 +9,36 @@
   .contentarea
     .eventssection
       #about.nano
-        .nano-content
-          .events.events_overflow_scroll
+        .nano-content{style: "right: -13px;", tabindex: "0"}
+          .events
             %ul
               - @events.each do |event|
                 %li#events-li-width.event_content_height{class: event_listing_class(event)}
                   .left
                     %h5.uppercase
                       %span.date= participant_event_date_formatted(event.event_date)
-                      %span.time= participant_event_time_formatted(event.event_date)
+                      %span.time= participant_event_time_formatted(event.event_time)
                       %span.eventname= event.location
                     %p= event.description
                     %p.links
-                      %a.left{:href => "#"}
+                      %a.left{href: "#"}
                         %i.icon-notes
-                      %a.right{:href => "#"}
+                      %a.right{href: "#"}
                         share
                         %i.icon-share
-                  .right= image_tag event.image.url(:medium)
+                  .right
+                    = image_tag event.image.url(:medium), class: 'event_image_height_width'
                   - if event.is_completed?
                     .completed completed
-          .monthright
-            - @month_arr.each do |month|
-              = link_to(month, 'javascript:void(0);', id: 'month')
-              %br
+        .nano-pane
+          .nano-slider#nano_slider
+      .monthright
+        - margin_bottom = @month_arr.size > 6 ? 'margin-bottom: 20px;' : 'margin-bottom: 60px;'
+        - @month_arr.each do |month|
+          = link_to(month, 'javascript:void(0);', id: 'month', style: "margin-bottom: #{margin_for_months_scroller(@month_arr.size)}px !important;")
+
       .pagingrow
         = paginate @events, exclude: [:first, :last], remote: true
-
 :javascript
   $(document).ready(function() {
     $('.right, .left').on( "click", function(e) {
@@ -57,6 +60,7 @@
         url: event_path,
         dataType: "script"
       }).done(function() {
+       $('.nano-pane').addClass('nano_slider_display_block');
        $(".nano").nanoScroller();
       });
     });
@@ -70,9 +74,12 @@
         url: "/participants/get_monthly_events?month="+$(this).text()+"&page="+pageNum,
         dataType: "script"
       }).done(function() {
+       $('.nano-pane').addClass('nano_slider_display_block');
        $(".nano").nanoScroller();
       });
     });
+  $('.nano-pane').addClass('nano_slider_display_block');
+  $(".nano").nanoScroller();
   });
 
   function getURLParameter(url, name) {
