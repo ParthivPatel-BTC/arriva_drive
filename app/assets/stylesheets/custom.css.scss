@@ -90,7 +90,6 @@
 
 .btn_sign_in:hover {
   color: #FFFFFF;
-  background-color: #006B8D;
   border-color: #006B8D;
 }
 
@@ -233,4 +232,8 @@
 
 .event_save_button_margin {
   margin-right:20px;
+}
+
+.btn:hover, .btn:focus {
+  color: #FFFFFF !important;
 }
