@@ -22,6 +22,11 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def after_sign_out_path_for(resource)
+    return new_participant_session_path if resource == :participant
+    root_path
+  end
+
   private
 
   def set_behaviours
