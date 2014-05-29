@@ -208,9 +208,21 @@
 .center-justified {
   text-align: justify;
   margin: 0 auto;
-  width: 26em;
+  width: 19em;
 }
 
 .borderless td,th {
   border: none !important;
+}
+
+.panel-heading-padding {
+  padding: 10px 0px !important;
+}
+
+.page-header-margin {
+  margin-top:-33px;
+}
+
+.panel-padding-left {
+  padding: 18px 0px !important;
 }

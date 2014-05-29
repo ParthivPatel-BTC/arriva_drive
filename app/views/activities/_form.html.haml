@@ -3,7 +3,7 @@
   .row
     - # Left Panel (Behaviours)
     .col-xs-12.col-md-4
-      .panel-padding
+      .panel-padding.panel-padding-left
         %h4
           %strong.dark-blue= t('activity.fields.behaviour')
         = render partial: 'behaviours/forms/radio', locals: { behaviours: @behaviours, radio_btn_name: 'activity[behaviour_id]', activity: @activity }

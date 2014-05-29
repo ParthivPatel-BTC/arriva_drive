@@ -3,7 +3,7 @@
   .row
     - # Left Panel (Behaviours)
     .col-xs-12.col-md-4
-      .panel-padding
+      .panel-padding.panel-padding-left
         %h4
           %strong.dark-blue= t('event.fields.behaviour')
         = render partial: 'behaviours/forms/check_box', locals: { behaviours: @behaviours, check_box_name: 'event[behaviours_events_attributes]', event: @event, selected_behaviours_ids: @event.behaviours.pluck(:id) }

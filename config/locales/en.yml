@@ -26,7 +26,7 @@ en:
       caption:
         profile: 'Profile'
         first_name: 'First Name'
-        last_name: 'Last Name'
+        surname: 'Surname'
         job_title: 'Job Title'
         division: 'Division'
         year_started: 'Year Started'

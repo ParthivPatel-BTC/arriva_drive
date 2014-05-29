@@ -12,7 +12,7 @@
           = f.text_field :first_name, class: 'form-control'
       .form-group
         %label.common-font-color
-          %b= t('admin.participant.caption.last_name')
+          %b= t('admin.participant.caption.surname')
         .input
           = f.text_field :last_name, class: 'form-control'
       .form-group
@@ -60,6 +60,7 @@
       .col-xs-10.col-md-10
         .row
           %b.common-font-color= t('admin.participant.caption.behaviour')
+        .spacer10
       .col-xs-2.col-md-2
         %b.common-font-color.score_lbl_margin_left= t('admin.participant.caption.score')
       - Behaviour.all.each do |behaviour|
@@ -69,7 +70,7 @@
         .row
           .col-xs-9.col-md-9
             .common-font-color
-              = behaviour.title
+              = behaviour.title.titleize
           .col-xs-3.col-md-3
             = hidden_field_tag('participant[scores_attributes][][scorable_id]', behaviour.id)
             = hidden_field_tag('participant[scores_attributes][][id]', score_id)
@@ -85,6 +86,6 @@
             .input-field-subtext#participantperformanceSummarySubText
               #{find_field_length(resource.performance_summary)}/#{performance_summary_length_limit}
     .col-xs-3.col-md-3{style:'position: relative; height: 600px;'}
-      = f.submit(participant_submit_btn_caption(@participant), class: 'btn btn_sign_in pull_left btn_forms_width', style: 'position: absolute; top: 92%; right: 0%;')
+      = f.submit(participant_submit_btn_caption(@participant), class: 'btn btn_sign_in pull_left btn_forms_width', style: 'position: absolute; top: 97%; right: 0%;')
 
-      = f.submit(t('admin.participant.caption.button.save_participant_&_send'), class: 'btn btn_sign_in pull_left btn_forms_width', style: 'position: absolute; top: 98%; right: 0%;', id: 'send_participant_invitation', title: t('admin.participant.caption.button.save_participant_&_send'))
+      = f.submit(t('admin.participant.caption.button.save_participant_&_send'), class: 'btn btn_sign_in pull_left btn_forms_width', style: 'position: absolute; top: 103%; right: 0%;', id: 'send_participant_invitation', title: t('admin.participant.caption.button.save_participant_&_send'))
