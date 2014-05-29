@@ -80,11 +80,25 @@
 }
 
 .events_overflow_scroll {
-    overflow-x: hidden; overflow-y: visible;
+  overflow-x: hidden; overflow-y: visible;
 }
 
 .event_content_height {
-    height: 177px !important;
+  height: 177px !important;
+}
+
+.event_image_height_width {
+  height: 122px !important;
+  width: 122px !important;
+}
+
+.nano_slider_display_block {
+  display: block !important;
+}
+
+#nano_slider {
+  height: 279px;
+  transform: translate(0px, 114.236px);
 }
 
 .lime-color{
