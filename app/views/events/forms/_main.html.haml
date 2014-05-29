@@ -51,6 +51,7 @@
           #{find_field_length(@event.description)}/#{event_description_length_limit}
 
     .col-md-12.spacer40
-    .pull-right
-      = submit_tag(t('event.btn.save'), class: 'btn btn-sm submit-btn dark-blue-btn', title: t('event.btn.save'))
+    .col-xs-12.col-md-12
+      .pull-right.event_save_button_margin
+        = submit_tag(t('event.btn.save'), class: 'btn btn-sm submit-btn dark-blue-btn', title: t('event.btn.save'))
     .col-md-12.spacer30
