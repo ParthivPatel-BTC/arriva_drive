@@ -136,4 +136,8 @@ class Participant < ActiveRecord::Base
   def tag_title
     full_name
   end
+
+  def active_for_authentication?
+    super && self.active
+  end
 end

@@ -2,11 +2,11 @@
   = render partial: 'participants/components/left_side_bar'
   .contentarea
     .values
-      %img#values1.colorbg{:alt => "", :src => "/assets/images/circulcolor1-bg.png", :title => ""}
-        %img#values2.colorbg{:alt => "", :src => "/assetsimages/circulcolor2-bg.png", :title => ""}
-          %img#values3.colorbg{:alt => "", :src => "/assetsimages/circulcolor3-bg.png", :title => ""}
-            %img#values4.colorbg{:alt => "", :src => "/assetsimages/circulcolor4-bg.png", :title => ""}
-              %img#values5.colorbg{:alt => "", :src => "/assetsimages/circulcolor5-bg.png", :title => ""}
+      %img#values1.colorbg{:alt => "", :src => "#{asset_path('images/circulcolor1-bg.png')}" , :title => ""}
+        %img#values2.colorbg{:alt => "", :src => "#{asset_path('images/circulcolor2-bg.png')}", :title => ""}
+          %img#values3.colorbg{:alt => "", :src => "#{asset_path('images/circulcolor3-bg.png')}", :title => ""}
+            %img#values4.colorbg{:alt => "", :src => "#{asset_path('images/circulcolor4-bg.png')}", :title => ""}
+              %img#values5.colorbg{:alt => "", :src => "#{asset_path('images/circulcolor5-bg.png')}", :title => ""}
                 .row
                   #defult1.circulbox.circulcolordefult{:onclick => "return ShowChildPopup('customerorientatio  n');"}
                     %a{:href => "#"}

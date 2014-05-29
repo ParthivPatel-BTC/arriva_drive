@@ -49,3 +49,13 @@
             = t('participant.caption.new_note')
             %i.icon-notes
   = render partial: 'participants/components/right_side_bar'
+
+- if @note && @points_earned.present? && @points_earned > 0
+  #new-note-dialog-box
+    %span#new-note-msg
+      Well done, you have received
+      = @points_earned
+      points for the (
+      = formatted_tags(@note.tags.behaviour_tags)
+      ) Leadership Behaviours that you have tagged with this note
+
