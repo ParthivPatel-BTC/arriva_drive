@@ -116,7 +116,7 @@
 }
 
 .panel-padding {
-  padding: 18px 25px;
+  padding: 0px 25px;
 }
 
 .logo-span-by {
@@ -224,9 +224,13 @@
 }
 
 .panel-padding-left {
-  padding: 18px 0px !important;
+  padding: 0px 0px !important;
 }
 
 .break-long-url {
   word-wrap: break-word;
+}
+
+.event_save_button_margin {
+  margin-right:20px;
 }
