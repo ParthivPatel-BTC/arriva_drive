@@ -17,4 +17,17 @@ class Event < ActiveRecord::Base
   def is_completed?
     Date.today > event_date
   end
+
+  def to_ics
+    event = Icalendar::Event.new
+    event.dtstart = self.event_date.strftime("%Y%m%dT%H%M%S")
+    event.summary = self.title
+    event.description = self.description
+    event.location = location
+    event.ip_class = "PUBLIC"
+    event.created = self.created_at
+    event.last_modified = self.updated_at
+    event.uid = event.url = "http://localhost:3000/events/#{self.id}"
+    event
+  end
 end

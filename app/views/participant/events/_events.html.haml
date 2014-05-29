@@ -21,7 +21,7 @@
                       %span.eventname= event.location
                     %p= event.description
                     %p.links
-                      %a.left{href: "#"}
+                      = link_to(calendar_feed_participant_event_path(event,  :format => :ics)) do
                         %i.icon-notes
                       %a.right{href: "#"}
                         share
@@ -41,7 +41,7 @@
         = paginate @events, exclude: [:first, :last], remote: true
 :javascript
   $(document).ready(function() {
-    $('.right, .left').on( "click", function(e) {
+    $('.page-right, .page-left').on( "click", function(e) {
       var URL = $("#paginationNext, #paginationBack").attr('href');
       var month = getURLParameter(URL, 'month');
 
