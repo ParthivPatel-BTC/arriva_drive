@@ -1,13 +1,14 @@
 class Participant::NotesController < ApplicationController
   layout 'participant'
   before_filter :participant_user_required!
-  before_filter :find_set_note, only: [:destroy]
+  before_filter :find_set_note, only: [:index, :destroy]
   before_filter :set_tagged_behaviours_n_participants, only: [
     :tag_participants_list, :tag_behaviours_list, :tag_participants_behaviours, :create
   ]
 
   def index
     @notes = current_participant.notes.order('created_at DESC')
+    @points_earned = (@note.tags.behaviour_tags.count * Settings.activity_points.write_note) if @note.present?
   end
 
   def new
@@ -18,7 +19,7 @@ class Participant::NotesController < ApplicationController
     @note = current_participant.notes.create(note_params)
     if @note.persisted?
       flash[:notice] = t('participant.msg.success.note_creation')
-      redirect_to participant_notes_path
+      redirect_to participant_notes_path(id: @note.id)
     else
       render :new
     end
