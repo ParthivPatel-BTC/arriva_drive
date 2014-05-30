@@ -7,8 +7,11 @@ class Score < ActiveRecord::Base
 
   scope :activity_scores, -> { where(scorable_type: 'Activity') }
   scope :behaviour_scores, -> { where(scorable_type: 'Behaviour') }
+  scope :anonymous_activity_scores, -> { where(scorable_type: 'AnonymousActivity') }
+
   scope :by_activity, ->(activity) { activity_scores.where(scorable_id: activity) }
-  scope :by_behaviour, ->(activity) { behaviour_scores.where(scorable_id: activity) }
+  scope :by_behaviour, ->(behaviour) { behaviour_scores.where(scorable_id: behaviour) }
+  scope :by_anonymous_activity, ->(anonymous_activity) { anonymous_activity_scores.where(scorable_id: anonymous_activity) }
 
   def to_level(score)
     scorable.try(:find_level, score)
