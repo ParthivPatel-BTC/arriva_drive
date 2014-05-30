@@ -11,7 +11,6 @@ class ActivitiesController < ApplicationController
   def create
     @activity = Activity.create(activity_params)
     if @activity.persisted?
-      flash[:notice] = t('admin.msg.success.creation', name: @activity.title)
       redirect_to admin_dashboard_path
     else
       build_nested_mcq_resource
@@ -28,7 +27,6 @@ class ActivitiesController < ApplicationController
 
   def update
     @activity.update_attributes(activity_params)
-    flash[:notice] = t('admin.msg.success.update', name: @activity.title)
     redirect_to admin_dashboard_path
   end
 
