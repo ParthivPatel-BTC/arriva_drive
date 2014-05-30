@@ -2,10 +2,10 @@
   - @networks.each do |network|
     %li
       .profilepic
-        = image_tag(network.participant.photo.url(:thumb))
+        = image_tag(network.participant.photo.url(:thumb), class: 'participant_img')
       .mynetworkdetails
         %h5= network.participant.full_name
-        %p LEVEL 2
+        %p= t('participant.networks.caption.level', level: deside_level(network.participant))
         %p= network.participant.job_title
         %p= get_division_name(network.participant.division)
 .pagingrow
