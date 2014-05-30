@@ -106,6 +106,10 @@ en:
     activities:
       caption:
         purchase: 'PURCHASE'
+        app: 'Download'
+        book: 'Purchase'
+        video: 'View'
+        magazine: 'Read'
       msg:
         no_activities_found: 'No Activities Found'
     networks:
