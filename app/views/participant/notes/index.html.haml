@@ -16,7 +16,7 @@
     .contentarea
       .eventssection
         #about.nano
-          .nano-content
+          .nano-content{style: "right: -13px;", tabindex: "0"}
             .notes-custom
               %ul
                 - last_month = nil
@@ -24,8 +24,8 @@
                   %li
                     .notes-left.notes-left-width
                       .notesicon
-                        %a{ href: 'javascript:void(null);' }
-                          %i.icon-share
+                        / %a{ href: 'javascript:void(null);' }
+                        /   %i.icon-share
                         = link_to participant_note_path(note), method: :delete, data: { confirm: t('common.msg.confirm') } do
                           %i.icon-delete
                       .notedetails
@@ -36,16 +36,20 @@
                         %p.uppercase
                           %span.green TAGS:
                           = formatted_tags(note.tags.behaviour_tags)
-                    .notes-right
-                      - if index == 0
-                        = t('participant.caption.present')
-                        - last_month = note_creation_month(note)
-                      - else
-                        - month = note_creation_month(note)
-                        = last_month = month if last_month != month
+          .monthright
+            - @notes.each_with_index do |note, index|
+              - if index == 0
+                = link_to(t('participant.caption.present'))
+                - last_month = note_creation_month(note)
+              - else
+                - month = note_creation_month(note)
+                - if last_month != month
+                  - last_month = month
+                  = link_to last_month
+
         .pagingrow.notes
           %span.left.countnote= pluralize(@notes.count, 'note')
-          %a.right{ href: new_participant_note_path }
+          = link_to(new_participant_note_path, class: 'right') do
             = t('participant.caption.new_note')
             %i.icon-notes
   = render partial: 'participants/components/right_side_bar'
