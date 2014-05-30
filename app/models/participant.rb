@@ -112,7 +112,8 @@ class Participant < ActiveRecord::Base
     score = if (type == :activity)
         scores.by_activity(activity).first
       else
-        scores.by_behaviour(activity).first
+        scores.by_anonymous_activity(activity).first
+        # scores.by_behaviour(activity).first
     end
     score = create_score(activity) if score.blank?
     score.update_attribute(:score, score.score + points)
@@ -130,7 +131,13 @@ class Participant < ActiveRecord::Base
   end
 
   def total_activity_score_for_behaviour(behaviour)
-    behaviour.total_activities_score(self)
+    total_activity_score = behaviour.total_activities_score(self)
+    total_activity_score + total_anonymous_activity_score(behaviour)
+  end
+
+  def total_anonymous_activity_score(behaviour)
+    anonymous_activity_ids = AnonymousActivity.where(behaviour_id: behaviour.id).pluck(:id)
+    scores.by_anonymous_activity(anonymous_activity_ids).sum(:score)
   end
 
   def tag_title

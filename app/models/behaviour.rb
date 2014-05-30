@@ -5,6 +5,7 @@ class Behaviour < ActiveRecord::Base
   has_many :tags, as: :taggable
   has_many :behaviours_events
   has_many :events, through: :behaviours_events
+  has_many :anonymous_activities
   has_and_belongs_to_many :values
 
   def total_activities_score(participant=nil)
