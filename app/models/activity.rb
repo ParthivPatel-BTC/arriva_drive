@@ -45,6 +45,12 @@ class Activity < ActiveRecord::Base
     activity_answer_participants.count
   end
 
+  def activity_type_verbos
+    activities_type_str = ''
+    ACTIVITY_TYPE.each { |arr| activities_type_str = arr[0] if (arr[1] == activity_type.to_s) }
+    activities_type_str.downcase
+  end
+
   private
 
   def self.split_params_for_filter(params)
