@@ -13,7 +13,7 @@
       .row
         .col-md-8
           = obj.send(title_method)
-        .col-md-4.text-right.light-blue
+        .col-md-4.text-right.arriva-green
           = link_to t('common.caption.view'), self.try(show_path, obj), title: t('common.caption.view')
           \/
           = link_to t('common.caption.edit'), self.send(edit_path, obj), title: t('common.caption.edit')
@@ -22,5 +22,5 @@
           = obj.send(subtitle_method)
         - unless collections.count == index+1
           - # Vertical space after each object except the last one
-          .spacer30
-          .spacer5
+          .spacer25
+.spacer30

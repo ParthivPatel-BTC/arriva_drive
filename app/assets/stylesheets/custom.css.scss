@@ -57,6 +57,14 @@
   color: #C0C0C0;
 }
 
+.arriva-green{
+  color: #C8DB00 !important;
+}
+
+.arriva-green a{
+  color: #C8DB00 !important;
+}
+
 /* Common text-classes */
 
 .input-field-subtext {
@@ -107,9 +115,9 @@
   border-style: solid;
   border-width: 2px;
   border-color: #C0C0C0;
-  padding: 18px 12px;
+  padding: 5px 12px;
   display: block;
-  height: 375px;
+  height: 480px;
   overflow-y: auto;
   overflow-x: hidden;
 }
@@ -176,6 +184,11 @@
 
 .logo-margin-top {
   margin-top: 5px;
+}
+
+.arriva-logo-cms{
+  height: auto;
+  width: 100px;
 }
 
 .header_current_admin_text_margin {
