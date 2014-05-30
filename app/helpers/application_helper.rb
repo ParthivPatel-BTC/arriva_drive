@@ -65,7 +65,7 @@ module ApplicationHelper
   end
 
   def note_creation_month(note)
-    note.created_at.strftime('%B %Y').upcase
+    note.created_at.strftime('%B').upcase
   end
 
   def left_side_bar_class(side_bar_name)
