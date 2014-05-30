@@ -13,7 +13,7 @@
       .row
         .col-md-8
           = obj.send(title_method)
-        .col-md-4.text-right.light-blue
+        .col-md-4.text-right.arriva-green
           = link_to t('common.caption.view'), self.try(show_path, obj), title: t('common.caption.view')
           \/
           = link_to t('common.caption.edit'), self.send(edit_path, obj), title: t('common.caption.edit')
