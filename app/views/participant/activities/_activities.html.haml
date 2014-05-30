@@ -18,11 +18,14 @@
 
 :javascript
   $(document).ready(function() {
-    var checkedBehaviours = $('input#behaviour:checked')
-                       .map(function() { return $(this).val() })
-                       .get()
-                       .join(",");
-    $('.right, .left').on( "click", function(e) {
+    $("input#behaviour[type=checkbox]").on("change", function() {
+      $.ajax({
+      url: "/participants/activities?behaviour_id="+ $(this).val(),
+      dataType: "script"
+      });
+    });
+
+    $('.page-right, .page-left').on( "click", function(e) {
       e.preventDefault();
       if ($(this).attr("href").split("page").length > 1) {
         var pageNum = $(this).attr("href").match(/page=([0-9]+)/)[1];
@@ -31,9 +34,8 @@
         var pageNum = '1';
       }
       $.ajax({
-        url: "/participants/activities?page="+pageNum+"&behaviour_id="+checkedBehaviours,
+        url: $(this).attr("href"),
         dataType: "script"
       });
     });
   });
-
