@@ -6,15 +6,14 @@
   %ul.answer.uppercase
     %p.reading
       %span Your Answer
-    %li
-      %label= current_participant.answer_of_activity(@activity).answer_text
+      %br
+      %text= current_participant.answer_of_activity(@activity).answer_text
     - if current_participant.has_given_wrong_answer?(@activity)
       %br
       %p.reading
         %span Correct Answer
-      %li.correct-answer
-        %label= @activity.correct_answer.try(:answer_text)
-  %br
+        %br
+        %text= @activity.correct_answer.try(:answer_text)
   %br
   %p.reading
     You have got
