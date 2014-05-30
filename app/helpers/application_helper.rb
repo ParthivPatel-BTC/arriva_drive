@@ -103,4 +103,13 @@ module ApplicationHelper
   def formatted_tags(tags)
     tags.inject('') { |str, tag| str << "#{tag.taggable.tag_title}, " }.chop.chop
   end
+
+  def formatted_tags_with_and(tags)
+    formatted_tags_string = tags.inject('') { |str, tag| str << "#{tag.taggable.tag_title.titleize}, " }.chop.chop
+    if tags.count < 2
+      formatted_tags_string
+    else
+      formatted_tags_string.reverse.sub(' ,', ' dna ').reverse
+    end
+  end
 end

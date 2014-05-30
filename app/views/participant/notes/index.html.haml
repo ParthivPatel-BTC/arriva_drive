@@ -55,7 +55,7 @@
     %span#new-note-msg
       Well done, you have received
       = @points_earned
-      points for the (
-      = formatted_tags(@note.tags.behaviour_tags)
-      ) Leadership Behaviours that you have tagged with this note
+      points for the Leadership Behaviours (
+      = formatted_tags_with_and(@note.tags.behaviour_tags)
+      ) that you have tagged with this note.
 
