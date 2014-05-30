@@ -11,7 +11,6 @@ class ParticipantsController < Devise::RegistrationsController
     @participant = Participant.new(activity_params)
     if @participant.save
       send_invitation(params[:participant])
-      flash[:notice] = t('admin.msg.success.creation', name: @participant.full_name)
       redirect_to admin_dashboard_path
     else
       render :new
@@ -28,7 +27,6 @@ class ParticipantsController < Devise::RegistrationsController
   def update
     if @participant.update_attributes(activity_params)
       send_invitation(params[:participant])
-      flash[:notice] = t('admin.msg.success.update', name: @participant.full_name)
       redirect_to show_participant_path(@participant)
     else
       render 'edit'
@@ -37,19 +35,16 @@ class ParticipantsController < Devise::RegistrationsController
 
   def deactivate
     @participant.deactivate!
-    flash[:notice] = t('admin.participant.msg.success.deactivated', name: @participant.full_name)
     redirect_to admin_dashboard_path
   end
 
   def activate
     @participant.activate!
-    flash[:notice] = t('admin.participant.msg.success.activated', name: @participant.full_name)
     redirect_to admin_dashboard_path
   end
 
   def resend_invitation
     if @participant.send_invitation_to_participant(nil)
-      flash[:notice] = t('admin.participant.msg.success.send_invitation', email: @participant.email)
       redirect_to admin_dashboard_path
     end
   end
@@ -60,7 +55,6 @@ class ParticipantsController < Devise::RegistrationsController
   end
 
   def after_sign_up_path_for(resource)
-    flash[:notice] = t('admin.msg.success.creation', name: resource.full_name)
     show_participant_path(resource)
   end
 
