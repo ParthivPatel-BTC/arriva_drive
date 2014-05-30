@@ -92,8 +92,8 @@ en:
       success:
         note_creation: 'Note created successfully'
         note_destroy: 'Note removed successfully'
-        correct_answer: 'Well done, you have answered the question correctly! You have received 100 points for the (relevant) Leadership Behaviour'
-        wrong_answer: 'Unfortunately that was the wrong answer, please try again on another activity for the (relevant) Leadership Behaviour'
+        correct_answer: 'Well done, you have answered the question correctly! You have received 100 points for the %{relevant} Leadership Behaviour'
+        wrong_answer: 'Unfortunately that was the wrong answer, please try again on another activity for the %{relevant} Leadership Behaviour'
     headings:
       welcome: "welcome back %{name}"
     caption:
