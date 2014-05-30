@@ -30,15 +30,15 @@
         %h4
           %strong.dark-blue= t('event.fields.link')
         = text_field_tag 'event[link]', @event.link, class: common_text_field_class
-        %h4
-          %strong.dark-blue= t('event.fields.image')
-        .row
-          .col-md-4
-            %img#previewEventImage
-            - if image_present?(@event, 'image') && image_link_valid?(@event)
-              = image_tag @event.image.url, class: 'image-thumb', id: 'existingEventImage'
-          .col-md-8
-            = file_field_tag 'event[image]', accept: 'image/png,image/gif,image/jpeg'
+        / %h4
+        /   %strong.dark-blue= t('event.fields.image')
+        / .row
+        /   .col-md-4
+        /     %img#previewEventImage
+        /     - if image_present?(@event, 'image') && image_link_valid?(@event)
+        /       = image_tag @event.image.url, class: 'image-thumb', id: 'existingEventImage'
+        /   .col-md-8
+        /     = file_field_tag 'event[image]', accept: 'image/png,image/gif,image/jpeg'
 
     - # Right Panel (Text are for Description)
     .col-xs-12.col-md-4

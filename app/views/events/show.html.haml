@@ -34,13 +34,13 @@
         %strong.dark-blue= t('event.fields.link')
       .break-long-url
         = @event.link
-      %h4
-        %strong.dark-blue= t('event.fields.image')
-      .row
-        .col-md-12
-          %img#previewEventImage
-          - if image_present?(@event, 'image') && image_link_valid?(@event)
-            = image_tag @event.image.url, class: 'image-thumb', id: 'existingEventImage'
+      / %h4
+      /   %strong.dark-blue= t('event.fields.image')
+      / .row
+      /   .col-md-12
+      /     %img#previewEventImage
+      /     - if image_present?(@event, 'image') && image_link_valid?(@event)
+      /       = image_tag @event.image.url, class: 'image-thumb', id: 'existingEventImage'
 
   - # Right Panel (Text are for Description)
   .col-xs-12.col-md-4
