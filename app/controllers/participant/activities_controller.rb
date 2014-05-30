@@ -50,9 +50,9 @@ class Participant::ActivitiesController < ApplicationController
       answer_id: params[:answer_id]
     )
     @popup_msg = if @activity_answer_participant.is_correct?
-        t('participant.msg.success.correct_answer')
+        t('participant.msg.success.correct_answer', relevant: @activity.behaviour.title)
       else
-        t('participant.msg.success.wrong_answer')
+        t('participant.msg.success.wrong_answer', relevant: @activity.behaviour.title)
     end
   end
 
