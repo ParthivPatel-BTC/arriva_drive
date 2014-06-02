@@ -36,22 +36,21 @@
                         %p.uppercase
                           %span.green TAGS:
                           = formatted_tags(note.tags.behaviour_tags)
-          .monthright
-            - @notes.each_with_index do |note, index|
-              - if index == 0
-                = link_to(t('participant.caption.present'))
-                - last_month = note_creation_month(note)
-              - else
-                - month = note_creation_month(note)
-                - if last_month != month
-                  - last_month = month
-                  = link_to last_month
-
-        .pagingrow.notes
-          %span.left.countnote= pluralize(@notes.count, 'note')
-          = link_to(new_participant_note_path, class: 'right') do
-            = t('participant.caption.new_note')
-            %i.icon-notes
+            .monthright
+              - @notes.each_with_index do |note, index|
+                - if index == 0
+                  = link_to(t('participant.caption.present'))
+                  - last_month = note_creation_month(note)
+                - else
+                  - month = note_creation_month(note)
+                  - if last_month != month
+                    - last_month = month
+                    = link_to last_month
+            .pagingrow.notes
+              %span.left.countnote= pluralize(@notes.count, 'note')
+              = link_to(new_participant_note_path, class: 'right') do
+                = t('participant.caption.new_note')
+                %i.icon-notes
   = render partial: 'participants/components/right_side_bar'
 
 - if @note && @points_earned.present? && @points_earned > 0
