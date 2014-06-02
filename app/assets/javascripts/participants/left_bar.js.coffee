@@ -1,3 +1,5 @@
+uniformChkBoxChecked = undefined
+uniformChkBoxChecked_current = undefined
 $(document).ready ->
   $("input#behaviour[type=checkbox]").on "change", ->
     $("ul #behaviour_checkboxes input").each ->
@@ -19,8 +21,6 @@ uniformChkBoxChecked = (selector) ->
 
 uniformChkBoxChecked_current = undefined
 uniformChkBoxChecked_current = (selector) ->
-  selector.attr "checked", true
-  selector.parent().addClass "checked"
+  selector.prop "checked", true
   $.uniform.update()
-  selector.parent().addClass "checked"
   return
