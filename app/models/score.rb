@@ -5,6 +5,8 @@ class Score < ActiveRecord::Base
 
   validate :score, numericality: { only_integer: true }
 
+  MAX_SCORE = 5000
+
   scope :activity_scores, -> { where(scorable_type: 'Activity') }
   scope :behaviour_scores, -> { where(scorable_type: 'Behaviour') }
   scope :anonymous_activity_scores, -> { where(scorable_type: 'AnonymousActivity') }
@@ -18,7 +20,8 @@ class Score < ActiveRecord::Base
   end
 
   def percentile_score
-    to_level(score) * 20 if score
+    # to_level(score) * 20 if score
+    100 * score / MAX_SCORE
   end
 
   def difference_with_top_score
@@ -26,7 +29,7 @@ class Score < ActiveRecord::Base
   end
 
   def percentile_difference_with_top_score
-    (to_level(top_score) - to_level(score)) * 20 if score
+    (top_score - score) * 100 / MAX_SCORE if score
   end
 
   def top_score
