@@ -5,7 +5,7 @@ class Score < ActiveRecord::Base
 
   validate :score, numericality: { only_integer: true }
 
-  MAX_SCORE = 5000
+  MAX_SCORE = 5
 
   scope :activity_scores, -> { where(scorable_type: 'Activity') }
   scope :behaviour_scores, -> { where(scorable_type: 'Behaviour') }
