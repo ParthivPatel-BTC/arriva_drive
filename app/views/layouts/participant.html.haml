@@ -7,7 +7,10 @@
   / <![endif]
   %head
     %title Welcome to Drive
-    %meta{content: "black-translucent", name: "apple-mobile-web-app-status-bar-style"}/
+    %meta{content: "yes", name: "apple-mobile-web-app-capable"}/
+    %meta{content: "black", name: "apple-mobile-web-app-status-bar-style"}/
+    %meta{content: "Full Screen", name: "apple-mobile-web-app-title"}/
+    %meta{content: "width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui", name: "viewport"}/
     = stylesheet_link_tag "participant_assets", media: "all", "data-turbolinks-track" => true
     = javascript_include_tag "participant_assets", "data-turbolinks-track" => true
     = csrf_meta_tags
