@@ -14,9 +14,9 @@
           %i.icon-save
 - if params[:alpha_character]
   .pagingrow
-    = link_to('javascript:void(0);', class: 'view_all_participants') do
+    = link_to('javascript:void(0);', class: 'view_all_participants', title: t('participant.networks.caption.view_all_participants')) do
       %i.icon-info
-      = t('networks.caption.view_all_participants')
+      = t('participant.networks.caption.view_all_participants')
 
 :javascript
   $(document).ready(function() {
