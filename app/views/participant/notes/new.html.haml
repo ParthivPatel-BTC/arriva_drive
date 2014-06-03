@@ -17,10 +17,12 @@
               %i.icon-somebody
               - if @tagged_participants && @tagged_participants.count > 0
                 %span= @tagged_participants.count
-            = link_to_submit participant_notes_path do
-              %i.icon-notesave
+            %a{ href: participant_notes_path }
+              %i.icon-cancel
+            
             / %a{:href => "#"}
             /   %i.icon-attach
-            %a.right{ href: participant_notes_path }
-              %i.icon-cancel
+            = link_to_submit(participant_notes_path, class: 'right') do
+              %i.icon-notesave
+            
   = render partial: 'participants/components/right_side_bar'
