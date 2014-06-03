@@ -9,6 +9,17 @@
         %p= network.participant.job_title
         %p= get_division_name(network.participant.division)
 .pagingrow
-  = link_to('javascript:void(0);', id: 'view_all_participants') do
-    %i.icon-previus
-    = t('pagination.caption.back')
+  = link_to('javascript:void(0);', class: 'view_all_participants', title: t('participant.networks.caption.view_all_participants')) do
+    %i.icon-info
+    = t('participant.networks.caption.view_all_participants')
+
+:javascript
+  $(document).ready(function() {
+    $("#view_all_participants, .view_all_participants").on("click", function () {
+      $.ajax({
+        url: "/participants/all_participants?view_all=true",
+        dataType: "script"
+      });
+    });
+
+  });
