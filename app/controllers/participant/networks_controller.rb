@@ -29,7 +29,7 @@ class Participant::NetworksController < ApplicationController
     @network = Network.new(network_params)
     if @network.save
       respond_to do |format|
-        @participants = Participant.all_participants(current_participant.id)
+        @networks = Network.find_all_by_current_participant_id(current_participant.id)
           format.js{
             render file: 'participant/networks/index'
           }
