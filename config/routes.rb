@@ -52,7 +52,7 @@ ArrivaDrive::Application.routes.draw do
 
     resources :events, only: [:index], controller: 'participant/events', as: 'participant_events' do
       member do
-        get '/calendar_feed', to: 'events#publish', as: :calendar_feed
+        get '/calendar_feed', to: 'participant/events#publish', as: :calendar_feed
       end
     end
 
