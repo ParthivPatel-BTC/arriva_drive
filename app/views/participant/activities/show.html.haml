@@ -2,9 +2,10 @@
   = render partial: 'participants/components/left_side_bar'
   .contentarea
     .sustainablesection
-      %h4
-        %i{class: "#{deside_icon_class(@activity.link)}"}
-        = @activity.title
+      = link_to(@activity.link, target: '_blank') do
+        %h4
+          %i{class: "#{deside_icon_class(@activity.link)}"}
+          = @activity.title
       %ul
         %li.boxbg.participant-box-width.participant-width-fixed
           .leftblock
