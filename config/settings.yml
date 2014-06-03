@@ -13,6 +13,7 @@ participants:
 defaults:
   date_format_in_views: '%d/%m/%Y'
   i_cal_event_finish_time: 17
+  participant_home_screen_video: 'http://www.youtube.com/embed/uaynHY00A1c'
 
 paperclip:
   style:
