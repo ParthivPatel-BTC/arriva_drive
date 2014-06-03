@@ -2,21 +2,26 @@
   = render partial: 'participants/components/left_side_bar'
   - if @notes.blank?
     .contentarea
-      .activities
-        %ul
-          %li
-            .activitiesinfo
-              %h5= t('participant.notes.msg.no_notes_found')
       .pagingrow.notes
         %span.left.countnote= pluralize(@notes.count, 'note')
         %a.right{ href: new_participant_note_path }
           = t('participant.caption.new_note')
           %i.icon-notes
+      .activities
+        %ul
+          %li.notes-custom
+            .activitiesinfo
+              %h5= t('participant.notes.msg.no_notes_found')
   - else
     .contentarea
       .eventssection
         #about.nano
           .nano-content{style: "right: -13px;", tabindex: "0"}
+            .pagingrow.notes
+              %span.left.countnote= pluralize(@notes.count, 'note')
+              = link_to(new_participant_note_path, class: 'right') do
+                = t('participant.caption.new_note')
+                %i.icon-notes
             .notes-custom
               %ul
                 - last_month = nil
@@ -46,11 +51,7 @@
                   - if last_month != month
                     - last_month = month
                     = link_to last_month
-            .pagingrow.notes
-              %span.left.countnote= pluralize(@notes.count, 'note')
-              = link_to(new_participant_note_path, class: 'right') do
-                = t('participant.caption.new_note')
-                %i.icon-notes
+
   = render partial: 'participants/components/right_side_bar'
 
 - if @note && @points_earned.present? && @points_earned > 0
