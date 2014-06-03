@@ -37,7 +37,7 @@
                         %h5
                           %span.date= formatted_date(note.updated_at, true)
                           &nbsp;
-                          %span.time= formatted_time(note.updated_at)
+                          %span.time= formatted_time_with_timezone(note.updated_at)
                           %span.eventname= note.content
                         %p.uppercase
                           %span.green TAGS:

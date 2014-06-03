@@ -42,6 +42,10 @@ module ApplicationHelper
     time.strftime('%H.%M')
   end
 
+  def formatted_time_with_timezone(time)
+    time.strftime('%H.%M %Z')
+  end
+
   def determine_root_path
     return root_path if current_admin.blank?
     admin_dashboard_path
