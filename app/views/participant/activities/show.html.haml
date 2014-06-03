@@ -9,7 +9,7 @@
       %ul
         %li.boxbg.participant-box-width.participant-width-fixed
           .leftblock
-            %p= @activity.description
+            %p.break-long-url.activity-text= @activity.description
             %p
               = link_to(@activity.link, class: 'purchase', target: '_blank') do
                 %i{class: "#{deside_icon_class(@activity.link)}"}
