@@ -5,7 +5,8 @@
         %ul
           - @activities.each do |activity|
             %li
-              %i{class: get_activity_icon_class(activity.activity_type)}
+              = link_to participant_activity_path(activity) do
+                %i{class: get_activity_icon_class(activity.activity_type)}
               .activitiesinfo
                 %h5
                   = link_to(activity.title, participant_activity_path(activity))
