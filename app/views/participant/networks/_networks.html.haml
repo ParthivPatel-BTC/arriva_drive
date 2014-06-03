@@ -3,7 +3,10 @@
   - @participants.each do |participant|
     %li
       .profilepic
-        = image_tag(participant.photo.url(:thumb), class: 'participant_img')
+        - if participant.photo.exists?
+          = image_tag(participant.photo.url(:thumb), class: 'participant_img')
+        - else
+          = image_tag 'silhouette.jpg'
       .mynetworkdetails
         %h5= participant.full_name
         %p= t('participant.networks.caption.level', level: deside_level(participant))

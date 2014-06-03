@@ -41,7 +41,7 @@
                         %p.uppercase
                           %span.green TAGS:
                           = formatted_tags(note.tags.behaviour_tags)
-          .monthright
+          .monthright.monthright-custom
             - @notes.each_with_index do |note, index|
               - if index == 0
                 = link_to(t('participant.caption.present'))
