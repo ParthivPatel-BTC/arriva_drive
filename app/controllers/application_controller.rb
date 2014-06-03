@@ -62,9 +62,9 @@ class ApplicationController < ActionController::Base
 
   def access_denied_redirect
     if !current_admin.blank?
-      admin_dashboard_path
+      redirect_to admin_dashboard_path
     elsif !current_participant.blank?
-      participant_events_path
+      redirect_to participant_events_path
     else
       redirect_to root_path
     end
