@@ -16,6 +16,6 @@
           - if @participants.blank?
             %p.lime-color Sorry, There are no participents in your network
           .writeiconright
-            = link_to_submit tag_participants_behaviours_participant_notes_path do
+            = link_to_submit tag_participants_behaviours_participant_notes_path, title: t('common.caption.ok') do
               %i.icon-done
   = render partial: 'participants/components/right_side_bar'
