@@ -28,6 +28,7 @@ mail:
     web_url: 'http://intense-island-1282.herokuapp.com/'
     mail_to: 'reevec@arriva.co.uk'
     contact: '+44 7584 393 586'
+    contact_email: 'support@drivedb.net'
 
 field_length_limit:
   performance_summary: 250

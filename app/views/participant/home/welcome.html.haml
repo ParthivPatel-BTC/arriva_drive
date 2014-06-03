@@ -1,9 +1,10 @@
+- mail_to = mail_to Settings.mail.default_url_options.contact_email, nil,traget: '_blank'
 %section.mainsection
   = render partial: 'participants/components/left_side_bar'
   .contentarea
     .welcomerow
       %h3= t('participant.headings.welcome', name: current_participant.first_name)
-      %p Cume nonsequas aribusa ndelessita es soluptio. Ximiliq uatusam esendellant, sit, volor as eatem quuntent eum consequas sim essi autasit qui as di odit et aligendiatio coratet fuga. Re officta ercium autempos magnam et ommos ium eaquate cullent od ut volorup taturer umquos voluptio velitas eosae nihil im sendem coreptatis et eosam.
+      %p This is your DRIVE dashboard. At a glance you can access all areas of the application, see your fit plan performance summary and behaviours, and track your use of the DRIVE activities. If you have any questions please contact #{mail_to}.
     .welcomeboxrow
       .welcomeboxrowleft
         .boxbg.smallbox
