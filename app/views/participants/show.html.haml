@@ -41,7 +41,7 @@
       .row
         %b.dark-blue= t('admin.participant.caption.behaviour')
     .col-xs-2.col-md-2
-      %b.dark-blue= t('admin.participant.caption.score')
+      %b.dark-blue Level
     - Behaviour.all.each do |behaviour|
       - score = @participant.id.present? ? get_score_value(behaviour, @participant) : ''
       .row
