@@ -41,16 +41,16 @@
                         %p.uppercase
                           %span.green TAGS:
                           = formatted_tags(note.tags.behaviour_tags)
-            .monthright
-              - @notes.each_with_index do |note, index|
-                - if index == 0
-                  = link_to(t('participant.caption.present'))
-                  - last_month = note_creation_month(note)
-                - else
-                  - month = note_creation_month(note)
-                  - if last_month != month
-                    - last_month = month
-                    = link_to last_month
+          .monthright
+            - @notes.each_with_index do |note, index|
+              - if index == 0
+                = link_to(t('participant.caption.present'))
+                - last_month = note_creation_month(note)
+              - else
+                - month = note_creation_month(note)
+                - if last_month != month
+                  - last_month = month
+                  = link_to last_month
 
   = render partial: 'participants/components/right_side_bar'
 
