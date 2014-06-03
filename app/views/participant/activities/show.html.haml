@@ -22,11 +22,12 @@
             %br/
           - else
             = render partial: 'participant/activities/answers_listing'
-      %h4.writereview
         - if current_participant.has_reviewed_this_activity?(@activity)
-          .font-size-11
-            = current_participant.get_review_text_of_activity(@activity)
-        - else
+          %li.boxbg.participant-box-width
+            .font-size-11
+              = current_participant.get_review_text_of_activity(@activity)
+      - unless current_participant.has_reviewed_this_activity?(@activity)
+        %h4.writereview
           %a{ href: new_review_participant_activity_path(@activity) }
             %i.icon-write>
             write review

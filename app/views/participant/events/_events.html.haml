@@ -19,7 +19,7 @@
                       %h5.uppercase
                         %span.date= participant_event_date_formatted(event.event_date)
                         %span.time= participant_event_time_formatted(event.event_time)
-                        %span.eventname= event.location
+                        %span.eventname= "#{event.title}, #{event.location}"
                       .break-long-url
                         %p= event.description
                     %p.links

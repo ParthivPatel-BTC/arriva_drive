@@ -21,6 +21,7 @@ class Event < ActiveRecord::Base
   def to_ics
     event = Icalendar::Event.new
     event.dtstart = self.event_date.strftime("%Y%m%dT%H%M%S")
+    event.dtend   = DateTime.new(event_date.year, event_date.month, event_date.day, Settings.defaults.i_cal_event_finish_time, 0, 0, 0).strftime("%Y%m%dT%H%M%S")
     event.summary = self.title
     event.description = self.description
     event.location = location
