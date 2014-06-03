@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   before_filter :set_behaviours, only: [:new, :create, :show, :edit, :update]
-  before_filter :find_set_event, only: [:edit, :update, :show, :publish]
+  before_filter :find_set_event, only: [:edit, :update, :show]
   before_filter :admin_user_required!
 
   def new
@@ -28,17 +28,6 @@ class EventsController < ApplicationController
       redirect_to admin_dashboard_path
     else
       render :edit
-    end
-  end
-
-  def publish
-    respond_to do |format|
-      format.ics do
-        calendar = Icalendar::Calendar.new
-        calendar.add_event(@event.to_ics)
-        calendar.publish
-        render :text => calendar.to_ical, :layout => false
-      end
     end
   end
 
