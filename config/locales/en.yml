@@ -6,6 +6,9 @@ en:
       edit: 'Edit'
       back: 'Back'
       view: 'View'
+      ok: 'OK'
+      add: 'Add'
+      delete: 'Delete'
       button:
         create_new: 'Create New'
       submit: 'Submit'
@@ -132,9 +135,14 @@ en:
       caption:
         view: 'VIEW'
     notes:
+      caption:
+        tag_behaviours: 'Tag The Behaviour'
+        tag_people: 'Tag The People'
       msg:
        no_notes_found: 'No Notes Found'
     events:
+      caption:
+        calendar_feed: 'Calendar Feed'
       msg:
        no_events_found: 'No Events Found'
   sign_in:

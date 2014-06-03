@@ -23,7 +23,7 @@
                       .break-long-url
                         %p= event.description
                     %p.links
-                      = link_to(calendar_feed_participant_event_path(event,  :format => :ics)) do
+                      = link_to(calendar_feed_participant_event_path(event,  :format => :ics), title: t('participant.events.caption.calendar_feed')) do
                         %i.icon-notesave
                       / %a.right{href: "#"}
                       /   share

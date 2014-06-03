@@ -7,8 +7,8 @@
           .commentarea
             = text_area_tag 'review[review_text]', nil, class: 'textarea', placeholder: t('participant.place_holder.review_text')
           .writeicon
-            = link_to_submit create_review_participant_activity_path(@activity), data: {disable_with: "Submitting..."} do
+            = link_to_submit create_review_participant_activity_path(@activity), title: t('common.caption.add'), data: {disable_with: "Submitting..."}do
               %i.icon-save
-            %a.right{ href: participant_activity_path(@activity) }
+            = link_to participant_activity_path(@activity), class: 'right', title: t('common.caption.back') do
               %i.icon-delete
   = render partial: 'participants/components/right_side_bar'

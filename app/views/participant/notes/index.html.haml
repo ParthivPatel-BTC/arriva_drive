@@ -31,7 +31,7 @@
                       .notesicon
                         / %a{ href: 'javascript:void(null);' }
                         /   %i.icon-share
-                        = link_to participant_note_path(note), method: :delete, data: { confirm: t('common.msg.confirm') } do
+                        = link_to participant_note_path(note),  title: t('common.caption.delete'), method: :delete, data: { confirm: t('common.msg.confirm')} do
                           %i.icon-delete
                       .notedetails
                         %h5

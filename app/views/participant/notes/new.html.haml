@@ -9,20 +9,20 @@
             = hidden_field_tag 'behaviour_ids', @tagged_behaviours
             = hidden_field_tag 'participant_ids', @tagged_participants
           .writeicon
-            = link_to tag_behaviours_list_participant_notes_path, id: 'behaviourTagListingBtn' do
+            = link_to tag_behaviours_list_participant_notes_path, id: 'behaviourTagListingBtn', title: t('participant.notes.caption.tag_behaviours') do
               %i.icon-behaviour
               - if @tagged_behaviours && @tagged_behaviours.count > 0
                 %span= @tagged_behaviours.count
-            = link_to tag_participants_list_participant_notes_path, id: 'participantTagListingBtn' do
+            = link_to tag_participants_list_participant_notes_path, id: 'participantTagListingBtn', title: t('participant.notes.caption.tag_people') do
               %i.icon-somebody
               - if @tagged_participants && @tagged_participants.count > 0
                 %span= @tagged_participants.count
-            %a{ href: participant_notes_path }
+            = link_to participant_notes_path, title: t('common.caption.back') do
               %i.icon-cancel
-            
+
             / %a{:href => "#"}
             /   %i.icon-attach
-            = link_to_submit(participant_notes_path, class: 'right') do
+            = link_to_submit(participant_notes_path, class: 'right', title: t('common.caption.add')) do
               %i.icon-notesave
-            
+
   = render partial: 'participants/components/right_side_bar'
