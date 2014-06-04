@@ -27,9 +27,11 @@ class ParticipantsController < Devise::RegistrationsController
 
   def update
     if @participant.update_attributes(activity_params)
-      @unique_passsword = Participant.generate_unique_passowrd
-      send_invitation(@unique_passsword)
-      @participant.update_attribute(:password, @unique_passsword)
+      if params[:send_invitation]
+        @unique_passsword = Participant.generate_unique_passowrd
+        send_invitation(@unique_passsword)
+        @participant.update_attribute(:password, @unique_passsword)
+      end
       redirect_to show_participant_path(@participant)
     else
       @participant.errors.delete(:photo_file_size)
@@ -70,7 +72,7 @@ class ParticipantsController < Devise::RegistrationsController
 
   def activity_params
     params.require(:participant).permit(
-      :first_name, :last_name, :job_title, :division, :year_started, :photo, :performance_summary, :email, :password, :password_confirmation,
+      :first_name, :last_name, :job_title, :division, :year_started, :photo, :performance_summary, :email,
         scores_attributes:[:id, :scorable_id, :score, :scorable_type]
     )
   end
