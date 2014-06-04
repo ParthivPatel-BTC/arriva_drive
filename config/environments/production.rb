@@ -85,7 +85,7 @@ ArrivaDrive::Application.configure do
       address: 'smtp.gmail.com',
       port: 587,
       domain: 'gmail.com',
-      user_name: 'canbedone1234@gmail.com',
+      user_name: 'canbeused1234@gmail.com',
       password: 'Test12349876',
       authentication: 'plain'
   }
