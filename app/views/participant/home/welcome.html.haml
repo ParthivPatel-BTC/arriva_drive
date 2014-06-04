@@ -45,8 +45,3 @@
                 .progress-bar.progress-bar-warning{:style => "width: #{score.percentile_difference_with_top_score}%"}
                   %span.sr-only= "#{score.percentile_difference_with_top_score}% Complete (warning)"
   = render partial: 'participants/components/right_side_bar'
-:javascript
-  $(document).ready(function() {
-    var appVer = navigator.appVersion;
-    alert(appVer);
-    });
