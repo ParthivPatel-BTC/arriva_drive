@@ -13,6 +13,7 @@ class ParticipantsController < Devise::RegistrationsController
       send_invitation(@participant.password)
       redirect_to admin_dashboard_path
     else
+      @participant.errors.delete(:photo_file_size)
       render :new
     end
   end
@@ -32,6 +33,7 @@ class ParticipantsController < Devise::RegistrationsController
       end
       redirect_to show_participant_path(@participant)
     else
+      @participant.errors.delete(:photo_file_size)
       render 'edit'
     end
   end

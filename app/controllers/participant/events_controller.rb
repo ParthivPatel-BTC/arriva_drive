@@ -5,7 +5,7 @@ class Participant::EventsController < ApplicationController
 
   def index
     respond_to do |format|
-      @events = Event.order('event_date DESC, event_time DESC').page(params[:page]).per(Settings.pagination.events_per_page)
+      @events = Kaminari.paginate_array(Event.active + Event.complete).page(params[:page]).per(Settings.pagination.events_per_page)
       if params[:page].present?
         format.js{
         render file: 'participant/events/index'

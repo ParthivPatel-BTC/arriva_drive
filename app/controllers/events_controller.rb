@@ -12,6 +12,7 @@ class EventsController < ApplicationController
     if @event.persisted?
       redirect_to admin_dashboard_path
     else
+      @event.errors.delete(:image_file_size)
       render :new
     end
   end
@@ -27,6 +28,7 @@ class EventsController < ApplicationController
     if @event.update_attributes(processed_params)
       redirect_to admin_dashboard_path
     else
+      @event.errors.delete(:image_file_size)
       render :edit
     end
   end
