@@ -10,7 +10,7 @@ class ParticipantsController < Devise::RegistrationsController
   def create
     @participant = Participant.new(activity_params)
     if @participant.save
-      send_invitation(params[:participant])
+      send_invitation(@participant.password)
       redirect_to admin_dashboard_path
     else
       render :new
@@ -26,7 +26,10 @@ class ParticipantsController < Devise::RegistrationsController
 
   def update
     if @participant.update_attributes(activity_params)
-      send_invitation(params[:participant])
+      @unique_passsword = Participant.generate_unique_passowrd
+      if send_invitation(@unique_passsword)
+        @participant.update_attribute(:password, @unique_passsword)
+      end
       redirect_to show_participant_path(@participant)
     else
       render 'edit'
@@ -44,7 +47,9 @@ class ParticipantsController < Devise::RegistrationsController
   end
 
   def resend_invitation
-    if @participant.send_invitation_to_participant(nil)
+    @unique_passsword = Participant.generate_unique_passowrd
+    if @participant.send_invitation_to_participant(@unique_passsword)
+      @participant.update_attribute(:password, @unique_passsword)
       redirect_to admin_dashboard_path
     end
   end
@@ -69,7 +74,7 @@ class ParticipantsController < Devise::RegistrationsController
     )
   end
 
-  def send_invitation(participant)
-    @participant.send_invitation_to_participant(participant[:password]) if params[:send_invitation]
+  def send_invitation(password)
+    @participant.send_invitation_to_participant(password) if params[:send_invitation]
   end
 end

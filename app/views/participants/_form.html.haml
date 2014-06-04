@@ -36,11 +36,11 @@
         %label.common-font-color= t('admin.participant.caption.email')
         .input
           = f.email_field :email, class: 'form-control'
-      - if !params[:id].present?
-        .form-group
-          %label.common-font-color= t('admin.participant.caption.password')
-          .input
-            = f.password_field :password, class: 'form-control'
+      / - if !params[:id].present?
+      /   .form-group
+      /     %label.common-font-color= t('admin.participant.caption.password')
+      /     .input
+      /       = f.password_field :password, class: 'form-control'
       .form-group
         %label.common-font-color= t('admin.participant.caption.photo')
         .spacer5.spacer-width
