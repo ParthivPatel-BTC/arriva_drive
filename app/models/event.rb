@@ -5,7 +5,7 @@ class Event < ActiveRecord::Base
 
 	has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
 
-  validates_attachment :image, presence: true, content_type: {content_type: /\Aimage\/.*\Z/}
+  validates_attachment :image, presence: true, content_type: {content_type: /\Aimage\/.*\Z/}, size: { :in => 0..10.megabytes }
   validates_presence_of :title, :location, :event_date, :link, :description
 
   scope :get_monthly_events, -> (month) { where('extract(month from event_date) = ?', Date::MONTHNAMES.index(month)) }
