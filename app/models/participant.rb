@@ -28,6 +28,8 @@ class Participant < ActiveRecord::Base
   # For all participants listing
   scope :all_participants, -> (current_participant_id) { where('id != ?', current_participant_id).order(:first_name) }
 
+  after_create :add_unique_password
+
   def full_name
     "#{first_name} #{last_name}"
   end
@@ -146,5 +148,14 @@ class Participant < ActiveRecord::Base
 
   def active_for_authentication?
     super && self.active
+  end
+
+  def add_unique_password
+    update_attribute(:password, self.class.generate_unique_passowrd)
+  end
+
+  def self.generate_unique_passowrd
+    participant={}
+    participant[:password] = SecureRandom.hex
   end
 end
