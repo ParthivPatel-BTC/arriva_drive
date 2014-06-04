@@ -13,7 +13,7 @@
           .events
             %ul
               - @events.each do |event|
-                %li#events-li-width.event_content_height{class: event_listing_class(event)}
+                %li#events-li-width{class: event_listing_class(event)}
                   .left
                     = link_to event.link, target: '_blank' do
                       %h5.uppercase

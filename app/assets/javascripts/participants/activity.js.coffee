@@ -2,6 +2,7 @@ $ ->
   uniformChkBoxChecked($('.correct-answer-chkbox'))
 
   $("input[name='activity[answer]']").click ->
+    $("input[name='activity[answer]']").attr('disabled', true)
     sendAnswerSelectionAjax($(this)) # unless $(this).is(':disabled')
 
 uniformChkBoxChecked = (selector) ->

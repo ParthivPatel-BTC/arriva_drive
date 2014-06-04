@@ -23,7 +23,7 @@
           - else
             = render partial: 'participant/activities/answers_listing'
         - if current_participant.has_reviewed_this_activity?(@activity)
-          %li.boxbg.participant-box-width
+          %li.boxbg.participant-box-width.break-long-url.max-width-360
             .font-size-11
               = current_participant.get_review_text_of_activity(@activity)
       - unless current_participant.has_reviewed_this_activity?(@activity)
