@@ -156,6 +156,6 @@ class Participant < ActiveRecord::Base
 
   def self.generate_unique_passowrd
     participant={}
-    participant[:password] = SecureRandom.hex
+    participant[:password] = Devise.friendly_token[0,6]
   end
 end
