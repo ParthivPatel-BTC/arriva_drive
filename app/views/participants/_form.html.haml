@@ -47,7 +47,7 @@
         %span.btn.btn_sign_in.btn-file
           = t('admin.participant.caption.button.choose_file')
           = f.file_field(:photo)
-      - if @participant.photo.present?
+      - if @participant.photo.exists?
         = image_tag(@participant.photo.url(:medium), id: 'preview_participant_photo')
       .form-group
         %label.control-label.no-padding-right
