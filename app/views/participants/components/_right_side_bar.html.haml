@@ -9,8 +9,8 @@
     %p= current_participant.job_title
     %p= get_division_name(current_participant.division)
   .yourlevel
-    %span.green Activities Summary
     %ul
+      %li.green Activities Summary
       - Behaviour.all.each do |behaviour|
         %li
           = behaviour.title
