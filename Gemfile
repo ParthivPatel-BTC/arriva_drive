@@ -44,7 +44,7 @@ gem "letter_opener", :group => :development
 gem 'kaminari'
 gem 'nokogiri', '~> 1.6.2.1'
 gem 'icalendar'
-
+gem 'browser'
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
