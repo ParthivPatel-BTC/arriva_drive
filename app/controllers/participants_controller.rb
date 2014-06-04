@@ -28,9 +28,8 @@ class ParticipantsController < Devise::RegistrationsController
   def update
     if @participant.update_attributes(activity_params)
       @unique_passsword = Participant.generate_unique_passowrd
-      if send_invitation(@unique_passsword)
-        @participant.update_attribute(:password, @unique_passsword)
-      end
+      send_invitation(@unique_passsword)
+      @participant.update_attribute(:password, @unique_passsword)
       redirect_to show_participant_path(@participant)
     else
       @participant.errors.delete(:photo_file_size)
@@ -50,8 +49,8 @@ class ParticipantsController < Devise::RegistrationsController
 
   def resend_invitation
     @unique_passsword = Participant.generate_unique_passowrd
-    if @participant.send_invitation_to_participant(@unique_passsword)
-      @participant.update_attribute(:password, @unique_passsword)
+    if @participant.update_attribute(:password, @unique_passsword)
+      @participant.send_invitation_to_participant(@unique_passsword)
       redirect_to admin_dashboard_path
     end
   end

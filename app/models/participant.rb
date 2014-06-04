@@ -157,7 +157,5 @@ class Participant < ActiveRecord::Base
   def self.generate_unique_passowrd
     participant={}
     participant[:password] = SecureRandom.hex
-    logger.debug "================================#{participant[:password].inspect}"
-    participant
   end
 end
