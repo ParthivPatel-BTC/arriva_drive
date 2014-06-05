@@ -37,6 +37,16 @@ class Participant::NetworksController < ApplicationController
     end
   end
 
+  def remove_participant
+    remove_participant_from_network_list
+    respond_to do |format|
+      @networks = Network.find_all_by_current_participant_id(current_participant.id)
+        format.js{
+          render file: 'participant/networks/index'
+        }
+    end
+  end
+
   private
 
   def get_network_for_current_participant
@@ -48,5 +58,10 @@ class Participant::NetworksController < ApplicationController
     network_params[:current_participant_id] = current_participant.id
     network_params[:participant_id] = params[:participant_id]
     network_params
+  end
+
+  def remove_participant_from_network_list
+    network = Network.delete_participant(params[:participant_id], current_participant.id)
+    network.first.destroy
   end
 end
