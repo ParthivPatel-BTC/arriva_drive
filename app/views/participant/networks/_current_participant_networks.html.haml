@@ -1,7 +1,7 @@
 - participant_ids = current_participant.networks.pluck(:participant_id)
 %ul
   - @networks.each do |network|
-    %li
+    %li.connected
       .profilepic
         - if network.participant.photo.exists?
           = image_tag(network.participant.photo.url(:thumb), class: 'participant_img')
