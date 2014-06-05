@@ -7,6 +7,8 @@ module ParticipantsHelper
       'Uk Trains'
     when 3
       'Mainland Europe'
+    when 4
+      'Group'
     end
   end
 
