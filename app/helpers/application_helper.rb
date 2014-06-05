@@ -43,7 +43,8 @@ module ApplicationHelper
   end
 
   def formatted_time_with_timezone(time)
-    time.in_time_zone("London").strftime('%H.%M %Z')
+    uk_time = time.in_time_zone("London").strftime('%H.%M')
+    uk_time += " GMT+1"
   end
 
   def determine_root_path
