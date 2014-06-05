@@ -14,9 +14,7 @@
     = stylesheet_link_tag "participant_assets", media: "all", "data-turbolinks-track" => true
     - if browser.ios?
       = favicon_link_tag 'images/arriva_icon_ipad.png', rel: 'apple-touch-icon', type: 'image/png'
-      = stylesheet_link_tag "participants/style_retina", media: "all"
-    - else
-      = stylesheet_link_tag "participants/style", media: "all"
+    = stylesheet_link_tag "participants/style_retina", media: "all"
     = javascript_include_tag "participant_assets", "data-turbolinks-track" => true
     = csrf_meta_tags
     %meta{charset: "utf-8"}/
@@ -32,8 +30,5 @@
       = image_tag 'images/mainbg1.jpg'
     .wrapper
       %header
-        - if browser.ios?
-          = link_to((image_tag 'logo@2x.png'), participant_dashboard_path)
-        - else
-          = link_to((image_tag 'images/logo.png'), participant_dashboard_path)
+        = link_to((image_tag 'images/logo@2x.png', :height => "57"), participant_dashboard_path)
       = yield

@@ -20,4 +20,5 @@
 //= require participants/behaviours
 //= require participants/activity
 //= require participants/notes
+//= require participants/retina
 //= require jquery_ujs
