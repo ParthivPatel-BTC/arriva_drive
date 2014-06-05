@@ -43,7 +43,7 @@ module ApplicationHelper
   end
 
   def formatted_time_with_timezone(time)
-    time.in_time_zone("GMT").strftime('%H.%M %Z')
+    time.in_time_zone("London").strftime('%H.%M %Z')
   end
 
   def determine_root_path
