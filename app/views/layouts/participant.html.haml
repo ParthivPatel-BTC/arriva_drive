@@ -32,5 +32,8 @@
       = image_tag 'images/mainbg1.jpg'
     .wrapper
       %header
-        = link_to((image_tag 'images/logo.png'), participant_dashboard_path)
+        - if browser.ios?
+          = link_to((image_tag 'logo@2x.png'), participant_dashboard_path)
+        - else
+          = link_to((image_tag 'images/logo.png'), participant_dashboard_path)
       = yield
