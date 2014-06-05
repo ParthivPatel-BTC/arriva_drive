@@ -20,8 +20,9 @@
 :javascript
   $(document).ready(function() {
     $("input#behaviour[type=checkbox]").on("change", function() {
+      var behaviour_id = this.checked ? $(this).val() : ''
       $.ajax({
-      url: "/participants/activities?behaviour_id="+ $(this).val(),
+      url: "/participants/activities?behaviour_id="+ behaviour_id,
       dataType: "script"
       });
     });

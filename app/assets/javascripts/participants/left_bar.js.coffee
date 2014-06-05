@@ -2,12 +2,13 @@ uniformChkBoxChecked = undefined
 uniformChkBoxChecked_current = undefined
 $(document).ready ->
   $("input#behaviour[type=checkbox]").on "change", ->
-    $("ul #behaviour_checkboxes input").each ->
-      uniformChkBoxChecked $(this)
-      return
+    if this.checked
+      $("ul #behaviour_checkboxes input").each ->
+        uniformChkBoxChecked $(this)
+        return
 
-    uniformChkBoxChecked_current $(this)
-    return
+      uniformChkBoxChecked_current $(this)
+      return
 
   return
 
