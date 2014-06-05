@@ -42,6 +42,9 @@
                         %p.uppercase
                           %span.green TAGS:
                           = formatted_tags(note.tags.behaviour_tags)
+                        %p.uppercase
+                          %span.green SHARED WITH:
+                          = formatted_tags(note.tags.participants_tags)
           .monthright.monthright-custom
             - @notes.each_with_index do |note, index|
               - if index == 0
