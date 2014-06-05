@@ -1,20 +1,32 @@
 %ul
   - participant_ids = current_participant.networks.pluck(:participant_id)
   - @participants.each do |participant|
-    %li
-      .profilepic
-        - if participant.photo.exists?
-          = image_tag(participant.photo.url(:thumb), class: 'participant_img')
-        - else
-          = image_tag 'silhouette.jpg'
-      .mynetworkdetails
-        %h5= participant.full_name
-        %p= t('participant.networks.caption.level', level: deside_level(participant))
-        %p= participant.job_title
-        %p= get_division_name(participant.division)
-      - if participant_ids.exclude?(participant.id)
-        = link_to('javascript:void(0);', value: participant.id, id: 'add_to_network', class: 'noteslinks', title: t('participant.networks.caption.add_to_my_network')) do
-          %i.icon-save
+    - if participant_ids.exclude?(participant.id)
+      %li
+        .profilepic
+          - if participant.photo.exists?
+            = image_tag(participant.photo.url(:thumb), class: 'participant_img')
+          - else
+            = image_tag 'silhouette.jpg'
+        .mynetworkdetails
+          %h5= participant.full_name
+          %p= t('participant.networks.caption.level', level: deside_level(participant))
+          %p= participant.job_title
+          %p= get_division_name(participant.division)
+          = link_to('javascript:void(0);', value: participant.id, id: 'add_to_network', class: 'noteslinks', title: t('participant.networks.caption.add_to_my_network')) do
+            %i.icon-save
+    - else
+      %li.connected
+        .profilepic
+          - if participant.photo.exists?
+            = image_tag(participant.photo.url(:thumb), class: 'participant_img')
+          - else
+            = image_tag 'silhouette.jpg'
+        .mynetworkdetails
+          %h5= participant.full_name
+          %p= t('participant.networks.caption.level', level: deside_level(participant))
+          %p= participant.job_title
+          %p= get_division_name(participant.division)
 - if params[:alpha_character]
   .pagingrow
     = link_to('javascript:void(0);', class: 'view_all_participants', title: t('participant.networks.caption.view_all_participants')) do
