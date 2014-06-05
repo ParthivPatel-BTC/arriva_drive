@@ -7,8 +7,7 @@ class Participant::NotesController < ApplicationController
   ]
 
   def index
-    tagged_notes = get_tagged_notes
-    @notes = ( current_participant.notes.order('created_at DESC') + tagged_notes ).uniq
+    @notes = get_tagged_notes.uniq
     @points_earned = (@note.tags.behaviour_tags.count * Settings.activity_points.write_note) if @note.present?
   end
 
@@ -47,8 +46,9 @@ class Participant::NotesController < ApplicationController
   private
 
   def get_tagged_notes
-    note_ids = Tag.by_participant(current_participant).pluck(:note_id)
-    Note.where(id: note_ids).order('created_at DESC')
+    note_id_arr = current_participant.notes.pluck(:id)
+    note_id_arr += Tag.by_participant(current_participant).pluck(:note_id)
+    Note.where(id: note_id_arr).order('created_at DESC')
   end
 
   def tag_map(tag_ids, type)
