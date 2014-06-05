@@ -8,6 +8,16 @@ $(document).ready(function () {
             Width: 560,
             Height: 315
         });
+        $(".inline").modalbox({
+                Type: 'inline',
+                Width: 500,
+                Height: 310,
+                ShowClose: false,
+                CloseHandle: $(".inlineclose"),
+                OnInit: function () { console && console.log("Inline Modalbox initialized"); },
+                OnShow: function (index) { $(".inlineclosetopbtn").tooltip({ Position: 'left' }); $(".inlineclosebtn").tooltip({ Position: 'top' }); },
+                OnClose: function () { console && console.log("Inline Modalbox closed"); }
+            });
     });
 $(function(){
   $(window).load(function () {
@@ -19,18 +29,5 @@ $(function(){
     setTimeout(function() {
         $(".nano").nanoScroller();
     }, 100);
-  });
-
-  $(".circulbox").click(function(){
-    var panel = $(this).children(".circulplus");
-    if($(panel).is(':hidden'))
-    {
-      $(".circulplus").hide();
-      $(panel).show();
-    }
-    else
-    {
-      $(".circulplus").hide();
-    }
   });
 });

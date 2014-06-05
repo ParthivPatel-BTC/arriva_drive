@@ -11,9 +11,9 @@
 // about supported directives.
 //
 //= require participants/jquery-1.11.0.min
-//= require participants/modal
 //= require participants/jquery.uniform
 //= require participants/jquery.nanoscroller
+//= require participants/modal
 //= require jquery.ui.all
 //= require participants/left_bar
 //= require participants/custom
