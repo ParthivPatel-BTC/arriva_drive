@@ -1,3 +1,4 @@
+- participant_ids = current_participant.networks.pluck(:participant_id)
 %ul
   - @networks.each do |network|
     %li
@@ -11,6 +12,9 @@
         %p= t('participant.networks.caption.level', level: deside_level(network.participant))
         %p= network.participant.job_title
         %p= get_division_name(network.participant.division)
+        - if participant_ids.include?(network.participant.id)
+          = link_to('javascript:void(0);', value: network.participant.id, id: 'delete_from_network', class: 'noteslinks', title: t('common.caption.delete')) do
+            %i.icon-delete
 .pagingrow
   = link_to('javascript:void(0);', class: 'view_all_participants', title: t('participant.networks.caption.view_all_participants')) do
     %i.icon-info
@@ -21,6 +25,13 @@
     $("#view_all_participants, .view_all_participants").on("click", function () {
       $.ajax({
         url: "/participants/all_participants?view_all=true",
+        dataType: "script"
+      });
+    });
+
+    $("a[id='delete_from_network']").on("click", function () {
+      $.ajax({
+        url: "/participants/remove_participant?participant_id="+$(this).attr( "value" ),
         dataType: "script"
       });
     });

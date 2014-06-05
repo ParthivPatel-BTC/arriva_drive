@@ -4,6 +4,9 @@ class Network < ActiveRecord::Base
 
   scope :participants_in_network, ->(participant) { where("networks.current_participant_id = ? OR networks.participant_id = ?", participant, participant).uniq }
 
+  # This scope is for remove participant from network list
+  scope :delete_participant, ->(participant_id, current_participant_id) { where("current_participant_id = ? and participant_id = ? ", current_participant_id, participant_id)}
+
   class << self
     def all_participants_in_network(participant)
       participant_ids_arr = participants_in_network(participant).pluck(:current_participant_id, :participant_id).flatten.uniq - [participant.id]

@@ -60,5 +60,6 @@ ArrivaDrive::Application.routes.draw do
     get '/seach_by_alpha_character' => 'participant/networks#seach_by_alpha_character'
     get '/add_to_network' => 'participant/networks#add_to_network'
     get '/get_monthly_events' => 'participant/events#get_monthly_events'
+    get '/remove_participant' => 'participant/networks#remove_participant'
   end
 end
