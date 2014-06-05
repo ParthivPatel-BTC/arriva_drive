@@ -14,7 +14,6 @@
     = stylesheet_link_tag "participant_assets", media: "all", "data-turbolinks-track" => true
     - if browser.ios?
       = favicon_link_tag 'images/arriva_icon_ipad.png', rel: 'apple-touch-icon', type: 'image/png'
-    = stylesheet_link_tag "participants/style_retina", media: "all"
     = javascript_include_tag "participant_assets", "data-turbolinks-track" => true
     = csrf_meta_tags
     %meta{charset: "utf-8"}/
