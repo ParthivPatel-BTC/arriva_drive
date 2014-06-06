@@ -18,7 +18,7 @@
                     = link_to event.link, target: '_blank' do
                       %h5.uppercase
                         %span.date= participant_event_date_formatted(event.event_date)
-                        %span.time= participant_event_time_formatted(event.event_time)
+                        %span.time= participant_event_time_formatted(event.event_start_time)
                         %span.eventname= "#{event.title}, #{event.location}"
                       .break-long-url
                         %p= event.description

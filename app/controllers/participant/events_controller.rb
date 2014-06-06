@@ -18,7 +18,7 @@ class Participant::EventsController < ApplicationController
 
   def get_monthly_events
     respond_to do |format|
-      @events = Event.get_monthly_events(params[:month]).page(params[:page]).per(Settings.pagination.events_per_page).order('event_date DESC, event_time DESC')
+      @events = Event.get_monthly_events(params[:month]).page(params[:page]).per(Settings.pagination.events_per_page).order('event_date DESC, event_start_time DESC')
         format.js{
         render file: 'participant/events/index'
       }

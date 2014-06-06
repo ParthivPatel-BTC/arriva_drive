@@ -9,8 +9,8 @@ class Event < ActiveRecord::Base
   validates_presence_of :title, :location, :event_date, :link, :description
 
   scope :get_monthly_events, -> (month) { where('extract(month from event_date) = ?', Date::MONTHNAMES.index(month)) }
-  scope :active, -> { where('event_date >= ?', Date.today).order('event_date, event_time') }
-  scope :complete, -> { where('event_date < ? ', Date.today).order('event_date desc, event_time desc') }
+  scope :active, -> { where('event_date >= ?', Date.today).order('event_date, event_start_time') }
+  scope :complete, -> { where('event_date < ? ', Date.today).order('event_date desc, event_start_time desc') }
 
   def event_date_formatted
     event_date.strftime('%d/%m/%Y') rescue nil
