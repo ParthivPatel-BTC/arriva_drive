@@ -1,0 +1,20 @@
+.rightsidebar
+  .profilebox
+    .profilepic
+      - if current_participant.photo.exists?
+        = image_tag (current_participant.photo.url(:medium))
+      - else
+        = image_tag 'silhouette.jpg'
+    %p.editimage
+      = file_field_tag 'participants[photo]'
+    %p.name
+    %p
+    %p
+    %p
+    %p.submit
+      = link_to_submit do
+        %i.icon-submit
+        %span.logintext Submit
+      = submit_tag(" ")
+  .arriva
+    %img{height: "39", src: "images/logo-arriva@2x.png"}/

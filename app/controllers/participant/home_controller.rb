@@ -9,12 +9,12 @@ class Participant::HomeController < ApplicationController
   alias :dashboard :welcome
 
   def edit_profile
+    @participant = Participant.new
   end
 
   def update_profile
-    @participant = Participant.new
     if @participant.update_attributes(activity_params)
-      render :welcome
+      redirect_to participant_dashboard_path
     end
   end
 
@@ -26,7 +26,7 @@ class Participant::HomeController < ApplicationController
 
   def activity_params
     params.require(:participants).permit(
-      :photo
+      :photo, :password
     )
   end
 end
