@@ -32,7 +32,7 @@ class Participant::HomeController < ApplicationController
 
   def activity_params
     params.require(:participants).permit(
-      :photo, :password
+      :password
     )
   end
 
