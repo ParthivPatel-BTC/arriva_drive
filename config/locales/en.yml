@@ -83,7 +83,7 @@ en:
       location: 'Event Location'
       date: 'Event Date'
       link: 'Event Link'
-      image: 'Event Image'
+      image: 'Event Image (Maximum File Size: 3Mb, JPG or PNG)'
       description: 'Event Description'
       start_time: 'Event Start Time'
       end_time: 'Event End Time'
