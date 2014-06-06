@@ -17,4 +17,7 @@
         %span.logintext Submit
       = submit_tag(" ")
   .arriva
-    %img{height: "39", src: "images/logo-arriva@2x.png"}/
+    - if browser.ios?
+      = image_tag 'images/logo-arriva@2x.png', height: '39'
+    - else
+      = image_tag 'images/logo-arriva.png', height: '39'
