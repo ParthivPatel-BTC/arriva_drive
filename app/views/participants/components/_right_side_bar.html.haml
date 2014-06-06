@@ -18,4 +18,7 @@
           = behaviour.title
           %span.green= behaviour.total_activities_levels(current_participant)
   .arriva
-    = image_tag 'images/logo-arriva.png'
+    - if browser.ios?
+      = image_tag 'images/logo-arriva@2x.png', height: '39'
+    - else
+      = image_tag 'images/logo-arriva.png', height: '39'

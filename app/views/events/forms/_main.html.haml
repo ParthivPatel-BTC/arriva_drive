@@ -24,14 +24,19 @@
         = text_field_tag 'event[event_date]', formatted_date(@event.event_date), id: 'eventFormDatePicker', class: common_text_field_class
         .col-md-12.spacer15
         %h4
-          %strong.dark-blue= t('event.fields.time')
+          %strong.dark-blue= t('event.fields.start_time')
         .bootstrap-timepicker
-          = text_field_tag 'event[event_time]', @event.event_time.try(:strftime, '%T%:z'), id: 'timepicker1', class: common_text_field_class
+          = text_field_tag 'event[event_start_time]', @event.event_start_time.try(:strftime, '%T%:z'), id: 'timepicker1', class: common_text_field_class
+        %h4
+          %strong.dark-blue= t('event.fields.end_time')
+        .bootstrap-timepicker
+          = text_field_tag 'event[event_end_time]', @event.event_end_time.try(:strftime, '%T%:z'), id: 'timepicker2', class: common_text_field_class
         %h4
           %strong.dark-blue= t('event.fields.link')
         = text_field_tag 'event[link]', @event.link, class: common_text_field_class
         %h4
           %strong.dark-blue= t('event.fields.image')
+        = "(Maximum File Size: 3Mb, JPG or PNG)"
         .row
           .col-md-4
             %img#previewEventImage

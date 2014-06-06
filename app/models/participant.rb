@@ -23,7 +23,7 @@ class Participant < ActiveRecord::Base
   validates_presence_of :first_name, :last_name, :job_title, :year_started
 
   # For filter with alpha character in my network
-  scope :participant_by_alpha_search, -> (alpha_character) { where("first_name ILIKE ?", "#{alpha_character}%")}
+  scope :participant_by_alpha_search, -> (alpha_character) { where("upper(first_name) LIKE upper(?)", "#{alpha_character}%")}
 
   # For all participants listing
   scope :all_participants, -> (current_participant_id) { where('id != ?', current_participant_id).order(:first_name) }

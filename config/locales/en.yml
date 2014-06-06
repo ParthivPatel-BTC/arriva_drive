@@ -36,7 +36,7 @@ en:
         email: 'Email (this will also be their User Name)'
         email_without_note: 'Email'
         password: 'Password'
-        photo: 'Photo'
+        photo: 'Photo (Maximum File Size: 3Mb, JPG or PNG)'
         fit_plan_results: 'Fit Plan Results'
         behaviour: 'Behaviour'
         score: 'Score'
@@ -85,7 +85,8 @@ en:
       link: 'Event Link'
       image: 'Event Image'
       description: 'Event Description'
-      time: 'Event Time'
+      start_time: 'Event Start Time'
+      end_time: 'Event End Time'
     btn:
       save: 'Save Event'
   participant:

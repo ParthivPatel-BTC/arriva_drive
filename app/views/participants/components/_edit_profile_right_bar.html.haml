@@ -5,8 +5,8 @@
         = image_tag (current_participant.photo.url(:medium))
       - else
         = image_tag 'silhouette.jpg'
-    %p.editimage
-      = file_field_tag 'participants[photo]'
+    / %p.editimage
+    /   = file_field_tag 'participants[photo]'
     %p.name
     %p
     %p

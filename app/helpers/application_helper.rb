@@ -117,4 +117,8 @@ module ApplicationHelper
       formatted_tags_string.reverse.sub(' ,', ' dna ').reverse
     end
   end
+
+  def note_owners_name(note)
+    note.owner == current_participant ? 'ME' : note.owner.try(:full_name)
+  end
 end

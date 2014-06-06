@@ -9,20 +9,16 @@ class Participant::HomeController < ApplicationController
   alias :dashboard :welcome
 
   def edit_profile
-    @participant = Participant.new
   end
 
   def update_profile
-    if params[:password].present? && !params[:participants][:photo].present?
-      password_match?
-      @participant.update_attributes(activity_params)
-      redirect_to participant_dashboard_path
-    elsif params[:participants][:photo].present? && !params[:participants][:password].present?
-      @participant.update_attributes(activity_params)
-      redirect_to participant_dashboard_path
-    elsif params[:participants][:photo].present? && params[:password].present?
-      @participant.update_attributes(activity_params)
-      redirect_to participant_dashboard_path
+    if password_match?
+      if @participant.update_attributes(activity_params)
+        sign_in(@participant, :bypass => true)
+        redirect_to participant_dashboard_path
+      else
+       render :edit_profile
+      end
     else
       render :edit_profile
     end
