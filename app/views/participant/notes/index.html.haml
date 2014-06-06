@@ -39,6 +39,7 @@
                           &nbsp;
                           %span.time= formatted_time_with_timezone(note.updated_at)
                           %span.eventname= note.content
+                        %br
                         %p.uppercase
                           %span.green TAGS:
                           = formatted_tags(note.tags.behaviour_tags)
