@@ -3,27 +3,28 @@
   %section.mainsection
     = render partial: 'participants/components/left_side_bar'
     .contentarea
-      .activities
-        %ul
-          - @participant.errors.full_messages.each do |msg|
-            %li.notes-custom
-              .mynetworkdetails
-                %h5.text-center{style: 'color: rgb(199, 218, 44); font-size: 13px; margin-top: 0px; margin-left: 11px;'}
-                  = msg.html_safe
-      .editprofile
-        %p{style: 'color: rgb(199, 218, 44);'}= current_participant.full_name
-        %p{style: 'color: rgb(199, 218, 44);'}= current_participant.job_title
-        %p{style: 'color: rgb(199, 218, 44);'}= get_division_name(current_participant.division)
-        .changespassword
-          %p{style: 'color: rgb(199, 218, 44);'} Create New Password
-          %p{style: 'width:200px;'}
-            = password_field_tag 'password', autofocus: true
-          %p{style: 'color: rgb(199, 218, 44);'} Confirm new password
-          %p{style: 'width:200px;'}
-            = password_field_tag 'participants[password]'
-        %p.submit
-          = link_to_submit do
-            %i.icon-submit{style: 'background-position: -750px 0'}
-            %span.logintext Submit
-          = submit_tag(" ")
+      %div{style: 'margin-left: 100px;'}
+        .activities
+          %ul
+            - @participant.errors.full_messages.each do |msg|
+              %li.notes-custom
+                .mynetworkdetails
+                  %h5.text-center{style: 'color: rgb(199, 218, 44); font-size: 13px; margin-top: 0px; margin-left: 11px;'}
+                    = msg.html_safe
+        .editprofile
+          %p{style: 'color: rgb(199, 218, 44);'}= current_participant.full_name
+          %p{style: 'color: rgb(199, 218, 44);'}= current_participant.job_title
+          %p{style: 'color: rgb(199, 218, 44);'}= get_division_name(current_participant.division)
+          .changespassword
+            %p{style: 'color: rgb(199, 218, 44);'} Create New Password
+            %p{style: 'width:200px;'}
+              = password_field_tag 'password', autofocus: true
+            %p{style: 'color: rgb(199, 218, 44);'} Confirm new password
+            %p{style: 'width:200px;'}
+              = password_field_tag 'participants[password]'
+          %p.submit
+            = link_to_submit do
+              %i.icon-submit{style: 'background-position: -750px 0'}
+              %span.logintext Submit
+            = submit_tag(" ")
     = render partial: 'participants/components/edit_profile_right_bar'
