@@ -22,8 +22,8 @@ class Event < ActiveRecord::Base
 
   def to_ics
     event = Icalendar::Event.new
-    event.dtstart = DateTime.new(event_date.year, event_date.month, event_date.day, get_time_element(:hour, event_start_time),get_time_element(:minute, event_start_time), 0, 0).in_time_zone("London").strftime("%Y%m%dT%H%M%S")
-    event.dtend   = DateTime.new(event_date.year, event_date.month, event_date.day, get_time_element(:hour, event_end_time), get_time_element(:minute, event_end_time), 0, 0).in_time_zone("London").strftime("%Y%m%dT%H%M%S")
+    event.dtstart = DateTime.new(event_date.year, event_date.month, event_date.day, get_time_element(:hour, event_start_time),get_time_element(:minute, event_start_time), 0, 0).strftime("%Y%m%dT%H%M%S")
+    event.dtend   = DateTime.new(event_date.year, event_date.month, event_date.day, get_time_element(:hour, event_end_time), get_time_element(:minute, event_end_time), 0, 0).strftime("%Y%m%dT%H%M%S")
     event.summary = self.title
     event.description = self.description
     event.location = location
