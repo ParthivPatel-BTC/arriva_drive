@@ -16,9 +16,9 @@
           %p{style: 'color: rgb(199, 218, 44);'}= current_participant.job_title
           %p{style: 'color: rgb(199, 218, 44);'}= get_division_name(current_participant.division)
           .changespassword
-            %p{style: 'color: rgb(199, 218, 44);'} Create New Password
+            %p{style: 'color: rgb(199, 218, 44);'} Create new password
             %p{style: 'width:200px;'}
-              = password_field_tag 'password', autofocus: true
+              = password_field_tag 'password'
             %p{style: 'color: rgb(199, 218, 44);'} Confirm new password
             %p{style: 'width:200px;'}
               = password_field_tag 'participants[password]'

@@ -42,6 +42,9 @@ class Participant::HomeController < ApplicationController
     if password != password_confirmation
       @participant.errors.add(:password, "does not match with confirmed password")
       false
+    elsif params[:password].empty?
+      @participant.errors.add(:password, "is required")
+      return false
     else
       true
     end
