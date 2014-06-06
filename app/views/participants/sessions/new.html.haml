@@ -3,11 +3,11 @@
     .loginwelcome
       %h1 WELCOME
       %p
-        %span Arriva’s vision is to be recognised as the leading transport services organisation in Europe.
         Welcome to DRIVE, your online tool to support you through the programme. Whether you’re on a tablet or desktop, you can take part in learning activities, make notes and share experiences. It all starts when you login…
       %p
         %br/
-        Need help? Contact support@drivedb.net
+        Need help? Contact
+        = mail_to 'support@drivedb.net', 'support@drivedb.net'
       .watchvideorow
         %a#youtube{:href => Settings.defaults.participant_home_screen_video, :title => "Youtube Video"}
           %i.icon-watchvideo
