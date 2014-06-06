@@ -12,7 +12,7 @@ class EventsController < ApplicationController
     if @event.persisted?
       redirect_to admin_dashboard_path
     else
-      @event.errors.delete(:image_file_size)
+      enhance_error_msg(@event)
       render :new
     end
   end
@@ -28,7 +28,7 @@ class EventsController < ApplicationController
     if @event.update_attributes(processed_params)
       redirect_to admin_dashboard_path
     else
-      @event.errors.delete(:image_file_size)
+      enhance_error_msg(@event)
       render :edit
     end
   end
@@ -44,5 +44,13 @@ class EventsController < ApplicationController
 
   def find_set_event
     @event = Event.find_by_id(params[:id])
+  end
+
+  def enhance_error_msg(instence)
+    if instence.errors[:image_file_size].present?
+      instence.errors.delete(:image_file_size)
+      instence.errors.delete(:image)
+      instence.errors.add('error:', 'File size too large, please choose a different file.')
+    end
   end
 end

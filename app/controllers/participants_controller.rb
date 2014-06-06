@@ -13,7 +13,7 @@ class ParticipantsController < Devise::RegistrationsController
       send_invitation(@participant.password)
       redirect_to admin_dashboard_path
     else
-      @participant.errors.delete(:photo_file_size)
+      enhance_error_msg(@participant)
       render :new
     end
   end
@@ -34,7 +34,7 @@ class ParticipantsController < Devise::RegistrationsController
       end
       redirect_to show_participant_path(@participant)
     else
-      @participant.errors.delete(:photo_file_size)
+      enhance_error_msg(@participant)
       render 'edit'
     end
   end
@@ -79,5 +79,13 @@ class ParticipantsController < Devise::RegistrationsController
 
   def send_invitation(password)
     @participant.send_invitation_to_participant(password) if params[:send_invitation]
+  end
+
+  def enhance_error_msg(instence)
+    if instence.errors[:photo_file_size].present?
+      instence.errors.delete(:photo_file_size)
+      instence.errors.delete(:photo)
+      instence.errors.add('error:', 'File size too large, please choose a different file.')
+    end
   end
 end
