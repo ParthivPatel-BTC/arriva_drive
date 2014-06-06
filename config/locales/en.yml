@@ -85,7 +85,8 @@ en:
       link: 'Event Link'
       image: 'Event Image'
       description: 'Event Description'
-      time: 'Event Time'
+      start_time: 'Event Start Time'
+      end_time: 'Event End Time'
     btn:
       save: 'Save Event'
   participant:
