@@ -34,6 +34,9 @@
                         = link_to participant_note_path(note),  title: t('common.caption.delete'), method: :delete, data: { confirm: t('common.msg.confirm')} do
                           %i.icon-delete
                       .notedetails
+                        %p.uppercase
+                          %span.green AUTHOR:
+                          = note_owners_name(note)
                         %h5
                           %span.date= formatted_date(note.updated_at, true)
                           &nbsp;
