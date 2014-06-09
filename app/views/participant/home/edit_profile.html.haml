@@ -12,9 +12,9 @@
                   %h5.text-center{style: 'color: rgb(199, 218, 44); font-size: 13px; margin-top: 0px; margin-left: 11px;'}
                     = msg.html_safe
         .editprofile
-          %p{style: 'color: rgb(199, 218, 44);'}= current_participant.full_name
-          %p{style: 'color: rgb(199, 218, 44);'}= current_participant.job_title
-          %p{style: 'color: rgb(199, 218, 44);'}= get_division_name(current_participant.division)
+          %p{style: 'color: rgb(199, 218, 44); padding-bottom: 0px !important;'}= current_participant.full_name
+          %p{style: 'color: #F9FAFA; padding-bottom: 0px !important;'}= current_participant.job_title
+          %p{style: 'color: #F9FAFA; padding-bottom: 0px !important;'}= get_division_name(current_participant.division)
           .changespassword
             %p{style: 'color: rgb(199, 218, 44);'} Create new password
             %p{style: 'width:200px;'}
@@ -24,7 +24,7 @@
               = password_field_tag 'participants[password]'
           %p.submit
             = link_to_submit do
-              %i.icon-submit{style: 'background-position: -750px 0'}
-              %span.logintext Submit
+              %i.icon-submit{style: 'background-position: -750px 0; font-size: 1.4em;'}
+              %span.logintext{style: 'vertical-align: middle; margin-top: 0px; padding-top: 7px; font-size: 11px;'} Submit
             = submit_tag(" ")
     = render partial: 'participants/components/edit_profile_right_bar'
