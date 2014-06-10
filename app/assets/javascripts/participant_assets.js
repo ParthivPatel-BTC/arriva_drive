@@ -18,6 +18,7 @@
 //= require participants/left_bar
 //= require participants/custom
 //= require participants/behaviours
+//= require participants/analytics
 //= require participants/activity
 //= require participants/notes
 //= require participants/retina
