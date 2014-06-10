@@ -27,8 +27,10 @@
     :javascript
       jQuery(document).ready(function($) {
           $("a").click(function (event) {
+            if($(this).attr("class") != "close inlineclose inlineclosetopbtn") {
               event.preventDefault();
               window.location = $(this).attr("href");
+            }
           });
       });
   %body
