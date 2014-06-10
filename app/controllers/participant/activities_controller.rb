@@ -16,8 +16,8 @@ class Participant::ActivitiesController < ApplicationController
         format.js{
         render file: 'participant/activities/index'
       }
-      format.html
       end
+      format.html
     end
   end
 
