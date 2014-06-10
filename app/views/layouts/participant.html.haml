@@ -33,6 +33,7 @@
             }
           });
       });
+      ganalytics_standard();
   %body
     .mainbg
       = image_tag 'images/mainbg1.jpg'
@@ -43,3 +44,5 @@
         - else
           = link_to((image_tag 'images/logo.png', :height => "57"), participant_dashboard_path)
       = yield
+    :javascript
+      ganalytics_outbound_links();
