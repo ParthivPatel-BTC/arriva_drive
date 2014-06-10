@@ -17,8 +17,8 @@
 //= require jquery.ui.all
 //= require participants/left_bar
 //= require participants/custom
-//= require participants/behaviours
 //= require participants/activity
 //= require participants/notes
 //= require participants/retina
 //= require jquery_ujs
+//= require participants/values_behaviour
