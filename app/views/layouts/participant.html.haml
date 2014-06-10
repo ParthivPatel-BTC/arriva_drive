@@ -27,7 +27,9 @@
     :javascript
       jQuery(document).ready(function($) {
           $("a").click(function (event) {
-            if($(this).attr("class") != "close inlineclose inlineclosetopbtn") {
+            if( ($(this).attr("class") != "close inlineclose inlineclosetopbtn") &&
+                  ($(this).attr("class") != "tag-behaviour-link") &&
+                  ($(this).attr("class") != "tag-network-link")) {
               event.preventDefault();
               window.location = $(this).attr("href");
             }

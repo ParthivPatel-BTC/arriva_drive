@@ -9,11 +9,11 @@
             = hidden_field_tag 'behaviour_ids', @tagged_behaviours
             = hidden_field_tag 'participant_ids', @tagged_participants
           .writeicon
-            = link_to tag_behaviours_list_participant_notes_path, id: 'behaviourTagListingBtn', title: t('participant.notes.caption.tag_behaviours') do
+            = link_to tag_behaviours_list_participant_notes_path, id: 'behaviourTagListingBtn', title: t('participant.notes.caption.tag_behaviours'), class: 'tag-behaviour-link' do
               %i.icon-behaviour
               - if @tagged_behaviours && @tagged_behaviours.count > 0
                 %span= @tagged_behaviours.count
-            = link_to tag_participants_list_participant_notes_path, id: 'participantTagListingBtn', title: t('participant.notes.caption.tag_people') do
+            = link_to tag_participants_list_participant_notes_path, id: 'participantTagListingBtn', title: t('participant.notes.caption.tag_people'), class: 'tag-network-link' do
               %i.icon-somebody
               - if @tagged_participants && @tagged_participants.count > 0
                 %span= @tagged_participants.count
