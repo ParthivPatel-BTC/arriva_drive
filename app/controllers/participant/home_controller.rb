@@ -12,15 +12,29 @@ class Participant::HomeController < ApplicationController
   end
 
   def update_profile
-    if password_match?
-      if @participant.update_attributes(activity_params)
-        sign_in(@participant, :bypass => true)
+    if params[:participants][:photo].present? && !params[:participants][:password].present?
+      if photo_check?
+        @participant.update_attributes(activity_params)
         redirect_to participant_dashboard_path
       else
        render :edit_profile
       end
+    elsif !params[:password].present?
+      @participant.errors.add(:password, "is required")
+    render :edit_profile
+    elsif params[:password].present?
+      if password_match?
+        if @participant.update_attributes(activity_params)
+          sign_in(@participant, :bypass => true)
+          redirect_to participant_dashboard_path
+        else
+         render :edit_profile
+        end
+      else
+        render :edit_profile
+      end
     else
-      render :edit_profile
+      redirect_to participant_dashboard_path
     end
   end
 
@@ -32,14 +46,18 @@ class Participant::HomeController < ApplicationController
 
   def activity_params
     params.require(:participants).permit(
-      :password
+      :password, :photo
     )
   end
 
   def password_match?
     password = params[:password]
     password_confirmation = params[:participants][:password]
-    if password != password_confirmation
+
+    if password.present? && !password_confirmation.present?
+      @participant.errors.add(:password, "does not match with confirmed password")
+      false
+    elsif password != password_confirmation
       @participant.errors.add(:password, "does not match with confirmed password")
       false
     elsif params[:password].empty?
@@ -49,4 +67,14 @@ class Participant::HomeController < ApplicationController
       true
     end
   end
+
+  def photo_check?
+    if params[:participants][:photo].size > 3.megabytes
+      @participant.errors.add(:photo, "should be less than 3MB")
+      return false
+    else
+      return true
+    end
+  end
 end
+
