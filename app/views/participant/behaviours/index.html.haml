@@ -2,11 +2,11 @@
   = render partial: 'participants/components/left_side_bar'
   .contentarea
     .values
-      %img#values1.colorbg{:alt => "", :src => "#{asset_path('images/circulcolor1-bg.png')}" , :title => ""}
-        %img#values2.colorbg{:alt => "", :src => "#{asset_path('images/circulcolor2-bg.png')}", :title => ""}
-          %img#values3.colorbg{:alt => "", :src => "#{asset_path('images/circulcolor3-bg.png')}", :title => ""}
-            %img#values4.colorbg{:alt => "", :src => "#{asset_path('images/circulcolor4-bg.png')}", :title => ""}
-              %img#values5.colorbg{:alt => "", :src => "#{asset_path('images/circulcolor5-bg.png')}", :title => ""}
+      #values1.colorbg
+        #values2.colorbg
+          #values3.colorbg
+            #values4.colorbg
+              #values5.colorbg
                 .row
                   #defult1.circulbox.circulcolordefult
                     %a.inline{href: "#modal1"}
@@ -19,7 +19,7 @@
                         %h3 customer orientation
                       .modal-body
                         %p Entails knowing customer expectations and implementing customer-oriented solutions. For executives this also means acting in a manner that has a positive effect on the customer orientation of the employees.
-                  #circulcolor1.circulbox.circulcolor1{onclick: "return ShowHide('circulcolor1');"}
+                  #circulcolor1.circulbox.circulcolor1
                     %span putting people first
                   #defult2.circulbox.circulcolordefult
                     %a.inline{href: "#modal2"}
@@ -44,7 +44,7 @@
                         %h3 target & results focus
                       .modal-body
                         %p Is the endeavour to achieve outstanding results in one’s own area. This also includes setting oneself challenging targets, reviewing these and setting priorities to ensure company success.
-                  #circulcolor2.circulbox.circulcolor2{onclick: "return ShowHide('circulcolor2');"}
+                  #circulcolor2.circulbox.circulcolor2
                     %span delivering outstanding customer service
                   #defult4.circulbox.circulcolordefult
                     %a.inline{href: "#modal4"}
@@ -71,7 +71,7 @@
                         %h3 strategic focus
                       .modal-body
                         %p Requires the ability to recognise and understand structures and processes in organisations together with internal and external organisational influences, integrating these accordingly into one’s own activities for the benefit of the company.
-                  #circulcolor3.circulbox.circulcolor3{onclick: "return ShowHide('circulcolor3');"}
+                  #circulcolor3.circulbox.circulcolor3
                     %span acting with trust and respect
                   #defult6.circulbox.circulcolordefult
                     %a.inline{href: "#modal6"}
@@ -97,7 +97,7 @@
                         %h3 managing & developing people
                       .modal-body
                         %p Refers to the ability to create a trusting, appreciative and collaborative working environment and managing conflict constructively to achieve improved staff performance and employee satisfaction. This also includes the ability to identify and develop employee potential.
-                  #circulcolor4.circulbox.circulcolor4{onclick: "return ShowHide('circulcolor4');"}
+                  #circulcolor4.circulbox.circulcolor4
                     %span growing a sustainable business
                   #defult8.circulbox.circulcolordefult
                     %a.inline{href: "#modal8"}
@@ -122,7 +122,7 @@
                         %h3 striving for innovation
                       .modal-body
                         %p Entails the capability and will to improve the company’s performance, for example, by developing and testing new processes and products. This also means not being satisfied with the status quo but always looking out for improvements.
-                  #circulcolor5.circulbox.circulcolor5{onclick: "return ShowHide('circulcolor5');"}
+                  #circulcolor5.circulbox.circulcolor5
                     %span delivering successful results
                   #defult10.circulbox.circulcolordefult
                     %a.inline{href: "#modal10"}

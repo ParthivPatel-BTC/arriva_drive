@@ -17,5 +17,6 @@
  *= require participants/style
  *= require participants/responsive
  *= require participants/custom
+ *= require participants/values-behaviours
  *= require_self
  */
