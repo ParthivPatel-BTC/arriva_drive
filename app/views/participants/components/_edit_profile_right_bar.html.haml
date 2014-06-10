@@ -6,6 +6,7 @@
       - else
         = image_tag 'silhouette.jpg'
     %p.editimage
+      = link_to 'Edit image', '#', :onclick => '$("#participants_photo").click();', id: "edit_profile_link"
       = file_field_tag 'participants[photo]'
     %p.name
     %p
