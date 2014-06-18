@@ -15,25 +15,12 @@
           %p= get_division_name(participant.division)
           = link_to('javascript:void(0);', value: participant.id, id: 'add_to_network', class: 'noteslinks', title: t('participant.networks.caption.add_to_my_network')) do
             %i.icon-save
-- if params[:alpha_character]
-  .pagingrow
-    = link_to('javascript:void(0);', class: 'view_all_participants', title: t('participant.networks.caption.view_all_participants')) do
-      %i.icon-info
-      = t('participant.networks.caption.view_all_participants')
-
 :javascript
   $(document).ready(function() {
      $("a[id='add_to_network']").on("click", function (e) {
      e.preventDefault();
       $.ajax({
         url: "/participants/add_to_network?participant_id=" + $(this).attr( "value" ),
-        dataType: "script"
-      });
-    });
-
-    $(".view_all_participants").on("click", function () {
-      $.ajax({
-        url: "/participants/all_participants?view_all=true",
         dataType: "script"
       });
     });

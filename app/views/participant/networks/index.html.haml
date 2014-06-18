@@ -1,6 +1,12 @@
 %section.mainsection
   = render partial: 'participants/components/left_side_bar'
   .contentarea
+    - if @networks.present? || @participant.present? || (!@networks.present? && !@participant.present?)
+      .pagingrow
+        = link_to('javascript:void(0);', class: 'view_all_participants', title: t('participant.networks.caption.view_all_participants')) do
+          %i.icon-info
+          = t('participant.networks.caption.view_all_participants')
+    .spacer5
     .mynetwork
       #about.nano
         .nano-content

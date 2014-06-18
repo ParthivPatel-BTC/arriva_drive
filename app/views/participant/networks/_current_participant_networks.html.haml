@@ -15,20 +15,9 @@
         - if participant_ids.include?(network.participant.id)
           = link_to('javascript:void(0);', value: network.participant.id, id: 'delete_from_network', class: 'noteslinks', title: t('common.caption.delete')) do
             %i.icon-delete
-.pagingrow
-  = link_to('javascript:void(0);', class: 'view_all_participants', title: t('participant.networks.caption.view_all_participants')) do
-    %i.icon-info
-    = t('participant.networks.caption.view_all_participants')
 
 :javascript
   $(document).ready(function() {
-    $("#view_all_participants, .view_all_participants").on("click", function () {
-      $.ajax({
-        url: "/participants/all_participants?view_all=true",
-        dataType: "script"
-      });
-    });
-
     $("a[id='delete_from_network']").on("click", function () {
      var confirmation = check_confirmation();
      if(confirmation == true){
