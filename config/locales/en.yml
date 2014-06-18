@@ -152,6 +152,7 @@ en:
       password: 'Password'
       confirm_password: 'Confirm Password'
       forgot_password: 'Forgot Pasword?'
+      username: 'Username'
       button:
         sign_in: 'Sign in'
         log_out: 'Log Out'

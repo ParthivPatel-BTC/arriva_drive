@@ -18,8 +18,10 @@
     .loginsection
       .loginbox
         = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+          %p.sign_in_labels= t('sign_in.caption.username')
           %p
             = f.email_field :email, autofocus: true, placeholde: 'Email'
+          %p.sign_in_labels= t('sign_in.caption.password')
           %p
             = f.password_field :password, autocomplete: "off", placeholde: 'Password'
           %p
