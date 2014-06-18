@@ -9,7 +9,6 @@
           = image_tag 'silhouette.jpg'
       .mynetworkdetails
         %h5= network.participant.full_name
-        %p= t('participant.networks.caption.level', level: deside_level(network.participant))
         %p= network.participant.job_title
         %p= get_division_name(network.participant.division)
         - if participant_ids.include?(network.participant.id)
