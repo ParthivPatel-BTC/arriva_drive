@@ -10,7 +10,6 @@
             = image_tag 'silhouette.jpg'
         .mynetworkdetails
           %h5= participant.full_name
-          %p= t('participant.networks.caption.level', level: deside_level(participant))
           %p= participant.job_title
           %p= get_division_name(participant.division)
           = link_to('javascript:void(0);', value: participant.id, id: 'add_to_network', class: 'noteslinks', title: t('participant.networks.caption.add_to_my_network')) do
