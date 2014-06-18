@@ -30,10 +30,16 @@
     });
 
     $("a[id='delete_from_network']").on("click", function () {
+     var confirmation = check_confirmation();
+     if(confirmation == true){
       $.ajax({
         url: "/participants/remove_participant?participant_id="+$(this).attr( "value" ),
         dataType: "script"
       });
+     }
     });
-
   });
+
+  function check_confirmation() {
+    return confirm('Are you sure?');
+  }
