@@ -29,7 +29,8 @@
           $("a").click(function (event) {
             if( ($(this).attr("class") != "close inlineclose inlineclosetopbtn") &&
                   ($(this).attr("class") != "tag-behaviour-link") &&
-                  ($(this).attr("class") != "tag-network-link")) {
+                  ($(this).attr("class") != "tag-network-link") &&
+                  ($(this).attr("class") != "confirmation")) {
               event.preventDefault();
               window.location = $(this).attr("href");
             }
