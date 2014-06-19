@@ -7,11 +7,11 @@ class Participant::EventsController < ApplicationController
     respond_to do |format|
       @events = Kaminari.paginate_array(Event.active + Event.complete).page(params[:page]).per(Settings.pagination.events_per_page)
       if params[:page].present?
-        format.js{
-        render file: 'participant/events/index'
-      }
+        format.js {
+          render file: 'participant/events/index'
+        }
       else
-      format.html
+        format.html
       end
     end
   end

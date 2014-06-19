@@ -30,7 +30,8 @@
             if( ($(this).attr("class") != "close inlineclose inlineclosetopbtn") &&
                   ($(this).attr("class") != "tag-behaviour-link") &&
                   ($(this).attr("class") != "tag-network-link") &&
-                  ($(this).attr("class") != "confirmation")) {
+                  ($(this).attr("class") != "confirmation") && 
+                  ($(this).attr("id") != "paginationNext")) {
               event.preventDefault();
               window.location = $(this).attr("href");
             }
