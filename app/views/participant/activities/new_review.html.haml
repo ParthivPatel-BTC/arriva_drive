@@ -5,7 +5,7 @@
       .writenotesinfo.boxbg
         = form_tag(create_review_participant_activity_path(@activity), method: :post, id: 'newReviewForm', multipart: true) do
           .commentarea
-            = text_area_tag 'review[review_text]', nil, class: 'textarea', placeholder: t('participant.place_holder.review_text')
+            = text_area_tag 'review[review_text]', nil, class: 'textarea activity_textarea_scroll', placeholder: t('participant.place_holder.review_text')
           .writeicon
             = link_to participant_activity_path(@activity), title: t('common.caption.back') do
               %i.icon-delete
