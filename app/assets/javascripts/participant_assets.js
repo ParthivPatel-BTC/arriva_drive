@@ -23,3 +23,4 @@
 //= require participants/retina
 //= require jquery_ujs
 //= require participants/values_behaviour
+//= require participants/scroller_bar
