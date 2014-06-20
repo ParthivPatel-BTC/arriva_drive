@@ -194,3 +194,8 @@
   overflow-x: hidden;
   overflow-y: hidden !important;
 }
+
+// ==========Remove logo border IE 9/10
+.header_logo_border_IE {
+  outline : 0; border: 0;
+}

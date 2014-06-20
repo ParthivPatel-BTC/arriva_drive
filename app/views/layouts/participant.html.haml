@@ -30,7 +30,7 @@
             if( ($(this).attr("class") != "close inlineclose inlineclosetopbtn") &&
                   ($(this).attr("class") != "tag-behaviour-link") &&
                   ($(this).attr("class") != "tag-network-link") &&
-                  ($(this).attr("class") != "confirmation") && 
+                  ($(this).attr("class") != "confirmation") &&
                   ($(this).attr("id") != "paginationNext")) {
               event.preventDefault();
               window.location = $(this).attr("href");
@@ -46,7 +46,7 @@
         - if browser.ios?
           = link_to((image_tag 'images/logo@2x.png', :height => "57"), participant_dashboard_path)
         - else
-          = link_to((image_tag 'images/logo.png', :height => "57"), participant_dashboard_path)
+          = link_to((image_tag 'images/logo.png', :height => "57", class: 'header_logo_border_IE'), participant_dashboard_path)
       = yield
     :javascript
       ganalytics_outbound_links();
