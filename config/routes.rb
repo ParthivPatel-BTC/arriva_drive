@@ -64,4 +64,6 @@ ArrivaDrive::Application.routes.draw do
     get '/get_monthly_events' => 'participant/events#get_monthly_events'
     get '/remove_participant' => 'participant/networks#remove_participant'
   end
+
+  resources :incoming_mails
 end
