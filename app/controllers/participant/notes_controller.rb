@@ -1,7 +1,7 @@
 class Participant::NotesController < ApplicationController
   layout 'participant'
   before_filter :participant_user_required!
-  before_filter :find_set_note, only: [:index, :destroy]
+  before_filter :find_set_note, only: [:index, :destroy, :export_notes]
   before_filter :set_tagged_behaviours_n_participants, only: [
     :tag_participants_list, :tag_behaviours_list, :tag_participants_behaviours, :create
   ]
@@ -9,6 +9,23 @@ class Participant::NotesController < ApplicationController
   def index
     @notes = get_tagged_notes.uniq
     @points_earned = (@note.tags.behaviour_tags.count * Settings.activity_points.write_note) if @note.present?
+  end
+
+  def export_notes
+    @notes = get_tagged_notes.uniq
+   # Export PDF
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: 'notes',
+               template: 'participant/notes/notes_pdf.html.haml',
+               dpi: '96',
+               :show_as_html                   => params[:debug].present?,
+               disable_internal_links: true, disable_external_links: true,
+               :print_media_type => false, :no_background => false
+        return
+      end
+    end
   end
 
   def new
@@ -61,7 +78,7 @@ class Participant::NotesController < ApplicationController
   end
 
   def note_params
-    params.require(:note).permit(:content).merge!({ 
+    params.require(:note).permit(:content).merge!({
       tags_attributes: prepare_tags_map
     })
   end

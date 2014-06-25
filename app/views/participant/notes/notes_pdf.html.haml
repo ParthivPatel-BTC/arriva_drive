@@ -1,0 +1,19 @@
+!!!
+%html
+  %head
+    %meta{"http-equiv" => "Content-Type", :content => "text/html; charset=utf-8"}
+  %body
+    #wrap
+      %header
+      %main{:role => "main"}
+        .main-container
+          .main-container-inner
+            .main-content
+              .page-content
+                .page-header
+                  %h1.text-center
+                  %b Notes
+                .spacer15
+                - @notes.each do |note|
+                  %p= note.content
+                  %label= date_time_formatted(note.created_at)
