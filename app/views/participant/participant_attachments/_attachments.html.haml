@@ -17,7 +17,7 @@
                   %li
                     .notes-left.notes-left-width
                       .notesicon
-                        = link_to participant_attachment_path(attachment),  class: "confirmation", title: t('common.caption.delete'), method: :delete, data: { confirm: t('common.msg.confirm')} do
+                        = link_to participant_attachment_path(attachment),  class: "confirmation", title: t('common.caption.delete'), method: :delete, data: { confirm: t('common.msg.confirm')}, :remote => true  do
                           %i.icon-delete
                       .notedetails
                         %p.uppercase

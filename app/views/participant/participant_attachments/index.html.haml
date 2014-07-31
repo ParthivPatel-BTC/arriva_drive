@@ -4,7 +4,7 @@
     = form_tag(participant_attachments_path, multipart: true) do
       = hidden_field_tag('participant_attachments[participant_id]', current_participant.id)
       .contentarea
-        %div{style: 'margin-left: 100px;'}
+        %div
           .editprofile
             %p{style: 'color: rgb(199, 218, 44); padding-bottom: 0px !important;'}
               = link_to t('participant.caption.choose_file')
@@ -15,5 +15,6 @@
                 %i.icon-submit{style: 'background-position: -750px 0; font-size: 1.4em;'}
                 %span.logintext{style: 'vertical-align: middle; margin-top: 0px; padding-top: 7px; font-size: 11px;'} Submit
               = submit_tag(" ")
-    = render partial: 'participant/participant_attachments/attachments'
+    #attachments
+      = render partial: 'participant/participant_attachments/attachments'
   = render partial: 'participants/components/right_side_bar'
