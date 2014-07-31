@@ -137,6 +137,16 @@ ActiveRecord::Schema.define(version: 20140605124134) do
     t.integer  "owner_id"
   end
 
+  create_table "participant_attachments", force: true do |t|
+    t.integer  "participant_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "attachment_file_name"
+    t.string   "attachment_content_type"
+    t.integer  "attachment_file_size"
+    t.datetime "attachment_updated_at"
+  end
+
   create_table "participants", force: true do |t|
     t.string   "email",                  default: "",   null: false
     t.string   "encrypted_password",     default: "",   null: false
@@ -186,6 +196,13 @@ ActiveRecord::Schema.define(version: 20140605124134) do
     t.string   "scorable_type"
   end
 
+  create_table "shared_attachments", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "participant_attachment_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "tags", force: true do |t|
     t.integer  "taggable_id"
     t.string   "taggable_type"
@@ -196,16 +213,6 @@ ActiveRecord::Schema.define(version: 20140605124134) do
 
   add_index "tags", ["note_id"], name: "index_tags_on_note_id", using: :btree
   add_index "tags", ["taggable_id", "taggable_type"], name: "index_tags_on_taggable_id_and_taggable_type", using: :btree
-
-  create_table "participant_attachments", force: true do |t|
-    t.integer  "participant_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "attachment_file_name"
-    t.string   "attachment_content_type"
-    t.integer  "attachment_file_size"
-    t.datetime "attachment_updated_at"
-  end
 
   create_table "values", force: true do |t|
     t.string   "title"
