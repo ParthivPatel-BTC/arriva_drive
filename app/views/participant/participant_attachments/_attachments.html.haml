@@ -26,5 +26,5 @@
                       .writeicon
                         = link_to '#', id: 'participantShareListingBtn', class: 'tag-network-link' do
                           %i.icon-somebody
-                          / - if @tagged_participants && @tagged_participants.count > 0
-                          %span 4
+                          - if attachment.shared_attachments && attachment.shared_attachments.count > 0
+                            %span= attachment.shared_attachments.count

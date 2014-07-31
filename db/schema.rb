@@ -197,7 +197,7 @@ ActiveRecord::Schema.define(version: 20140605124134) do
   end
 
   create_table "shared_attachments", force: true do |t|
-    t.integer  "user_id"
+    t.integer  "participant_id"
     t.integer  "participant_attachment_id"
     t.datetime "created_at"
     t.datetime "updated_at"
