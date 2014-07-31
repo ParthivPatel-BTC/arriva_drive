@@ -23,3 +23,8 @@
                         %p.uppercase
                           %span.green= "#{t('participant.participant_attachments.caption.file_name')} : "
                           = attachment.attachment_file_name
+                      .writeicon
+                        = link_to '#', id: 'participantShareListingBtn', class: 'tag-network-link' do
+                          %i.icon-somebody
+                          / - if @tagged_participants && @tagged_participants.count > 0
+                          %span 4
