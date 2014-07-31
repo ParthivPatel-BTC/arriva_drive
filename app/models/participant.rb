@@ -7,6 +7,7 @@ class Participant < ActiveRecord::Base
   has_many :activity_answer_participants
   has_many :reviews
   has_many :tags, as: :taggable
+  has_many :participant_attachments
 
   paperclip_options = {
       styles: {

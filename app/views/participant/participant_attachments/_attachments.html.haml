@@ -1,0 +1,25 @@
+%section.mainsection
+  - if @attachments.blank?
+    .contentarea
+      .activities
+        %ul
+          %li.notes-custom
+            .activitiesinfo
+              %h5= t('participant.participant_attachments.msg.no_files_found')
+  - else
+    .contentarea
+      .eventssection
+        #about.nano
+          .nano-content{style: "right: -13px;", tabindex: "0"}
+            .notes-custom
+              %ul
+                - @attachments.each_with_index do |attachment, index|
+                  %li
+                    .notes-left.notes-left-width
+                      .notesicon
+                        = link_to participant_attachment_path(attachment),  class: "confirmation", title: t('common.caption.delete'), method: :delete, data: { confirm: t('common.msg.confirm')} do
+                          %i.icon-delete
+                      .notedetails
+                        %p.uppercase
+                          %span.green= "#{t('participant.participant_attachments.caption.file_name')} : "
+                          = attachment.attachment_file_name

@@ -40,3 +40,6 @@ activity_points:
   review_completion: 300
   correct_mcq_answer: 100
   write_note: 25
+
+participant_attachments:
+  paperclip: { path: ":rails_root/public/system/participant_attachments/:id/:filename", url: "/system/participant_attachments/:id/:filename" }

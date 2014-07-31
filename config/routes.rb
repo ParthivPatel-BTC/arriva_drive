@@ -35,6 +35,7 @@ ArrivaDrive::Application.routes.draw do
     resources :activities, controller: 'participant/activities', as: 'participant_activities'
     resources :behaviours, only: [:index], controller: 'participant/behaviours', as: 'participant_behaviours'
     resources :networks, only: [:index], controller: 'participant/networks', as: 'participant_networks'
+    resources :participant_attachments, controller: 'participant/participant_attachments'
 
     resources :activities, only: [:index, :show], controller: 'participant/activities', as: 'participant_activities' do
       member do
