@@ -151,6 +151,8 @@ en:
     participant_attachments:
       caption:
         file_name: 'File Name'
+        view_files: 'View Files'
+        no: 'No.'
       msg:
         no_files_found: 'No Files Found'
   sign_in:

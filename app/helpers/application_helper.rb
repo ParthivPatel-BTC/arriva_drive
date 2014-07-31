@@ -121,4 +121,8 @@ module ApplicationHelper
   def note_owners_name(note)
     note.owner == current_participant ? 'ME' : note.owner.try(:full_name)
   end
+
+  def serial_number(page, index)
+    (page.to_i - 1) * Settings.pagination.per_page + index + 1
+  end
 end
