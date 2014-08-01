@@ -11,10 +11,8 @@
               = file_field_tag 'participant_attachments[attachment]'
             .spacer5
             %p.submit
-              = link_to_submit do
-                %i.icon-submit{style: 'background-position: -750px 0; font-size: 1.4em;'}
-                %span.logintext{style: 'vertical-align: middle; margin-top: 0px; padding-top: 7px; font-size: 11px;'} Submit
-              = submit_tag(" ")
+              = link_to_submit participant_attachments_path, title: t('common.caption.ok') do
+                %i.icon-done
     #attachments
       = render partial: 'participant/participant_attachments/attachments'
   = render partial: 'participants/components/right_side_bar'
