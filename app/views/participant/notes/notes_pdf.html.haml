@@ -5,15 +5,22 @@
   %body
     #wrap
       %header
-      %main{:role => "main"}
+      %main{role: 'main'}
         .main-container
           .main-container-inner
             .main-content
               .page-content
-                .page-header
-                  %h1.text-center
-                  %b Notes
+                %h2.text-center
+                  %b= t('participant.notes.pdf.notes')
                 .spacer15
-                - @notes.each do |note|
-                  %p= note.content
-                  %label= date_time_formatted(note.created_at)
+                - if @notes.present?
+                  = render partial: 'participant/notes/pfd_notes.html.haml'
+                - else
+                  %h4= t('participant.notes.pdf.msg.no_notes_found')
+                .spacer15
+                %h2.text-center
+                  %b= t('participant.activities.pdf.activities_completed')
+                - if @activities_completed.present?
+                  = render partial: 'participant/notes/pdf_activities_completed.html.haml'
+                - else
+                  %h4= t('participant.activities.msg.no_activities_found')

@@ -114,6 +114,8 @@ en:
         book: 'Purchase'
         video: 'View'
         magazine: 'Read'
+      pdf:
+        activities_completed: 'Activities Completed'
       msg:
         no_activities_found: 'No Activities Found'
     networks:
@@ -139,6 +141,8 @@ en:
       caption:
         tag_behaviours: 'Tag The Behaviour'
         tag_people: 'Tag The People'
+      pdf:
+        notes: 'Notes'
       msg:
        no_notes_found: 'No Notes Found'
     events:
