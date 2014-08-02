@@ -2,6 +2,9 @@ class ParticipantAttachment < ActiveRecord::Base
   belongs_to :participant
   has_many :shared_attachments
   validates_presence_of :attachment
+  accepts_nested_attributes_for :shared_attachments, allow_destroy: true
+
+  attr_accessor :shared_attachments_attributes
 
   has_attached_file :attachment, Paperclip::Attachment.default_options.merge(Settings.participant_attachments.paperclip)
   validates_attachment_content_type :attachment, :content_type => /.*/

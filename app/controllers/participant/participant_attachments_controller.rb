@@ -27,7 +27,7 @@ class Participant::ParticipantAttachmentsController < ApplicationController
 
   def shred_participants_list
     @participants = Network.all_participants_in_network(current_participant)
-    @shared_participants = share_from_params(params[:participant_ids])
+    @shared_participants = SharedAttachment.shared_attachment_participants(@attachment.id)
   end
 
   def create_shared_participants
@@ -41,7 +41,7 @@ class Participant::ParticipantAttachmentsController < ApplicationController
 
   def activity_params
     params.require(:participant_attachments).permit(
-      :participant_id, :attachment, :participant_attachment_id, participant_id: []
+      :participant_id, :attachment, shared_attachments_attributes: [:participant_attachment_id, :participant_id]
     )
   end
 
