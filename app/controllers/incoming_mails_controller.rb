@@ -3,7 +3,6 @@ class IncomingMailsController < ApplicationController
   skip_before_filter :verify_authenticity_token
 
   def create
-    puts "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^#{params.inspect}"
     message = Mail.new(params[:message])
     Rails.logger.log Logger::INFO, message.subject #print the subject to the logs
     Rails.logger.log Logger::INFO, message.body.decoded #print the decoded body to the logs

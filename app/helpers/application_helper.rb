@@ -121,4 +121,8 @@ module ApplicationHelper
   def note_owners_name(note)
     note.owner == current_participant ? 'ME' : note.owner.try(:full_name)
   end
+
+  def date_time_formatted(date)
+    date.try(:strftime, '%d/%m/%Y %I:%M %p')
+  end
 end
