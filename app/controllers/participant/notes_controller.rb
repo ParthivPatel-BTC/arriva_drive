@@ -13,7 +13,9 @@ class Participant::NotesController < ApplicationController
 
   def export_notes
     @notes = get_tagged_notes.uniq
-   # Export PDF
+    @activities_completed = Activity.completed
+    @participants = Network.all_participants_in_network(current_participant)
+    # Export PDF
     respond_to do |format|
       format.html
       format.pdf do

@@ -24,3 +24,10 @@
                   = render partial: 'participant/notes/pdf_activities_completed.html.haml'
                 - else
                   %h4= t('participant.activities.msg.no_activities_found')
+                .spacer15
+                %h2.text-center
+                  %b= t('participant.nav_bar.network').titleize
+                - if @participants.present?
+                  = render partial: 'participant/notes/pdf_networks.html.haml'
+                - else
+                  %h4= t('participant.networks.msg.no_networks_found')
