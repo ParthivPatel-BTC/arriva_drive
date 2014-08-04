@@ -3,11 +3,12 @@
   .contentarea
     .writenotes
       .writenotesinfo.boxbg
-        = form_tag(create_shared_participants_path, method: :post, id: 'tagBehaviourForm', multipart: true) do
+        = form_tag(create_shared_participants_path(@attachment), method: :post, multipart: true) do
           .commentarea.notelist.uppercase
             %p THE PEOPLE TO SHARE THIS FILE WITH THEM ...
             %ul
               - @participants.each do |participant|
+                = hidden_field_tag "participant_attachments[shared_attachments_attributes][][id]", participant.shared_attachments.find_by_participant_id(participant.id).id rescue nil
                 = hidden_field_tag 'participant_attachments[shared_attachments_attributes][][participant_attachment_id]', @attachment.id rescue nil
                 %li
                   %label= participant.full_name

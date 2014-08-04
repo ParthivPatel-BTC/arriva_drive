@@ -1,7 +1,7 @@
 class Participant::ParticipantAttachmentsController < ApplicationController
   layout 'participant'
   before_filter :get_participant_attachments, only: [ :index, :destroy ]
-  before_filter :find_attachment, only: [ :destroy, :shred_participants_list ]
+  before_filter :find_attachment, only: [ :destroy, :shred_participants_list, :create_shared_participants ]
 
   def index
   end
@@ -31,8 +31,9 @@ class Participant::ParticipantAttachmentsController < ApplicationController
   end
 
   def create_shared_participants
-    shared_participants = SharedAttachment.new(activity_params)
-    if shared_participants.save
+    if @attachment.update_attributes(activity_params)
+      redirect_to participant_attachments_path
+    else
       redirect_to participant_attachments_path
     end
   end
@@ -41,7 +42,7 @@ class Participant::ParticipantAttachmentsController < ApplicationController
 
   def activity_params
     params.require(:participant_attachments).permit(
-      :participant_id, :attachment, shared_attachments_attributes: [:participant_attachment_id, :participant_id]
+      :participant_id, :attachment, shared_attachments_attributes: [ :id, :participant_attachment_id, :participant_id]
     )
   end
 

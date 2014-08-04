@@ -38,7 +38,7 @@ ArrivaDrive::Application.routes.draw do
     resources :networks, only: [:index], controller: 'participant/networks', as: 'participant_networks'
     resources :participant_attachments, controller: 'participant/participant_attachments'
     get '/:id/shred_participants_list' => 'participant/participant_attachments#shred_participants_list', :as => :participants_list_participant_shared
-    post '/create_shared_participants' => 'participant/participant_attachments#create_shared_participants', as: 'create_shared_participants'
+    post '/:id/create_shared_participants' => 'participant/participant_attachments#create_shared_participants', as: 'create_shared_participants'
 
 
     resources :activities, only: [:index, :show], controller: 'participant/activities', as: 'participant_activities' do
