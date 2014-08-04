@@ -153,8 +153,12 @@ en:
         file_name: 'File Name'
         view_files: 'View Files'
         no: 'No.'
+        share_or_unshare: 'Share Or Unshare This File'
       msg:
         no_files_found: 'No Files Found'
+    shared_attachments:
+      caption:
+        share_or_unshare: 'THE PEOPLE TO SHARE OR UNSHARE THIS FILE WITH THEM'
   sign_in:
     caption:
       email: 'Email address'

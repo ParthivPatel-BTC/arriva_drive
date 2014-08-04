@@ -42,7 +42,7 @@ class Participant::ParticipantAttachmentsController < ApplicationController
 
   def activity_params
     params.require(:participant_attachments).permit(
-      :participant_id, :attachment, shared_attachments_attributes: [ :id, :participant_attachment_id, :participant_id]
+      :participant_id, :attachment, :participant_attachment_id, participant_ids: []
     )
   end
 

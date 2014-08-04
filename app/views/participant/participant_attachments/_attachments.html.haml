@@ -24,7 +24,7 @@
                           %span.green= "#{t('participant.participant_attachments.caption.file_name')} : "
                           = attachment.attachment_file_name
                       .writeicon
-                        = link_to participants_list_participant_shared_path(attachment), id: 'participantShareListingBtn', class: 'tag-network-link' do
+                        = link_to participants_list_participant_shared_path(attachment), id: 'participantShareListingBtn', class: 'tag-network-link', title: t('participant.participant_attachments.caption.share_or_unshare') do
                           %i.icon-somebody
                           - if attachment.shared_attachments && attachment.shared_attachments.count > 0
                             %span= attachment.shared_attachments.count

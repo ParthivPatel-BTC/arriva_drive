@@ -3,19 +3,18 @@
   .contentarea
     .writenotes
       .writenotesinfo.boxbg
-        = form_tag(create_shared_participants_path(@attachment), method: :post, multipart: true) do
+        = form_tag(create_shared_participants_path(@attachment), method: :post) do
           .commentarea.notelist.uppercase
-            %p THE PEOPLE TO SHARE THIS FILE WITH THEM ...
+            %p= "#{t('participant.shared_attachments.caption.share_or_unshare')} ..."
             %ul
+              = hidden_field_tag 'participant_attachments[participant_ids][]', []
               - @participants.each do |participant|
-                = hidden_field_tag "participant_attachments[shared_attachments_attributes][][id]", participant.shared_attachments.find_by_participant_id(participant.id).id rescue nil
-                = hidden_field_tag 'participant_attachments[shared_attachments_attributes][][participant_attachment_id]', @attachment.id rescue nil
                 %li
                   %label= participant.full_name
-                  = check_box_tag "participant_attachments[shared_attachments_attributes][][participant_id]", participant.id, @shared_participants.include?(participant.id.to_s), class: 'pull-right', disabled: defined?(disable) && disable
+                  = check_box_tag "participant_attachments[participant_ids][]", participant.id, @attachment.participants.include?(participant), class: 'pull-right', disabled: defined?(disable) && disable
           - if @participants.blank?
-            %p.lime-color Sorry, There are no participents in your network
+            %p.lime-color= t('participant.networks.msg.no_networks_found')
           .writeiconright
-            = link_to_submit tag_participants_behaviours_participant_notes_path, title: t('common.caption.ok') do
+            = link_to_submit create_shared_participants_path(@attachment), title: t('common.caption.ok') do
               %i.icon-done
   = render partial: 'participants/components/right_side_bar'
