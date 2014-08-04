@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140605124134) do
+ActiveRecord::Schema.define(version: 20140731121451) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -137,6 +137,16 @@ ActiveRecord::Schema.define(version: 20140605124134) do
     t.integer  "owner_id"
   end
 
+  create_table "participant_attachments", force: true do |t|
+    t.integer  "participant_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "attachment_file_name"
+    t.string   "attachment_content_type"
+    t.integer  "attachment_file_size"
+    t.datetime "attachment_updated_at"
+  end
+
   create_table "participants", force: true do |t|
     t.string   "email",                  default: "",   null: false
     t.string   "encrypted_password",     default: "",   null: false
@@ -184,6 +194,13 @@ ActiveRecord::Schema.define(version: 20140605124134) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "scorable_type"
+  end
+
+  create_table "shared_attachments", force: true do |t|
+    t.integer  "participant_id"
+    t.integer  "participant_attachment_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "tags", force: true do |t|

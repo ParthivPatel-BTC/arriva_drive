@@ -1,0 +1,30 @@
+%section.mainsection
+  - if @attachments.blank?
+    .contentarea
+      .activities
+        %ul
+          %li.notes-custom
+            .activitiesinfo
+              %h5= t('participant.participant_attachments.msg.no_files_found')
+  - else
+    .contentarea
+      .eventssection
+        #about.nano
+          .nano-content{style: "right: -13px;", tabindex: "0"}
+            .notes-custom
+              %ul
+                - @attachments.each_with_index do |attachment, index|
+                  %li
+                    .notes-left.notes-left-width
+                      .notesicon
+                        = link_to participant_attachment_path(attachment),  class: "confirmation", title: t('common.caption.delete'), method: :delete, data: { confirm: t('common.msg.confirm')}, :remote => true  do
+                          %i.icon-delete
+                      .notedetails
+                        %p.uppercase
+                          %span.green= "#{t('participant.participant_attachments.caption.file_name')} : "
+                          = attachment.attachment_file_name
+                      .writeicon
+                        = link_to participants_list_participant_shared_path(attachment), id: 'participantShareListingBtn', class: 'tag-network-link', title: t('participant.participant_attachments.caption.share_or_unshare') do
+                          %i.icon-somebody
+                          - if attachment.shared_attachments && attachment.shared_attachments.count > 0
+                            %span= attachment.shared_attachments.count

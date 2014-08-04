@@ -1,5 +1,5 @@
 class ParticipantsController < Devise::RegistrationsController
-  before_filter :find_participant_from_params, only: [ :show, :edit, :update, :deactivate, :activate, :resend_invitation]
+  before_filter :find_participant_from_params, only: [ :show, :edit, :update, :deactivate, :activate, :resend_invitation, :attachments]
   skip_before_filter :authenticate_scope!, :only => [:edit, :update, :destroy, :deactivate, :activate]
   before_filter :admin_user_required!, only: [:new, :create, :show, :edit, :update, :deactivate, :activate]
 
@@ -56,6 +56,12 @@ class ParticipantsController < Devise::RegistrationsController
       redirect_to admin_dashboard_path
     end
   end
+
+  def attachments
+    @page = params[:page] || 1
+    @attachments = ParticipantAttachment.attachments(@participant.id).page(params[:page]).per(Settings.pagination.per_page)
+  end
+
   protected
 
   def after_sign_in_path_for(resource)

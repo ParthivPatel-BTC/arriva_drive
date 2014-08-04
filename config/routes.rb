@@ -14,6 +14,7 @@ ArrivaDrive::Application.routes.draw do
     put '/participants/:id/deactivate' => 'participants#deactivate', :as => :participant_deactivate
     put '/participants/:id/activate' => 'participants#activate', :as => :participant_activate
     post '/participants/resend_invitation' => 'participants#resend_invitation'
+    get '/participant/:id/attachments' => 'participants#attachments', :as => :attachments
   end
 
   get '/new_participant' => 'static_pages#new_participant'
@@ -35,6 +36,10 @@ ArrivaDrive::Application.routes.draw do
     resources :activities, controller: 'participant/activities', as: 'participant_activities'
     resources :behaviours, only: [:index], controller: 'participant/behaviours', as: 'participant_behaviours'
     resources :networks, only: [:index], controller: 'participant/networks', as: 'participant_networks'
+    resources :participant_attachments, controller: 'participant/participant_attachments'
+    get '/:id/shred_participants_list' => 'participant/participant_attachments#shred_participants_list', :as => :participants_list_participant_shared
+    post '/:id/create_shared_participants' => 'participant/participant_attachments#create_shared_participants', as: 'create_shared_participants'
+
 
     resources :activities, only: [:index, :show], controller: 'participant/activities', as: 'participant_activities' do
       member do

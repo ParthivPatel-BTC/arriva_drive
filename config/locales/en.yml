@@ -104,6 +104,7 @@ en:
       present: 'PRESENT'
       notes: 'notes'
       new_note: 'NEW note'
+      choose_file: 'Choose File'
     place_holder:
       note_content: 'write note_'
       review_text: 'write review_'
@@ -133,6 +134,7 @@ en:
       events: 'Events'
       notes: 'NOTES'
       network: 'My network'
+      my_files: 'My Files'
       logout: 'LOGOUT'
     dashboard:
       caption:
@@ -150,6 +152,17 @@ en:
         calendar_feed: 'Calendar Feed'
       msg:
        no_events_found: 'No Events Found'
+    participant_attachments:
+      caption:
+        file_name: 'File Name'
+        view_files: 'View Files'
+        no: 'No.'
+        share_or_unshare: 'Share Or Unshare This File'
+      msg:
+        no_files_found: 'No Files Found'
+    shared_attachments:
+      caption:
+        share_or_unshare: 'THE PEOPLE TO SHARE OR UNSHARE THIS FILE WITH THEM'
   sign_in:
     caption:
       email: 'Email address'
