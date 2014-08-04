@@ -68,6 +68,7 @@ ArrivaDrive::Application.routes.draw do
     get '/add_to_network' => 'participant/networks#add_to_network'
     get '/get_monthly_events' => 'participant/events#get_monthly_events'
     get '/remove_participant' => 'participant/networks#remove_participant'
+    get '/export_notes/:id' => 'participant/notes#export_notes', as: :export_notes
   end
 
   resources :incoming_mails
