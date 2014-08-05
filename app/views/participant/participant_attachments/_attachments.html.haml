@@ -28,3 +28,7 @@
                           %i.icon-somebody
                           - if attachment.shared_attachments && attachment.shared_attachments.count > 0
                             %span= attachment.shared_attachments.count
+                        - if attachment.participants.size > 0
+                          %p.uppercase
+                            %span.green SHARED WITH:
+                            = shared_attachment_participants(attachment.participants.uniq)

@@ -109,6 +109,10 @@ module ApplicationHelper
     tags.inject('') { |str, tag| str << "#{tag.taggable.tag_title}, " }.chop.chop
   end
 
+  def shared_attachment_participants(participants)
+    participants.inject('') { |str, participant| str << "#{participant.full_name}, " }.chop.chop
+  end
+
   def formatted_tags_with_and(tags)
     formatted_tags_string = tags.inject('') { |str, tag| str << "#{tag.taggable.tag_title.titleize}, " }.chop.chop
     if tags.count < 2
