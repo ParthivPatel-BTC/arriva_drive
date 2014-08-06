@@ -4,4 +4,10 @@ class ArriveDriveMailer < ActionMailer::Base
     @password = password
     mail(from: Settings.mail.default_url_options.support_email, to: @participant.email, subject: t('mailer.participant.subject.welcome'))
   end
+
+  def send_shared_notification(participant)
+    @attachment
+    @participant = participant
+    mail(from: Settings.mail.default_url_options.support_email, to: @participant.email, subject: t('mailer.participant.subject.shared_notification'))
+  end
 end

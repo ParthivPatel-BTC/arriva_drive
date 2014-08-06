@@ -2,6 +2,7 @@ class Participant::ParticipantAttachmentsController < ApplicationController
   layout 'participant'
   before_filter :get_participant_attachments, only: [ :index, :destroy ]
   before_filter :find_attachment, only: [ :destroy, :shred_participants_list, :create_shared_participants ]
+  before_filter :find_shared_ids, only: [ :create_shared_participants ]
 
   def index
   end
@@ -32,6 +33,7 @@ class Participant::ParticipantAttachmentsController < ApplicationController
 
   def create_shared_participants
     if @attachment.update_attributes(activity_params)
+      send_notification(@participant_ids)
       redirect_to participant_attachments_path
     else
       redirect_to participant_attachments_path
@@ -62,5 +64,17 @@ class Participant::ParticipantAttachmentsController < ApplicationController
         tag_params
     end
     tags || []
+  end
+
+  def find_shared_ids
+    existing_participant_ids = @attachment.participant_ids
+    selected_participant_ids = params[:participant_attachments][:participant_ids].collect {|v| v.to_i if v.to_i > 0}.compact
+    @participant_ids = selected_participant_ids - existing_participant_ids
+  end
+
+  def send_notification(participant_ids)
+    participant_ids.each do |participant_id|
+      ParticipantAttachment.send_shared_notification(participant_id.to_i)
+    end
   end
 end
