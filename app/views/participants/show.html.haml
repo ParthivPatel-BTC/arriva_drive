@@ -6,6 +6,7 @@
       .btn-group.pull-right.edit_profile_link
         = link_to t('common.caption.edit'), edit_participant_path(@participant), title: t('common.caption.edit')
         = link_to t('participant.participant_attachments.caption.view_files'), attachments_path(@participant), title: t('participant.participant_attachments.caption.view_files')
+    %b.common-font-color= "Attached Files : #{@attachments_count}"
 
 .row
   .col-xs-4.col-md-4
