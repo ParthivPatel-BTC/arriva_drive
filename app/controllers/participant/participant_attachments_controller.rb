@@ -40,6 +40,12 @@ class Participant::ParticipantAttachmentsController < ApplicationController
     end
   end
 
+  def callback
+    parsed_body = Rails.logger.info params[:plain]
+    # parsed_body = request.headers["Content-Type"]
+    puts "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^#{parsed_body.inspect}"
+  end
+
   private
 
   def activity_params
@@ -74,7 +80,7 @@ class Participant::ParticipantAttachmentsController < ApplicationController
 
   def send_notification(participant_ids)
     participant_ids.each do |participant_id|
-      ParticipantAttachment.send_shared_notification(participant_id.to_i)
+      ParticipantAttachment.send_shared_notification(@attachment, participant_id.to_i)
     end
   end
 end

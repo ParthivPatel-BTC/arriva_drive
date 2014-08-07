@@ -11,10 +11,10 @@ class ParticipantAttachment < ActiveRecord::Base
 
   scope :attachments, -> (participant_id) { where(participant_id: participant_id) }
 
-  def self.send_shared_notification(participant_id)
+  def self.send_shared_notification(attachment,participant_id)
     participant = Participant.find_by_id(participant_id)
     begin
-      ArriveDriveMailer.send_shared_notification(participant).deliver!
+      ArriveDriveMailer.send_shared_notification(attachment,participant).deliver!
     rescue Exception => e
       Rails.logger.error "Failed to send email, email address: #{participant.email}"
       Rails.logger.error "#{e.backtrace.first}: #{e.message} (#{e.class})"

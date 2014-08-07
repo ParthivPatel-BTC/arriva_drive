@@ -37,8 +37,10 @@ class Participant::NotesController < ApplicationController
   def create
     @note = current_participant.notes.create(note_params)
     if @note.persisted?
-      flash[:notice] = t('participant.msg.success.note_creation')
-      redirect_to participant_notes_path(id: @note.id)
+      extract_tags_from_params(params[:participant_ids]).each do |participant_id|
+        @note.send_notification_to_participant(Participant.find_by_id(participant_id))
+      end
+    redirect_to participant_notes_path(id: @note.id)
     else
       render :new
     end
