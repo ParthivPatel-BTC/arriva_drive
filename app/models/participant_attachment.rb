@@ -7,7 +7,7 @@ class ParticipantAttachment < ActiveRecord::Base
   accepts_nested_attributes_for :participants, reject_if: :all_blank, allow_destroy: true
 
   has_attached_file :attachment, Paperclip::Attachment.default_options.merge(Settings.participant_attachments.paperclip)
-  validates_attachment_content_type :attachment, content_type: %r{\.(doc|docx|pdf|xlsx|jpeg|jpg|png)}i
+  validates_attachment_content_type :attachment, content_type: ['application/xls', 'application/msword']
   validates_attachment_size :attachment, less_than: 2.megabytes
 
   scope :attachments, -> (participant_id) { where(participant_id: participant_id) }

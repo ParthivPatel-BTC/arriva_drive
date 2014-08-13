@@ -18,4 +18,9 @@ class ScreenScrapingService
       image_data.at('/html/head/meta[@property="og:image"]')['content']
     end
   end
+
+  def self.find_email_input_hidden_value(email_content)
+    email_body_content = Nokogiri::HTML(email_content)
+    email_body_content.css("input[name=notification_type]").attr("value").to_s
+  end
 end

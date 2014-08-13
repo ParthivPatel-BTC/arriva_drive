@@ -12,7 +12,11 @@ class Participant::HomeController < ApplicationController
   end
 
   def update_profile
-    if params[:participants][:photo].present? && !params[:participants][:password].present?
+    if params[:participants][:photo].present? && !params[:password].present? && params[:participants][:notes_notification].present? && params[:participants][:files_notification].present?
+
+      params[:participants][:notes_notification] = params[:participants][:notes_notification].present? ? true : false
+      params[:participants][:files_notification] = params[:participants][:files_notification].present? ? true : false
+
       if photo_check?
         @participant.update_attributes(activity_params)
         redirect_to participant_dashboard_path
@@ -23,6 +27,10 @@ class Participant::HomeController < ApplicationController
       @participant.errors.add(:password, "is required")
     render :edit_profile
     elsif params[:password].present?
+
+      params[:participants][:notes_notification] = params[:participants][:notes_notification].present? ? true : false
+      params[:participants][:files_notification] = params[:participants][:files_notification].present? ? true : false
+
       if password_match?
         if @participant.update_attributes(activity_params)
           sign_in(@participant, :bypass => true)
@@ -46,7 +54,7 @@ class Participant::HomeController < ApplicationController
 
   def activity_params
     params.require(:participants).permit(
-      :password, :photo
+      :password, :photo, :notes_notification, :files_notification
     )
   end
 

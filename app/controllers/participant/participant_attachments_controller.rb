@@ -1,8 +1,10 @@
 class Participant::ParticipantAttachmentsController < ApplicationController
+  require 'screen_scraping_service'
   layout 'participant'
   before_filter :get_participant_attachments, only: [ :index, :destroy ]
   before_filter :find_attachment, only: [ :destroy, :shred_participants_list, :create_shared_participants ]
   before_filter :find_shared_ids, only: [ :create_shared_participants ]
+  skip_before_filter :verify_authenticity_token, only: [ :callback ]
 
   def index
   end
@@ -41,15 +43,19 @@ class Participant::ParticipantAttachmentsController < ApplicationController
   end
 
   def callback
-    parsed_body = Rails.logger.info params[:plain]
-    # parsed_body = request.headers["Content-Type"]
-    puts "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^#{parsed_body.inspect}"
+    replay_email_content = ScreenScrapingService.find_email_input_hidden_value(params[:html])
+    if replay_email_content == 'notes'
+      params[:participant_attachments] = {}
+      params[:participant_attachments][:content] = params[:reply_plain]
+      note = Note.new(activity_params)
+      note.save
+    end
   end
 
   private
 
   def activity_params
-    params.require(:participant_attachments).permit(
+    params.require(:participant_attachments).permit(:content,
       :participant_id, :attachment, :participant_attachment_id, participant_ids: []
     )
   end

@@ -3,13 +3,15 @@
   %head
     %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
   %body
-    %h3= "Dear #{@participant.first_name.titleize}"
-    %p
-      Following are the contents of the note you have been tagged in:
-    %p
-      #{@note_content.content}
-    %br/
-    %p
-      Kind Regards
-    %p
-      The DRIVE Programme Team
+    .note_content
+      %h3= "Dear #{@participant.first_name.titleize}"
+      = hidden_field_tag 'notification_type', 'notes'
+      %p
+        Following are the contents of the note you have been tagged in:
+      %p
+        #{@note_content.content}
+      %br/
+      %p
+        Kind Regards
+      %p
+        The DRIVE Programme Team
