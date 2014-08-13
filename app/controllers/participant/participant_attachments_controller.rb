@@ -86,7 +86,7 @@ class Participant::ParticipantAttachmentsController < ApplicationController
 
   def send_notification(participant_ids)
     participant_ids.each do |participant_id|
-      ParticipantAttachment.send_shared_notification(@attachment, participant_id.to_i)
+      ParticipantAttachment.send_shared_notification(@attachment, participant_id.to_i, current_participant.email)
     end
   end
 end

@@ -7,15 +7,15 @@ class ParticipantAttachment < ActiveRecord::Base
   accepts_nested_attributes_for :participants, reject_if: :all_blank, allow_destroy: true
 
   has_attached_file :attachment, Paperclip::Attachment.default_options.merge(Settings.participant_attachments.paperclip)
-  validates_attachment_content_type :attachment, content_type: ['application/xls', 'application/msword']
+  validates_attachment_content_type :attachment, content_type: /.*/
   validates_attachment_size :attachment, less_than: 2.megabytes
 
   scope :attachments, -> (participant_id) { where(participant_id: participant_id) }
 
-  def self.send_shared_notification(attachment,participant_id)
+  def self.send_shared_notification(attachment,participant_id, current_participant_email)
     participant = Participant.find_by_id(participant_id)
     begin
-      ArriveDriveMailer.send_shared_notification(attachment,participant).deliver!
+      ArriveDriveMailer.send_shared_notification(attachment,participant, current_participant_email).deliver!
     rescue Exception => e
       Rails.logger.error "Failed to send email, email address: #{participant.email}"
       Rails.logger.error "#{e.backtrace.first}: #{e.message} (#{e.class})"
