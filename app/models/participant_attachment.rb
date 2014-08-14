@@ -16,7 +16,7 @@ class ParticipantAttachment < ActiveRecord::Base
   def self.send_shared_notification(attachment, participant_id, current_participant_email)
     participant = Participant.find_by_id(participant_id)
     begin
-      ArriveDriveMailer.send_shared_notification(attachment,participant, current_participant_email).deliver!
+      ArriveDriveMailer.delay.send_shared_notification(attachment,participant, current_participant_email)
     rescue Exception => e
       Rails.logger.error "Failed to send email, email address: #{participant.email}"
       Rails.logger.error "#{e.backtrace.first}: #{e.message} (#{e.class})"
