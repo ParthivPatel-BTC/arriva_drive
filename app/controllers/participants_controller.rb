@@ -19,6 +19,7 @@ class ParticipantsController < Devise::RegistrationsController
   end
 
   def show
+    @attachments_count = ParticipantAttachment.attachments(@participant.id).size
   end
 
   def edit
