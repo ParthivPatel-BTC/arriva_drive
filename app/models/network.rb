@@ -16,7 +16,7 @@ class Network < ActiveRecord::Base
 
   def self.send_network_notification(network_participant, current_participant)
     begin
-      ArriveDriveMailer.send_network_notification(network_participant, current_participant).deliver!
+      ArriveDriveMailer.delay.send_network_notification(network_participant, current_participant)
     rescue Exception => e
       Rails.logger.error "Failed to send email, email address: #{network_participant.email}"
       Rails.logger.error "#{e.backtrace.first}: #{e.message} (#{e.class})"
