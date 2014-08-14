@@ -11,7 +11,7 @@ class Participant < ActiveRecord::Base
   has_many :shared_attachments, dependent: :destroy
 
   paperclip_options = {
-      styles: {
+      styles: {kk
           medium: "#{Settings.paperclip.style.medium}>",
           thumb: "#{Settings.paperclip.style.thumb}>"
       },

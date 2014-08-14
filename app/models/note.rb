@@ -10,6 +10,15 @@ class Note < ActiveRecord::Base
     tags.behaviour_tags
   end
 
+  def send_notification_to_participant(tagged_participant)
+    begin
+      ArriveDriveMailer.send_notification_to_participant(self,tagged_participant).deliver!
+    rescue Exception => e
+      Rails.logger.error "Failed to send email, email address: #{tagged_participant.email}"
+      Rails.logger.error "#{e.backtrace.first}: #{e.message} (#{e.class})"
+    end
+  end
+
   private
 
   def update_participant_score

@@ -9,7 +9,6 @@
     %table.table.table-striped.table-bordered.table-hover{style: 'width: 50%;'}
       %thead
         %tr
-          %td{style: 'width: 2%;'}= t('participant.participant_attachments.no')
           %td{style: 'width: 20%;'}= t('participant.participant_attachments.file_name')
       - if @attachments.present?
         = render :partial => 'attachments', collection: @attachments, as: :attachment

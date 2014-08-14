@@ -38,6 +38,10 @@ class Participant::ParticipantAttachmentsController < ApplicationController
     end
   end
 
+  def callback
+    parsed_body = request.headers["Content-Type"]
+  end
+
   private
 
   def activity_params
@@ -62,5 +66,19 @@ class Participant::ParticipantAttachmentsController < ApplicationController
         tag_params
     end
     tags || []
+  end
+
+  def find_shared_ids
+    existing_participant_ids = @attachment.participant_ids
+    selected_participant_ids = params[:participant_attachments][:participant_ids].collect {|v| v.to_i if v.to_i > 0}.compact
+    @participant_ids = selected_participant_ids - existing_participant_ids
+  end
+
+  def send_notification(participant_ids)
+    participant_ids.each do |participant_id|
+      if Participant.find_by_id(participant_id).files_notification
+        ParticipantAttachment.send_shared_notification(@attachment,participant_id.to_i)
+      end
+    end
   end
 end

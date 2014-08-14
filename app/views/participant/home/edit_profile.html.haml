@@ -15,6 +15,13 @@
           %p{style: 'color: rgb(199, 218, 44); padding-bottom: 0px !important;'}= current_participant.full_name
           %p{style: 'color: #F9FAFA; padding-bottom: 0px !important;'}= current_participant.job_title
           %p{style: 'color: #F9FAFA; padding-bottom: 0px !important;'}= get_division_name(current_participant.division)
+          %br/
+          %span.checkbox
+            = check_box_tag 'participants[notes_notification]', current_participant.notes_notification, current_participant.notes_notification 
+            = label_tag(:notes_notification, "Stop notes notification")
+            %br/
+            = check_box_tag 'participants[files_notification]', current_participant.files_notification, current_participant.files_notification
+            = label_tag(:files_notification, "Stop files notification")
           .changespassword
             %p{style: 'color: rgb(199, 218, 44);'} Create new password
             %p{style: 'width:200px;'}
