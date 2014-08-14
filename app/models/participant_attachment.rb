@@ -7,9 +7,10 @@ class ParticipantAttachment < ActiveRecord::Base
   accepts_nested_attributes_for :participants, reject_if: :all_blank, allow_destroy: true
 
   has_attached_file :attachment, Paperclip::Attachment.default_options.merge(Settings.participant_attachments.paperclip)
-  validates_attachment_content_type :attachment, content_type: /.*/
-  validates_attachment_size :attachment, less_than: 2.megabytes
 
+  validates_attachment_content_type :attachment, content_type: ['image/jpeg','image/jpg','image/png','application/pdf', 'application/msword','application/vnd.openxmlformats-officedocument.spreadsheetml.sheet','application/vnd.ms-excel','application/vnd.openxmlformats-officedocument.wordprocessingml.document']
+
+  validates_attachment_size :attachment, less_than: 2.megabytes
   scope :attachments, -> (participant_id) { where(participant_id: participant_id) }
 
   def self.send_shared_notification(attachment,participant_id, current_participant_email)
