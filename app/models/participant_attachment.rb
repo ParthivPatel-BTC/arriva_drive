@@ -13,7 +13,7 @@ class ParticipantAttachment < ActiveRecord::Base
   validates_attachment_size :attachment, less_than: 2.megabytes
   scope :attachments, -> (participant_id) { where(participant_id: participant_id) }
 
-  def self.send_shared_notification(attachment,participant_id, current_participant_email)
+  def self.send_shared_notification(attachment, participant_id, current_participant_email)
     participant = Participant.find_by_id(participant_id)
     begin
       ArriveDriveMailer.send_shared_notification(attachment,participant, current_participant_email).deliver!
