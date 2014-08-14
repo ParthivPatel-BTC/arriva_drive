@@ -12,16 +12,29 @@ class Participant::HomeController < ApplicationController
   end
 
   def update_profile
-    if params[:participants][:photo].present? && !params[:participants][:password].present?
-      if photo_check?
-        @participant.update_attributes(activity_params)
-        redirect_to participant_dashboard_path
-      else
-       render :edit_profile
-      end
+    params[:participants][:notes_notification] = params[:participants][:notes_notification].present? ? true : false
+    params[:participants][:files_notification] = params[:participants][:files_notification].present? ? true : false
+
+   if params[:participants][:photo].present? && (!params[:participants][:password].present? && (params[:password].present? || !params[:password].present?))
+    if photo_check?
+      @participant.update_attributes(activity_params)
+      redirect_to participant_dashboard_path
+    else
+     render :edit_profile
+    end
+
+    elsif params[:participants][:notes_notification] || !params[:participants][:notes_notification] && params[:participants][:password].present?
+      @participant.update_attributes(activity_params)
+      sign_in(@participant, :bypass => true)
+      redirect_to participant_dashboard_path
+
+    elsif params[:participants][:files_notification] || !params[:participants][:files_notification] && !params[:participants][:password].present?
+      @participant.update_attributes(activity_params)
+      redirect_to participant_dashboard_path
+
     elsif !params[:password].present?
       @participant.errors.add(:password, "is required")
-    render :edit_profile
+      render :edit_profile
     elsif params[:password].present?
       if password_match?
         if @participant.update_attributes(activity_params)
@@ -38,6 +51,7 @@ class Participant::HomeController < ApplicationController
     end
   end
 
+
   private
 
   def find_participant_from_params
@@ -46,7 +60,7 @@ class Participant::HomeController < ApplicationController
 
   def activity_params
     params.require(:participants).permit(
-      :password, :photo
+      :password, :photo, :notes_notification, :files_notification
     )
   end
 

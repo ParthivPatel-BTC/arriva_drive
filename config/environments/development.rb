@@ -30,7 +30,7 @@ ArrivaDrive::Application.configure do
       port: 587,
       domain: 'gmail.com',
       user_name: 'demo4582@gmail.com',
-      password: 'demo12345',
+      password: 'demo123123123',
       authentication: 'plain'
   }
   config.assets.debug = true

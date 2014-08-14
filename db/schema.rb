@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140731121451) do
+ActiveRecord::Schema.define(version: 20140808045742) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -98,6 +98,22 @@ ActiveRecord::Schema.define(version: 20140731121451) do
     t.integer "value_id"
   end
 
+  create_table "delayed_jobs", force: true do |t|
+    t.integer  "priority",   default: 0, null: false
+    t.integer  "attempts",   default: 0, null: false
+    t.text     "handler",                null: false
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.string   "queue"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
+
   create_table "events", force: true do |t|
     t.string   "title"
     t.string   "location"
@@ -171,6 +187,8 @@ ActiveRecord::Schema.define(version: 20140731121451) do
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
     t.boolean  "active",                 default: true
+    t.boolean  "notes_notification",     default: true
+    t.boolean  "files_notification",     default: true
   end
 
   add_index "participants", ["email"], name: "index_participants_on_email", unique: true, using: :btree

@@ -30,6 +30,7 @@ class Participant < ActiveRecord::Base
   # For all participants listing
   scope :all_participants, -> (current_participant_id) { where('id != ?', current_participant_id).order(:first_name) }
 
+  scope :find_by_participant_id, -> (participant_id) { where('id = ?', participant_id) }
   after_create :add_unique_password
 
   def full_name
