@@ -3,8 +3,14 @@ class Participant::ParticipantAttachmentsController < ApplicationController
   layout 'participant'
   before_filter :get_participant_attachments, only: [ :index, :destroy ]
   before_filter :find_attachment, only: [ :destroy, :shred_participants_list, :create_shared_participants ]
-  before_filter :find_shared_ids, only: [ :create_shared_participants ]
+  # before_filter :find_shared_ids, only: [ :create_shared_participants ]
+  # before_filter :find_shared_ids, only: [ :shared_participants_list, :tag_participants_files, :create_shared_participants ]
+  before_filter :find_shared_ids, only: [ :shared_participants_list, :tag_participants_files ]
   skip_before_filter :verify_authenticity_token, only: [ :callback ]
+
+  def new
+    @attachment = ParticipantAttachment.new
+  end
 
   def index
   end
@@ -28,9 +34,14 @@ class Participant::ParticipantAttachmentsController < ApplicationController
     end
   end
 
-  def shred_participants_list
+  # def shred_participants_list
+  #   @participants = Network.all_participants_in_network(current_participant)
+  #   @shared_participants = SharedAttachment.shared_attachment_participants(@attachment.id)
+  # end
+  
+  # remove this-- if not used 
+  def shared_participants_list
     @participants = Network.all_participants_in_network(current_participant)
-    @shared_participants = SharedAttachment.shared_attachment_participants(@attachment.id)
   end
 
   def create_shared_participants
@@ -40,6 +51,10 @@ class Participant::ParticipantAttachmentsController < ApplicationController
     else
       redirect_to participant_attachments_path
     end
+  end
+
+  def tag_participants_files
+    render :new
   end
 
   def callback
@@ -54,11 +69,25 @@ class Participant::ParticipantAttachmentsController < ApplicationController
 
   private
 
+  def tag_map(tag_ids, type)
+    return [] unless tag_ids
+    tag_ids.inject([]) { |arr, id| arr << { taggable_id: id, taggable_type: type } } || []
+  end
+
+  def prepare_tags_map
+    tag_map(@tagged_participants, 'Participant')
+  end
+
   def activity_params
+    # params.require(:participant_attachments).permit(:content,
+    #   :participant_id, :attachment, :participant_attachment_id, participant_ids: []
+    # )
     params.require(:participant_attachments).permit(:content,
       :participant_id, :attachment, :participant_attachment_id, participant_ids: []
-    )
-  end
+    ).merge!({
+      tags_attributes: prepare_tags_map
+    })
+  end 
 
   def get_participant_attachments
     @attachments = ParticipantAttachment.attachments(current_participant.id)
@@ -79,9 +108,12 @@ class Participant::ParticipantAttachmentsController < ApplicationController
   end
 
   def find_shared_ids
-    existing_participant_ids = @attachment.participant_ids
-    selected_participant_ids = params[:participant_attachments][:participant_ids].collect {|v| v.to_i if v.to_i > 0}.compact
-    @participant_ids = selected_participant_ids - existing_participant_ids
+    # existing_participant_ids = @attachment.participant_ids
+    # selected_participant_ids = params[:participant_attachments][:participant_ids].collect {|v| v.to_i if v.to_i > 0}.compact
+    # @participant_ids = selected_participant_ids - existing_participant_ids
+
+    @tagged_participants = share_from_params(params[:participant_ids])
+    @attachment = ParticipantAttachment.new(activity_params)
   end
 
   def send_notification(participant_ids)

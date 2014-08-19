@@ -57,6 +57,13 @@ ArrivaDrive::Application.routes.draw do
       end
     end
 
+    resources :shared_attachments, except: [:show, :edit, :update], controller: 'participant/participant_attachments', as: 'participant_attachments' do
+      collection do
+        post 'shared_participants_list'
+        post 'tag_participants_files'
+      end
+    end
+
     resources :events, only: [:index], controller: 'participant/events', as: 'participant_events' do
       member do
         get '/calendar_feed', to: 'participant/events#publish', as: :calendar_feed
