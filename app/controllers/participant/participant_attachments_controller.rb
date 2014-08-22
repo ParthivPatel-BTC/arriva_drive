@@ -4,6 +4,7 @@ class Participant::ParticipantAttachmentsController < ApplicationController
   before_filter :get_participant_attachments, only: [ :index, :destroy ]
   before_filter :find_attachment, only: [ :index, :destroy, :shared_participants_list, :create_shared_participants ]
   before_filter :shared_participants_list, only: [:create]
+  before_filter :find_shared_ids, only: [ :create_shared_participants ]
   skip_before_filter :verify_authenticity_token, only: [ :callback ]
 
   def new
@@ -31,11 +32,9 @@ class Participant::ParticipantAttachmentsController < ApplicationController
     redirect_to participant_attachments_path
   end
 
-   def create_shared_participants
+  def create_shared_participants
     if @attachment.update_attributes(activity_params)
-      send_notification(@tagged_participants)
-      redirect_to participant_attachments_path
-    else
+      send_notification(@participant_ids)
       redirect_to participant_attachments_path
     end
   end
@@ -93,5 +92,11 @@ class Participant::ParticipantAttachmentsController < ApplicationController
     participant_ids.each do |participant_id|
       ParticipantAttachment.send_shared_notification(@attachment, participant_id.to_i, current_participant.email)
     end
+  end
+
+  def find_shared_ids
+    existing_participant_ids = @attachment.participant_ids
+    selected_participant_ids = params[:participant_attachments][:participant_ids].collect {|v| v.to_i if v.to_i > 0}.compact
+    @participant_ids = selected_participant_ids - existing_participant_ids
   end
 end
