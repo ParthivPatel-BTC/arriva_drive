@@ -1,0 +1,20 @@
+%section.mainsection
+  = render partial: 'participants/components/left_side_bar'
+  .contentarea
+    .writenotes
+      .writenotesinfo.boxbg
+        = form_tag(create_shared_participants_path, method: :post, multipart: :true) do
+          .commentarea.notelist.uppercase
+            %p= "#{t('participant.shared_attachments.caption.share_or_unshare')} ..."
+            %ul
+              = hidden_field_tag 'participant_attachments[participant_ids][]', []
+              - @participants.each do |participant|
+                %li
+                  %label= participant.full_name
+                  = check_box_tag "participant_attachments[participant_ids][]", participant.id, @tagged_participants.include?(participant.id)
+          - if @participants.blank?
+            %p.lime-color= t('participant.networks.msg.no_networks_found')
+          .writeiconright
+            = link_to_submit create_shared_participants_path, title: t('common.caption.ok') do
+              %i.icon-done
+  = render partial: 'participants/components/right_side_bar'

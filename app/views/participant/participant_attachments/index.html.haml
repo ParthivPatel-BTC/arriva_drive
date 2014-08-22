@@ -29,7 +29,7 @@
                   %li
                     .notes-left.notes-left-width
                       .notesicon
-                        = link_to participant_attachment_path(attachment),  class: "confirmation", title: t('common.caption.delete'), method: :delete, data: { confirm: t('common.msg.confirm')}, :remote => true  do
+                        = link_to participant_attachment_path(attachment),  class: "confirmation", title: t('common.caption.delete'), method: :delete, data: { confirm: t('common.msg.confirm')} do
                           %i.icon-delete
                         = link_to participants_list_participant_shared_path(attachment), id: 'participantShareListingBtn', class: 'tag-network-link', title: t('participant.participant_attachments.caption.share_or_unshare') do
                           %i.icon-somebody
@@ -44,7 +44,7 @@
                         / %p.uppercase
                         /   %span.green= "#{t('participant.participant_attachments.caption.file_name')} : "
                         /   = attachment.attachment_file_name
-                        %h5 
+                        %h5
                           = attachment.file_title
                       .writeicon
                         / = link_to participants_list_participant_shared_path(attachment), id: 'participantShareListingBtn', class: 'tag-network-link', title: t('participant.participant_attachments.caption.share_or_unshare') do

@@ -3,6 +3,7 @@ class Participant::ParticipantAttachmentsController < ApplicationController
   layout 'participant'
   before_filter :get_participant_attachments, only: [ :index, :destroy ]
   before_filter :find_attachment, only: [ :index, :destroy, :shared_participants_list, :create_shared_participants ]
+  before_filter :shared_participants_list, only: [:create]
   skip_before_filter :verify_authenticity_token, only: [ :callback ]
 
   def new
@@ -11,13 +12,14 @@ class Participant::ParticipantAttachmentsController < ApplicationController
   end
 
   def index
-  end  
+  end
 
-  def create      
+  def create
     @attachment = ParticipantAttachment.new(activity_params)
     @attachment.participant = current_participant
     if @attachment.present?
       @attachment.save
+      send_notification(params[:participant_attachments][:participant_ids])
       redirect_to participant_attachments_path
     else
       render :index
@@ -25,17 +27,13 @@ class Participant::ParticipantAttachmentsController < ApplicationController
   end
 
   def destroy
-    respond_to do |format|
-      @attachment.destroy
-        format.js{
-        render file: 'participant/participant_attachments/attachment'
-      }
-    end
+    @attachment.destroy
+    redirect_to participant_attachments_path
   end
 
    def create_shared_participants
     if @attachment.update_attributes(activity_params)
-      # send_notification(@participant_ids)
+      send_notification(@tagged_participants)
       redirect_to participant_attachments_path
     else
       redirect_to participant_attachments_path
@@ -47,7 +45,7 @@ class Participant::ParticipantAttachmentsController < ApplicationController
     @participants = Network.all_participants_in_network(current_participant)
   end
 
-  def shared_participants 
+  def shared_participants
     @participants = shared_participants_list
     respond_to do |format|
       format.html { render 'participant/participant_attachments/shared_participants_list' }
@@ -67,10 +65,10 @@ class Participant::ParticipantAttachmentsController < ApplicationController
 
   private
 
-  def activity_params   
+  def activity_params
     params.require(:participant_attachments).permit(:file_title, :content, :participant_id, :attachment, :participant_attachment_id, participant_ids: []
     )
-  end 
+  end
 
   def get_participant_attachments
     @attachments = ParticipantAttachment.attachments(current_participant.id)
@@ -91,6 +89,7 @@ class Participant::ParticipantAttachmentsController < ApplicationController
   end
 
   def send_notification(participant_ids)
+    return false if participant_ids.nil?
     participant_ids.each do |participant_id|
       ParticipantAttachment.send_shared_notification(@attachment, participant_id.to_i, current_participant.email)
     end
