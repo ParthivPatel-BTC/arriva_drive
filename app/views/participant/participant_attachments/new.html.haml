@@ -1,9 +1,9 @@
 = form_tag(participant_attachments_path, method: :post, id: 'newNoteForm', multipart: true) do
-  .newattachmentform
-    %section.mainsection
-      = render partial: 'participants/components/left_side_bar'
-      .contentarea
-        .writenotes
+  %section.mainsection
+    = render partial: 'participants/components/left_side_bar'
+    .contentarea
+      .writenotes
+        .newattachmentform
           .writenotesinfo.boxbg
             .commentarea
               .editprofile
@@ -18,37 +18,35 @@
                 %i.icon-somebody
                 / - if @tagged_participants && @tagged_participants.count > 0
                 /   %span= @tagged_participants.count
-                %span#participant_count
               = link_to participant_attachments_path, title: t('common.caption.back') do
                 %i.icon-cancel
               = link_to_submit(participant_attachments_path, class: 'right', title: t('common.caption.add')) do
                 %i.icon-notesave
+        .sharedlistform
+          .writenotesinfo.boxbg
+            .commentarea.notelist.uppercase
+              %p= "#{t('participant.shared_attachments.caption.share_or_unshare')} ..."
+              %ul
+                - @participants.each do |participant|
+                  %li
+                    %label= participant.full_name
+                    = check_box_tag "participant_attachments[participant_ids][]", participant.id, @tagged_participants.include?(participant.id.to_s)
+            - if @participants.blank?
+              %p.lime-color= t('participant.networks.msg.no_networks_found')
+            .writeiconright
+              = link_to 'javascript:void(0);', id: 'saveSharedParticipants', title: t('common.caption.ok') do
+                %i.icon-done
 
     = render partial: 'participants/components/right_side_bar'
 
-  .sharedlistform
-    %section.mainsection
-      = render partial: 'participants/components/left_side_bar'
-    .contentarea
-      .writenotes
-        .writenotesinfo.boxbg
-          .commentarea.notelist.uppercase
-            %p= "#{t('participant.shared_attachments.caption.share_or_unshare')} ..."
-            %ul
-              - @participants.each do |participant|
-                %li
-                  %label= participant.full_name
-                  = check_box_tag "participant_attachments[participant_ids][]", participant.id, @tagged_participants.include?(participant.id.to_s)
-          - if @participants.blank?
-            %p.lime-color= t('participant.networks.msg.no_networks_found')
-          .writeiconright
-            = link_to 'javascript:void(0);', id: 'saveSharedParticipants', title: t('common.caption.ok') do
-              %i.icon-done
-    = render partial: 'participants/components/right_side_bar'
 
 :javascript
   $( document ).ready(function() {
     $('.sharedlistform').hide();
+    $('input[type="checkbox"]').click(function(){
+    window.shared_participant_count = $('#participant_attachments_participant_ids_:checked').length;
+    });
+
     $("#listSharedParticipants").click(function(){
       $('.sharedlistform').show();
       $('.newattachmentform').hide();
@@ -57,5 +55,11 @@
     $("#saveSharedParticipants").click(function(){
       $('.newattachmentform').show();
       $('.sharedlistform').hide();
+      if (window.shared_participant_count > 0) {
+        $('#listSharedParticipants').find('i').html('<span>'+window.shared_participant_count+'</span>');
+      }
+      else {
+        $('#listSharedParticipants').find('span').remove();
+      }
     });
   });

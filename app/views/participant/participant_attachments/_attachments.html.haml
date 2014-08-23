@@ -1,33 +1,52 @@
-%section.mainsection
-  - if @attachments.blank?
-    .contentarea
-      .activities
-        %ul
-          %li.notes-custom
-            .activitiesinfo
-              %h5= t('participant.participant_attachments.msg.no_files_found')
-  - else
-    .contentarea
-      .eventssection
-        #about.nano
-          .nano-content{style: "right: -13px;", tabindex: "0"}
-            .notes-custom
-              %ul
-                - @attachments.each_with_index do |attachment, index|
-                  %li
-                    .notes-left.notes-left-width
-                      .notesicon
-                        = link_to participant_attachment_path(attachment),  class: "confirmation", title: t('common.caption.delete'), method: :delete, data: { confirm: t('common.msg.confirm')}, :remote => true  do
-                          %i.icon-delete
-                      .notedetails
-                        %p.uppercase
-                          %span.green= "#{t('participant.participant_attachments.caption.file_name')} : "
-                          = attachment.attachment_file_name
-                      .writeicon
-                        = link_to get_shared_participant_path(attachment), id: 'participantShareListingBtn', class: 'tag-network-link', title: t('participant.participant_attachments.caption.share_or_unshare') do
+- if @attachments.blank?
+  .contentarea
+    .pagingrow.notes
+      %span.left.countnote= pluralize(@attachments.count, 'file')
+      %a.right{ href: new_participant_attachment_path }
+        = t('participant.caption.new_file')
+        %i.icon-events
+    .activities
+      %ul
+        %li.notes-custom
+          .activitiesinfo
+            %h5= t('participant_attachments.msg.no_files_found')
+- else
+  .contentarea
+    .eventssection
+      #about.nano
+        .nano-content{style: "right: -13px;", tabindex: "0"}
+          .pagingrow.notes
+            %span.left.countnote= pluralize(@attachments.count, 'file')
+            = link_to(new_participant_attachment_path, class: 'right') do
+              = t('participant.caption.new_file')
+              %i.icon-events
+          .notes-custom
+            %ul
+              - last_month = nil
+              - @attachments.each_with_index do |attachment, index|
+                %li
+                  .notes-left.notes-left-width
+                    .notesicon
+                      = link_to participant_attachment_path(attachment),  class: "confirmation", title: t('common.caption.delete'), method: :delete, data: { confirm: t('common.msg.confirm')} do
+                        %i.icon-delete
+                      - if attachment.participant_id == current_participant.id
+                        = link_to participants_list_participant_shared_path(attachment), id: 'participantShareListingBtn', class: 'tag-network-link', title: t('participant.participant_attachments.caption.share_or_unshare') do
                           %i.icon-somebody
-                          - if attachment.shared_attachments && attachment.shared_attachments.count > 0
-                            %span= attachment.shared_attachments.count
-                        %p.uppercase
-                          %span.green SHARED WITH:
-                          = shared_attachment_participants(attachment.participants.uniq)
+                    .notedetails
+                      %p.uppercase
+                        %span.green AUTHOR:
+                        = file_owner_name(attachment)
+                      %h5
+                        %span.date= formatted_date(attachment.updated_at, true)
+                        &nbsp;
+                        %span.time= formatted_time_with_timezone(attachment.updated_at)
+                      / %p.uppercase
+                      /   %span.green= "#{t('participant.participant_attachments.caption.file_name')} : "
+                      /   = attachment.attachment_file_name
+                      %h5 This is the file that I have shared in the new MyFiles feature.
+                    .writeicon
+                      / = link_to participants_list_participant_shared_path(attachment), id: 'participantShareListingBtn', class: 'tag-network-link', title: t('participant.participant_attachments.caption.share_or_unshare') do
+                      /   %i.icon-somebody
+                      %p.uppercase
+                        %span.green SHARED WITH:
+                        = shared_attachment_participants(attachment.participants.uniq)
