@@ -1,7 +1,8 @@
 class Participant::ParticipantAttachmentsController < ApplicationController
   require 'screen_scraping_service'
   layout 'participant'
-  before_filter :get_participant_attachments, only: [ :index, :destroy ]
+  before_filter :shared_unshared_attachments, only: [ :index, :destroy ]
+  # before_filter :get_participant_attachments, only: [ :index, :destroy ]
   before_filter :find_attachment, only: [ :index, :destroy, :shared_participants_list, :create_shared_participants ]
   before_filter :shared_participants_list, only: [:create]
   before_filter :find_shared_ids, only: [ :create_shared_participants ]
@@ -98,5 +99,9 @@ class Participant::ParticipantAttachmentsController < ApplicationController
     existing_participant_ids = @attachment.participant_ids
     selected_participant_ids = params[:participant_attachments][:participant_ids].collect {|v| v.to_i if v.to_i > 0}.compact
     @participant_ids = selected_participant_ids - existing_participant_ids
+  end
+
+  def shared_unshared_attachments
+    @attachments = current_participant.participant_attachments + current_participant.shared_attachments.map(&:participant_attachment)
   end
 end
