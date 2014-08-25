@@ -43,6 +43,12 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.7.0)
+    daemons (1.1.9)
+    delayed_job (4.0.2)
+      activesupport (>= 3.0, < 4.2)
+    delayed_job_active_record (4.0.1)
+      activerecord (>= 3.0, < 4.2)
+      delayed_job (>= 3.0, < 4.1)
     devise (3.0.0.rc)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
@@ -166,6 +172,8 @@ PLATFORMS
 DEPENDENCIES
   browser
   coffee-rails (~> 4.0.0)
+  daemons
+  delayed_job_active_record
   devise
   haml (>= 3.1.5)
   haml-rails (>= 0.3.4)

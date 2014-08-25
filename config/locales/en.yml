@@ -158,6 +158,8 @@ en:
         view_files: 'View Files'
         no: 'No.'
         share_or_unshare: 'Share Or Unshare This File'
+      place_holder:
+        file_title: 'file title_'
       msg:
         no_files_found: 'No Files Found'
     shared_attachments:
@@ -181,6 +183,9 @@ en:
     participant:
       subject:
         welcome: 'Welcome to DRIVE'
+        shared_notification: 'Shared Notification'
+        added_in_network: 'Welcome To My Network'
+        note_notification: 'Note Notification'
   pagination:
     caption:
       next: 'Next'

@@ -42,11 +42,14 @@ gem "letter_opener", :group => :development
 
 gem 'wkhtmltopdf-binary'
 gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
 # For pagination
 gem 'kaminari'
 gem 'nokogiri', '~> 1.6.2.1'
 gem 'icalendar'
 gem 'browser'
+gem 'delayed_job_active_record'
+gem 'daemons'
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false

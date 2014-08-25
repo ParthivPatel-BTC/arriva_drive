@@ -1,0 +1,15 @@
+!!!
+%html
+  %head
+    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+  %body
+    .note_content
+      %h3= "Dear #{@network_participant.first_name.titleize}"
+      %p
+        I have added to you in my network
+      %p
+      %br/
+      %p
+        Kind Regards
+      %p
+        = @current_participant.first_name.titleize

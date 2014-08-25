@@ -29,6 +29,7 @@ ArrivaDrive::Application.routes.draw do
     get 'overall_cohort_scores', to: 'admins#overall_cohort_scores', as: :overall_cohort_scores
   end
 
+  post '/:id/shared_participants' => 'participant/participant_attachments#shared_participants', as: 'get_shared_participant'
   scope '/participants' do
     get '/dashboard' => 'participant/home#dashboard', as: 'participant_dashboard'
     get '/:id/edit_profile' => 'participant/home#edit_profile', :as => :edit_profile
@@ -37,9 +38,8 @@ ArrivaDrive::Application.routes.draw do
     resources :behaviours, only: [:index], controller: 'participant/behaviours', as: 'participant_behaviours'
     resources :networks, only: [:index], controller: 'participant/networks', as: 'participant_networks'
     resources :participant_attachments, controller: 'participant/participant_attachments'
-    get '/:id/shred_participants_list' => 'participant/participant_attachments#shred_participants_list', :as => :participants_list_participant_shared
-    post '/:id/create_shared_participants' => 'participant/participant_attachments#create_shared_participants', as: 'create_shared_participants'
-
+    get '/:id/shred_participants_list' => 'participant/participant_attachments#shared_participants_list', :as => :participants_list_participant_shared
+    post '/:id/create_shared_participants' => 'participant/participant_attachments#create_shared_participants', as: 'create_shared_participants'    
 
     resources :activities, only: [:index, :show], controller: 'participant/activities', as: 'participant_activities' do
       member do
@@ -54,6 +54,13 @@ ArrivaDrive::Application.routes.draw do
         post 'tag_participants_list'
         post 'tag_behaviours_list'
         post 'tag_participants_behaviours'
+      end
+    end
+
+    resources :shared_attachments, except: [:show, :edit, :update], controller: 'participant/participant_attachments', as: 'participant_attachments' do
+      collection do
+        get 'shared_participants_list'
+        post 'tag_participants_files'
       end
     end
 
