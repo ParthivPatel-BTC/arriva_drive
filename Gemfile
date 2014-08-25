@@ -41,6 +41,7 @@ gem 'jquery-turbolinks'
 gem "letter_opener", :group => :development
 
 gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
 # For pagination
 gem 'kaminari'
 gem 'nokogiri', '~> 1.6.2.1'
