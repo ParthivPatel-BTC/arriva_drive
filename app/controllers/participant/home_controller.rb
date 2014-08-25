@@ -12,30 +12,32 @@ class Participant::HomeController < ApplicationController
   end
 
   def update_profile
-      params[:participants][:notes_notification] = params[:participants][:notes_notification].present? ? true : false
-      params[:participants][:files_notification] = params[:participants][:files_notification].present? ? true : false
+    params[:participants][:notes_notification] = params[:participants][:notes_notification].present? ? true : false
+    params[:participants][:files_notification] = params[:participants][:files_notification].present? ? true : false
 
-     if params[:participants][:photo].present? && (!params[:participants][:password].present? && (params[:password].present? || !params[:password].present?))
+    if params[:participants][:photo].present? && (!@password_confirmation.present? && (@password.present? || !@password.present?))
       if photo_check?
         @participant.update_attributes(activity_params)
         redirect_to participant_dashboard_path
       else
-       render :edit_profile
-      end
+      render :edit_profile
+    end
 
-       elsif params[:participants][:notes_notification] || !params[:participants][:notes_notification] && params[:participants][:password].present?
+    elsif (params[:participants][:notes_notification] || !params[:participants][:notes_notification]) && (!@password_confirmation.present? && !@password.present?)
       @participant.update_attributes(activity_params)
       sign_in(@participant, :bypass => true)
       redirect_to participant_dashboard_path
 
-    elsif params[:participants][:files_notification] || !params[:participants][:files_notification] && !params[:participants][:password].present?
+    elsif (params[:participants][:files_notification] || !params[:participants][:files_notification]) && (!@password_confirmation.present? && !@password.present?)
       @participant.update_attributes(activity_params)
+      sign_in(@participant, :bypass => true)
       redirect_to participant_dashboard_path
 
-    elsif !params[:password].present?      
+    elsif !@password.present?
       @participant.errors.add(:password, "is required")
       render :edit_profile
-    elsif params[:password].present?
+
+    elsif @password.present?
       if password_match?
         if @participant.update_attributes(activity_params)
           sign_in(@participant, :bypass => true)
@@ -51,6 +53,7 @@ class Participant::HomeController < ApplicationController
     end
   end
 
+
   private
 
   def find_participant_from_params
@@ -64,16 +67,16 @@ class Participant::HomeController < ApplicationController
   end
 
   def password_match?
-    password = params[:password]
-    password_confirmation = params[:participants][:password]
+    @password = params[:password]
+    @password_confirmation = params[:participants][:password]
 
-    if password.present? && !password_confirmation.present?
+    if @password.present? && !@password_confirmation.present?
       @participant.errors.add(:password, "does not match with confirmed password")
       false
-    elsif password != password_confirmation
+    elsif @password != @password_confirmation
       @participant.errors.add(:password, "does not match with confirmed password")
       false
-    elsif params[:password].empty?
+    elsif @password.empty?
       @participant.errors.add(:password, "is required")
       return false
     else
@@ -90,4 +93,3 @@ class Participant::HomeController < ApplicationController
     end
   end
 end
-
