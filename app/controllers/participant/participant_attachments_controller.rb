@@ -29,8 +29,13 @@ class Participant::ParticipantAttachmentsController < ApplicationController
   end
 
   def destroy
-    @attachment.destroy
-    redirect_to participant_attachments_path
+    if @attachment.participant == current_participant
+      @attachment.destroy
+    else
+      @shared_attachment = SharedAttachment.find_by participant_id: current_participant.id
+      SharedAttachment.destroy(@shared_attachment)
+    end
+      redirect_to participant_attachments_path
   end
 
   def create_shared_participants
