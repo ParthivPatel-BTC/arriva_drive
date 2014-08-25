@@ -38,6 +38,9 @@
 .notes-custom ul li div.notedetails h5 span.eventname{ display:block;}
 .notes-custom ul li div.notedetails p{ margin-bottom:7px; font-size:9px;}
 
+.notes-custom ul li div.notesicon_myfile{ margin-left:10px; position:absolute; right:5px; bottom:0px;}
+.notes-custom ul li div.notesicon_myfile a{ display:inline-block; margin-bottom:5px;}
+
 .text-center {
     margin-left: 86px;
     margin-top: 10px;
@@ -198,4 +201,8 @@
 // ==========Remove logo border IE 9/10
 .header_logo_border_IE {
   outline : 0; border: 0;
+}
+
+.writeicon-width {
+  width: 210px !important;
 }
