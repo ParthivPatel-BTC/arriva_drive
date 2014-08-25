@@ -1,18 +1,5 @@
 %section.mainsection
   = render partial: 'participants/components/left_side_bar'
-  #attachment_content
-    = form_tag(participant_attachments_path, multipart: true) do
-      = hidden_field_tag('participant_attachments[participant_id]', current_participant.id)
-      .contentarea
-        %div
-          .editprofile
-            %p{style: 'color: rgb(199, 218, 44); padding-bottom: 0px !important;'}
-              = link_to t('participant.caption.choose_file')
-              = file_field_tag 'participant_attachments[attachment]'
-            .spacer5
-            %p.submit
-              = link_to_submit participant_attachments_path, title: t('common.caption.ok') do
-                %i.icon-done
-    #attachments
-      = render partial: 'participant/participant_attachments/attachments'
-  = render partial: 'participants/components/right_side_bar'
+  #attachments
+    = render partial: 'participant/participant_attachments/attachments'
+= render partial: 'participants/components/right_side_bar'

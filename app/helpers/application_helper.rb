@@ -133,4 +133,8 @@ module ApplicationHelper
   def serial_number(page, index)
     (page.to_i - 1) * Settings.pagination.per_page + index + 1
   end
+
+  def file_owner_name(attachment)
+    attachment.participant == current_participant ? 'ME' : attachment.participant.try(:full_name)
+  end
 end
