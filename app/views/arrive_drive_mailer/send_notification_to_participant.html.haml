@@ -6,6 +6,7 @@
     .note_content
       %h3= "Dear #{@participant.first_name.titleize}"
       = hidden_field_tag 'notification_type', 'notes'
+      = hidden_field_tag 'owner_id', @participant.id
       %p
         Following are the contents of the note you have been tagged in:
       %p

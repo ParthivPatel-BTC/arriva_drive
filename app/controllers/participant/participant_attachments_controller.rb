@@ -60,18 +60,19 @@ class Participant::ParticipantAttachmentsController < ApplicationController
 
   def callback
     replay_email_content = ScreenScrapingService.find_email_input_hidden_value(params[:html])
-    if replay_email_content == 'notes'
+    if replay_email_content[0] == 'notes'
       params[:participant_attachments] = {}
       params[:participant_attachments][:content] = params[:reply_plain]
-      note = Note.new(activity_params)
+      params[:participant_attachments][:owner_id] = replay_email_content[1].to_i
+      note = Note.new(participant_attachment_params)
       note.save
     end
   end
 
   private
 
-  def activity_params
-    params.require(:participant_attachments).permit(:file_title, :content, :participant_id, :attachment, :participant_attachment_id, participant_ids: []
+  def participant_attachment_params
+    params.require(:participant_attachments).permit(:file_title, :content, :participant_id, :attachment, :participant_attachment_id, :owner_id, participant_ids: []
     )
   end
 
