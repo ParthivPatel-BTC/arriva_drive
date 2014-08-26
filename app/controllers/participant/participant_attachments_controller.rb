@@ -17,7 +17,7 @@ class Participant::ParticipantAttachmentsController < ApplicationController
   end
 
   def create
-    @attachment = ParticipantAttachment.new(activity_params)
+    @attachment = ParticipantAttachment.new(participant_attachment_params)
     @attachment.participant = current_participant
     if @attachment.present?
       @attachment.save
@@ -39,7 +39,7 @@ class Participant::ParticipantAttachmentsController < ApplicationController
   end
 
   def create_shared_participants
-    if @attachment.update_attributes(activity_params)
+    if @attachment.update_attributes(participant_attachment_params)
       send_notification(@participant_ids)
       redirect_to participant_attachments_path
     end
@@ -97,7 +97,9 @@ class Participant::ParticipantAttachmentsController < ApplicationController
   def send_notification(participant_ids)
     return false if participant_ids.nil?
     participant_ids.each do |participant_id|
-      ParticipantAttachment.send_shared_notification(@attachment, participant_id.to_i, current_participant.email)
+      if Participant.find_by_id(participant_id).files_notification
+        ParticipantAttachment.send_shared_notification(@attachment, participant_id.to_i, current_participant.email)
+      end
     end
   end
 

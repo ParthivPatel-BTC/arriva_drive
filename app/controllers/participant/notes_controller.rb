@@ -38,7 +38,10 @@ class Participant::NotesController < ApplicationController
     @note = current_participant.notes.create(note_params)
     if @note.persisted?
       extract_tags_from_params(params[:participant_ids]).each do |participant_id|
-        @note.send_notification_to_participant(Participant.find_by_id(participant_id))
+        @participants_id = Participant.find_by_id(participant_id)
+        if @participants_id.notes_notification
+          @note.send_notification_to_participant(@participants_id)
+        end
       end
     redirect_to participant_notes_path(id: @note.id)
     else
