@@ -68,10 +68,6 @@ class Participant::ParticipantAttachmentsController < ApplicationController
     end
   end
 
-  def callback
-    parsed_body = request.headers["Content-Type"]
-  end
-
   private
 
   def activity_params
