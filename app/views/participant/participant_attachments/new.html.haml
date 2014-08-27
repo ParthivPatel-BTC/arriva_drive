@@ -8,7 +8,7 @@
             .commentarea
               .editprofile
                 %p{style: 'color: rgb(199, 218, 44); padding-bottom: 0px !important;'}
-                  = link_to t('participant.caption.choose_file')
+                  = link_to 'CHOOSE FILE', '#', :onclick => '$("#participants_photo").click();', id: "edit_profile_link"
                   = file_field_tag 'participant_attachments[attachment]'
                 .spacer5
               = text_area_tag 'participant_attachments[file_title]', @file_title, class: 'textarea', placeholder: t('participant.participant_attachments.place_holder.file_title')
@@ -16,8 +16,6 @@
             .writeicon
               = link_to 'javascript:void(0);', id: 'listSharedParticipants', title: t('participant.notes.caption.tag_people'), class: 'tag-network-link' do
                 %i.icon-somebody
-                / - if @tagged_participants && @tagged_participants.count > 0
-                /   %span= @tagged_participants.count
               = link_to participant_attachments_path, title: t('common.caption.back') do
                 %i.icon-cancel
               = link_to_submit(participant_attachments_path, class: 'right', title: t('common.caption.add')) do
@@ -42,6 +40,12 @@
 
 :javascript
   $( document ).ready(function() {
+    $("#uniform-participant_attachments_attachment").hide();
+    $("#edit_profile_link").on('click', function(e){
+        e.preventDefault();
+        $("#participant_attachments_attachment:hidden").trigger('click');
+    });
+
     $('.sharedlistform').hide();
     $('input[type="checkbox"]').click(function(){
     window.shared_participant_count = $('#participant_attachments_participant_ids_:checked').length;

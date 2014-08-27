@@ -17,10 +17,7 @@
           %p{style: 'color: #F9FAFA; padding-bottom: 0px !important;'}= get_division_name(current_participant.division)
           %br/
           %span.checkbox
-            / = hidden_field_tag 'participants[notes_notification]', ''
-            / = hidden_field_tag 'participants[files_notification]', ''
             = check_box_tag 'participants[notes_notification]', current_participant.notes_notification, current_participant.notes_notification
-            /= check_box 'participants', 'notes_notification', {}, current_participant.notes_notification, current_participant.notes_notification
             = label_tag(:notes_notification, "Stop notes notification")
             %br/
             = check_box_tag 'participants[files_notification]', current_participant.files_notification, current_participant.files_notification
