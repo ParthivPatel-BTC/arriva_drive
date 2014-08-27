@@ -72,7 +72,7 @@ class Participant::ParticipantAttachmentsController < ApplicationController
   private
 
   def participant_attachment_params
-    params.require(:participant_attachments).permit(:file_title, :content, :participant_id, :attachment, :participant_attachment_id, :owner_id, participant_ids: []
+    params.require(:participant_attachments).permit(:file_title, :content, :participant_id, :attachment, :participant_attachment_id, :owner_id, :file_description, participant_ids: []
     )
   end
 

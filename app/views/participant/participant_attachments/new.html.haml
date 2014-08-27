@@ -11,7 +11,8 @@
                   = link_to 'CHOOSE FILE', '#', :onclick => '$("#participants_photo").click();', id: "edit_profile_link"
                   = file_field_tag 'participant_attachments[attachment]'
                 .spacer5
-              = text_area_tag 'participant_attachments[file_title]', @file_title, class: 'textarea', placeholder: t('participant.participant_attachments.place_holder.file_title')
+              = text_area_tag 'participant_attachments[file_description]', nil, class: 'textarea', placeholder: t('participant.participant_attachments.place_holder.file_description')
+              / = text_area_tag 'participant_attachments[file_title]', @file_title, class: 'textarea', placeholder: t('participant.participant_attachments.place_holder.file_title')
               = hidden_field_tag 'participant_ids', @tagged_participants
             .writeicon
               = link_to 'javascript:void(0);', id: 'listSharedParticipants', title: t('participant.notes.caption.tag_people'), class: 'tag-network-link' do
