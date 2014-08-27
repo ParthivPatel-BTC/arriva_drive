@@ -21,6 +21,8 @@ class ScreenScrapingService
 
   def self.find_email_input_hidden_value(email_content)
     email_body_content = Nokogiri::HTML(email_content)
-    email_body_content.css("input[name=notification_type]").attr("value").to_s
+    notification_type = email_body_content.css("input[name=notification_type]").attr("value").to_s
+    owner_id = email_body_content.css("input[name=owner_id]").attr("value").to_s
+    [ notification_type, owner_id ]
   end
 end
