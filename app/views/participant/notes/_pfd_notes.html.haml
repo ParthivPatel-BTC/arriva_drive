@@ -1,19 +1,19 @@
 - @notes.each do |note|
   %p.boldText.leftalign
     AUTHOR:
-    = note_owner_full_names(note)
+    = note_owner_full_names(note).titleize
   %p.boldText.rightalign
     = time_formatter(note.created_at)
   %p.boldText.rightalign.right-space
     = date_formatter(note.created_at)
   %p.CB
-    = note.content
-  %h3 
+    = note.content.capitalize
+  %h3
     TAGS:
-    %span.normalText.left-space
-    = formatted_tags(note.tags.behaviour_tags)
+    %span.normalText.left-space= formatted_tags(note.tags.behaviour_tags)
   %h3.vertical-alignment
     SHARED WITH:
-    %span.normalText.left-space
-    = formatted_tags(note.tags.participants_tags)
+    %span.normalText.left-space= formatted_tags(note.tags.participants_tags).titleize
   .notes-archive
+  %p
+  %p

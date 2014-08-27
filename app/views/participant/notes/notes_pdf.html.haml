@@ -7,22 +7,22 @@
     .container
       %header
       .content.CB.top-space
-        .mainTitle= current_participant.first_name
+        .mainTitle= current_participant.full_name.titleize
         %p
           You have
           = @notes.count
-          note/notes stored on Drive and have completed 
+          note/notes stored on Drive and have completed
           = @activities_completed.count
           of
           = @total_activities.count
           activities.
         %h3 YOUR FIT PLAN SUMMARY
         %p
-          = current_participant.performance_summary
+          = current_participant.performance_summary.capitalize
         .mainTitle YOUR NOTES ARCHIVE
-        %p 
+        %p
           Exported on:
-          = date_time_formatter(Time.now)
+          = date_formatter(Time.now)
         - if @notes.present?
           = render partial: 'participant/notes/pfd_notes.html.haml'
         - else

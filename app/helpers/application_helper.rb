@@ -134,13 +134,13 @@ module ApplicationHelper
     date.try(:strftime, '%d/%m/%Y %I:%M %p')
   end
 
-  def date_time_formatter(date)
-    date.try(:strftime, '%d.%m.%Y %I:%M')
-  end
+  # def date_time_formatter(date)
+  #   date.try(:strftime, '%d.%m.%Y')
+  # end
 
   def date_formatter(date)
     date.try(:strftime, '%m.%d.%Y')
-  end 
+  end
 
   def time_formatter(date)
     date.try(:strftime, '%I.%M')
