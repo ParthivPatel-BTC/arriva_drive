@@ -14,6 +14,7 @@ class Participant::NotesController < ApplicationController
   def export_notes
     @notes = get_tagged_notes.uniq
     @activities_completed = Activity.completed
+    @total_activities = Activity.all
     @participants = Network.all_participants_in_network(current_participant)
     # Export PDF
     respond_to do |format|
@@ -21,6 +22,7 @@ class Participant::NotesController < ApplicationController
       format.pdf do
         render pdf: 'notes',
                template: 'participant/notes/notes_pdf.html.haml',
+               header: {content: render_to_string(partial: 'participant/notes/pdf_header.html.haml')},
                dpi: '96',
                :show_as_html                   => params[:debug].present?,
                disable_internal_links: true, disable_external_links: true,

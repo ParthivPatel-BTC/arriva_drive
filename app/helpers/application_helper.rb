@@ -126,8 +126,24 @@ module ApplicationHelper
     note.owner == current_participant ? 'ME' : note.owner.try(:full_name)
   end
 
+  def note_owner_full_names(note)
+    note.owner.try(:full_name)
+  end
+
   def date_time_formatted(date)
     date.try(:strftime, '%d/%m/%Y %I:%M %p')
+  end
+
+  def date_time_formatter(date)
+    date.try(:strftime, '%d.%m.%Y %I:%M')
+  end
+
+  def date_formatter(date)
+    date.try(:strftime, '%m.%d.%Y')
+  end 
+
+  def time_formatter(date)
+    date.try(:strftime, '%I.%M')
   end
 
   def serial_number(page, index)

@@ -1,3 +1,19 @@
 - @notes.each do |note|
-  %p= note.content
-  %label= date_time_formatted(note.created_at)
+  %p.boldText.leftalign
+    AUTHOR:
+    = note_owner_full_names(note)
+  %p.boldText.rightalign
+    = time_formatter(note.created_at)
+  %p.boldText.rightalign.right-space
+    = date_formatter(note.created_at)
+  %p.CB
+    = note.content
+  %h3 
+    TAGS:
+    %span.normalText.left-space
+    = formatted_tags(note.tags.behaviour_tags)
+  %h3.vertical-alignment
+    SHARED WITH:
+    %span.normalText.left-space
+    = formatted_tags(note.tags.participants_tags)
+  .notes-archive

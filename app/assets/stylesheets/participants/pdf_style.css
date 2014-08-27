@@ -1,0 +1,44 @@
+.container {
+	font-family: arial;	
+}
+.leftalign {
+	float: left;
+}
+.rightalign {
+	float: right;
+}
+.CB {
+	clear: both;
+}
+.boldText {
+	font-weight: bold;
+}
+.normalText {
+	font-weight: normal;
+}
+.notes-archive {
+	border-bottom: 5px solid #128999;
+	padding-bottom: 20px;
+}
+.mainTitle {
+	font-size: 40px;
+	font-weight: bold;
+}
+p {
+	font-size: 20px;
+}
+h3 {
+	font-size: 25px;
+}
+.left-space {
+	padding-left: 10px;
+}
+.right-space {
+	padding-right: 40px;
+}
+.top-space {
+	padding-top: 100px;
+}
+.vertical-alignment {
+	margin-top: -25px;
+}

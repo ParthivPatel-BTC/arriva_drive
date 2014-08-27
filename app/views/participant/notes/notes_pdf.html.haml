@@ -2,32 +2,28 @@
 %html
   %head
     %meta{"http-equiv" => "Content-Type", :content => "text/html; charset=utf-8"}
+    = wicked_pdf_stylesheet_link_tag "participants/pdf_style"
   %body
-    #wrap
+    .container
       %header
-      %main{role: 'main'}
-        .main-container
-          .main-container-inner
-            .main-content
-              .page-content
-                %h2.text-center
-                  %b= t('participant.notes.pdf.notes')
-                .spacer15
-                - if @notes.present?
-                  = render partial: 'participant/notes/pfd_notes.html.haml'
-                - else
-                  %h4= t('participant.notes.pdf.msg.no_notes_found')
-                .spacer15
-                %h2.text-center
-                  %b= t('participant.activities.pdf.activities_completed')
-                - if @activities_completed.present?
-                  = render partial: 'participant/notes/pdf_activities_completed.html.haml'
-                - else
-                  %h4= t('participant.activities.msg.no_activities_found')
-                .spacer15
-                %h2.text-center
-                  %b= t('participant.nav_bar.network').titleize
-                - if @participants.present?
-                  = render partial: 'participant/notes/pdf_networks.html.haml'
-                - else
-                  %h4= t('participant.networks.msg.no_networks_found')
+      .content.CB.top-space
+        .mainTitle= current_participant.first_name
+        %p
+          You have
+          = @notes.count
+          note/notes stored on Drive and have completed 
+          = @activities_completed.count
+          of
+          = @total_activities.count
+          activities.
+        %h3 YOUR FIT PLAN SUMMARY
+        %p
+          = current_participant.performance_summary
+        .mainTitle YOUR NOTES ARCHIVE
+        %p 
+          Exported on:
+          = date_time_formatter(Time.now)
+        - if @notes.present?
+          = render partial: 'participant/notes/pfd_notes.html.haml'
+        - else
+          %h4= t('participant.notes.pdf.msg.no_notes_found')
