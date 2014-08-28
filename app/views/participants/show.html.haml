@@ -52,6 +52,12 @@
         .col-xs-1.col-md-1
           .light-blue= score.present? ? score.score : 0
       .spacer5.spacer-width
+    .spacer20.spacer-width
+    .row
+      .col-xs-9.col-md-9
+        %b.common-font-color= "Number of files uploaded: "
+      .col-xs-1.col-md-1
+        %b.light-blue= "#{@attachments_count}"
     .spacer65.spacer-width
   .col-xs-3.col-md-3{style:'position: relative; height: 590px;'}
     %h3.dark-blue
