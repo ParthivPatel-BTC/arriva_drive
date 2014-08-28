@@ -11,6 +11,7 @@
                   = link_to 'CHOOSE FILE', '#', :onclick => '$("#participants_photo").click();', id: "edit_profile_link"
                   = file_field_tag 'participant_attachments[attachment]'
                 .spacer5
+                %p#file_title_content{style: 'color: rgb(255, 255, 255); padding-bottom: 0px !important;'}
               = text_area_tag 'participant_attachments[file_description]', nil, class: 'textarea', placeholder: t('participant.participant_attachments.place_holder.file_description')
               / = text_area_tag 'participant_attachments[file_title]', @file_title, class: 'textarea', placeholder: t('participant.participant_attachments.place_holder.file_title')
               = hidden_field_tag 'participant_ids', @tagged_participants
@@ -42,6 +43,7 @@
 :javascript
   $( document ).ready(function() {
     $("#uniform-participant_attachments_attachment").hide();
+    $("file_title_content").hide();
     $("#edit_profile_link").on('click', function(e){
         e.preventDefault();
         $("#participant_attachments_attachment:hidden").trigger('click');
@@ -69,7 +71,8 @@
     });
 
     $('#participant_attachments_attachment').on("change", function(){
-      alert($('input[type=file]').val());
+      $("#file_attachment_content").hide();
+      $("#file_title_content").show();
+      $("#file_title_content").html('<span>'+$('input[type=file]').val()+'</span>');
     });
-
   });

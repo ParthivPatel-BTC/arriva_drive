@@ -43,7 +43,8 @@
                       / %p.uppercase
                       /   %span.green= "#{t('participant.participant_attachments.caption.file_name')} : "
                       /   = attachment.attachment_file_name
-                      %h5 This is the file that I have shared in the new MyFiles feature.
+                      %h5= attachment.attachment_file_name
+                      %h5= attachment.file_description
                     .writeicon.writeicon-width
                       / = link_to participants_list_participant_shared_path(attachment), id: 'participantShareListingBtn', class: 'tag-network-link', title: t('participant.participant_attachments.caption.share_or_unshare') do
                       /   %i.icon-somebody
