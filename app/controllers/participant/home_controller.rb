@@ -14,6 +14,7 @@ class Participant::HomeController < ApplicationController
   def update_profile
     params[:participants][:notes_notification] = params[:participants][:notes_notification].present? ? true : false
     params[:participants][:files_notification] = params[:participants][:files_notification].present? ? true : false
+    params[:participants][:network_notification] = params[:participants][:network_notification].present? ? true : false
 
     if params[:participants][:photo].present? && (!@password_confirmation.present? && (@password.present? || !@password.present?))
       if photo_check?
@@ -23,12 +24,7 @@ class Participant::HomeController < ApplicationController
       render :edit_profile
     end
 
-    elsif (params[:participants][:notes_notification] || !params[:participants][:notes_notification]) && (!@password_confirmation.present? && !@password.present?)
-      @participant.update_attributes(activity_params)
-      sign_in(@participant, :bypass => true)
-      redirect_to participant_dashboard_path
-
-    elsif (params[:participants][:files_notification] || !params[:participants][:files_notification]) && (!@password_confirmation.present? && !@password.present?)
+    elsif (!@password_confirmation.present? && !@password.present?)
       @participant.update_attributes(activity_params)
       sign_in(@participant, :bypass => true)
       redirect_to participant_dashboard_path
@@ -62,7 +58,7 @@ class Participant::HomeController < ApplicationController
 
   def activity_params
     params.require(:participants).permit(
-      :password, :photo, :notes_notification, :files_notification
+      :password, :photo, :notes_notification, :files_notification, :network_notification
     )
   end
 

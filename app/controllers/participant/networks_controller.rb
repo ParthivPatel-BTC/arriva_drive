@@ -1,6 +1,7 @@
 class Participant::NetworksController < ApplicationController
   layout 'participant'
   before_filter :participant_user_required!
+  before_filter :find_participant_from_params, only: [ :add_to_network ]
 
   def index
     @participants = Participant.all_participants(current_participant.id)
@@ -28,7 +29,7 @@ class Participant::NetworksController < ApplicationController
   def add_to_network
     @network = Network.new(network_params)
     if @network.save
-      Network.send_network_notification(Participant.find_by_id(params[:participant_id]), current_participant)
+      Network.send_network_notification(@participant_in_network, current_participant) if p@participant_in_network.network_notification
       respond_to do |format|
         @networks = Network.find_all_by_current_participant_id(current_participant.id)
           format.js{
@@ -64,5 +65,9 @@ class Participant::NetworksController < ApplicationController
   def remove_participant_from_network_list
     network = Network.delete_participant(params[:participant_id], current_participant.id)
     network.first.destroy
+  end
+
+  def find_participant_from_params
+    @participant_in_network = Participant.find_by_id(params[:participant_id])
   end
 end

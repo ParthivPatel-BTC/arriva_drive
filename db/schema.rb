@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140827120729) do
+ActiveRecord::Schema.define(version: 20140828080909) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -191,6 +191,7 @@ ActiveRecord::Schema.define(version: 20140827120729) do
     t.boolean  "active",                 default: true
     t.boolean  "notes_notification",     default: true
     t.boolean  "files_notification",     default: true
+    t.boolean  "network_notification",   default: true
   end
 
   add_index "participants", ["email"], name: "index_participants_on_email", unique: true, using: :btree
