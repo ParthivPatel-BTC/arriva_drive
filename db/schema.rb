@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140814091045) do
+ActiveRecord::Schema.define(version: 20140827120729) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -162,6 +162,7 @@ ActiveRecord::Schema.define(version: 20140814091045) do
     t.integer  "attachment_file_size"
     t.datetime "attachment_updated_at"
     t.string   "file_title"
+    t.text     "file_description"
   end
 
   create_table "participants", force: true do |t|
