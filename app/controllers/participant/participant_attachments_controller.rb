@@ -3,7 +3,7 @@ class Participant::ParticipantAttachmentsController < ApplicationController
   layout 'participant'
   before_filter :shared_unshared_attachments, only: [ :index, :destroy ]
   # before_filter :get_participant_attachments, only: [ :index, :destroy ]
-  before_filter :find_attachment, only: [ :index, :destroy, :shared_participants_list, :create_shared_participants ]
+  before_filter :find_attachment, only: [ :index, :destroy, :shared_participants_list, :create_shared_participants, :show_attachment ]
   before_filter :shared_participants_list, only: [:create]
   before_filter :find_shared_ids, only: [ :create_shared_participants ]
   skip_before_filter :verify_authenticity_token, only: [ :callback ]
@@ -67,6 +67,10 @@ class Participant::ParticipantAttachmentsController < ApplicationController
       note = Note.new(participant_attachment_params)
       note.save
     end
+  end
+
+  def show_attachment
+    send_file @attachment.attachment.path, :type => @attachment.attachment.content_type, :disposition => 'inline'
   end
 
   private

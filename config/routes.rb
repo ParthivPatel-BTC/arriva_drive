@@ -39,7 +39,7 @@ ArrivaDrive::Application.routes.draw do
     resources :networks, only: [:index], controller: 'participant/networks', as: 'participant_networks'
     resources :participant_attachments, controller: 'participant/participant_attachments'
     get '/:id/shred_participants_list' => 'participant/participant_attachments#shared_participants_list', :as => :participants_list_participant_shared
-    post '/:id/create_shared_participants' => 'participant/participant_attachments#create_shared_participants', as: 'create_shared_participants'    
+    post '/:id/create_shared_participants' => 'participant/participant_attachments#create_shared_participants', as: 'create_shared_participants'
 
     resources :activities, only: [:index, :show], controller: 'participant/activities', as: 'participant_activities' do
       member do
@@ -77,6 +77,7 @@ ArrivaDrive::Application.routes.draw do
     get '/remove_participant' => 'participant/networks#remove_participant'
     get '/export_notes/:id' => 'participant/notes#export_notes', as: :export_notes
     post '/participant_attachments/callback' => 'participant/participant_attachments#callback'
+    get '/participant_attachments/show_attachment/:id' => 'participant/participant_attachments#show_attachment', as: :show_attachment
   end
 
   resources :incoming_mails
