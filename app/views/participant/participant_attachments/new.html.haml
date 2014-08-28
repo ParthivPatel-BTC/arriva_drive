@@ -7,7 +7,7 @@
           .writenotesinfo.boxbg
             .commentarea
               .editprofile
-                %p{style: 'color: rgb(199, 218, 44); padding-bottom: 0px !important;'}
+                %p#file_attachment_content{style: 'color: rgb(199, 218, 44); padding-bottom: 0px !important;'}
                   = link_to 'CHOOSE FILE', '#', :onclick => '$("#participants_photo").click();', id: "edit_profile_link"
                   = file_field_tag 'participant_attachments[attachment]'
                 .spacer5
@@ -67,4 +67,9 @@
         $('#listSharedParticipants').find('span').remove();
       }
     });
+
+    $('#participant_attachments_attachment').on("change", function(){
+      alert($('input[type=file]').val());
+    });
+
   });

@@ -159,7 +159,8 @@ en:
         no: 'No.'
         share_or_unshare: 'Share Or Unshare This File'
       place_holder:
-        file_description: 'file description_'
+        file_title: 'file title_'
+        file_description: 'file description'
       msg:
         no_files_found: 'No Files Found'
     shared_attachments:
