@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140814091045) do
+ActiveRecord::Schema.define(version: 20140828080909) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -162,6 +162,7 @@ ActiveRecord::Schema.define(version: 20140814091045) do
     t.integer  "attachment_file_size"
     t.datetime "attachment_updated_at"
     t.string   "file_title"
+    t.text     "file_description"
   end
 
   create_table "participants", force: true do |t|
@@ -190,6 +191,7 @@ ActiveRecord::Schema.define(version: 20140814091045) do
     t.boolean  "active",                 default: true
     t.boolean  "notes_notification",     default: true
     t.boolean  "files_notification",     default: true
+    t.boolean  "network_notification",   default: true
   end
 
   add_index "participants", ["email"], name: "index_participants_on_email", unique: true, using: :btree
