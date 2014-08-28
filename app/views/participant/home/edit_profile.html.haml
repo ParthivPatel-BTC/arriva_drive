@@ -18,10 +18,10 @@
           %br/
           %span.checkbox
             = check_box_tag 'participants[notes_notification]', current_participant.notes_notification, current_participant.notes_notification
-            = label_tag(:notes_notification, "Stop notes notification")
+            = label_tag(:notes_notification, "Block notes notification")
             %br/
             = check_box_tag 'participants[files_notification]', current_participant.files_notification, current_participant.files_notification
-            = label_tag(:files_notification, "Stop files notification")
+            = label_tag(:files_notification, "Block files notification")
           .changespassword
             %p{style: 'color: rgb(199, 218, 44);'} Create new password
             %p{style: 'width:200px;'}

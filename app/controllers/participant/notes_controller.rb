@@ -22,11 +22,13 @@ class Participant::NotesController < ApplicationController
       format.pdf do
         render pdf: 'notes',
                template: 'participant/notes/notes_pdf.html.haml',
-               header: {content: render_to_string(partial: 'participant/notes/pdf_header.html.haml')},
+               margin: {top: 30},
+               header: {content: render_to_string(partial: 'participant/notes/pdf_header.html.haml'), spacing: 20},
                dpi: '96',
-               :show_as_html                   => params[:debug].present?,
+               show_as_html: params[:debug].present?,
                disable_internal_links: true, disable_external_links: true,
-               :print_media_type => false, :no_background => false
+               print_media_type: true,
+               no_background: false
         return
       end
     end
