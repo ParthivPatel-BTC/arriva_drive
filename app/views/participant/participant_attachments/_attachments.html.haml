@@ -43,7 +43,7 @@
                       / %p.uppercase
                       /   %span.green= "#{t('participant.participant_attachments.caption.file_name')} : "
                       /   = attachment.attachment_file_name
-                      %h3= link_to file_name_without_extension(attachment.attachment_file_name), show_attachment_path(attachment.id), target:'_blank'
+                      %h3= link_to file_name_without_extension(attachment.attachment_file_name), '#', target: "_blank", 'data-popup' => 'true', 'data-url' => "#{show_attachment_path(attachment.id)}"
 
                       %h5= attachment.file_description
                     .writeicon.writeicon-width
