@@ -153,4 +153,8 @@ module ApplicationHelper
   def file_owner_name(attachment)
     attachment.participant == current_participant ? 'ME' : attachment.participant.try(:full_name)
   end
+
+  def file_name_without_extension(filename)
+    @file_name_without_extension = File.basename(filename, File.extname(filename)).upcase
+  end
 end
