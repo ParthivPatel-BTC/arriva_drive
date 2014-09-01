@@ -59,7 +59,8 @@
                 - if last_month != month
                   - last_month = month
                   = link_to last_month
-      = link_to 'Download Notes', export_notes_path(id: current_participant.id, format: :pdf), target: '_blank', class: 'green'
+        %br/
+      = link_to 'DOWNLOAD NOTES HISTORY', export_notes_path(id: current_participant.id, format: :pdf), target: '_blank', class: 'green'
 
   = render partial: 'participants/components/right_side_bar'
 
