@@ -3,6 +3,11 @@ $ ->
     e.preventDefault()
     $(this).closest('form').attr('action', $(this).attr('href')).submit()
 
+  $('a[data-popup="true"]').bind "click", (e) ->
+    window.open $(this).data("url"), "Popup", "height=600, width=600"
+    e.preventDefault()
+    return
+
   if $('#new-note-dialog-box').size() > 0
     openNewNoteDialogBox()
 
