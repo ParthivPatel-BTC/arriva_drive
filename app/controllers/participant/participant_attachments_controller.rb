@@ -101,7 +101,8 @@ class Participant::ParticipantAttachmentsController < ApplicationController
   def send_notification(participant_ids)
     return false if participant_ids.nil?
     participant_ids.each do |participant_id|
-      if Participant.find_by_id(participant_id).files_notification
+      participant = Participant.find_by_id(participant_id)
+      if participant.present? && !participant.files_notification
         ParticipantAttachment.send_shared_notification(@attachment, participant_id.to_i, current_participant.email)
       end
     end

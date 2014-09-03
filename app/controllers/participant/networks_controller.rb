@@ -29,7 +29,7 @@ class Participant::NetworksController < ApplicationController
   def add_to_network
     @network = Network.new(network_params)
     if @network.save
-      Network.send_network_notification(@participant_in_network, current_participant) if p@participant_in_network.network_notification
+      Network.send_network_notification(@participant_in_network, current_participant) if !@participant_in_network.network_notification
       respond_to do |format|
         @networks = Network.find_all_by_current_participant_id(current_participant.id)
           format.js{
