@@ -1,6 +1,9 @@
 class Participant < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+
+  before_save :invert_notifications
   has_many :scores
   has_many :networks, foreign_key: 'current_participant_id'
   has_many :notes, foreign_key: 'owner_id'
@@ -160,5 +163,15 @@ class Participant < ActiveRecord::Base
   def self.generate_unique_passowrd
     participant={}
     participant[:password] = Devise.friendly_token[0,6]
+  end
+
+  private
+  def invert_notifications
+    puts "=====> BEFORE SAVE CALLED"
+    puts "#{self.inspect}"
+    self.files_notification = !self.files_notification
+    self.network_notification = !self.network_notification
+    self.notes_notification = !self.notes_notification
+    puts "#{self.inspect}"
   end
 end
