@@ -167,11 +167,8 @@ class Participant < ActiveRecord::Base
 
   private
   def invert_notifications
-    puts "=====> BEFORE SAVE CALLED"
-    puts "#{self.inspect}"
     self.files_notification = !self.files_notification
     self.network_notification = !self.network_notification
     self.notes_notification = !self.notes_notification
-    puts "#{self.inspect}"
   end
 end
