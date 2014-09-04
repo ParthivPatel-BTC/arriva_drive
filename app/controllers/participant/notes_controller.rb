@@ -43,7 +43,7 @@ class Participant::NotesController < ApplicationController
     if @note.persisted?
       extract_tags_from_params(params[:participant_ids]).each do |participant_id|
         @participants_id = Participant.find_by_id(participant_id)
-        if !@participants_id.notes_notification
+        if @participants_id.notes_notification
           @note.send_notification_to_participant(@participants_id)
         end
       end

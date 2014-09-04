@@ -59,8 +59,10 @@
                 - if last_month != month
                   - last_month = month
                   = link_to last_month
-        %br/
-      = link_to 'DOWNLOAD NOTES HISTORY', "#", class: 'green', target: "_blank", 'data-popup' => 'true', 'data-url' => "#{export_notes_path(id: current_participant.id, format: :pdf)}"
+        %br/  
+        %a{ href: '#', class: 'green', target: 'blank', 'data-popup' => 'true', 'data-url' => "#{export_notes_path(id: current_participant.id, format: :pdf)}"}
+          %i.icon-downloadnote
+          %div{style: "float: right; margin-right: 189px; padding-top: 7px;"} DOWNLOAD NOTES HISTORY
 
   = render partial: 'participants/components/right_side_bar'
 

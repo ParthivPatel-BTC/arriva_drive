@@ -4,7 +4,7 @@
       %span.left.countnote= pluralize(@attachments.count, 'file')
       %a.right{ href: new_participant_attachment_path }
         = t('participant.caption.new_file')
-        %i.icon-events
+        %i.icon-newfile
     .activities
       %ul
         %li.notes-custom
@@ -19,7 +19,7 @@
             %span.left.countnote= pluralize(@attachments.count, 'file')
             = link_to(new_participant_attachment_path, class: 'right') do
               = t('participant.caption.new_file')
-              %i.icon-events
+              %i.icon-newfile
           .notes-custom
             %ul
               - last_month = nil

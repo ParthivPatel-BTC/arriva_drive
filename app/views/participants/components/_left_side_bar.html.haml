@@ -33,7 +33,7 @@
         = t('participant.nav_bar.network')
     %li{ class: left_side_bar_class('participant_attachments') }
       %a{ href: participant_attachments_path}
-        %i.icon-events
+        %i.icon-files
         = t('participant.nav_bar.my_files')
     %li.logout
       = link_to destroy_participant_session_path, method: :delete do
