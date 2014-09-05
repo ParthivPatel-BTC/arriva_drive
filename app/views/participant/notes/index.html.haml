@@ -41,7 +41,7 @@
                           %span.date= formatted_date(note.updated_at, true)
                           &nbsp;
                           %span.time= formatted_time_with_timezone(note.updated_at)
-                          %span.eventname= note.content
+                          %span.eventname= raw sanitize(simple_format(note.content), :tags => %w(br p) )
                         %br
                         %p.uppercase
                           %span.green TAGS:

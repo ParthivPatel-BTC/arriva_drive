@@ -20,6 +20,7 @@ def send_shared_notification(attachment, participant, current_participant_email)
   def send_notification_to_participant(note_content, participant)
   	@participant = participant
   	@note_content = note_content
-  	mail(from: Settings.mail.default_url_options.support_email, to: @participant.email, subject: t('mailer.participant.subject.note_notification'))
+    replay_to  = "notify+#{@participant.id}@drivedb.net"
+  	mail(from: Settings.mail.default_url_options.support_email, to: @participant.email, subject: t('mailer.participant.subject.note_notification'), reply_to: replay_to)
   end
 end

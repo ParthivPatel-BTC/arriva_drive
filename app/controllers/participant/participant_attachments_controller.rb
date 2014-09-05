@@ -1,6 +1,7 @@
 class Participant::ParticipantAttachmentsController < ApplicationController
   require 'screen_scraping_service'
   layout 'participant'
+  require 'mail'
   before_filter :shared_unshared_attachments, only: [ :index, :destroy ]
   # before_filter :get_participant_attachments, only: [ :index, :destroy ]
   before_filter :find_attachment, only: [ :index, :destroy, :shared_participants_list, :create_shared_participants, :show_attachment ]
@@ -59,14 +60,14 @@ class Participant::ParticipantAttachmentsController < ApplicationController
   end
 
   def callback
-    replay_email_content = ScreenScrapingService.find_email_input_hidden_value(params[:html])
-    if replay_email_content[0] == 'notes'
-      params[:participant_attachments] = {}
-      params[:participant_attachments][:content] = params[:reply_plain]
-      params[:participant_attachments][:owner_id] = replay_email_content[1].to_i
-      note = Note.new(participant_attachment_params)
-      note.save
-    end
+    mail = Mail.new(params[:content])
+    content = mail.parts[0].body.raw_source
+    owner_id = params[:to].gsub(/[^0-9]/, '').to_i
+    params[:participant_attachments] = {}
+    params[:participant_attachments][:content] = content
+    params[:participant_attachments][:owner_id] = owner_id
+    note = Note.new(participant_attachment_params)
+    note.save
   end
 
   def show_attachment
