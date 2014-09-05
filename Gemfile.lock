@@ -184,6 +184,7 @@ DEPENDENCIES
   jquery-ui-rails
   kaminari
   letter_opener
+  mail
   nokogiri (~> 1.6.2.1)
   paperclip (~> 4.1)
   pg
