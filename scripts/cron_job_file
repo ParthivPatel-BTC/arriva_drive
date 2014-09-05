@@ -1,0 +1,2 @@
+* * * * * /home/parthiv/drive_move.sh
+*/10 * * * * /home/parthiv/drive_post.sh
