@@ -10,9 +10,9 @@ class Note < ActiveRecord::Base
     tags.behaviour_tags
   end
 
-  def send_notification_to_participant(tagged_participant)
+  def send_notification_to_participant(tagged_participant, current_participant)
     begin
-      ArriveDriveMailer.delay.send_notification_to_participant(self, tagged_participant)
+      ArriveDriveMailer.delay.send_notification_to_participant(self, tagged_participant, current_participant)
     rescue Exception => e
       Rails.logger.error "Failed to send email, email address: #{tagged_participant.email}"
       Rails.logger.error "#{e.backtrace.first}: #{e.message} (#{e.class})"

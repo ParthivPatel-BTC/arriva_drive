@@ -24,7 +24,8 @@ class ArriveDriveMailer < ActionMailer::Base
   end
 
   # Note shared
-  def send_notification_to_participant(note_content, participant)
+  def send_notification_to_participant(note_content, participant, current_participant)
+    @current_participant = current_participant
   	@participant = participant
   	@note_content = note_content
     replay_to  = "notify+#{@participant.id}@drivedb.net"

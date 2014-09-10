@@ -44,7 +44,7 @@ class Participant::NotesController < ApplicationController
       extract_tags_from_params(params[:participant_ids]).each do |participant_id|
         @participants_id = Participant.find_by_id(participant_id)
         if @participants_id.notes_notification
-          @note.send_notification_to_participant(@participants_id)
+          @note.send_notification_to_participant(@participants_id, current_participant)
         end
       end
     redirect_to participant_notes_path(id: @note.id)
