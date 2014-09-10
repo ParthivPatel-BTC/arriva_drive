@@ -9,7 +9,19 @@
       %p
         = "#{@current_participant.full_name.titleize} has added you to their network within the DRIVE online tool. Now that you’re in their network they can share files and notes that they’ve uploaded with you through the online tool."
       %p
-        To add any DRIVE participant to your own network, just visit the My Network section of your dashboard.      
+        First Name: #{@network_participant.first_name}
+      %p
+        Last Name: #{@network_participant.last_name}
+      %p
+        Email: #{@network_participant.email}
+      %p
+        Job Title: #{@network_participant.job_title}
+      %p
+        Division: #{@network_participant.division}
+      %p
+        Year Started: #{@network_participant.year_started}
+        %p
+        To add any DRIVE participant to your own network, just visit the My Network section of your dashboard.
       %p
         Thanks
         %br/

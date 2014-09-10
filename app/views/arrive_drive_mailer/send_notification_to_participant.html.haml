@@ -4,13 +4,25 @@
     %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
   %body
     .note_content
-      %p 
+      %p
         Dear #{@participant.first_name.titleize}
-        
+
       = hidden_field_tag 'notification_type', 'notes'
       = hidden_field_tag 'owner_id', @participant.id
       %p
         #{@note_content.owner.full_name.titleize} has shared a note with you through the DRIVE online tool.
+      %p
+        First Name: #{@participant.first_name}
+      %p
+        Last Name: #{@participant.last_name}
+      %p
+        Email: #{@participant.email}
+      %p
+        Job Title: #{@participant.job_title}
+      %p
+        Division: #{@participant.division}
+      %p
+        Year Started: #{@participant.year_started}
       %p
         Here are the contents of the note, simply reply to this email to create a new note shared with the same participants.
       %p
@@ -19,9 +31,9 @@
         %blockquote
           #{@note_content.content}
           %br/
-          %i 
+          %i
             Note created #{@note_content.created_at.to_formatted_s(:long)}
-      
+
       %p
         Thanks
         %br/
