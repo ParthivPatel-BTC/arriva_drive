@@ -4,12 +4,13 @@
     %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
   %body
     .note_content
-      %h3= "Dear #{@network_participant.first_name.titleize}"
       %p
-        I have added to you in my network
+        Dear #{@network_participant.first_name.titleize}
       %p
-      %br/
+        = "#{@current_participant.full_name.titleize} has added you to their network within the DRIVE online tool. Now that you’re in their network they can share files and notes that they’ve uploaded with you through the online tool."
       %p
-        Kind Regards
+        To add any DRIVE participant to your own network, just visit the My Network section of your dashboard.      
       %p
-        = @current_participant.first_name.titleize
+        Thanks
+        %br/
+        DRIVE Support

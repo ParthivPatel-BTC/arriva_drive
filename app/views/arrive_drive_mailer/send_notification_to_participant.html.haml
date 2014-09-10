@@ -4,15 +4,25 @@
     %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
   %body
     .note_content
-      %h3= "Dear #{@participant.first_name.titleize}"
+      %p 
+        Dear #{@participant.first_name.titleize}
+        
       = hidden_field_tag 'notification_type', 'notes'
       = hidden_field_tag 'owner_id', @participant.id
       %p
-        Following are the contents of the note you have been tagged in:
+        #{@note_content.owner.full_name.titleize} has shared a note with you through the DRIVE online tool.
       %p
-        #{@note_content.content}
-      %br/
+        Here are the contents of the note, simply reply to this email to create a new note shared with the same participants.
       %p
-        Kind Regards
+        Note text:
       %p
-        The DRIVE Programme Team
+        %blockquote
+          #{@note_content.content}
+          %br/
+          %i 
+            Note created #{@note_content.created_at.to_formatted_s(:long)}
+      
+      %p
+        Thanks
+        %br/
+        DRIVE Support

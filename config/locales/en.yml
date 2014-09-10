@@ -184,9 +184,9 @@ en:
     participant:
       subject:
         welcome: 'Welcome to DRIVE'
-        shared_notification: 'Shared Notification'
-        added_in_network: 'Welcome To My Network'
-        note_notification: 'Note Notification'
+        shared_notification: 'DRIVE: New Shared File'
+        added_in_network: 'DRIVE: Welcome To My Network'
+        note_notification: 'DRIVE: New Shared Note'
   pagination:
     caption:
       next: 'Next'
