@@ -8,7 +8,7 @@
     %p.boldText.rightalign.right-space
       = date_formatter(note.created_at)
     %p.CB
-      = note.content.capitalize
+      = note.content
     %h3
       TAGS:
       %span.normalText.left-space= formatted_tags(note.tags.behaviour_tags)
