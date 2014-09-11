@@ -14,9 +14,9 @@ class ArriveDriveMailerTest < ActionMailer::TestCase
   
   test "Attachment notifications look good" do
     @attachment = OpenStruct.new({id: '1',attachment_file_name: 'IGNORE_TEST'})
-    mail = ArriveDriveMailer.send_shared_notification(@attachment, @paul, @bob.email)
+    mail = ArriveDriveMailer.send_shared_notification(@attachment, @paul, @bob)
     assert_equal "DRIVE: New Shared File", mail.subject
-    #show_me_the_email(mail)
+    show_me_the_email(mail)
   end
   
   test "Test note notifications look good" do 

@@ -1,5 +1,6 @@
 $(function () {
-        $("select, input, button").uniform();
+    $('#login_in_button').hide();
+    $("select, input, button").uniform();
     });
 
 $(document).ready(function () {
