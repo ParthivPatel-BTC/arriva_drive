@@ -38,3 +38,10 @@
               %span.logintext{style: 'vertical-align: middle; margin-top: 0px; padding-top: 7px; font-size: 11px;'} Submit
             = submit_tag(" ", id: 'login_in_button')
     = render partial: 'participants/components/edit_profile_right_bar'
+
+:javascript
+  $(document).keypress(function(e) {
+      if(e.which == 13) {
+        $(".participantForm").submit();
+      }
+  });

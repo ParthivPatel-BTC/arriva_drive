@@ -4,7 +4,7 @@
       AUTHOR:
       = note_owner_full_names(note).titleize
     %p.boldText.rightalign
-      = time_formatter(note.created_at)
+      = formatted_time_without(note.updated_at)
     %p.boldText.rightalign.right-space
       = date_formatter(note.created_at)
     %p.CB

@@ -40,3 +40,9 @@
           = image_tag 'images/logo-arriva@2x.png', height: '39'
         - else
           = image_tag 'images/logo-arriva.png', height: '39'
+:javascript
+  $(document).keypress(function(e) {
+      if(e.which == 13) {
+        $(".new_participant").submit();
+      }
+  });

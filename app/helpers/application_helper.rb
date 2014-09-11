@@ -47,6 +47,10 @@ module ApplicationHelper
     uk_time += " GMT+1"
   end
 
+  def formatted_time_without(time)
+    uk_time = time.in_time_zone("London").strftime('%H.%M')
+  end
+
   def determine_root_path
     return root_path if current_admin.blank?
     admin_dashboard_path
