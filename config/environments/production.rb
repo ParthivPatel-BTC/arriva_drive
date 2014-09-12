@@ -77,7 +77,6 @@ ArrivaDrive::Application.configure do
   # config.autoflush_log = false
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
-  config.action_mailer.default_url_options = {:host => 'desolate-journey-1809', :protocol => 'http'}
   config.log_formatter = ::Logger::Formatter.new
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
@@ -86,8 +85,8 @@ ArrivaDrive::Application.configure do
       address: 'smtp.gmail.com',
       port: 587,
       domain: 'gmail.com',
-      user_name: 'demo4582@gmail.com',
-      password: 'demo123123123',
+      user_name: 'canbeused1234@gmail.com',
+      password: 'Test12349876',
       authentication: 'plain'
   }
 end
