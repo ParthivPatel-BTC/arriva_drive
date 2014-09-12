@@ -17,7 +17,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-gem 'therubyracer', platforms: :ruby, :group => :digitalocean #WHY WAS THIS REMOVED? IT"S NEEDED FOR PRODUCTION ??
+#gem 'therubyracer', platforms: :ruby, :group => :digitalocean #WHY WAS THIS REMOVED? IT"S NEEDED FOR PRODUCTION ??
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
