@@ -61,13 +61,19 @@ class Participant::ParticipantAttachmentsController < ApplicationController
 
   def callback
     mail = Mail.new(params[:content])
-    content = mail.parts[0].body.raw_source
-    owner_id = params[:to].gsub(/[^0-9]/, '').to_i
+    content = mail.body.raw_source
+    id_values = params[:to].gsub(/[^0-9_]/, '').split('_')
+    owner_id = id_values[0].to_i
+    shared_participant_id = id_values[1].to_i
     params[:participant_attachments] = {}
     params[:participant_attachments][:content] = content
     params[:participant_attachments][:owner_id] = owner_id
     note = Note.new(participant_attachment_params)
     note.save
+    tag = Tag.new
+    tag.note = note
+    tag.taggable = Participant.find_by_id(shared_participant_id)
+    tag.save
   end
 
   def show_attachment
