@@ -77,6 +77,7 @@ ArrivaDrive::Application.configure do
   # config.autoflush_log = false
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
+  config.action_mailer.default_url_options = {:host => 'desolate-journey-1809', :protocol => 'http'}
   config.log_formatter = ::Logger::Formatter.new
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
