@@ -11,8 +11,11 @@
         %p
           You have
           = @notes.count
-          note/notes stored on Drive and have completed
-          = @activities_completed.count
+          - if @notes.count > 1
+            notes stored on Drive and have completed
+          - else
+            note stored on Drive and have completed
+          = current_participant.completed_activities.count
           of
           = @total_activities.count
           activities.

@@ -24,7 +24,6 @@ class ApplicationController < ActionController::Base
 
   def after_sign_out_path_for(resource)
     return new_participant_session_path if resource == :participant
-    puts "1 =========> Redirecting to root path"
     root_path
   end
 

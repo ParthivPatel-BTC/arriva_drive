@@ -60,20 +60,30 @@ class Participant::ParticipantAttachmentsController < ApplicationController
   end
 
   def callback
+    return if params[:content].empty?
     mail = Mail.new(params[:content])
-    content = mail.body.raw_source
-    id_values = params[:to].gsub(/[^0-9_]/, '').split('_')
+    reply = EmailReplyParser.read(mail.body.raw_source)
+    content = reply.fragments[0].to_s
+    content = content.gsub(/^--(_|[0-9])+.+\n/,'').gsub(/^Content-.+\:.+\n/,'')
+    id_values = mail.to.to_s.gsub(/[^0-9_]/, '').split('_')
     owner_id = id_values[0].to_i
     shared_participant_id = id_values[1].to_i
     params[:participant_attachments] = {}
     params[:participant_attachments][:content] = content
     params[:participant_attachments][:owner_id] = owner_id
     note = Note.new(participant_attachment_params)
-    note.save
-    tag = Tag.new
-    tag.note = note
-    tag.taggable = Participant.find_by_id(shared_participant_id)
-    tag.save
+    if note.save
+      puts "NOTE CREATED SUCCESSFULLY WITH ID = #{note.id}"
+      tag = Tag.new
+      tag.note = note
+      tag.taggable = Participant.find_by_id(shared_participant_id)
+      if !tag.save
+        puts "#{tag.errors.full_messages}"
+      end
+    else
+      puts "Note could not be created."
+      puts "#{note.errors.full_messages}"
+    end
   end
 
   def show_attachment

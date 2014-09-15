@@ -24,11 +24,11 @@ class ArriveDriveMailer < ActionMailer::Base
   end
 
   # Note shared
-  def send_notification_to_participant(note_content, participant, current_participant)
+  def send_notification_to_participant(note_content, participant, current_participant, mail_host)
     @current_participant = current_participant
   	@participant = participant
   	@note_content = note_content
-    replay_to  = "notify+#{@participant.id}_#{@current_participant.id}@drivedb.net"
+    replay_to  = "notify+#{@participant.id}_#{@current_participant.id}@#{mail_host}"
   	mail(from: Settings.mail.default_url_options.support_email, to: @participant.email, subject: t('mailer.participant.subject.note_notification'), reply_to: replay_to)
   end
 end
