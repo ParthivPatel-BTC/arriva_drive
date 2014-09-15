@@ -3,6 +3,11 @@
   %head
     %meta{"http-equiv" => "Content-Type", :content => "text/html; charset=utf-8"}
     = wicked_pdf_stylesheet_link_tag "participants/pdf_style"
+    = wicked_pdf_stylesheet_link_tag "participants/uniform.aristo"
+    = wicked_pdf_stylesheet_link_tag "participants/style_behaviours"
+    = wicked_pdf_javascript_include_tag "participants/jquery-1.11.0.min"
+    = wicked_pdf_javascript_include_tag "participants/jquery.uniform"
+    = wicked_pdf_javascript_include_tag "participants/custom"
   %body
     .container
       %header
@@ -19,6 +24,11 @@
           of
           = @total_activities.count
           activities.
+        .contentarea
+          %h3 LEADERSHIP BEHAVIOURS
+          = render partial: 'participant/home/leadership_behaviours.html.haml'
+          = render partial: 'participant/home/behaviour_scores.html.haml'
+        %div{style: 'height:300px;'}
         %h3 YOUR FIT PLAN SUMMARY
         %p
           = current_participant.performance_summary.capitalize

@@ -19,29 +19,11 @@
           %p activities
           %p.view
             = link_to(t('participant.dashboard.caption.view'), participant_activities_path)
-        .leadership
-          %h2 LEADERSHIP Behaviours
-          %span.leaderblock
-            %input{:type => "checkbox"}
-              YOU
-          %span.leaderblock
-            %div.green-block
-            .margin-left-2
-              top performer
+        = render partial: 'leadership_behaviours'
       .welcomeboxrowright
         .boxbg.mediumbox
           %h4 Fit Plan Performance Summary
           .break-long-url
             %p= current_participant.performance_summary
-    .progressbarsection
-      - current_participant.scores.behaviour_scores.each_slice(5) do |slice|
-        .progressbarblock
-          - slice.each do |score|
-            .progressbarlabel= score.scorable.title
-            .progressbarchat
-              .progress
-                .progress-bar.progress-bar-success{:style => "width: #{score.percentile_score}%"}
-                  %span.sr-only= "#{score.percentile_score}% Complete (success)"
-                .progress-bar.progress-bar-warning{:style => "width: #{score.percentile_difference_with_top_score}%"}
-                  %span.sr-only= "#{score.percentile_difference_with_top_score}% Complete (warning)"
+    = render partial: 'behaviour_scores'
   = render partial: 'participants/components/right_side_bar'

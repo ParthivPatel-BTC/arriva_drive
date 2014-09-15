@@ -1,0 +1,11 @@
+.progressbarsection
+  - current_participant.scores.behaviour_scores.each_slice(5) do |slice|
+    .progressbarblock
+      - slice.each do |score|
+        .progressbarlabel= score.scorable.title
+        .progressbarchat
+          .progress
+            .progress-bar.progress-bar-success{:style => "width: #{score.percentile_score}%"}
+              %span.sr-only= "#{score.percentile_score}% Complete (success)"
+            .progress-bar.progress-bar-warning{:style => "width: #{score.percentile_difference_with_top_score}%"}
+              %span.sr-only= "#{score.percentile_difference_with_top_score}% Complete (warning)"
