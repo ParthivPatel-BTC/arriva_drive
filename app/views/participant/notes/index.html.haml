@@ -60,7 +60,7 @@
                   - last_month = month
                   = link_to last_month
         %br/
-        %a{ href: '#', target: 'blank', 'data-popup' => 'true', 'data-url' => "#{export_notes_path(id: current_participant.id, format: :pdf)}"}
+        %a{ href: '#', target: 'blank', 'data-popup' => 'true', 'data-url' => "#{export_notes_path(id: current_participant.id, format: :pdf, debug: 1)}"}
           %i.icon-downloadnote
           %div{style: "float: right; margin-right: 189px; padding-top: 7px;"} DOWNLOAD NOTES HISTORY
 
