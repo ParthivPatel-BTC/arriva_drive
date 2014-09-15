@@ -67,7 +67,7 @@ class ApplicationController < ActionController::Base
     elsif !current_participant.blank?
       redirect_to participant_events_path
     else
-      redirect_to root_path
+      redirect_to new_participant_session_path
     end
   end
 
