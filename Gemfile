@@ -3,8 +3,6 @@ source 'https://rubygems.org'
 ruby '2.0.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.5'
-gem 'pg', group: :heroku #if you don't want this, do bundle install --without kcs
-gem 'mysql2'
 gem "haml", ">= 3.1.5"
 gem "haml-rails", ">= 0.3.4"
 # Use SCSS for stylesheets
@@ -39,8 +37,6 @@ gem "paperclip", "~> 4.1"
 # For load all javascript. Read more: http://stackoverflow.com/questions/17881384/jquery-gets-loaded-only-on-page-refresh-in-rails-4-application
 gem 'jquery-turbolinks'
 
-gem "letter_opener", :group => :development
-
 gem 'wkhtmltopdf-binary'
 gem 'wicked_pdf'
 # For pagination
@@ -56,10 +52,28 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-gem 'rails_12factor', group: :production
+# For production environment
+group :production do
+  gem 'rails_12factor'
+  gem 'therubyracer', platforms: :ruby
+  gem 'mysql2'
+end
 
+# For heroku environment
+group :preview do
+  gem 'pg'
+end
+
+# For staging environment
+group :staging do
+  gem 'mysql2'
+end
+
+# For development environment
 group :development do
   gem 'sextant'
   gem 'sqlite3'
   gem 'pry'
+  gem "letter_opener"
+  gem 'pg'
 end
