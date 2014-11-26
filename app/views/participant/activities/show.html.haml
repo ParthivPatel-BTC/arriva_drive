@@ -15,13 +15,20 @@
                 %i{class: "#{deside_icon_class(@activity.link)}"}
                 %span.font-size-15.capital-font.padding-top-2= t("participant.activities.caption.#{@activity.activity_type_verbos}")
           .rightblock
-            = image_tag(@activity_image)
-        %li.boxbg.participant-box-width#activity-answers-list
-          - if current_participant.has_answered_this_activity?(@activity)
-            = render partial: 'participant/activities/answer'
-            %br/
-          - else
-            = render partial: 'participant/activities/answers_listing'
+            - if @activity.activity_type != 5
+              = image_tag(@activity_image)
+            - else
+              - if image_present?(@activity, 'online_course_image') && image_link_valid?(@activity)
+                = image_tag @activity.online_course_image.url, class: 'image-thumb'
+              -else
+                %div{:style => "height:40px;"}
+        - if @activity.activity_type != 5
+          %li.boxbg.participant-box-width#activity-answers-list
+            - if current_participant.has_answered_this_activity?(@activity)
+              = render partial: 'participant/activities/answer'
+              %br/
+            - else
+              = render partial: 'participant/activities/answers_listing'
         - if current_participant.has_reviewed_this_activity?(@activity)
           %li.boxbg.participant-box-width.break-long-url.max-width-360
             .font-size-11

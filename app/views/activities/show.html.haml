@@ -30,13 +30,13 @@
         %h4
           %strong.dark-blue= t('activity.fields.description')
         = @activity.description
-        - if @activity.activity_type == 5
-          %h4
-            %strong.dark-blue= 'Uploaded Image'
+
         .row
           .col-md-12
             %img#previewEventImage
             - if image_present?(@activity, 'online_course_image') && image_link_valid?(@activity)
+              %h4
+                %strong.dark-blue= 'Uploaded Image'
               = image_tag @activity.online_course_image.url, class: 'image-thumb', id: 'existingEventImage'
 
     - # Right Panel (MCQ and it's answers)

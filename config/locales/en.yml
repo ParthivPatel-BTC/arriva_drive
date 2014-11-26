@@ -115,6 +115,7 @@ en:
         book: 'Purchase'
         video: 'View'
         magazine: 'Read'
+        online_course: 'Enroll'
       pdf:
         activities_completed: 'Activities Completed'
       msg:

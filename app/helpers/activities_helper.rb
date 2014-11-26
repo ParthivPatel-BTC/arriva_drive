@@ -21,7 +21,9 @@ module ActivitiesHelper
         'bigicon-brain'
       when 4
         'bigicon-putting'
-      end
+      when 5
+        'bigicon-putting'
+    end
   end
 
   # For deside icon class on activity detail page

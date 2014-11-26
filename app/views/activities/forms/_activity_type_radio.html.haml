@@ -6,13 +6,17 @@
 
 :javascript
   $( document ).ready(function() {
-    $(".btn.btn_sign_in.btn-file").hide();
-    $('input[type="radio"]').click(function(){
-      $(".btn.btn_sign_in.btn-file").hide();
+    $(".online_course_image").hide();
+    $("input[type='radio'][name='activity[activity_type]']").click(function(){
+      $(".online_course_image").hide();
       $(".mcq").show();
       if($(this).attr("value")=="5"){
-        $(".btn.btn_sign_in.btn-file").show();
+        $(".online_course_image").show();
         $(".mcq").hide();
       }
     });
+    if($("input[type='radio'][name='activity[activity_type]']:checked").val()=="5"){
+      $(".online_course_image").show();
+      $(".mcq").hide();
+    }
   });
