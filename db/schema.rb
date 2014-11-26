@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140904122356) do
+ActiveRecord::Schema.define(version: 20141119051927) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,10 @@ ActiveRecord::Schema.define(version: 20140904122356) do
     t.datetime "updated_at"
     t.integer  "behaviour_id"
     t.boolean  "complete"
+    t.string   "online_course_image_file_name"
+    t.string   "online_course_image_content_type"
+    t.integer  "online_course_image_file_size"
+    t.datetime "online_course_image_updated_at"
   end
 
   create_table "activity_answer_participants", force: true do |t|

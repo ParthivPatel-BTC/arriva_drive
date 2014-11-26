@@ -38,7 +38,7 @@ class ActivitiesController < ApplicationController
 
   def activity_params
     params.require(:activity).permit(
-      :behaviour_id, :title, :link, :activity_type, :description,
+      :behaviour_id, :title, :link, :activity_type, :description, :online_course_image,
       multiple_choice_question_attributes: [
         :id, :question_text, answers_attributes: [:id, :answer_text, :correct]
       ]

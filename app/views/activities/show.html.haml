@@ -30,13 +30,22 @@
         %h4
           %strong.dark-blue= t('activity.fields.description')
         = @activity.description
+        - if @activity.activity_type == 5
+          %h4
+            %strong.dark-blue= 'Uploaded Image'
+        .row
+          .col-md-12
+            %img#previewEventImage
+            - if image_present?(@activity, 'online_course_image') && image_link_valid?(@activity)
+              = image_tag @activity.online_course_image.url, class: 'image-thumb', id: 'existingEventImage'
 
     - # Right Panel (MCQ and it's answers)
     .col-xs-12.col-md-4
       .panel-padding
-        %h4
-          %strong.dark-blue= t('activity.fields.multiple_choice_question')
-        = render partial: 'multiple_choice_questions/show', locals: { mcq: @activity.multiple_choice_question, disable: true }
+        - if @activity.activity_type != 5
+          %h4
+            %strong.dark-blue= t('activity.fields.multiple_choice_question')
+          = render partial: 'multiple_choice_questions/show', locals: { mcq: @activity.multiple_choice_question, disable: true }
 
   .row
     .col-md-12.spacer40

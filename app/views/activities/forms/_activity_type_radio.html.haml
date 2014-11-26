@@ -3,3 +3,16 @@
     .col-md-6.light-blue
       = activity_type[0]
       = radio_button_tag 'activity[activity_type]', activity_type[1], activity_type[1].to_i == @activity.activity_type, class: 'pull-right', disabled: defined?(disable) && disable
+
+:javascript
+  $( document ).ready(function() {
+    $(".btn.btn_sign_in.btn-file").hide();
+    $('input[type="radio"]').click(function(){
+      $(".btn.btn_sign_in.btn-file").hide();
+      $(".mcq").show();
+      if($(this).attr("value")=="5"){
+        $(".btn.btn_sign_in.btn-file").show();
+        $(".mcq").hide();
+      }
+    });
+  });
