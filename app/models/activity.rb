@@ -1,18 +1,18 @@
 class Activity < ActiveRecord::Base
-	belongs_to :behaviour
-	has_one :multiple_choice_question
+  belongs_to :behaviour
+  has_one :multiple_choice_question
   has_one :review
   has_many :activity_answer_participants
   has_many :scores, as: :scorable
   has_attached_file :online_course_image, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
 
-  validates_attachment :online_course_image, content_type: {content_type: /\Aimage\/.*\Z/}, size: { :in => 0..5.megabytes }
+  validates_attachment :online_course_image, content_type: {content_type: /\Aimage\/.*\Z/}, size: { :in => 0..20.megabytes }
 
   accepts_nested_attributes_for :multiple_choice_question, allow_destroy: true
 
-	ACTIVITY_TYPE = [['Book', '1'], ['Video', '2'], ['App', '3'], ['Magazine', '4'], ['Online Course', '5']]
+  ACTIVITY_TYPE = [['Book', '1'], ['Video', '2'], ['App', '3'], ['Magazine', '4'], ['Online_Course', '5']]
 
-	scope :completed, -> { where(complete: true) }
+  scope :completed, -> { where(complete: true) }
 
   validates_presence_of :title, :link, :activity_type
 
@@ -24,7 +24,7 @@ class Activity < ActiveRecord::Base
     if params[:page] && !params[:behaviour_id].present?
       get_activities_for_pagination(params)
     elsif params[:behaviour_id]
-        get_activities_by_behaviour_ids(params)
+      get_activities_by_behaviour_ids(params)
     elsif params[:behaviour_id] && params[:page]
       get_activities_by_behaviour_ids(params)
     else
