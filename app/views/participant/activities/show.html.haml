@@ -29,6 +29,25 @@
               %br/
             - else
               = render partial: 'participant/activities/answers_listing'
+        - else
+          - if participant_online_course_completed(current_participant, @activity)
+            %li.boxbg.participant-box-width.participant-width-fixed
+              .welcomerow
+                %h3= t('participant.headings.activity_instruction_heading')
+                %p
+                  = t('participant.msg.activity_instruction.instruction_line_1')
+                .spacer5
+                %p
+                  = t('participant.msg.activity_instruction.instruction_line_2')
+          - else
+            %li.boxbg.participant-box-width.participant-width-fixed
+              .welcomerow
+                %h3= t('participant.headings.completed_activity_instruction_heading')
+                %p
+                  = t('participant.msg.activity_instruction.instruction_line_3')
+                .spacer5
+                %p
+                  = t('participant.msg.activity_instruction.instruction_line_4')
         - if current_participant.has_reviewed_this_activity?(@activity)
           %li.boxbg.participant-box-width.break-long-url.max-width-360
             .font-size-11

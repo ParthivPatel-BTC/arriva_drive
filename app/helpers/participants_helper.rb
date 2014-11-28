@@ -37,6 +37,10 @@ module ParticipantsHelper
     ((total_participants - 3) * 4) - 1
   end
 
+  def participant_online_course_completed(current_participant, activity)
+    current_participant.participant_online_course_activities.where(activity_id: activity.id, completed: true).empty?
+  end
+
   # Deside level for participants in My Network page
   def deside_level(participant)
     find_level(participant.scores.sum(:score))

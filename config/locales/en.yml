@@ -36,7 +36,7 @@ en:
         email: 'Email (this will also be their User Name)'
         email_without_note: 'Email'
         password: 'Password'
-        photo: 'Photo (Maximum File Size: 3Mb, JPG or PNG)'
+        photo: 'Photo (Maximum File Size: 20Mb, JPG or PNG)'
         fit_plan_results: 'Fit Plan Results'
         behaviour: 'Behaviour'
         score: 'Score'
@@ -83,7 +83,7 @@ en:
       location: 'Event Location'
       date: 'Event Date'
       link: 'Event Link'
-      image: 'Event Image (Maximum File Size: 3Mb, JPG or PNG)'
+      image: 'Event Image (Maximum File Size: 20Mb, JPG or PNG)'
       description: 'Event Description'
       start_time: 'Event Start Time'
       end_time: 'Event End Time'
@@ -98,8 +98,15 @@ en:
         note_destroy: 'Note removed successfully'
         correct_answer: 'Well done, you have answered the question correctly! You have received 100 points for the %{relevant} Leadership Behaviour'
         wrong_answer: 'Unfortunately that was the wrong answer, please try again on another activity for the %{relevant} Leadership Behaviour'
+      activity_instruction:
+        instruction_line_1: "After completing this course please contact us at admin@driverdb.net and provide confirmation that you have successfully completed the course."
+        instruction_line_2: "We will then award you with 1000 Activity Points as your reward and mark this activity as completed."
+        instruction_line_3: "Congratulations on completing this course, you have been awarded 1000 Activity Points."
+        instruction_line_4: "Be sure to review other Online Courses here on Drive, each has been specially chosen to aid your ongoing development."
     headings:
       welcome: "welcome back %{name}"
+      activity_instruction_heading: "AFTER DOING THIS ACTIVITY..."
+      completed_activity_instruction_heading: "COURSE COMPLETE"
     caption:
       present: 'PRESENT'
       notes: 'notes'
