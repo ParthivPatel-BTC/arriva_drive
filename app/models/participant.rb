@@ -10,6 +10,7 @@ class Participant < ActiveRecord::Base
   has_many :tags, as: :taggable
   has_many :participant_attachments
   has_many :shared_attachments, dependent: :destroy
+  has_many :participant_online_course_activities
 
   paperclip_options = {
       styles: {
@@ -21,7 +22,7 @@ class Participant < ActiveRecord::Base
 
   accepts_nested_attributes_for :scores, allow_destroy: true, :reject_if => proc {|attrs| attrs['score'].blank? }
   has_attached_file :photo, Paperclip::Attachment.default_options.merge(paperclip_options)
-  validates_attachment :photo, content_type: {content_type:  /\Aimage\/.*\Z/}, size: { :in => 0..10.megabytes }
+  validates_attachment :photo, content_type: {content_type:  /\Aimage\/.*\Z/}, size: { :in => 0..20.megabytes }
 
   validates_presence_of :first_name, :last_name, :job_title, :year_started
 

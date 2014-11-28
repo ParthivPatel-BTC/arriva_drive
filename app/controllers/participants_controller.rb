@@ -63,6 +63,25 @@ class ParticipantsController < Devise::RegistrationsController
     @attachments = ParticipantAttachment.attachments(@participant.id).page(params[:page]).per(Settings.pagination.per_page)
   end
 
+  def complete_online_course
+    @participant_id = params[:id]
+    @activity_id = params[:selected_course]
+    participant_activity = ParticipantOnlineCourseActivity.where(participant_id: @participant_id, activity_id: @activity_id)
+    if !participant_activity.present? && @activity_id.present?
+      ParticipantOnlineCourseActivity.create(participant_id: @participant_id, activity_id: @activity_id, completed: true)
+      update_activity_score_for_completion
+    else
+      return
+    end
+  end
+
+  def update_activity_score_for_completion
+    @participant = Participant.find @participant_id
+    @activity = Activity.find @activity_id
+    points_for_completion = 1000
+    @participant.increase_score(@activity,points_for_completion)
+  end
+
   protected
 
   def after_sign_in_path_for(resource)

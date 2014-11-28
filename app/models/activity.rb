@@ -4,13 +4,14 @@ class Activity < ActiveRecord::Base
   has_one :review
   has_many :activity_answer_participants
   has_many :scores, as: :scorable
+  has_many :participant_online_course_activities
   has_attached_file :online_course_image, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
 
   validates_attachment :online_course_image, content_type: {content_type: /\Aimage\/.*\Z/}, size: { :in => 0..20.megabytes }
 
   accepts_nested_attributes_for :multiple_choice_question, allow_destroy: true
 
-  ACTIVITY_TYPE = [['Book', '1'], ['Video', '2'], ['App', '3'], ['Magazine', '4'], ['Online_Course', '5']]
+  ACTIVITY_TYPE = [['Book', '1'], ['Video', '2'], ['App', '3'], ['Magazine', '4'], ['Online Course', '5']]
 
   scope :completed, -> { where(complete: true) }
 

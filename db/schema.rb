@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141119051927) do
+ActiveRecord::Schema.define(version: 20141127090702) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -168,6 +168,17 @@ ActiveRecord::Schema.define(version: 20141119051927) do
     t.string   "file_title"
     t.text     "file_description"
   end
+
+  create_table "participant_online_course_activities", force: true do |t|
+    t.integer  "activity_id"
+    t.integer  "participant_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "completed",      default: false
+  end
+
+  add_index "participant_online_course_activities", ["activity_id"], name: "index_participant_online_course_activities_on_activity_id", using: :btree
+  add_index "participant_online_course_activities", ["participant_id"], name: "index_participant_online_course_activities_on_participant_id", using: :btree
 
   create_table "participants", force: true do |t|
     t.string   "email",                  default: "",   null: false
