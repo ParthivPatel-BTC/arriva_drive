@@ -9,7 +9,16 @@ class ScreenScrapingService
 
   def self.get_image_from_web(image_data, host_name)
     if host_name.include?('amazon')
-      image_link = image_data.css("#prodImageCell img, #main-image-wrapper img")
+      img_select_one = image_data.css("#prodImageContainer #prodImageCell img")
+      img_select_two = image_data.css("#holderMainImage img")
+      img_select_three = image_data.css("#img-wrapper #img-canvas img")
+      if img_select_one.present?
+        image_link = img_select_one
+      elsif img_select_two.present?
+        image_link = img_select_two
+      else
+        image_link = img_select_three
+      end
       image_src = image_link.attribute('src')
     elsif host_name.include?('play.google')
       image_link = image_data.css(".cover-container img")
