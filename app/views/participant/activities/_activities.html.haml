@@ -10,7 +10,7 @@
                   %i{class: get_activity_icon_class(activity.activity_type)}
                 - else
                   .online_course_icon
-              .activitiesinfopadding-top-2
+              .activitiesinfo
                 %h5
                   = link_to(activity.title, participant_activity_path(activity))
                 %p.black= activity.behaviour.title if activity.behaviour.present?
