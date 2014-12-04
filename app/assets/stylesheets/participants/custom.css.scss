@@ -130,7 +130,7 @@
 
 .padding-top-2{
   padding: 3px 0 0 2px;
-  position: absolute;
+  position: relative;
 }
 
 .participant_img {
@@ -206,4 +206,25 @@
 
 .writeicon-width {
   width: 210px !important;
+}
+
+.online_course_icon{
+  float:left;
+  height: 70px;
+  width: 69px;
+  background-image: url(/assets/icon_online_course.png);
+}
+
+.resize_online_course_icon{
+  display: inline-block;
+  height: 30px;
+  width: 30px;
+  margin-right: 7px;
+}
+
+.online_course_icon:hover{
+  float:left;
+  height: 70px;
+  width: 69px;
+  background-image: url(/assets/hover_online_course.png);
 }

@@ -6,7 +6,10 @@
           - @activities.each do |activity|
             %li
               = link_to participant_activity_path(activity) do
-                %i{class: get_activity_icon_class(activity.activity_type)}
+                - if activity.activity_type != 5
+                  %i{class: get_activity_icon_class(activity.activity_type)}
+                - else
+                  .online_course_icon
               .activitiesinfo
                 %h5
                   = link_to(activity.title, participant_activity_path(activity))

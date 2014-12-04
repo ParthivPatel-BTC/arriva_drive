@@ -21,8 +21,6 @@ module ActivitiesHelper
         'bigicon-brain'
       when 4
         'bigicon-putting'
-      when 5
-        'bigicon-putting'
     end
   end
 
@@ -37,7 +35,7 @@ module ActivitiesHelper
         online_course_activities_modified << [act.title, act.id]
       end
     end
-    select_tag("confirm_complete", options_for_select(online_course_activities_modified), prompt: "Select course to mark as complete")
+    select_tag("confirm_complete", options_for_select(online_course_activities_modified), prompt: "Select course to mark as complete", style: "width:85%")
   end
 
   # For deside icon class on activity detail page

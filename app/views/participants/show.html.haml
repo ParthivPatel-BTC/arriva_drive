@@ -86,7 +86,13 @@
   $(document).ready(function() {
     $(".confirm_completion").hide();
     $("#confirm_complete").click(function(){
-      $(".confirm_completion").show();
+      selected_course = $( "#confirm_complete option:selected" ).val();
+      if (selected_course != ''){
+        $(".confirm_completion").show();
+      }
+      else{
+        $(".confirm_completion").hide();
+      }
     });
     $("#confirm").on("click",function(){
         $.ajax({

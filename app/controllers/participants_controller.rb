@@ -78,7 +78,7 @@ class ParticipantsController < Devise::RegistrationsController
   def update_activity_score_for_completion
     @participant = Participant.find @participant_id
     @activity = Activity.find @activity_id
-    points_for_completion = 1000
+    points_for_completion = 800
     @participant.increase_score(@activity,points_for_completion)
   end
 

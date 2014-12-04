@@ -5,7 +5,7 @@ class Activity < ActiveRecord::Base
   has_many :activity_answer_participants
   has_many :scores, as: :scorable
   has_many :participant_online_course_activities
-  has_attached_file :online_course_image, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
+  has_attached_file :online_course_image, :styles => { :thumb => "75*75!>" }, :default_url => "/images/:style/missing.png"
 
   validates_attachment :online_course_image, content_type: {content_type: /\Aimage\/.*\Z/}, size: { :in => 0..20.megabytes }
 
@@ -62,7 +62,7 @@ class Activity < ActiveRecord::Base
   end
 
   def self.get_activities_for_pagination(params)
-    Activity.page(params[:page]).per(Settings.participants.pagination.per_page).order('title ASC')
+    Activity.page(params[:page]).per(Settings.participants.pagination.per_page).order('created_at DESC')
   end
 
   def self.get_activities_by_behaviour_ids(params)

@@ -4,7 +4,10 @@
     .sustainablesection
       = link_to(@activity.link, target: '_blank') do
         %h4
-          %i{class: "#{deside_icon_class(@activity.link)}"}
+          - if @activity.activity_type != 5
+            %i{class: "#{deside_icon_class(@activity.link)}"}
+          - else
+            = image_tag('icon_online_course.png', class: 'resize_online_course_icon')
           = @activity.title
       %ul
         %li.boxbg.participant-box-width.participant-width-fixed
@@ -12,16 +15,17 @@
             %p.break-long-url.activity-text= @activity.description
             %p
               = link_to(@activity.link, class: 'purchase', target: '_blank') do
-                %i{class: "#{deside_icon_class(@activity.link)}"}
+                - if @activity.activity_type != 5
+                  %i{class: "#{deside_icon_class(@activity.link)}"}
+                - else
+                  = image_tag('icon_online_course.png', class: 'resize_online_course_icon')
                 %span.font-size-15.capital-font.padding-top-2= t("participant.activities.caption.#{@activity.activity_type_verbos}")
           .rightblock
             - if @activity.activity_type != 5
-              = image_tag(@activity_image)
+              = image_tag @activity_image
             - else
               - if image_present?(@activity, 'online_course_image') && image_link_valid?(@activity)
-                = image_tag @activity.online_course_image.url, class: 'image-thumb'
-              -else
-                %div{:style => "height:40px;"}
+                = image_tag @activity.online_course_image.url(:thumb), style: " height: 100px;width: 100px;margin-bottom: 15px;"
         - if @activity.activity_type != 5
           %li.boxbg.participant-box-width#activity-answers-list
             - if current_participant.has_answered_this_activity?(@activity)
@@ -42,7 +46,8 @@
           - else
             %li.boxbg.participant-box-width.participant-width-fixed
               .welcomerow
-                %h3= t('participant.headings.completed_activity_instruction_heading')
+                = image_tag('Tick.png', style: "float: right;")
+                %h3{style: "padding-bottom:10px;"}= t('participant.headings.completed_activity_instruction_heading')
                 %p
                   = t('participant.msg.activity_instruction.instruction_line_3')
                 .spacer5
