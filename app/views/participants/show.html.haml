@@ -57,6 +57,11 @@
         %b.common-font-color= "Number of files uploaded: "
       .col-xs-1.col-md-1
         %b.light-blue= "#{@attachments_count}"
+    %h3.dark-blue
+      %b Online Courses
+    = online_course_activities_tag(@participant)
+    .confirm_completion
+      = link_to("Confirm", '#' , class: 'btn btn_sign_in pull_left', id: "confirm", ajax_path: complete_online_course_participant_path(@participant))
     .spacer65.spacer-width
   .col-xs-3.col-md-3{style:'position: relative; height: 590px;'}
     %h3.dark-blue
@@ -76,3 +81,27 @@
       = submit_tag(t('admin.participant.caption.button.re_send_participant_invite'), class: 'btn btn_sign_in pull_left', style: 'position: absolute; top: 480px; right: 0%; width: 72%;', id: 'send_participant_invitation', title: t('admin.participant.caption.button.re_send_participant_invite'))
     .row
       = link_to(t('admin.participant.caption.button.done'), admin_dashboard_path, class: 'btn btn_sign_in pull_left', style: 'position: absolute; top: 520px; right: 0%; width: 72%;', title: t('admin.participant.caption.button.done'))
+
+:javascript
+  $(document).ready(function() {
+    $(".confirm_completion").hide();
+    $("#confirm_complete").click(function(){
+      selected_course = $( "#confirm_complete option:selected" ).val();
+      if (selected_course != ''){
+        $(".confirm_completion").show();
+      }
+      else{
+        $(".confirm_completion").hide();
+      }
+    });
+    $("#confirm").on("click",function(){
+        $.ajax({
+          type: "POST",
+          url: $(this).attr('ajax_path'),
+          data: {selected_course: $( "#confirm_complete option:selected" ).val()},
+          dataType: 'script'
+        });
+        location.reload();
+        return false;
+    });
+  });

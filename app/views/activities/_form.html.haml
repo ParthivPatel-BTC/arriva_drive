@@ -40,7 +40,8 @@
         .row
           .col-md-12
             %h4
-              %strong.dark-blue Online Course Image(Maximum File Size 20Mb,JPG or PNG)
+              %strong.dark-blue Online Course Image
+            %strong.dark-blue Maximum File Size 20Mb,JPG or PNG
             .col-md-12
               %img#previewEventImage
               - if @activity.online_course_image.exists? && image_present?(@activity, 'online_course_image') && image_link_valid?(@activity)

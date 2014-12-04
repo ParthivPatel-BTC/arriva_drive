@@ -21,9 +21,21 @@ module ActivitiesHelper
         'bigicon-brain'
       when 4
         'bigicon-putting'
-      when 5
-        'bigicon-putting'
     end
+  end
+
+  def online_course_activities_tag(participant)
+    online_course_activities = Activity.where(activity_type: 5)
+    online_course_activities_modified = []
+    participant_online_course_ids = participant.participant_online_course_activities.pluck(:activity_id).uniq.compact
+    online_course_activities.each do |act|
+      if participant_online_course_ids.include?(act.id)
+        online_course_activities_modified << [act.title + " - Completed", act.id]
+      else
+        online_course_activities_modified << [act.title, act.id]
+      end
+    end
+    select_tag("confirm_complete", options_for_select(online_course_activities_modified), prompt: "Select course to mark as complete", style: "width:85%")
   end
 
   # For deside icon class on activity detail page
