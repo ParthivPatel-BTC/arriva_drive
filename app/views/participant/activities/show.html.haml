@@ -7,7 +7,7 @@
           - if @activity.activity_type != 5
             %i{class: "#{deside_icon_class(@activity.link)}"}
           - else
-            = image_tag('icon-online_course.svg', class: 'resize_online_course_icon')
+            = image_tag('icon_online_course.png', class: 'resize_online_course_icon')
           = @activity.title
       %ul
         %li.boxbg.participant-box-width.participant-width-fixed
@@ -18,7 +18,7 @@
                 - if @activity.activity_type != 5
                   %i{class: "#{deside_icon_class(@activity.link)}"}
                 - else
-                  = image_tag('icon-online_course.svg', class: 'resize_online_course_icon')
+                  = image_tag('icon_online_course.png', class: 'resize_online_course_icon')
                 %span.font-size-15.capital-font.padding-top-2= t("participant.activities.caption.#{@activity.activity_type_verbos}")
           .rightblock
             - if @activity.activity_type != 5
