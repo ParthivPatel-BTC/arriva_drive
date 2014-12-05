@@ -99,10 +99,12 @@ en:
         correct_answer: 'Well done, you have answered the question correctly! You have received 100 points for the %{relevant} Leadership Behaviour'
         wrong_answer: 'Unfortunately that was the wrong answer, please try again on another activity for the %{relevant} Leadership Behaviour'
       activity_instruction:
-        instruction_line_1: "After completing this course please contact us at admin@driverdb.net and provide confirmation that you have successfully completed the course."
+        instruction_line_1: "After completing this course please contact us at "
+        instruction_line_1_a: "admin@drivedb.net "
+        instruction_line_1_b: "and provide confirmation that you have successfully completed the course."
         instruction_line_2: "We will then award you with 800 Activity Points as your reward and mark this activity as completed."
         instruction_line_3: "Congratulations on completing this course, you have been awarded 800 Activity Points."
-        instruction_line_4: "Be sure to review other Online Courses here on Drive, each has been specially chosen to aid your ongoing development."
+        instruction_line_4: "Be sure to review other Online Courses here on Drive, each has been specifically chosen to aid your ongoing development."
     headings:
       welcome: "welcome back %{name}"
       activity_instruction_heading: "AFTER DOING THIS ACTIVITY..."

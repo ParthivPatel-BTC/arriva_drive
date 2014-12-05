@@ -85,7 +85,7 @@
 :javascript
   $(document).ready(function() {
     $(".confirm_completion").hide();
-    $("#confirm_complete").click(function(){
+    $("#confirm_complete").change(function(){
       selected_course = $( "#confirm_complete option:selected" ).val();
       if (selected_course != ''){
         $(".confirm_completion").show();
