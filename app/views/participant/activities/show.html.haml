@@ -17,9 +17,10 @@
               = link_to(@activity.link, class: 'purchase', target: '_blank') do
                 - if @activity.activity_type != 5
                   %i{class: "#{deside_icon_class(@activity.link)}"}
-                - else
+                  %span.font-size-15.capital-font.padding-top-2= t("participant.activities.caption.#{@activity.activity_type_verbos}")
+                - elsif @activity.participant_online_course_activities.empty?
                   = image_tag('icon_online_course.png', class: 'resize_online_course_icon')
-                %span.font-size-15.capital-font.padding-top-2= t("participant.activities.caption.#{@activity.activity_type_verbos}")
+                  %span.font-size-15.capital-font.padding-top-2= t("participant.activities.caption.#{@activity.activity_type_verbos}")
           .rightblock
             - if @activity.activity_type != 5
               = image_tag @activity_image

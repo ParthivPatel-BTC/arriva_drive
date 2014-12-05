@@ -106,7 +106,7 @@ module ApplicationHelper
 
   # returns the integer number of total completed activities of current participants
   def completed_activities
-    current_participant.completed_activities.count
+    current_participant.completed_activities.count + current_participant.participant_online_course_activities.count
   end
 
   def formatted_tags(tags)
