@@ -53,4 +53,8 @@ module ActivitiesHelper
     else
     end
   end
+
+  def online_course_activities_for_participant(participant,activity)
+    (activity.participant_online_course_activities.where participant_id: participant).empty?
+  end
 end

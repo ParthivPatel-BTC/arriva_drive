@@ -8,7 +8,8 @@
             %i{class: "#{deside_icon_class(@activity.link)}"}
           - else
             = image_tag('icon_online_course.png', class: 'resize_online_course_icon')
-          = @activity.title
+          .activitytitle
+            = @activity.title
       %ul
         %li.boxbg.participant-box-width.participant-width-fixed
           .leftblock
@@ -18,7 +19,7 @@
                 - if @activity.activity_type != 5
                   %i{class: "#{deside_icon_class(@activity.link)}"}
                   %span.font-size-15.capital-font.padding-top-2= t("participant.activities.caption.#{@activity.activity_type_verbos}")
-                - elsif @activity.participant_online_course_activities.empty?
+                - elsif online_course_activities_for_participant(current_participant.id, @activity)
                   = image_tag('icon_online_course.png', class: 'resize_online_course_icon')
                   %span.font-size-15.capital-font.padding-top-2= t("participant.activities.caption.#{@activity.activity_type_verbos}")
           .rightblock
@@ -39,22 +40,22 @@
             %li.boxbg.participant-box-width.participant-width-fixed
               .welcomerow
                 %h3= t('participant.headings.activity_instruction_heading')
-                %p
+                %p.font_color
                   = t('participant.msg.activity_instruction.instruction_line_1')
-                  = mail_to(t('participant.msg.activity_instruction.instruction_line_1_a'))
+                  = mail_to t('participant.msg.activity_instruction.instruction_line_1_a'), nil, class: "font_height"
                   = t('participant.msg.activity_instruction.instruction_line_1_b')
                 .spacer5
-                %p
+                %p.font_color
                   = t('participant.msg.activity_instruction.instruction_line_2')
           - else
             %li.boxbg.participant-box-width.participant-width-fixed
               .welcomerow
                 = image_tag('Tick.png', style: "float: right;")
                 %h3{style: "padding-bottom:10px;"}= t('participant.headings.completed_activity_instruction_heading')
-                %p
+                %p.font_color
                   = t('participant.msg.activity_instruction.instruction_line_3')
                 .spacer5
-                %p
+                %p.font_color
                   = t('participant.msg.activity_instruction.instruction_line_4')
         - if current_participant.has_reviewed_this_activity?(@activity)
           %li.boxbg.participant-box-width.break-long-url.max-width-360
