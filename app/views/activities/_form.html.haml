@@ -42,10 +42,10 @@
             %h4
               %strong.dark-blue Online Course Image
             %strong.dark-blue Maximum File Size 20Mb,JPG or PNG
-            .col-md-12
-              %img#previewEventImage
-              - if @activity.online_course_image.exists? && image_present?(@activity, 'online_course_image') && image_link_valid?(@activity)
-                = image_tag @activity.online_course_image.url, class: 'image-thumb', id: 'existingEventImage'
+            %img#previewEventImage
+            - if @activity.online_course_image.exists? && image_present?(@activity, 'online_course_image') && image_link_valid?(@activity)
+              = image_tag @activity.online_course_image.url, class: 'image-thumb', id: 'existingEventImage'
+          .col-md-12
             %span.btn.btn_sign_in.btn-file
               = t('admin.participant.caption.button.choose_file')
               = file_field_tag 'activity[online_course_image]', accept: 'image/png,image/gif,image/jpeg'
