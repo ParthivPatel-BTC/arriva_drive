@@ -44,5 +44,8 @@ activity_points:
 participant_attachments:
   paperclip: { path: ":rails_root/public/system/participant_attachments/:id/:filename", url: "/system/participant_attachments/:id/:filename" }
 
+event_attachments:
+  paperclip: { path: ":rails_root/public/system/event_attachments/:id/:filename", url: "/system/event_attachments/:id/:filename" }
+
 participant_attachment_path_for_email:
   attachment_path: 'public/system/participant_attachments'
