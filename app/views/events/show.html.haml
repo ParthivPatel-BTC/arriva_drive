@@ -38,6 +38,7 @@
         %strong.dark-blue= t('event.fields.link')
       .break-long-url
         = @event.link
+      .col-md-12.spacer15
       %h4
         %strong.dark-blue= t('event.fields.image')
       .row
@@ -52,3 +53,13 @@
       %h4
         %strong.dark-blue= t('event.fields.description')
       = @event.description
+  .col-xs-12.col-md-4
+    .panel-padding
+      %h4
+        %strong.dark-blue= t('event.fields.event_docs_description')
+      - @event.event_files.each do |file|
+        - unless file.id == nil
+          .row
+          .spacer5
+          = link_to file.display_name, event_file_download_path(file.id)
+      .row

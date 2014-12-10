@@ -14,7 +14,7 @@
             %ul
               - @events.each do |event|
                 %li#events-li-width{class: event_listing_class(event)}
-                  .left
+                  .left{style: "padding-bottom:0px;"}
                     = link_to event.link, target: '_blank' do
                       %h5.uppercase
                         %span.date= participant_event_date_formatted(event.event_date)
@@ -29,9 +29,15 @@
                       /   share
                       /   %i.icon-share
                   .right
-                    = image_tag event.image.url(:medium), class: 'event_image_height_width'
+                    = image_tag event.image.url(:medium), style: 'height:100px;width:122px;'
                   - if event.is_completed?
                     .completed completed
+                  - if !(event.event_files.blank?)
+                    %ul.spacingfiles
+                      - event.event_files.each do |file|
+                        %h5.uppercase
+                          %span.date= link_to file.display_name, event_file_download_path(file.id)
+                    .spacer5                  
         .nano-pane
           .nano-slider#nano_slider
       .monthright

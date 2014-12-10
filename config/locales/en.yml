@@ -87,6 +87,8 @@ en:
       description: 'Event Description'
       start_time: 'Event Start Time'
       end_time: 'Event End Time'
+      event_docs_description: 'Supporting Documentation'
+      event_docs_file_size: 'Maximum File Size: 20Mb, JPG or PNG'
     btn:
       save: 'Save Event'
   participant:

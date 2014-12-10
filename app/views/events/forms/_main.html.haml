@@ -51,10 +51,16 @@
       .panel-padding
         %h4
           %strong.dark-blue= t('event.fields.description')
-
         = text_area_tag 'event[description]', @event.description, rows: 6, class: common_text_field_class, id: 'eventDescTextField', maxlength: event_description_length_limit
         .input-field-subtext#eventDescSubText
           #{find_field_length(@event.description)}/#{event_description_length_limit}
+        .col-md-12.spacer40
+        %h4
+          %strong.dark-blue= t('event.fields.event_docs_description')
+        %strong.dark-blue= t('event.fields.event_docs_file_size')
+        - 4.times do |index|
+          = render partial: 'events/event_documents',locals: { file: @event.event_files[index], index: index }
+        .col-md-12.spacer40
 
     .col-md-12.spacer40
     .col-xs-12.col-md-12
