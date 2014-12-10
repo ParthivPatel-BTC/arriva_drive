@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   before_filter :set_behaviours, only: [:new, :create, :show, :edit, :update]
-  before_filter :find_set_event, only: [:edit, :update, :show, :send_email_notification]
+  before_filter :find_set_event, only: [:edit, :update, :show]
   before_filter :remove_files, only:[:update]
   before_filter :admin_user_required!, except:[:download_event_file]
   

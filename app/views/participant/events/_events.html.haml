@@ -30,15 +30,14 @@
                       /   %i.icon-share
                   .right
                     = image_tag event.image.url(:medium), style: 'height:100px;width:122px;'
+                  - if event.is_completed?
+                    .completed completed
                   - if !(event.event_files.blank?)
                     %ul.spacingfiles
                       - event.event_files.each do |file|
                         %h5.uppercase
                           %span.date= link_to file.display_name, event_file_download_path(file.id)
                       .spacer5
-                  
-                  - if event.is_completed?
-                    .completed completed
         .nano-pane
           .nano-slider#nano_slider
       .monthright
