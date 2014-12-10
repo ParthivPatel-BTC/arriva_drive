@@ -36,6 +36,7 @@
         = text_field_tag 'event[link]', @event.link, class: common_text_field_class
         %h4
           %strong.dark-blue= t('event.fields.image')
+        %strong.dark-blue= t('event.fields.image_size')
         .row
           .col-md-12
             %img#previewEventImage
@@ -57,9 +58,10 @@
         .col-md-12.spacer40
         %h4
           %strong.dark-blue= t('event.fields.event_docs_description')
-        %strong.dark-blue= t('event.fields.event_docs_file_size')
-        - 4.times do |index|
-          = render partial: 'events/event_documents',locals: { file: @event.event_files[index], index: index }
+        %strong.dark-blue= t('event.fields.image_size')
+        .col-md-12.spacer10
+          - 4.times do |index|
+            = render partial: 'events/event_documents',locals: { file: @event.event_files[index], index: index }
         .col-md-12.spacer40
 
     .col-md-12.spacer40

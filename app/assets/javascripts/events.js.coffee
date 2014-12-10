@@ -30,3 +30,7 @@ $ ->
     $(this).prev().focus()
     return
 
+  $('a[data-popup="true"]').bind "click", (e) ->
+    window.open $(this).data("url"), "Popup" + $(this).data('id'), "height=600, width=600"
+    e.preventDefault()
+    return

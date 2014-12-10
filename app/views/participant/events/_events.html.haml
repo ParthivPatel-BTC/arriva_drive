@@ -36,7 +36,9 @@
                     %ul.spacingfiles
                       - event.event_files.each do |file|
                         %h5.uppercase
-                          %span.date= link_to file.display_name, event_file_download_path(file.id)
+                          %span.date
+                          = link_to file.display_name, '#', target: "_blank", 'data-popup' => 'true', 'data-url' => "#{event_file_download_path(file.id)}", 'data-id' => "#{file.id}"
+
                     .spacer5                  
         .nano-pane
           .nano-slider#nano_slider
