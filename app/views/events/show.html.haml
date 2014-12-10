@@ -61,5 +61,6 @@
         - unless file.id == nil
           .row
           .spacer5
-          = link_to file.display_name, event_file_download_path(file.id)
+          %a{ href: '#', target: 'blank', 'data-popup' => 'true', 'data-url' => "#{file.event_doc.url}"}
+            = file.display_name
       .row

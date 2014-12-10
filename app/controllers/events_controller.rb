@@ -59,7 +59,7 @@ class EventsController < ApplicationController
 
   def download_event_file
     @file = EventFile.find_by_id(params[:id])
-    send_file @file.event_doc.path, filename: @file.display_name, type: @file.event_doc_content_type
+    send_file @file.event_doc.path, filename: @file.display_name, type: @file.event_doc_content_type, disposition: 'inline'
   end
 
   private
