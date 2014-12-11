@@ -59,9 +59,8 @@
         %h4
           %strong.dark-blue= t('event.fields.event_docs_description')
         %strong.dark-blue= t('event.fields.image_size')
-        .col-md-12.spacer10
-          - 4.times do |index|
-            = render partial: 'events/event_documents',locals: { file: @event.event_files[index], index: index }
+        - 4.times do |index|
+          = render partial: 'events/event_documents',locals: { file: @event.event_files[index], index: index }
         .col-md-12.spacer40
 
     .col-md-12.spacer40
