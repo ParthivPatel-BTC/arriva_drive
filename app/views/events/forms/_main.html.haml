@@ -34,9 +34,13 @@
         %h4
           %strong.dark-blue= t('event.fields.link')
         = text_field_tag 'event[link]', @event.link, class: common_text_field_class
+        - if @cohorts.present?
+          %h4
+            %strong.dark-blue= t('cohort.common.cohort')
+            = render partial: 'cohorts/partials/check_box', locals: { cohorts: @cohorts, check_box_name: 'event[cohort_events_attributes]', base: @event.cohort_events,  selected_cohorts_ids: @event.cohorts.pluck(:id) }
         %h4
           %strong.dark-blue= t('event.fields.image')
-        %strong.dark-blue= t('event.fields.image_size')
+        %span.light-blue= t('event.fields.image_size')
         .row
           .col-md-12
             %img#previewEventImage
@@ -52,13 +56,15 @@
       .panel-padding
         %h4
           %strong.dark-blue= t('event.fields.description')
+
         = text_area_tag 'event[description]', @event.description, rows: 6, class: common_text_field_class, id: 'eventDescTextField', maxlength: event_description_length_limit
         .input-field-subtext#eventDescSubText
           #{find_field_length(@event.description)}/#{event_description_length_limit}
         .col-md-12.spacer40
         %h4
           %strong.dark-blue= t('event.fields.event_docs_description')
-        %strong.dark-blue= t('event.fields.image_size')
+        %span.light-blue= t('event.fields.image_size')
+        .spacer5
         - 4.times do |index|
           = render partial: 'events/event_documents',locals: { file: @event.event_files[index], index: index }
         .col-md-12.spacer40
@@ -66,5 +72,9 @@
     .col-md-12.spacer40
     .col-xs-12.col-md-12
       .pull-right.event_save_button_margin
-        = submit_tag(t('event.btn.save'), class: 'btn btn-sm submit-btn dark-blue-btn', title: t('event.btn.save'))
+        = submit_tag(t('event.btn.save'), class: 'btn btn-sm submit-btn dark-blue-btn', id: 'save', title: t('event.btn.save'))
+    .col-md-12.spacer10
+    .col-xs-12.col-md-12
+      .pull-right.event_save_button_margin{ style: "width: 226px;" }
+        = submit_tag(t('event.btn.save_and_send'), class: 'btn btn-sm submit-btn dark-blue-btn',style: "width: 226px; padding: 5px;", title: t('event.btn.save_and_send'))
     .col-md-12.spacer30

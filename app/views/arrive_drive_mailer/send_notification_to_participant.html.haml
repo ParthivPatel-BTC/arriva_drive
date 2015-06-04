@@ -4,7 +4,9 @@
     %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
   %body
     .note_content
-      %p 
+      %p
+        WRITE BELOW THIS LINE
+        %br/
         Dear #{@participant.first_name.titleize}
         
       = hidden_field_tag 'notification_type', 'notes'

@@ -1,0 +1,16 @@
+.row.page-header-margin
+  .spacer20
+  .col-xs-12.col-md-12
+    %h2.dark-blue
+      %b= "Cohort Management"
+  .spacer20
+  .page-header
+.row
+  .col-xs-4.col-md-4
+    = render partial: 'cohorts/partials/form', locals: { title: "New Cohort"}
+  .col-xs-8.col-md-8
+    .col-md-12
+    %h3
+      %b.dark-blue= "Cohort Scores"
+    .spacer30 
+    = render partial: 'cohorts/partials/cohort_score', locals: { cohort: "overall"}

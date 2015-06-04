@@ -34,6 +34,14 @@
         %label.common-font-color= t('admin.participant.caption.year_started')
         .input
           = f.text_field :year_started, class: 'form-control', style: 'width: 28%;'
+      - if @cohorts.present?
+        .form-group
+          %label.common-font-color Cohort
+          .input
+            - @cohorts.each do |cohort|
+              %span.cohort-select
+                = f.radio_button :cohort_id, cohort.id 
+                %span.light-blue= cohort.name
       .form-group
         %label.common-font-color= t('admin.participant.caption.email')
         .input

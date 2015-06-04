@@ -1,10 +1,13 @@
 class Event < ActiveRecord::Base
   has_many :behaviours_events
   has_many :behaviours, through: :behaviours_events
-  has_many :event_files  
+  has_many :cohort_events
+  has_many :cohorts, through: :cohort_events
+  has_many :event_files
   has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
   accepts_nested_attributes_for :behaviours_events, allow_destroy: true
   accepts_nested_attributes_for :event_files, allow_destroy: true
+  accepts_nested_attributes_for :cohort_events, allow_destroy: true
   validates_attachment :image, presence: true, content_type: {content_type: /\Aimage\/.*\Z/}, size: { :in => 0..10.megabytes }
   validates_presence_of :title, :location, :event_date, :link, :description
 
@@ -34,6 +37,22 @@ class Event < ActiveRecord::Base
     event
   end
 
+  def notify_cohorts
+    event_files = self.event_files
+    self.cohorts.each do |cohort|
+      unless cohort.participants.blank?
+        cohort.participants.each do |participant|
+          begin
+            ArriveDriveMailer.delay.send_notification_for_event(participant, self)
+          rescue Exception => e
+            Rails.logger.error "Failed to send email, email address: #{participant.email}"
+            Rails.logger.error "#{e.backtrace.first}: #{e.message} (#{e.class})"
+          end
+        end
+      end
+    end
+  end
+  
   private
 
   def get_time_element(element_type, time)

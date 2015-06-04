@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141207151242) do
+ActiveRecord::Schema.define(version: 20141215085446) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -100,6 +100,28 @@ ActiveRecord::Schema.define(version: 20141207151242) do
   create_table "behaviours_values", force: true do |t|
     t.integer "behaviour_id"
     t.integer "value_id"
+  end
+
+  create_table "cohort_activities", force: true do |t|
+    t.integer  "cohort_id"
+    t.integer  "activity_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "cohort_events", force: true do |t|
+    t.integer  "cohort_id"
+    t.integer  "event_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "cohorts", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "year_started"
+    t.integer  "cohort_type"
   end
 
   create_table "delayed_jobs", force: true do |t|
@@ -217,6 +239,7 @@ ActiveRecord::Schema.define(version: 20141207151242) do
     t.boolean  "notes_notification",     default: true
     t.boolean  "files_notification",     default: true
     t.boolean  "network_notification",   default: true
+    t.integer  "cohort_id"
   end
 
   add_index "participants", ["email"], name: "index_participants_on_email", unique: true, using: :btree

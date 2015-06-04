@@ -1,10 +1,11 @@
 class ActivitiesController < ApplicationController
   before_filter :set_behaviours, only: [:new, :create, :show, :edit, :update]
+  before_filter :set_cohorts, only: [:new, :create, :show, :edit, :update]
   before_filter :find_set_activity, only: [:edit, :update, :show]
   before_filter :admin_user_required!
 
   def new
-    @activity   = Activity.new
+    @activity = Activity.new
     build_nested_mcq_resource
   end
 
@@ -26,8 +27,12 @@ class ActivitiesController < ApplicationController
   end
 
   def update
-    @activity.update_attributes(activity_params)
-    redirect_to admin_dashboard_path
+    processed_params = mark_nested_attr_for_destroy(activity_params, 'cohort_activities_attributes', 'cohort_id')
+    if @activity.update_attributes(processed_params)
+      redirect_to admin_dashboard_path
+    else
+      render :edit
+    end
   end
 
   private
@@ -39,19 +44,19 @@ class ActivitiesController < ApplicationController
   def activity_params
     if params[:activity][:activity_type] == 5
       params.require(:activity).permit(
-          :behaviour_id, :title, :link, :activity_type, :description, :online_course_image
-      )
+          :behaviour_id, :title, :link, :activity_type, :description, :online_course_image, cohort_activities_attributes:[:id, :cohort_id])
     else
       params.require(:activity).permit(
           :behaviour_id, :title, :link, :activity_type, :description, :online_course_image,
           multiple_choice_question_attributes: [
-              :id, :question_text, answers_attributes: [:id, :answer_text, :correct]
-          ]
+              :id, :question_text, answers_attributes: [:id, :answer_text, :correct],
+            ], cohort_activities_attributes:[:id, :cohort_id]
       )
     end
   end
 
   def find_set_activity
     @activity = Activity.find_by_id(params[:id])
+    @activity_present_in_conhorts = @activity.cohorts
   end
 end

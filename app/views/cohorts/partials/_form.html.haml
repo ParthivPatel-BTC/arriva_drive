@@ -1,0 +1,26 @@
+= form_tag(form_path_for_cohort(@cohort), method: form_method_for_cohort(@cohort), class: 'form-horizontal', id: 'cohortForm') do
+  = render partial: "shared/error_messages", locals: { target: @cohort }
+  = render partial: "cohorts/partials/list_cohort"
+  %h3
+    %b.dark-blue= title 
+  .spacer30
+  .col-xs-12.col-md-12
+    .form-group
+      %label.common-font-color= t('cohort.fields.name')
+      = text_field_tag 'cohort[name]', @cohort.name, class: common_text_field_class
+    .form-group
+      %label.common-font-color= t('cohort.fields.year_started')
+      = text_field_tag 'cohort[year_started]', @cohort.year_started, class: common_text_field_class, id: "participant_year_started", style: 'width: 28%;'
+    .form-group
+      .light-blue
+        %label.common-font-color= t('cohort.fields.type')
+        .spacer1
+        - Cohort::COHORT_TYPE.each do |cohort_type|
+          %span.cohort-select
+            = radio_button_tag 'cohort[cohort_type]', cohort_type[1], cohort_type[1].to_i == @cohort.cohort_type, disabled: defined?(disable) && disable
+            = cohort_type[0]
+        .spacer20
+        = submit_tag(cohort_submit_btn_caption(@cohort), class: 'btn btn-sm submit-btn dark-blue-btn', style:'width:250px;', title: t('cohort.btn.save'))
+        .col-md-12.spacer10
+        - unless title == 'New Cohort'
+          = submit_tag(t('cohort.btn.delete'), class: 'btn btn-sm submit-btn dark-blue-btn', style:'width:250px;text-align:center;', title: t('cohort.btn.delete'))

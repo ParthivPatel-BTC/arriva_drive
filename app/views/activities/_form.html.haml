@@ -28,7 +28,10 @@
         = text_area_tag 'activity[description]', @activity.description, rows: 6, class: 'form-control', id: 'activityDescTextField', maxlength: activity_description_length_limit
         .input-field-subtext#activityDescSubText
           #{find_field_length(@activity.description)}/#{activity_description_length_limit}
-
+        - if @cohorts.present?
+          %h4
+            %strong.dark-blue= t('cohort.common.cohort')
+            = render partial: 'cohorts/partials/check_box', locals: { cohorts: @cohorts, check_box_name: 'activity[cohort_activities_attributes]', base: @activity.cohort_activities,  selected_cohorts_ids: @activity.cohorts.pluck(:id) } 
     - # Right Panel (MCQ and it's answers)
     .col-xs-12.col-md-4
       .panel-padding

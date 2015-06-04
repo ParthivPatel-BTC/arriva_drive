@@ -2,29 +2,47 @@
   = render partial: 'participants/components/left_side_bar'
   .contentarea
     .sustainablesection
-      = link_to(@activity.link, target: '_blank') do
-        %h4
-          - if @activity.activity_type != 5
-            %i{class: "#{deside_icon_class(@activity.link)}"}
-          - else
-            = image_tag('icon_online_course.png', class: 'resize_online_course_icon')
-          .activitytitle
+      - if @activity.activity_type == 5
+        = link_to(@activity.link, target: '_blank') do
+          %h4
+            = image_tag('icon_online_coursee.png', class: 'resize_online_course_icon')
+            .activitytitle
+              = @activity.title
+      - else
+        - if @activity_image
+          = link_to(@activity.link, target: '_blank') do
+            %h4
+              - if @activity.activity_type != 5
+                %i{class: "#{deside_icon_class(@activity.link)}"}
+              - else
+                = image_tag('icon_online_coursee.png', class: 'resize_online_course_icon')
+              .activitytitle
+                = @activity.title
+        - else
+          %h4
             = @activity.title
       %ul
         %li.boxbg.participant-box-width.participant-width-fixed
           .leftblock
             %p.break-long-url.activity-text= @activity.description
             %p
-              = link_to(@activity.link, class: 'purchase', target: '_blank') do
-                - if @activity.activity_type != 5
-                  %i{class: "#{deside_icon_class(@activity.link)}"}
+              - if @activity.activity_type == 5 && online_course_activities_for_participant(current_participant.id, @activity)
+                = link_to(@activity.link, class: 'purchase', target: '_blank') do
+                  = image_tag('icon_online_coursee.png', class: 'resize_online_course_icon')
                   %span.font-size-15.capital-font.padding-top-2= t("participant.activities.caption.#{@activity.activity_type_verbos}")
-                - elsif online_course_activities_for_participant(current_participant.id, @activity)
-                  = image_tag('icon_online_course.png', class: 'resize_online_course_icon')
+              - elsif @activity.activity_type != 5
+                - if deside_icon_class(@activity.link)
+                  = link_to(@activity.link, class: 'purchase', target: '_blank') do
+                    %i{class: "#{deside_icon_class(@activity.link)}"}
+                    %span.font-size-15.capital-font.padding-top-2= t("participant.activities.caption.#{@activity.activity_type_verbos}")
+                - else
                   %span.font-size-15.capital-font.padding-top-2= t("participant.activities.caption.#{@activity.activity_type_verbos}")
           .rightblock
             - if @activity.activity_type != 5
-              = image_tag @activity_image
+              - if deside_icon_class(@activity.link)
+                = image_tag @activity_image
+              - else
+                = image_tag('no_image.png')
             - else
               - if image_present?(@activity, 'online_course_image') && image_link_valid?(@activity)
                 = image_tag @activity.online_course_image.url(:thumb), style: " height: 100px;width: 100px;margin-bottom: 15px;"
@@ -50,7 +68,7 @@
           - else
             %li.boxbg.participant-box-width.participant-width-fixed
               .welcomerow
-                = image_tag('Tick.png', style: "float: right;")
+                .tick
                 %h3{style: "padding-bottom:10px;"}= t('participant.headings.completed_activity_instruction_heading')
                 %p.font_color
                   = t('participant.msg.activity_instruction.instruction_line_3')
@@ -74,4 +92,3 @@
 
 #answer-dialog-box
   %span#answer-popup-msg
-  

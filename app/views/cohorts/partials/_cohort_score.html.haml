@@ -1,0 +1,36 @@
+#filtered_score
+  .pull-right
+    = button_tag 'Overall', id: '0', type: 'button', class: "cohort_btn custom-for-cohort-score btn btn-sm #{@cohort_id_for_score.present? ? 'transparent-btn' : 'dark-blue-btn'}"
+    - @cohorts.each do |cohort|
+      = button_tag cohort.name, id: cohort.id, type: 'button', class: "cohort_btn btn btn-sm custom-for-cohort-score #{@cohort_id_for_score.to_i == cohort.id ? 'dark-blue-btn' : 'transparent-btn'}"
+    .spacer30
+    .spacer20
+      %table.table.borderless
+        %thead.dark-blue
+          %th{ width: '40%' } Behaviour
+          %th.text-center{ width: '30%' } Total Activities Completed
+          %th.text-center{ width: '30%' } Total Points Achieved
+          %th
+        %tbody.light-blue
+          - @behaviours.each do |behaviour|
+            %tr
+              %td= behaviour.title
+              - unless @cohort_id_for_score.present?
+                %td.text-center= behaviour.completed_activities
+                %td.text-center= behaviour.total_activities_score
+              - else
+                %td.text-center= behaviour.activities_preformed_by_cohort(@cohort_id_for_score)
+                %td.text-center= behaviour.cohort_score(@cohort_id_for_score)
+
+:javascript
+$(function() {
+  $(".cohort_btn").on("click", function() {
+    $.ajax
+    ({
+      dataType: 'script',
+      type: 'GET',
+      url: "/admins/cohorts/new",
+      data: {id: $(this).attr('id')}
+    });
+  });
+});

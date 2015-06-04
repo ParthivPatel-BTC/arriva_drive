@@ -1,3 +1,5 @@
+- content_for(:title, 'Drive Home')
+
 - mail_to = mail_to Settings.mail.default_url_options.contact_email, nil,traget: '_blank'
 %section.mainsection
   = render partial: 'participants/components/left_side_bar'
@@ -15,7 +17,7 @@
         .boxbg.smallbox
           %p.number
             = completed_activities
-            %span><= "/#{Activity.count}"
+            %span><= "/#{current_participant.activities.count}"
           %p activities
           %p.view
             = link_to(t('participant.dashboard.caption.view'), participant_activities_path)

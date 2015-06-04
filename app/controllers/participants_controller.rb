@@ -1,14 +1,16 @@
 class ParticipantsController < Devise::RegistrationsController
   before_filter :find_participant_from_params, only: [ :show, :edit, :update, :deactivate, :activate, :resend_invitation, :attachments]
+  before_filter :set_cohort, only: [:new_participant, :create, :show, :edit, :update]
   skip_before_filter :authenticate_scope!, :only => [:edit, :update, :destroy, :deactivate, :activate]
   before_filter :admin_user_required!, only: [:new, :create, :show, :edit, :update, :deactivate, :activate]
 
-  def new
+  def new_participant
     @participant = Participant.new
+    render :new
   end
 
   def create
-    @participant = Participant.new(activity_params)
+    @participant = Participant.new(participant_params)
     if @participant.save
       send_invitation(@participant.password)
       redirect_to admin_dashboard_path
@@ -27,7 +29,7 @@ class ParticipantsController < Devise::RegistrationsController
   end
 
   def update
-    if @participant.update_attributes(activity_params)
+    if @participant.update_attributes(participant_params)
       if params[:send_invitation]
         @unique_passsword = Participant.generate_unique_passowrd
         send_invitation(@unique_passsword)
@@ -96,9 +98,13 @@ class ParticipantsController < Devise::RegistrationsController
     @participant = Participant.find(params[:id])
   end
 
-  def activity_params
+  def set_cohort
+    @cohorts = Cohort.all
+  end
+
+  def participant_params
     params.require(:participant).permit(
-      :first_name, :last_name, :job_title, :division, :year_started, :photo, :performance_summary, :email,
+      :cohort_id, :first_name, :last_name, :job_title, :division, :year_started, :photo, :performance_summary, :email,
         scores_attributes:[:id, :scorable_id, :score, :scorable_type]
     )
   end

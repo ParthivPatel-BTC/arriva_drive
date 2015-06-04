@@ -27,6 +27,12 @@
           %strong.dark-blue= t('activity.fields.type')
         = render partial: 'activities/forms/activity_type_radio', locals: { disable: true }
         .spacer10
+        - if @activity_present_in_conhorts.present?
+          %h4
+            %strong.dark-blue= t('cohort.common.cohort')
+          - @activity_present_in_conhorts.each do |cohort|
+            = cohort.name
+            .spacer5
         %h4
           %strong.dark-blue= t('activity.fields.description')
         = @activity.description

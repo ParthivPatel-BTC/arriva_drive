@@ -1,14 +1,14 @@
 ArrivaDrive::Application.routes.draw do
   # root :to => 'static_pages#index'
   devise_for :admins do
-    root :to => 'devise/sessions#new'
+    root :to => 'static_pages#index'
   end
   devise_for :participants, :controllers => { :registrations => "participants" }, :skip => [:sessions]
 
   devise_for :participants do
     get '/participant/:id/edit' => 'participants#edit', :as => :edit_participant
     get '/participant/:id' => 'participants#show', :as => :show_participant
-    get '/participants/new' => 'participants#new', :as => :new_participant
+    get '/participants/new' => 'participants#new_participant', :as => :new_participant
     post '/participants' => 'participants#create'
     post '/participants' => 'participants#update', :as => :update_participant
     put '/participants/:id/deactivate' => 'participants#deactivate', :as => :participant_deactivate
@@ -24,12 +24,13 @@ ArrivaDrive::Application.routes.draw do
   scope '/admins' do
     resources :activities, except: [:index, :destroy]
     resources :events, except: [:index, :destroy]
-
+    resources :cohorts, except: [:destroy]
     get 'dashboard', to: 'admins#dashboard', as: :admin_dashboard
     get 'overview/:id', to: 'admins#overview', as: :overview
     get 'overall_cohort_scores', to: 'admins#overall_cohort_scores', as: :overall_cohort_scores
     get 'event_attachments/:id' => 'events#download_event_file', :as => :event_file_download
   
+    post 'events/:id/event_notification', to: 'events#send_email_notification', as: :send_event_notification
   end
 
   post '/:id/shared_participants' => 'participant/participant_attachments#shared_participants', as: 'get_shared_participant'
@@ -82,6 +83,7 @@ ArrivaDrive::Application.routes.draw do
     post '/participant_attachments/callback' => 'participant/participant_attachments#callback'
     get '/participant_attachments/show_attachment/:id' => 'participant/participant_attachments#show_attachment', as: :show_attachment
   end
+  get 'admin' => 'static_pages#admin'
 
   resources :incoming_mails
 end

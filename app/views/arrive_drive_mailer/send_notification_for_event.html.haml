@@ -1,0 +1,26 @@
+- web_url = Settings.mail.default_url_options.web_url
+- mail_to = mail_to Settings.mail.default_url_options.mail_to, nil,traget: '_blank'
+- contact = Settings.mail.default_url_options.contact
+!!!
+%html
+  %head
+    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+  %body{:style => "font-size:14px"}
+    %h3= "Dear #{@participant.first_name.titleize},"
+    %p
+      = "A new event, #{@event.title}, has been confirmed for the DRIVE Programme and this takes place on #{@event.event_date.strftime('%eth %B %Y')} at #{@event.location} commencing from #{@event.event_start_time.strftime('%l%P')} and ending at #{@event.event_end_time.strftime('%l%P')}."
+    %p
+      Please click
+      = link_to("here", "#{Settings.smtp.mail_host}/participants/events")
+      for more information about #{@event.title}.
+      -if @event_files.present?
+        Below is further supporting documentation for you to download ahead of the day.
+        - @event_files.each do |file|
+          - if file.event_doc_file_name.present?
+            %ul{:style => "list-style-type:circle"}
+              %li= link_to("#{file.display_name}", "#{Settings.smtp.mail_host}/system/event_attachments/#{file.id}/#{file.event_doc_file_name}")
+    %br
+    %p
+      Kind regards
+    %p
+      The DRIVE Programme Team

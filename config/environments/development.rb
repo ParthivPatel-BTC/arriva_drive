@@ -36,5 +36,5 @@ ArrivaDrive::Application.configure do
   config.assets.debug = true
 
   # Defining default url options for mailer so that devise mails works well
-  config.action_mailer.default_url_options = { host: 'localhost:3000' }
+  config.action_mailer.default_url_options = { host: 'drivedb.net' }
 end

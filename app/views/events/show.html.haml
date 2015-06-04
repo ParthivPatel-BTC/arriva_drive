@@ -34,6 +34,12 @@
         %strong.dark-blue= t('event.fields.end_time')
       = @event.event_end_time.strftime("%I:%M %p")
       .col-md-12.spacer15
+      - if @event_cohort.present?
+        %h4
+          %strong.dark-blue= t('cohort.common.cohort')
+        - @event_cohort.each do |cohort|
+          = cohort.name
+          .spacer5
       %h4
         %strong.dark-blue= t('event.fields.link')
       .break-long-url
@@ -64,3 +70,6 @@
           %a{ href: '#', target: 'blank', 'data-popup' => 'true', 'data-url' => "#{file.event_doc.url}"}
             = file.display_name
       .row
+      = form_tag(send_event_notification_path) do
+        = hidden_field_tag('id', @cohorts)
+        = submit_tag(t('event.btn.send_invitation'), class: 'btn btn_sign_in pull_left', style: 'position: absolute; top: 480px; right: 0%;', id: 'send_participant_invitation' ,title: t('admin.participant.caption.button.re_send_participant_invite'))

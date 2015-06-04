@@ -23,6 +23,10 @@ module EventsHelper
     event_time.strftime('%I.%M')
   end
 
+  def cohort_submit_btn_caption(cohort)
+    cohort.new_record? ? t('cohort.btn.save') : t('cohort.btn.edit')
+  end
+
   # For set margin-bottom for display months on
   # Participants's events scrollbar.
   def margin_for_months_scroller(total_months)

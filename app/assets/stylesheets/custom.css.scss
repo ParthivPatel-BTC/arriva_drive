@@ -45,6 +45,12 @@
   border-radius: 4px;
 }
 
+.custom-for-cohort-score {
+  border-radius: 15px;
+  margin: 1px;
+  line-height: 0.8;
+}
+
 .common-font-color, .light-blue {
   color: #008091;
 }
@@ -84,6 +90,19 @@
 .dark-blue-btn:hover {
   color: #FFFFFF;
   background-color: #006B8D;
+  border-color: #006B8D;
+}
+
+.transparent-btn {
+  background-color: #FFFFFF;
+  border-color: #00445A;
+  font-weight: bold;
+  color: #006B8D;
+}
+
+.transparent-btn:hover {
+  color: #006B8D;
+  background-color: #00445A;
   border-color: #006B8D;
 }
 
@@ -253,4 +272,26 @@
 
 .online_course_image {
   height:423px;
+}
+
+.styled-select select {
+   background: transparent;
+   font-size: 14px;
+   height: 29px;
+   padding: 5px;
+   width: 268px;
+}
+
+.styled-select-participant select {
+   background: transparent;
+   font-size: 14px;
+   height: 29px;
+   padding: 5px;
+   width: 360px;
+}
+
+.cohort-select {
+  white-space:nowrap;
+  margin-right: 7px;
+  font-size: 11pt;
 }

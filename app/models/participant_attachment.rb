@@ -10,7 +10,7 @@ class ParticipantAttachment < ActiveRecord::Base
 
   validates_attachment_content_type :attachment, content_type: ['image/jpeg','image/jpg','image/png','application/pdf', 'application/msword','application/vnd.openxmlformats-officedocument.spreadsheetml.sheet','application/vnd.ms-excel','application/vnd.openxmlformats-officedocument.wordprocessingml.document']
 
-  validates_attachment_size :attachment, less_than: 2.megabytes
+  validates_attachment_size :attachment, less_than: 20.megabytes
   scope :attachments, -> (participant_id) { where(participant_id: participant_id) }
 
   def self.send_shared_notification(attachment, participant_id, current_participant)

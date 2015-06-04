@@ -26,7 +26,7 @@ paperclip:
 mail:
   default_url_options:
     support_email: 'support@arrivedrive.in'
-    web_url: 'http://intense-island-1282.herokuapp.com/'
+    web_url: 'http://drivedb.net/participants/sign_in'
     mail_to: 'reevec@arriva.co.uk'
     contact: '+44 7584 393 586'
     contact_email: 'support@drivedb.net'

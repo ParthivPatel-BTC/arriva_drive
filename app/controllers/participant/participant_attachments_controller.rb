@@ -62,12 +62,25 @@ class Participant::ParticipantAttachmentsController < ApplicationController
   def callback
     return if params[:content].empty?
     mail = Mail.new(params[:content])
+
     reply = EmailReplyParser.read(mail.body.raw_source)
-    content = reply.fragments[0].to_s
-    content = content.gsub(/^--(_|[0-9])+.+\n/,'').gsub(/^Content-.+\:.+\n/,'')
+    content = ""
+    text = "WRITE BELOW THIS LINE\n>"
+    is_next = false
+    reply.fragments.each do |fragment|
+      if is_next
+        content = fragment.content
+        break
+      end
+      if fragment.content[fragment.content.size-text.size, fragment.content.size].eql?(text)
+        is_next = true
+      end
+    end
+
     id_values = mail.to.to_s.gsub(/[^0-9_]/, '').split('_')
     owner_id = id_values[0].to_i
     shared_participant_id = id_values[1].to_i
+
     params[:participant_attachments] = {}
     params[:participant_attachments][:content] = content
     params[:participant_attachments][:owner_id] = owner_id

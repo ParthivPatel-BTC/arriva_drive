@@ -1,16 +1,16 @@
 - max_length_of_event_document = 10
 .col-md-12.spacer15
-%strong.dark-blue Document name
+%span.light-blue Document name
 - if file
-  = hidden_field_tag 'event_files_attributes[][id]', file.id 
+  = hidden_field_tag 'event_files_attributes[][id]', file.id
   = text_field_tag 'event_files_attributes[][display_name]', file.display_name, class: 'form-control mcqAnsTextField', maxlength: max_length_of_event_document
   .input-field-subtext#eventDescSubText
     #{find_field_length(file.display_name)}/#{max_length_of_event_document}
-- elsif @event_files.present?
-  = text_field_tag 'event_files_attributes[][display_name]', @event_files.display_name, class: 'form-control mcqAnsTextField', maxlength: max_length_of_event_document
+- elsif @event_file.present?
+  = text_field_tag 'event_files_attributes[][display_name]', @event_file.display_name, class: 'form-control mcqAnsTextField', maxlength: max_length_of_event_document
   .input-field-subtext#eventDescSubText
-    #{find_field_length(@event_files.display_name)}/#{max_length_of_event_document}
-- else 
+    #{find_field_length(@event_file.display_name)}/#{max_length_of_event_document}
+- else
   = text_field_tag 'event_files_attributes[][display_name]', '', class: 'form-control mcqAnsTextField', maxlength: max_length_of_event_document
   .input-field-subtext#eventDescSubText
     0/#{max_length_of_event_document}

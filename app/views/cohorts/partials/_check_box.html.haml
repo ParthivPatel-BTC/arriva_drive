@@ -1,0 +1,11 @@
+- unless cohorts.blank?
+  - selected_cohorts_ids ||= []
+  .light-blue
+    .row
+      .col-md-12
+        - cohorts.each do |cohort|
+          %span.cohort-select
+            = hidden_field_tag "#{check_box_name}[][id]", base.find_by_cohort_id(cohort.id).id rescue nil
+            = check_box_tag "#{check_box_name}[][cohort_id]", cohort.id, selected_cohorts_ids.include?(cohort.id), disabled: defined?(disable) && disable
+            = cohort.name
+        .spacer10

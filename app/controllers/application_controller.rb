@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_devise_permitted_parameters
-    registration_params = [:first_name, :last_name, :job_title, :division, :year_started, :photo, :performance_summary, :email, :password, :password_confirmation, scores_attributes: [:id, :scorable_id, :score, :scorable_type] ]
+    registration_params = [:cohort_id, :first_name, :last_name, :job_title, :division, :year_started, :photo, :performance_summary, :email, :password, :password_confirmation, scores_attributes: [:id, :scorable_id, :score, :scorable_type] ]
 
     permission_for_create_update_participant(params[:action])
   end
@@ -31,6 +31,10 @@ class ApplicationController < ActionController::Base
 
   def set_behaviours
     @behaviours = Behaviour.all
+  end
+
+  def set_cohorts
+    @cohorts = Cohort.all
   end
 
   # Loop through all nested attributes and marks attributes which
@@ -64,7 +68,7 @@ class ApplicationController < ActionController::Base
     if !current_admin.blank?
       redirect_to admin_dashboard_path
     elsif !current_participant.blank?
-      redirect_to participant_events_path
+      redirect_to participant_dashboard_path
     else
       redirect_to new_participant_session_path
     end

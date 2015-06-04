@@ -1,21 +1,25 @@
 class Activity < ActiveRecord::Base
+  MIN_COHORT_COUNT = 0
   belongs_to :behaviour
   has_one :multiple_choice_question
   has_one :review
+  has_many :participant_online_course_activities
   has_many :activity_answer_participants
   has_many :scores, as: :scorable
-  has_many :participant_online_course_activities
+  has_many :cohort_activities
+  has_many :cohorts, through: :cohort_activities
   has_attached_file :online_course_image, :styles => { :thumb => "75*75!>" }, :default_url => "/images/:style/missing.png"
+  accepts_nested_attributes_for :multiple_choice_question, allow_destroy: true
+  accepts_nested_attributes_for :cohort_activities, allow_destroy: true
 
   validates_attachment :online_course_image, content_type: {content_type: /\Aimage\/.*\Z/}, size: { :in => 0..20.megabytes }
-
-  accepts_nested_attributes_for :multiple_choice_question, allow_destroy: true
 
   ACTIVITY_TYPE = [['Book', '1'], ['Video', '2'], ['App', '3'], ['Magazine', '4'], ['Online Course', '5']]
 
   scope :completed, -> { where(complete: true) }
 
   validates_presence_of :title, :link, :activity_type
+  validates_format_of :link, :with => URI::regexp(%w(http https))
 
   scope :find_activities_by_behaviour_id, -> (behaviour_id) { joins(:behaviour).where("activities.behaviour_id in (?)", behaviour_id)}
 
@@ -46,7 +50,7 @@ class Activity < ActiveRecord::Base
   end
 
   def completed_count
-    activity_answer_participants.count
+    activity_answer_participants.count + participant_online_course_activities.count
   end
 
   def activity_type_verbos

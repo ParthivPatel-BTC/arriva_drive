@@ -17,6 +17,10 @@ class Behaviour < ActiveRecord::Base
     score || 0
   end
 
+  def cohort_score(cohort)
+    Score.where(scorable_id: (self.activities.joins(:cohorts).where(cohorts: {id: cohort}).pluck(:id)), scorable_type: 'Activity').sum(:score)
+  end
+
   def total_activities_levels(participant)
     total_score = total_activities_score(participant)
     find_level(total_score)
@@ -34,6 +38,10 @@ class Behaviour < ActiveRecord::Base
     elsif score > 3999
       5
     end
+  end
+
+  def activities_preformed_by_cohort(cohort)
+    ActivityAnswerParticipant.all.where(activity_id: (self.activities.joins(:cohorts).where(cohorts: {id: cohort}).pluck(:id))).count + ParticipantOnlineCourseActivity.all.where(activity_id: (self.activities.joins(:cohorts).where(cohorts: {id: cohort}).pluck(:id))).count
   end
 
   def completed_activities

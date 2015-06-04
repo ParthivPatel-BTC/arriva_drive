@@ -5,7 +5,11 @@ class Participant::EventsController < ApplicationController
 
   def index
     respond_to do |format|
-      @events = Kaminari.paginate_array(Event.active + Event.complete).page(params[:page]).per(Settings.pagination.events_per_page)
+      if current_participant.cohort.present?
+        @events = Kaminari.paginate_array(current_participant.cohort.events).page(params[:page]).per(Settings.pagination.events_per_page)
+      else
+        @events = nil
+      end
       if params[:page].present?
         format.js {
           render file: 'participant/events/index'
@@ -18,18 +22,26 @@ class Participant::EventsController < ApplicationController
 
   def get_monthly_events
     respond_to do |format|
-      @events = Event.get_monthly_events(params[:month]).page(params[:page]).per(Settings.pagination.events_per_page).order('event_date DESC, event_start_time DESC')
-        format.js{
-        render file: 'participant/events/index'
-      }
+      if current_participant.cohort.present?
+        @events = current_participant.cohort.events.active.get_monthly_events(params[:month]).page(params[:page]).per(Settings.pagination.events_per_page).order('event_date DESC, event_start_time DESC')
+      else
+        @events = nil
+      end  
+          format.js{
+          render file: 'participant/events/index'
+        }
     end
   end
 
   def find_month_wise_events
-    @month_arr = Event.all.inject([]) do |arr, event|
-      arr << event.event_date.strftime("%B")
+    if current_participant.cohort.present?
+      @month_arr = current_participant.cohort.events.active.inject([]) do |arr, event|
+        arr << event.event_date.strftime("%B")
+      end
+      @month_arr.uniq!
+    else
+      @month_arr = nil
     end
-    @month_arr.uniq!
   end
 
   def publish

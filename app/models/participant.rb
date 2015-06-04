@@ -1,7 +1,7 @@
 class Participant < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-
+  belongs_to :cohort
   has_many :scores
   has_many :networks, foreign_key: 'current_participant_id'
   has_many :notes, foreign_key: 'owner_id'
@@ -24,7 +24,7 @@ class Participant < ActiveRecord::Base
   has_attached_file :photo, Paperclip::Attachment.default_options.merge(paperclip_options)
   validates_attachment :photo, content_type: {content_type:  /\Aimage\/.*\Z/}, size: { :in => 0..20.megabytes }
 
-  validates_presence_of :first_name, :last_name, :job_title, :year_started
+  validates_presence_of :first_name, :last_name, :job_title, :year_started, :cohort_id
 
   # For filter with alpha character in my network
   scope :participant_by_alpha_search, -> (alpha_character) { where("upper(first_name) LIKE upper(?)", "#{alpha_character}%")}
@@ -62,6 +62,10 @@ class Participant < ActiveRecord::Base
 
   def activate!
     update_attribute(:active, true)
+  end
+
+  def activities
+    cohort.activities
   end
 
   def send_invitation_to_participant(password)

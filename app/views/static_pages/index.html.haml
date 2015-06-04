@@ -1,11 +1,3 @@
 .starter-template
-  %form.form-signin{role: "form"}
-    %h2.form-signin-heading.pull-left
-      %b Please sign in
-    %input.form-control{autofocus: "", placeholder: "Email address", required: "", type: "email"}/
-    .spacer20.spacer-width
-    %input.form-control{placeholder: "Password", required: "", type: "password"}/
-    %label.pull-left.common-font-color
-      Forgot Pasword?
-    .spacer25.spacer-width
-    %button.btn.btn-sign-in.pull-left Sign in
+  =link_to "ADMIN", new_admin_session_path, class: "btn btn-danger edituser"
+  =link_to "DRIVE", new_participant_session_path, class: "btn btn-danger edituser"

@@ -1,0 +1,17 @@
+.row.page-header-margin
+  .spacer20
+  .col-xs-12.col-md-12
+    %h2.dark-blue
+      %b= "Cohort Management"
+  .spacer20
+  .page-header
+.row
+  .col-xs-4.col-md-4
+    = render partial: 'cohorts/partials/list_cohort'
+    = link_to t('common.caption.button.create_new'), new_cohort_path, class: 'btn dark-blue-btn panel-btn', title: t('common.caption.button.create_new')
+  .col-xs-8.col-md-8
+    .col-md-12
+    %h3
+      %b.dark-blue= "Cohort Scores"
+    .spacer30 
+    = render partial: 'cohorts/partials/cohort_score', locals: { cohort: "overall"}

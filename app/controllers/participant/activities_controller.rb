@@ -6,16 +6,20 @@ class Participant::ActivitiesController < ApplicationController
 
   def index
     respond_to do |format|
-      @activities = Activity.get_activities(params)
-      if params[:page] || params[:behaviour_id].present?
-        format.js{
-          render file: 'participant/activities/index'
-        }
+      if current_participant.cohort.present?
+        @activities = current_participant.cohort.activities.get_activities(params)
+        if params[:page] || params[:behaviour_id].present?
+          format.js{
+            render file: 'participant/activities/index'
+          }
+        else
+          @activities = current_participant.cohort.activities.get_activities_for_pagination(params)
+          format.js{
+            render file: 'participant/activities/index'
+          }
+        end
       else
-        @activities = Activity.get_activities_for_pagination(params)
-        format.js{
-          render file: 'participant/activities/index'
-        }
+        @activities = nil
       end
       format.html
     end

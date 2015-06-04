@@ -25,6 +25,7 @@ en:
         participant: 'Participants'
         activities: 'Activities'
         events: 'Events'
+        cohorts: 'Cohorts'
     participant:
       caption:
         profile: 'Profile'
@@ -67,6 +68,14 @@ en:
         update: "%{name} updated successfully"
     overall_cohort_score:
       header: 'Overall Cohort Score'
+  cohort:
+    fields:
+      name: 'Cohort Name'
+    btn:
+      save: 'Create Cohort'
+      cohort_management: 'Cohort Management'
+      delete: 'Remove Cohort'
+      edit: 'Save Cohort'
   activity:
     fields:
       title: 'Activity Title'
@@ -90,8 +99,11 @@ en:
       start_time: 'Event Start Time'
       end_time: 'Event End Time'
       event_docs_description: 'Supporting Documentation'
+      event_docs_file_size: 'Maximum File Size: 20Mb, JPG or PNG'
     btn:
       save: 'Save Event'
+      save_and_send: 'Save Event & Notify Cohort'
+      send_invitation: 'Notify Cohort'
   participant:
     msg:
       error:
@@ -200,6 +212,7 @@ en:
         shared_notification: 'DRIVE: New Shared File'
         added_in_network: 'DRIVE: Welcome To My Network'
         note_notification: 'DRIVE: New Shared Note'
+        event_notification: 'DRIVE: New Event Notification'
   pagination:
     caption:
       next: 'Next'

@@ -1,0 +1,134 @@
+Return-path: <lee@pocketworks.co.uk>
+Envelope-to: notify+35_27@stg.drivedb.net
+Received: from mail-lb0-f174.google.com ([209.85.217.174])
+	by arriva.default.arriva.uk0.bigv.io with esmtps (TLS1.0:RSA_ARCFOUR_SHA1:16)
+	(Exim 4.72)
+	(envelope-from <lee@pocketworks.co.uk>)
+	id 1XSRFT-0003lE-IQ
+	for notify+35_27@stg.drivedb.net; Fri, 12 Sep 2014 14:50:51 +0100
+Received: by mail-lb0-f174.google.com with SMTP id 10so915697lbg.5
+        for <notify+35_27@stg.drivedb.net>; Fri, 12 Sep 2014 06:50:50 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:mime-version:in-reply-to:references:date
+         :message-id:subject:from:to:content-type;
+        bh=w+UbGTpqm3vVBTG0jAfhrnpB3/AgjbWYcZn8cyIZjSE=;
+        b=S3Zj43CywvJo0InzCdJdV9zCiovsaZ9HgE0c9ta3ge3C+l+kjpIj4yfnRx0p/BSviv
+         FTCxTEQmq5Bmi2juZklCsXaNaDOlBwYIG/nOA31yvG/2vTPeK+DFka7ksUtEQwDlbAbm
+         2jmL26HkFEmb/OnBjLaR+154W3o6gsaSGE++0ofeYYuK/8tIF8AqR7c0cRfiukVYUUaD
+         HTpD17jwHIwzd0eG3yWpeWUItGgFBvu8NpvwEOQ3OvtxNTSYRR+1NipXw7/l0zXr322Q
+         SO8eYDD+pmR9QVgin6lAUHyoYJMCeuAmjOLlK/KLvO4e44lNs6j6Ci9Hn7Mo+bnypP+G
+         e5DQ==
+X-Gm-Message-State: ALoCoQmA1B19S76R2KZKjTGebt8DjWL3fl1req9kksEoC3XScktOzceq3q8GkBYNBM7OKqZHqHG5
+MIME-Version: 1.0
+X-Received: by 10.152.23.69 with SMTP id k5mr9266695laf.70.1410529849192; Fri,
+ 12 Sep 2014 06:50:49 -0700 (PDT)
+Received: by 10.152.125.196 with HTTP; Fri, 12 Sep 2014 06:50:49 -0700 (PDT)
+X-Originating-IP: [92.23.5.241]
+In-Reply-To: <5412f93b933f4_234b1245ea4366e@arriva.default.arriva.uk0.bigv.io.mail>
+References: <5412f93b933f4_234b1245ea4366e@arriva.default.arriva.uk0.bigv.io.mail>
+Date: Fri, 12 Sep 2014 14:50:49 +0100
+Message-ID: <CAJGbCduQUUQa4PbqmMR4MqS3Er9YE_EVGdExOJii--ttpRQ-Cw@mail.gmail.com>
+Subject: Re: DRIVE: New Shared Note
+From: Lee Sommerville <lee@pocketworks.co.uk>
+To: notify+35_27@stg.drivedb.net
+Content-Type: multipart/alternative; boundary=089e0160bf989b3c3a0502de92e1
+
+--089e0160bf989b3c3a0502de92e1
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+Testing again to see how the reply looks...
+
+PocketWorks
+
+*Technology for a more efficient business*
+
+=E2=9C=86 07738 076498  =E2=9C=86 0113 246 0225
+
+Suite 5, 3rd Floor, Monarch House, Queen Street, Leeds LS1 2TW
+
+http://pocketworks.co.uk
+
+
+*PocketWorks Mobile Ltd is a UK registered company #08041956*
+
+
+
+
+On 12 September 2014 14:46, <support@arrivedrive.in> wrote:
+
+>   Dear Lee
+>
+> Lee Sommerville has shared a note with you through the DRIVE online tool.
+>
+> Here are the contents of the note, simply reply to this email to create a
+> new note shared with the same participants.
+>
+> Note text:
+>
+>  Testing for an email notification
+> * Note created September 12, 2014 13:46 *
+>
+>  Thanks
+> DRIVE Support
+>
+
+--089e0160bf989b3c3a0502de92e1
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Testing again to see how the reply looks...</div><div clas=
+s=3D"gmail_extra"><br clear=3D"all"><div><div dir=3D"ltr"><p>PocketWorks</p=
+><p><i>Technology for a more efficient business</i></p><p>=E2=9C=86 07738 0=
+76498 =C2=A0=E2=9C=86 0113 246 0225<br></p><p>Suite 5, 3rd Floor, Monarch H=
+ouse, Queen Street, Leeds LS1 2TW</p><p><a href=3D"http://pocketworks.co.uk=
+/" style=3D"color:rgb(17,85,204)" target=3D"_blank">http://pocketworks.co.u=
+k</a><br></p><p><br></p><p><i>PocketWorks Mobile Ltd is a UK registered com=
+pany #08041956</i></p><p><br></p><p><br></p></div></div>
+<br><div class=3D"gmail_quote">On 12 September 2014 14:46,  <span dir=3D"lt=
+r">&lt;<a href=3D"mailto:support@arrivedrive.in" target=3D"_blank">support@=
+arrivedrive.in</a>&gt;</span> wrote:<br><blockquote class=3D"gmail_quote" s=
+tyle=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex"><u><=
+/u>
+
+
+
+
+<div>
+<div>
+<p>
+Dear Lee=20
+</p>
+<input name=3D"notification_type" type=3D"hidden" value=3D"notes">
+<input name=3D"owner_id" type=3D"hidden" value=3D"35">
+<p>
+Lee  Sommerville has shared a note with you through the DRIVE online tool.
+</p>
+<p>
+Here are the contents of the note, simply reply to this email to create a n=
+ew note shared with the same participants.
+</p>
+<p>
+Note text:
+</p>
+<p>
+</p><blockquote>
+Testing for an email notification
+<br>
+<i>
+Note created September 12, 2014 13:46
+</i>
+</blockquote>
+<p></p>
+<p>
+Thanks
+<br>
+DRIVE Support
+</p>
+</div>
+</div>
+
+</blockquote></div><br></div>
+
+--089e0160bf989b3c3a0502de92e1--

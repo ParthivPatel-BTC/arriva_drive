@@ -1,0 +1,15 @@
+%h3
+  %b.dark-blue= "Cohorts"
+.spacer10
+.col-xs-12.col-md-12
+- @cohorts.each do |cohort|
+  - unless @cohort == cohort
+    %span= cohort.name
+    .pull-right.arriva-green
+      = link_to t('common.caption.edit'), edit_cohort_path(cohort.id), title: t('common.caption.edit')
+    .spacer1
+    %span.common-font-color= cohort.cohort_type == 1 ? "DRIVE, " : "Graduate, "
+    %span.common-font-color= cohort.year_started
+    .spacer5
+  - if @cohort == cohort && @cohorts.count == 1
+    = "No cohorts to show."

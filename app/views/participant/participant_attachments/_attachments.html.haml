@@ -26,12 +26,6 @@
               - @attachments.each_with_index do |attachment, index|
                 %li
                   .notes-left.notes-left-width
-                    .notesicon_myfile
-                      - if attachment.participant_id == current_participant.id
-                        = link_to participants_list_participant_shared_path(attachment), id: 'participantShareListingBtn', class: 'tag-network-link', title: t('participant.participant_attachments.caption.share_or_unshare'), style: 'width: 30px; margin-right: 5px' do
-                          %i.icon-somebody
-                      = link_to participant_attachment_path(attachment),  class: "confirmation", title: t('common.caption.delete'), method: :delete, data: { confirm: t('common.msg.confirm')}, style: 'width: 30px;' do
-                        %i.icon-delete
                     .notedetails
                       %p.uppercase
                         %span.green AUTHOR:
@@ -46,6 +40,12 @@
                       %h3= link_to file_name_without_extension(attachment.attachment_file_name), '#', target: "_blank", 'data-popup' => 'true', 'data-url' => "#{show_attachment_path(attachment.id)}", 'data-id' => "#{attachment.id}"
 
                       %h5= attachment.file_description
+                    .notesicon_myfile
+                      - if attachment.participant_id == current_participant.id
+                        = link_to participants_list_participant_shared_path(attachment), id: 'participantShareListingBtn', class: 'tag-network-link', title: t('participant.participant_attachments.caption.share_or_unshare'), style: 'width: 30px; margin-right: 5px' do
+                          %i.icon-somebody
+                      = link_to participant_attachment_path(attachment),  class: "confirmation", title: t('common.caption.delete'), method: :delete, data: { confirm: t('common.msg.confirm')}, style: 'width: 30px;' do
+                        %i.icon-delete
                     .writeicon.writeicon-width
                       / = link_to participants_list_participant_shared_path(attachment), id: 'participantShareListingBtn', class: 'tag-network-link', title: t('participant.participant_attachments.caption.share_or_unshare') do
                       /   %i.icon-somebody

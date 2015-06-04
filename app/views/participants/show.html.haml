@@ -22,6 +22,11 @@
       %label.dark-blue= t('admin.participant.caption.year_started')
       .input
         %span.common-font-color= @participant.year_started
+    - if @participant.cohort.present?
+      .form-group
+        %label.dark-blue= t('cohort.commom.cohort')
+        .input
+          %span.common-font-color= @participant.cohort.name
     .form-group
       %label.dark-blue= t('admin.participant.caption.email_without_note')
       .input
@@ -33,7 +38,7 @@
           = image_tag(@participant.photo.url(:medium))
       - else
         .input
-          =image_tag('no_image.png')
+          = image_tag('no_image.png')
 
   .col-xs-3.col-md-4
     %h3.dark-blue
