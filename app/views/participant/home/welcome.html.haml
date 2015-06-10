@@ -1,31 +1,87 @@
+- total_activities = Activity.count
+- activity_summary = activity_summary(completed_activities, total_activities)
 - content_for(:title, 'Drive Home')
-
-- mail_to = mail_to Settings.mail.default_url_options.contact_email, nil,traget: '_blank'
-%section.mainsection
-  = render partial: 'participants/components/left_side_bar'
-  .contentarea
-    .welcomerow
-      %h3= t('participant.headings.welcome', name: current_participant.first_name)
-      %p This is your DRIVE dashboard. At a glance you can access all areas of the application, see your fit plan performance summary and behaviours, and track your use of the DRIVE activities. If you have any questions please contact #{mail_to}.
-    .welcomeboxrow
-      .welcomeboxrowleft
-        .boxbg.smallbox
-          %p.number= current_participant_notes_count
-          %p= t('participant.caption.notes')
-          %p.view
-            = link_to(t('participant.dashboard.caption.view'), participant_notes_path)
-        .boxbg.smallbox
-          %p.number
-            = completed_activities
-            %span><= "/#{current_participant.activities.count}"
-          %p activities
-          %p.view
-            = link_to(t('participant.dashboard.caption.view'), participant_activities_path)
-        = render partial: 'leadership_behaviours'
-      .welcomeboxrowright
-        .boxbg.mediumbox
-          %h4 Fit Plan Performance Summary
-          .break-long-url
-            %p= current_participant.performance_summary
-    = render partial: 'behaviour_scores'
-  = render partial: 'participants/components/right_side_bar'
+.main-panel
+  .deshboard-panel
+    .deshboardsummery-panel.clearfix
+      .activitysummary
+        %h3= t('participant.dashboard.caption.activity_summary')
+        .activityprogress
+          #myStathalf2.progress-main{"data-bgcolor" => "#d3d3d3", "data-fgcolor" => "#cddc39", "data-fontsize" => "28", "data-icon" => "fa-task", "data-info" => "New Clients", "data-percent" => "#{activity_summary}", "data-text" => "#{completed_activities}/#{total_activities}", "data-width" => "14"}
+          .vieactivity
+            = link_to t('participant.dashboard.caption.view_activities'), participant_activities_path, class: 'btn vieactivity-btn rippler rippler-inverse'
+        = render partial: 'fit_plan_summary_behaviours'
+      .plansummary
+        %h3
+          = t('participant.dashboard.caption.fit_plan_summary')
+          = link_to("#{javascript_void}", "data-modal" => "modal-1", class: 'md-trigger') do
+            %i.mdi-action-info-outline
+        %ul.summery-hit
+          %li
+            %span.youf
+            = t('participant.dashboard.caption.fit_plan_summary_you')
+          %li
+            %span.performer
+            = t('participant.dashboard.caption.fit_plan_summary_top_performer')
+        .plansummery-list
+          %ul
+            - current_participant.scores.behaviour_scores.each do |score|
+              %li
+                .progress-bar.progress-you{:style => "width:#{score.percentile_score}%;"}
+                .progress-bar.progress-performer{:style => "width:#{score.percentile_difference_with_top_score}%;"}
+    .deshboardyour-panel
+      .row
+        .deshboardyour-left
+          .recentnote
+            %h3
+              = t('participant.dashboard.caption.recent_notes')
+              %span= "(#{@notes.count})"
+            .recentnote-panel
+              %ul.recentnote-slide
+                - @notes.each_with_index do |note, index|
+                  %li.recentnote-box.clearfix
+                    .recent-profile
+                      = image_tag note.owner.photo.url(:profile)
+                    %h4= note_owners_name(note)
+                    %p= raw sanitize(simple_format(note.content))
+                    .viewallnote
+                      = link_to t('participant.dashboard.caption.view_notes'), participant_notes_path, class: 'btn viewallnote-btn rippler rippler-inverse'
+          .nextevent
+            %h3= t('participant.dashboard.caption.next_event')
+            - if @upcomming_event.present?
+              .nextevent-panel.clearfix
+                .nextevent-text
+                  %h4= @upcomming_event.title
+                  %span= event_time_formatter(@upcomming_event.event_start_time)
+                  = date_formatter(@upcomming_event.event_date)
+                .nextevent-img
+                  = image_tag("london-map.jpg")
+              .viewallevent
+                = link_to t('participant.dashboard.caption.view_events'), participant_events_path, class: 'btn viewallevent-btn rippler rippler-inverse'
+        .deshboardyour-right
+          .yournetwork.clearfix
+            %h3
+              = t('participant.dashboard.caption.your_network')
+              %span= "(#{@networks.count})"
+            - @networks.each do |network|
+              .yournetwork-panel
+                .yournetwork-box.clearfix
+                  .yournetwork-profile
+                    = image_tag network.participant.photo(:medium)
+                  %h4= network.participant.name.titleize
+                  %p= network.participant.job_title.titleize
+                  %span
+                    %i.mdi-navigation-check
+              .viewnetwork
+                = link_to t('participant.dashboard.caption.view_network'), participant_networks_path, class: 'btn viewnetwork-btn rippler rippler-inverse'
+    .overlay{"data-sidebar-overlay" => ""}
+    = render partial: 'fit_plan_performance_summary_popup'
+:javascript
+  $(document).ready(function(){
+    $('#myStathalf2').circliful();
+    $('.recentnote-slide').bxSlider({
+      auto: true,
+      controls:false
+    });
+    model_popup();
+  });

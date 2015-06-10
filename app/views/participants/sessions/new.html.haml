@@ -1,48 +1,28 @@
-%section.mainsection
-  .loginpage
-    .loginwelcome
-      %h1 WELCOME
-      %p
-        Welcome to DRIVE, your online tool to support you through the programme. Whether you’re on a tablet or desktop, you can take part in learning activities, make notes and share experiences. It all starts when you login…
-      %p
-        %br/
-        Need help? Contact
-        = mail_to 'support@drivedb.net', 'support@drivedb.net'
-      .watchvideorow
-        %a#youtube{:href => Settings.defaults.participant_home_screen_video, :title => "Youtube Video"}
-          %i.icon-watchvideo
-          .btnwatchvideo
-            where future leaders learn to lead
-            %br
-              %span watch video
-    .loginsection
-      .loginbox
-        = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-          %p.sign_in_labels= t('sign_in.caption.username')
-          %p
-            = f.email_field :email, autofocus: true, placeholde: 'Email'
-          %p.sign_in_labels= t('sign_in.caption.password')
-          %p
-            = f.password_field :password, autocomplete: "off", placeholde: 'Password'
-          %p
-            = link_to_submit do
-              %i.icon-login
-              %span.logintext LOGIN
-            = submit_tag(" ", id: "login_in_button")
-          - if devise_mapping.rememberable?
-            %p
-              %span.remember
-                REMEMBER ME
-                = f.check_box :remember_me
-      .clearfix
-      .arriva
-        - if browser.ios?
-          = image_tag 'images/logo-arriva@2x.png', height: '39'
-        - else
-          = image_tag 'images/logo-arriva.png', height: '39'
+.main-panel.home-page
+  .welcome-text
+    %h2
+      = t('participant.login_in.captions.text_welcome_to')
+      = succeed t('participant.login_in.captions.text_drive') do
+        %span= t('participant.login_in.captions.text_arriva')
+    %p= t('participant.login_in.captions.text_paragraph')
+    = form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "login-form"}) do |f|
+      .input-field
+        = f.email_field :email, class: "input-text user-name", placeholder: t('participant.login_in.captions.username')
+      .input-field
+        = f.password_field :password, class: "input-text password", placeholder: t('participant.login_in.captions.password')
+      .input-btn
+        = f.submit t('participant.login_in.captions.button.log_in'), class: "login-btn rippler rippler-inverse"
+      .rememberme.clearfix
+        %label= t('participant.login_in.captions.remember_me')
+        #remember.rememberbtn
+          = check_box_tag "participant['remember_me']"
+
 :javascript
-  $(document).keypress(function(e) {
-      if(e.which == 13) {
-        $(".new_participant").submit();
-      }
+  $(function() {
+    $('#remember input').switchButton({
+      show_labels: false,
+      width: 60,    
+          height: 28,   
+          button_width: 24
+    });
   });

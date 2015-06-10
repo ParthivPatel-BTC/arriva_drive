@@ -52,6 +52,7 @@ gem 'delayed_job_active_record'
 gem 'daemons'
 gem 'mail'
 gem 'email_reply_parser'
+gem 'pry-rails'
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false

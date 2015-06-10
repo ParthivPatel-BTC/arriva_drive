@@ -1,0 +1,16 @@
+%header.inner-header
+  = render partial: 'layouts/participant_left_side_menu'
+  .header-top
+    .clearfix.header-sub
+      .menu-toggle
+        %a#navigation-toggle{"data-sidebar-button" => "", :href => "#"}
+          %span.menu-icon
+            %span.icon-toggle{"aria-label" => "Toggle Navigation", :role => "button"}
+              %span.lines
+      .logo
+        %span= t('participant.header_navigation.text_your')
+        %h1
+          = link_to((image_tag "logo@2x.png"), participant_dashboard_path)
+        %span= t('participant.header_navigation.text_dashboard')
+      .header-right
+        = image_tag "arriva_logo@2x.png"

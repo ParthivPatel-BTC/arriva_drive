@@ -8,15 +8,9 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
- *= require participants/fonts
- *= require participants/modal
- *= require participants/modal-darktheme
- *= require participants/uniform.aristo
- *= require participants/nanoscroller
- *= require jquery.ui.all
- *= require participants/style
- *= require participants/responsive
- *= require participants/custom
- *= require participants/values-behaviours
+ *= require participant/fonts
+ *= require participant/ghpages-materialize
+ *= require participant/style
+ *= require participant/responsive
  *= require_self
  */

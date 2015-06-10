@@ -4,6 +4,10 @@ class Participant::HomeController < ApplicationController
   before_filter :participant_user_required!
 
   def welcome
+    @networks = current_participant.networks
+    @upcomming_event = Event.where("event_date::date > ?", Time.now.end_of_day).order(event_date: :asc).first
+    # @notes = get_tagged_notes.uniq
+    @notes = current_participant.notes
     render :welcome
   end
   alias :dashboard :welcome
@@ -87,5 +91,11 @@ class Participant::HomeController < ApplicationController
     else
       return true
     end
+  end
+
+  def get_tagged_notes
+    note_id_arr = current_participant.notes.pluck(:id)
+    note_id_arr += Tag.by_participant(current_participant).pluck(:note_id)
+    Note.where(id: note_id_arr).order('created_at DESC')
   end
 end

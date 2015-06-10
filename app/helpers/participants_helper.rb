@@ -61,4 +61,9 @@ module ParticipantsHelper
       0
     end
   end
+
+  def activity_summary(completed_activities, total_activities)
+    return 0 if total_activities == 0
+    (completed_activities * 100) / total_activities
+  end
 end

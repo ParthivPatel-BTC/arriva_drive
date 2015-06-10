@@ -138,12 +138,12 @@ module ApplicationHelper
     date.try(:strftime, '%d/%m/%Y %I:%M %p')
   end
 
-  # def date_time_formatter(date)
-  #   date.try(:strftime, '%d.%m.%Y')
-  # end
+  def event_time_formatter(time)
+    time.try(:strftime, '%l:%M%p')
+  end
 
   def date_formatter(date)
-    date.try(:strftime, '%m.%d.%Y')
+    date.try(:strftime, "%A #{date.day.ordinalize} %B")
   end
 
   def time_formatter(date)
@@ -160,5 +160,15 @@ module ApplicationHelper
 
   def file_name_without_extension(filename)
     @file_name_without_extension = File.basename(filename, File.extname(filename)).upcase
+  end
+
+  def decide_class
+    unless current_participant.present? 
+      'homepage'
+    end
+  end
+
+  def javascript_void
+    'javascript:void(0);'
   end
 end

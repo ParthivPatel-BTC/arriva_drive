@@ -105,6 +105,9 @@ en:
       save_and_send: 'Save Event & Notify Cohort'
       send_invitation: 'Notify Cohort'
   participant:
+    header_navigation:
+      text_your: 'Your'
+      text_dashboard: 'Dashboard'
     msg:
       error:
         score_validation: 'Scores must be numeric'
@@ -161,9 +164,34 @@ en:
       network: 'My network'
       my_files: 'My Files'
       logout: 'LOGOUT'
+    login_in:
+      captions:
+        text_welcome_to: 'Welcome to'
+        text_drive: 'drive'
+        text_arriva: 'Arriva'
+        text_paragraph: "Your online tool to support you through the programme. Whether you're on a tablet desktop, you can take part in learning activities, make notes and share experiences. It all starts when you login..."
+        username: 'username'
+        password: 'password'
+        remember_me: 'Remember Me'
+        button:
+          log_in: 'Login In'
     dashboard:
       caption:
-        view: 'VIEW'
+        view_activities: 'view activities'
+        view_notes: 'view all notes'
+        view_events: 'view all events'
+        view_network: 'view network'
+        activity_summary: 'Your Activity Summary'
+        fit_plan_summary: 'Your fit plan Summary'
+        fit_plan_summary_you: 'You'
+        fit_plan_summary_top_performer: 'Top Performer'
+        recent_notes: 'Your Recent Notes'
+        next_event: 'Next Event'
+        your_network: 'Your Network'
+        fit_plan_performance_summary: 'Fit Plan Performance Summary'
+        fit_plan_performance_summary_paragraph_1: "Our clients hire us because mobile apps are key to their bisiness success. We're their technology experts, delivering advice, design, development and support"
+        fit_plan_performance_summary_paragraph_2: "At a glance you can access all areas of the application, see your fit plan performance summary and behaviours, and track your use of the DRIVE activities."
+        fit_plan_performance_summary_paragraph_3: "if you have any questions please contact"
     notes:
       caption:
         tag_behaviours: 'Tag The Behaviour'

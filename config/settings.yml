@@ -21,6 +21,7 @@ paperclip:
     thumb: '100x100'
     activity:
       small: '55x55'
+    profile: '220x220'
   image_path: '/system/:class/:photos/:id/:style/:basename.:extension'
 
 mail:

@@ -21,7 +21,7 @@ class Score < ActiveRecord::Base
 
   def percentile_score
     # to_level(score) * 20 if score
-    100 * score / MAX_SCORE
+    100 * score / top_score
   end
 
   def difference_with_top_score
@@ -29,7 +29,7 @@ class Score < ActiveRecord::Base
   end
 
   def percentile_difference_with_top_score
-    (top_score - score) * 100 / MAX_SCORE if score
+    (top_score - score) * 100 / top_score if score
   end
 
   def top_score

@@ -1,4 +1,4 @@
-<!doctype html>
+!!!
 /[if IE 7 ] <html lang="en-gb" class="isie ie7 oldie no-js">
 /[if IE 8 ] <html lang="en-gb" class="isie ie8 oldie no-js">
 /[if IE 9 ] <html lang="en-gb" class="isie ie9 no-js">
@@ -10,43 +10,19 @@
     %meta{content: "yes", name: "apple-mobile-web-app-capable"}/
     %meta{content: "black", name: "apple-mobile-web-app-status-bar-style"}/
     %meta{content: "Arriva DRIVE", name: "apple-mobile-web-app-title"}/
-    %meta{content: "width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui", name: "viewport"}/
+    %meta{:content => "width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no", :name => "viewport"}/
     = stylesheet_link_tag "participant_assets", media: "all", "data-turbolinks-track" => true
-    - if browser.ios?
-      = favicon_link_tag 'images/arriva_icon_ipad.png', rel: 'apple-touch-icon', type: 'image/png'
     = javascript_include_tag "participant_assets", "data-turbolinks-track" => true
     = csrf_meta_tags
-    %meta{charset: "utf-8"}/
-    %meta{content: "", name: "keywords"}/
-    %meta{content: "", name: "description"}/
-    %link{href: "images/favicon.ico", rel: "shortcut icon"}/
-    %link{href: "images/apple-touch-icon-72x72.png", rel: "apple-touch-icon", sizes: "72x72"}/
-    %link{href: "images/apple-touch-icon-114x114.png", rel: "apple-touch-icon", sizes: "114x114"}/
-    %link{href: "images/apple-touch-icon-144x144.png", rel: "apple-touch-icon", sizes: "144x144"}/
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "", :name => "keywords"}/
+    %meta{:content => "", :name => "description"}/
     %meta{content: "width=device-width, initial-scale=1, maximum-scale=1", name: "viewport"}/
-    :javascript
-      jQuery(document).ready(function($) {
-          $("a").click(function (event) {
-            if( ($(this).attr("class") != "close inlineclose inlineclosetopbtn") &&
-                  ($(this).attr("class") != "tag-behaviour-link") &&
-                  ($(this).attr("class") != "tag-network-link") &&
-                  ($(this).attr("class") != "confirmation") &&
-                  ($(this).attr("id") != "paginationNext")) {
-              event.preventDefault();
-              window.location = $(this).attr("href");
-            }
-          });
-      });
-      ganalytics_standard();
-  %body
-    .mainbg
-      = image_tag 'images/mainbg1.jpg'
-    .wrapper
-      %header
-        - if browser.ios?
-          = link_to((image_tag 'images/logo@2x.png', :height => "57"), participant_dashboard_path)
-        - else
-          = link_to((image_tag 'images/logo.png', :height => "57", class: 'header_logo_border_IE'), participant_dashboard_path)
+  %body{class: decide_class}
+    #mainbody.main
+      - if controller.controller_name == 'sessions'
+        = render partial: 'layouts/sign_in_header'
+      - else
+        = render partial: 'layouts/participant_header'
       = yield
-    :javascript
-      ganalytics_outbound_links();
+      = render partial: 'layouts/footer'

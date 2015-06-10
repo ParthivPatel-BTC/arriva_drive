@@ -1,0 +1,44 @@
+%aside
+  .left-mainmenu{"data-sidebar" => ""}
+    .menufull
+      .menu-header.clearfix
+        .login-profile
+          = image_tag current_participant.photo.url(:profile)
+        .login-title
+          %h3= current_participant.name
+          %p= current_participant.job_title.titleize
+          = link_to "Edit", edit_profile_path(current_participant.id), class: 'edit-profile'
+      %ul.left-menu
+        %li
+          = link_to participant_dashboard_path, class: left_side_bar_class('home') do
+            %i.menu-icon.mdi-action-home
+            = t('participant.nav_bar.home')
+        %li
+          = link_to participant_behaviours_path, class: left_side_bar_class('behaviours') do
+            %i.menu-icon.mdi-action-thumb-up
+            = t('participant.nav_bar.behaviours')
+        %li
+          = link_to participant_activities_path, class: left_side_bar_class('activities') do
+            %i.menu-icon.mdi-action-settings
+            = t('participant.nav_bar.activities')
+        %li
+          = link_to participant_events_path, class: left_side_bar_class('events') do
+            %i.menu-icon.mdi-communication-location-on
+            = t('participant.nav_bar.events')
+        %li
+          = link_to participant_notes_path, class: left_side_bar_class('notes') do
+            %i.menu-icon.mdi-notification-event-note
+            = t('participant.nav_bar.notes')
+        %li
+          = link_to participant_networks_path, class: left_side_bar_class('networks') do
+            %i.menu-icon.mdi-social-public
+            = t('participant.nav_bar.network')
+        %li
+          = link_to participant_attachments_path, class: left_side_bar_class('participant_attachments') do
+            %i.menu-icon.mdi-alert-error
+            = t('participant.nav_bar.my_files')
+      %ul.logout-menu
+        %li
+          = link_to destroy_participant_session_path, method: :delete do
+            %i.menu-icon.mdi-action-lock-open
+            = t('participant.nav_bar.logout')

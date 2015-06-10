@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="33px" height="33px" viewBox="0 0 33 33" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.3 (11970) - http://www.bohemiancoding.com/sketch -->
+    <title>username_icon</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Log-In" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="person-copy" sketch:type="MSLayerGroup" transform="translate(2.000000, 2.000000)" fill="#CFE02B">
+            <path d="M14.3941606,14.4702931 C18.3525547,14.4702931 21.5912409,11.2144771 21.5912409,7.23514653 C21.5912409,3.25581594 18.3525547,0 14.3941606,0 C10.4357664,0 7.19708029,3.25581594 7.19708029,7.23514653 C7.19708029,11.2144771 10.4357664,14.4702931 14.3941606,14.4702931 L14.3941606,14.4702931 Z M14.3941606,18.0878663 C9.53613139,18.0878663 0,20.439289 0,25.3230129 L0,28.9405861 L28.7883212,28.9405861 L28.7883212,25.3230129 C28.7883212,20.439289 19.2521898,18.0878663 14.3941606,18.0878663 L14.3941606,18.0878663 Z" id="Shape" sketch:type="MSShapeGroup"></path>
+        </g>
+    </g>
+</svg>

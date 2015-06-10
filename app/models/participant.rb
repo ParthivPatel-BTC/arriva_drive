@@ -15,7 +15,8 @@ class Participant < ActiveRecord::Base
   paperclip_options = {
       styles: {
           medium: "#{Settings.paperclip.style.medium}>",
-          thumb: "#{Settings.paperclip.style.thumb}>"
+          thumb: "#{Settings.paperclip.style.thumb}>",
+          profile: "#{Settings.paperclip.style.profile}!"
       },
       :url => Settings.paperclip.image_path
   }
@@ -166,5 +167,9 @@ class Participant < ActiveRecord::Base
   def self.generate_unique_passowrd
     participant={}
     participant[:password] = Devise.friendly_token[0,6]
+  end
+
+  def name
+    "#{first_name} #{last_name}"
   end
 end

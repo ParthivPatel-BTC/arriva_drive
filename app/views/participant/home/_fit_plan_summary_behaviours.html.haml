@@ -1,0 +1,6 @@
+.activityprogress-list
+  %ul
+    - Behaviour.all.each do |behaviour|
+      %li
+        = behaviour.title
+        %span= behaviour.total_activities_levels(current_participant)
