@@ -108,6 +108,12 @@ en:
     header_navigation:
       text_your: 'Your'
       text_dashboard: 'Dashboard'
+      text_files: 'Files'
+      text_values_behaviours: 'Values & Behaviours'
+      text_activities: 'Activities'
+      text_events: 'Events'
+      text_notes: 'Notes'
+      text_my_networks: 'My Networks'
     msg:
       error:
         score_validation: 'Scores must be numeric'
@@ -192,6 +198,59 @@ en:
         fit_plan_performance_summary_paragraph_1: "Our clients hire us because mobile apps are key to their bisiness success. We're their technology experts, delivering advice, design, development and support"
         fit_plan_performance_summary_paragraph_2: "At a glance you can access all areas of the application, see your fit plan performance summary and behaviours, and track your use of the DRIVE activities."
         fit_plan_performance_summary_paragraph_3: "if you have any questions please contact"
+    values_behaviours:
+      captions:
+        values: 'Values'
+        behaviours: 'Behaviours'
+        values_left_scroller:
+          tabs-1: 'Putting people first'
+          tabs-2: 'Delivering outstanding customer service'
+          tabs-3: 'Acting with trust and respect'
+          tabs-4: 'Growing a sustainable business'
+          tabs-5: 'Delivering successful results'
+        behaviours_content:
+          behaviour_div_1:
+            caption: 
+              customer_orientation: 'Customer Orientation'
+              paragraph_1: 'Entails knowing customer expectations and implementing customer-orient solutions.'
+              paragraph_2: 'For executives this also means acting in a manner that has a positive effect on the customer orientation of the employess'
+          behaviour_div_2:
+            caption:
+              change_management: 'Change Management'
+              paragraph_1: 'Consists of recognising change dynamics and striving for continuous improvement.'
+              paragraph_2: 'This includes the ability to effectively convey the need for change and actively include stakeholders.'
+          behaviour_div_3:
+            caption:
+              cross_unit: 'Cross-Unit Co-Operation'
+              paragraph: ' Always Striving for solutions-focused collaboration across all stakeholder groups both inside and outside the immediate team and company to constantly optimise business performance'
+          behaviour_div_4:
+            caption:
+              managing_developing: 'Managing & Developing People'
+              paragraph_1: 'Refers to the ability to create a trusting, appreciative and collaborative working environment and managing conflict constructively to achieve impoved staff performance and employee satisfaction.'
+              paragraph_2: 'This also includes the ability to identify and develop employee potential'
+          behaviour_div_5:
+            caption:
+              striving: 'Striving for Innovation'
+              paragraph_1: "Entails the capability and will to improve the company's performance, for example, by developing and testing new processes and products."
+              paragraph_2: 'This also means not being satisfied with the status quo but always looking out for improvements.'
+          behaviour_div_6:
+            caption:
+              target: 'Target & Results Focus'
+              paragraph_1: "Is the endeavour to achieve outstanding results in one's own area."
+              paragraph_2: 'This also includes setting oneself challenging targets, reviewing these and setting priorities to ensure company success.'
+          behaviour_div_7:
+            caption:
+              strategic: 'Strategic Focus'
+              paragraph: "Requires the ability to recognise understand structures and processes in organisations together with internal and external organisational influences, integrating these accordingly into one's own activities for the benefit of the company."
+          behaviour_div_8:
+            caption:
+              role_model: 'Role Model Function'
+              paragraph_1: "Is the ability and willingness to align one's own behaviour according to the needs, expectations and priorities of the company on an internal and external level so as to encourage others to do the same."
+              paragraph_2: 'This includes acting as a credible representative of the company.'
+          behaviour_div_9:
+            caption:
+              delealing: 'Dealing with Complexity'
+              paragraph: 'Refers to the ability to understand the complexity within and across the areas in which he/she works and to take decisions based on both analytical and people-centred approaches.'
     notes:
       caption:
         tag_behaviours: 'Tag The Behaviour'

@@ -12,7 +12,6 @@
 //
 
 //= require participant/jquery-2.1.1.min
-//= require participant/jquery-1.10.1.min
 //= require participant/jquery-ui.min
 //= require participant/jquery.switchButton
 //= require participant/jquery.rippler

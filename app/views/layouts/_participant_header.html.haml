@@ -1,3 +1,4 @@
+- page_name = set_page_name_with_logo(controller_name)
 %header.inner-header
   = render partial: 'layouts/participant_left_side_menu'
   .header-top
@@ -11,6 +12,6 @@
         %span= t('participant.header_navigation.text_your')
         %h1
           = link_to((image_tag "logo@2x.png"), participant_dashboard_path)
-        %span= t('participant.header_navigation.text_dashboard')
+        %span= page_name
       .header-right
         = image_tag "arriva_logo@2x.png"

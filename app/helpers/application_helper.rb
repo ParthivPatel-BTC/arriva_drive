@@ -171,4 +171,24 @@ module ApplicationHelper
   def javascript_void
     'javascript:void(0);'
   end
+
+  def set_page_name_with_logo(controller_name)
+    case controller_name
+      when 'home'
+        t('participant.header_navigation.text_dashboard')
+      when 'behaviours'
+        t('participant.header_navigation.text_values_behaviours')
+      when 'activities'
+        t('participant.header_navigation.text_activities')
+      when 'events'
+        t('participant.header_navigation.text_events')
+      when 'notes'
+        t('participant.header_navigation.text_notes')
+      when 'networks'
+        t('participant.header_navigation.text_my_networks')
+      when 'participant_attachments'
+        t('participant.header_navigation.text_files')
+      else
+      end
+  end
 end

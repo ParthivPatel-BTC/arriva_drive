@@ -1,140 +1,46 @@
 - content_for(:title, 'Drive Values')
+.main-panel
+  .behaviours-panel
+    #behavioursTabs.clearfix.behaviours-block
+      .behaviours-value
+        %h3= t('participant.values_behaviours.captions.values')
+        %ul
+          %li.puttpeople
+            = link_to t('participant.values_behaviours.captions.values_left_scroller.tabs-1'), "#tabs-1"
+          %li.custservice
+            = link_to t('participant.values_behaviours.captions.values_left_scroller.tabs-2'), "#tabs-2"
+          %li.trustrespect
+            = link_to t('participant.values_behaviours.captions.values_left_scroller.tabs-3'), "#tabs-3"
+          %li.sustainable
+            = link_to t('participant.values_behaviours.captions.values_left_scroller.tabs-4'), "#tabs-4"
+          %li.succeresult
+            = link_to t('participant.values_behaviours.captions.values_left_scroller.tabs-5'), "#tabs-5"
+      .behaviours-detail
+        %h3= t('participant.values_behaviours.captions.behaviours')
+        #tabs-1.behaviours-box
+          .putting-people.clearfix
+            = render partial: 'putting_people_behaviours'
+        #tabs-2.behaviours-box
+          .delivering-customer.clearfix
+            = render partial: 'common_behaviours'
+        #tabs-3.behaviours-box
+          .delivering-respect.clearfix
+            = render partial: 'common_behaviours'
+        #tabs-4.behaviours-box
+          .delivering-business.clearfix
+            = render partial: 'common_behaviours'
+        #tabs-5.behaviours-box
+          .delivering-results.clearfix
+            = render partial: 'common_behaviours'
+  .overlay{"data-sidebar-overlay" => ""}
 
-%section.mainsection
-  = render partial: 'participants/components/left_side_bar'
-  .contentarea
-    .values
-      #values1.colorbg
-        #values2.colorbg
-          #values3.colorbg
-            #values4.colorbg
-              #values5.colorbg
-                .row
-                  #defult1.circulbox.circulcolordefult
-                    %a.inline{href: "#modal1"}
-                      %span
-                        customer orientation
-                    #modal1.hide
-                      .modal-header
-                        %a.close.inlineclose.inlineclosetopbtn{"data-tooltip" => "Close this ModalBox", type: "button"}
-                          %i.icon-cancel
-                        %h3 customer orientation
-                      .modal-body
-                        %p Entails knowing customer expectations and implementing customer-oriented solutions. For executives this also means acting in a manner that has a positive effect on the customer orientation of the employees.
-                  #circulcolor1.circulbox.circulcolor1
-                    %span putting people first
-                  #defult2.circulbox.circulcolordefult
-                    %a.inline{href: "#modal2"}
-                      %span
-                        change management
-                    #modal2.hide
-                      .modal-header
-                        %a.close.inlineclose.inlineclosetopbtn{"data-tooltip" => "Close this ModalBox", type: "button"}
-                          %i.icon-cancel
-                        %h3 change management
-                      .modal-body
-                        %p Consists of recognising change dynamics and striving for continuous improvement. This includes the ability to effectively convey the need for change and actively include stakeholders.
-                .row
-                  #defult3.circulbox.circulcolordefult
-                    %a.inline{href: "#modal3"}
-                      %span
-                        target & results focus
-                    #modal3.hide
-                      .modal-header
-                        %a.close.inlineclose.inlineclosetopbtn{"data-tooltip" => "Close this ModalBox", type: "button"}
-                          %i.icon-cancel
-                        %h3 target & results focus
-                      .modal-body
-                        %p Is the endeavour to achieve outstanding results in one’s own area. This also includes setting oneself challenging targets, reviewing these and setting priorities to ensure company success.
-                  #circulcolor2.circulbox.circulcolor2
-                    %span delivering outstanding customer service
-                  #defult4.circulbox.circulcolordefult
-                    %a.inline{href: "#modal4"}
-                      %span
-                        cross-unit co-operation
-                    #modal4.hide
-                      .modal-header
-                        %a.close.inlineclose.inlineclosetopbtn{"data-tooltip" => "Close this ModalBox", type: "button"}
-                          %i.icon-cancel
-                        %h3 cross-unit co-operation
-                      .modal-body
-                        %p Always striving for solutions-focused collaboration across all stakeholder groups both inside and outside the immediate team and company to constantly optimise business performance.
-                    .circulplus
-                      .valigncenter
-                .row
-                  #defult5.circulbox.circulcolordefult
-                    %a.inline{href: "#modal5"}
-                      %span
-                        strategic focus
-                    #modal5.hide
-                      .modal-header
-                        %a.close.inlineclose.inlineclosetopbtn{"data-tooltip" => "Close this ModalBox", type: "button"}
-                          %i.icon-cancel
-                        %h3 strategic focus
-                      .modal-body
-                        %p Requires the ability to recognise and understand structures and processes in organisations together with internal and external organisational influences, integrating these accordingly into one’s own activities for the benefit of the company.
-                  #circulcolor3.circulbox.circulcolor3
-                    %span acting with trust and respect
-                  #defult6.circulbox.circulcolordefult
-                    %a.inline{href: "#modal6"}
-                      %span
-                        corporate responsibility
-                    #modal6.hide
-                      .modal-header
-                        %a.close.inlineclose.inlineclosetopbtn{"data-tooltip" => "Close this ModalBox", type: "button"}
-                          %i.icon-cancel
-                        %h3 corporate responsibility
-                      .modal-body
-                        %p Is the willingness to assume responsibility for topics going over and beyond one’s own area, to take decisions for the good of the company and to be aware of the short-term and long-term consequences for oneself and others.
-                        %p This means making high demands of the quality of both one’s own actions and the actions of others.
-                .row
-                  #defult7.circulbox.circulcolordefult
-                    %a.inline{href: "#modal7"}
-                      %span
-                        managing & developing people
-                    #modal7.hide
-                      .modal-header
-                        %a.close.inlineclose.inlineclosetopbtn{"data-tooltip" => "Close this ModalBox", type: "button"}
-                          %i.icon-cancel
-                        %h3 managing & developing people
-                      .modal-body
-                        %p Refers to the ability to create a trusting, appreciative and collaborative working environment and managing conflict constructively to achieve improved staff performance and employee satisfaction. This also includes the ability to identify and develop employee potential.
-                  #circulcolor4.circulbox.circulcolor4
-                    %span growing a sustainable business
-                  #defult8.circulbox.circulcolordefult
-                    %a.inline{href: "#modal8"}
-                      %span
-                        role model function
-                    #modal8.hide
-                      .modal-header
-                        %a.close.inlineclose.inlineclosetopbtn{"data-tooltip" => "Close this ModalBox", type: "button"}
-                          %i.icon-cancel
-                        %h3 role model function
-                      .modal-body
-                        %p Is the ability and willingness to align one’s own behaviour according to the needs, expectations and priorities of the company on an internal and external level so as to encourage others to do the same. This includes acting as a credible representative of the company.
-                .row
-                  #defult9.circulbox.circulcolordefult
-                    %a.inline{href: "#modal9"}
-                      %span
-                        striving for innovation
-                    #modal9.hide
-                      .modal-header
-                        %a.close.inlineclose.inlineclosetopbtn{"data-tooltip" => "Close this ModalBox", type: "button"}
-                          %i.icon-cancel
-                        %h3 striving for innovation
-                      .modal-body
-                        %p Entails the capability and will to improve the company’s performance, for example, by developing and testing new processes and products. This also means not being satisfied with the status quo but always looking out for improvements.
-                  #circulcolor5.circulbox.circulcolor5
-                    %span delivering successful results
-                  #defult10.circulbox.circulcolordefult
-                    %a.inline{href: "#modal10"}
-                      %span
-                        dealing with complexity
-                    #modal10.hide
-                      .modal-header
-                        %a.close.inlineclose.inlineclosetopbtn{"data-tooltip" => "Close this ModalBox", type: "button"}
-                          %i.icon-cancel
-                        %h3 dealing with complexity
-                      .modal-body
-                        %p Refers to the ability to understand the complexity within and across the areas in which he/she works and to take decisions based on both analytical and people-centred approaches.
-  = render partial: 'participants/components/right_side_bar'
+:javascript
+  $(document).ready(function()
+  {
+    $('#myStathalf2').circliful();
+    $('.recentnote-slide').bxSlider({
+      auto: true,
+      controls:false
+    });
+    $( "#behavioursTabs" ).tabs();
+  });
