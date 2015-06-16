@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="95px" height="93px" viewBox="0 0 95 93" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.3 (11970) - http://www.bohemiancoding.com/sketch -->
+    <title>delete_file</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Files" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="delete_file" sketch:type="MSLayerGroup" transform="translate(1.902558, 1.714976)">
+            <ellipse id="Oval-4" stroke="#BAE0E4" stroke-width="4.35456" sketch:type="MSShapeGroup" cx="45.6065265" cy="44.6461848" rx="44.8361754" ry="44.1690821"></ellipse>
+            <g id="bin" transform="translate(28.090134, 22.623188)" fill="#BAE0E4" sketch:type="MSShapeGroup">
+                <path d="M24.0926918,6.65207923 L24.0926918,3.447343 C24.0926918,1.784 22.66742,0.430917874 20.9163459,0.430917874 L13.6561267,0.430917874 C11.9045988,0.430917874 10.4797808,1.784 10.4797808,3.447343 L10.4797808,6.65207923 C0.958456979,7.24631498 0.950742996,9.04927536 0.950742996,9.04927536 L0.950742996,13.3584541 L33.6217296,13.3584541 L33.6217296,9.04927536 C33.6217296,9.04927536 33.6135619,7.24631498 24.0926918,6.65207923 L24.0926918,6.65207923 Z M14.1098904,3.87826087 L20.4625822,3.87826087 L20.4625822,6.50082705 C19.4770075,6.47755749 18.4251832,6.46376812 17.2862363,6.46376812 C16.1472894,6.46376812 15.0954651,6.47755749 14.1098904,6.50082705 L14.1098904,3.87826087 L14.1098904,3.87826087 Z" id="Shape"></path>
+                <path d="M3.21956151,15.9439614 L5.94214373,42.6608696 L28.6303289,42.6608696 L31.3529111,15.9439614 L3.21956151,15.9439614 Z" id="Shape"></path>
+            </g>
+        </g>
+    </g>
+</svg>

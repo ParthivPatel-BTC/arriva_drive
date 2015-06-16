@@ -114,6 +114,7 @@ en:
       text_events: 'Events'
       text_notes: 'Notes'
       text_my_networks: 'My Networks'
+      text_profile: 'Profile'
     msg:
       error:
         score_validation: 'Scores must be numeric'

@@ -18,5 +18,7 @@
 //= require participant/app
 //= require participant/jquery.bxslider
 //= require participant/jquery.circliful.min
+//= require participant/jquery.jcarousellite
 //= require participant/classie
 //= require participant/modalEffects
+//= require participant/custom

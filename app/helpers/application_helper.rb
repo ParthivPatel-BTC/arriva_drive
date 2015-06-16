@@ -163,8 +163,10 @@ module ApplicationHelper
   end
 
   def decide_class
-    unless current_participant.present? 
+    if !current_participant.present? 
       'homepage'
+    elsif current_participant.present? && action_name == 'edit_profile'
+      'profile-page'
     end
   end
 
@@ -174,8 +176,8 @@ module ApplicationHelper
 
   def set_page_name_with_logo(controller_name)
     case controller_name
-      when 'home'
-        t('participant.header_navigation.text_dashboard')
+      when 'home' 
+        action_name != 'edit_profile' ? t('participant.header_navigation.text_dashboard') : t('participant.header_navigation.text_profile')
       when 'behaviours'
         t('participant.header_navigation.text_values_behaviours')
       when 'activities'

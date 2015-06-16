@@ -3,21 +3,27 @@
   .behaviours-panel
     #behavioursTabs.clearfix.behaviours-block
       .behaviours-value
-        %h3= t('participant.values_behaviours.captions.values')
-        %ul
-          %li.puttpeople
-            = link_to t('participant.values_behaviours.captions.values_left_scroller.tabs-1'), "#tabs-1"
-          %li.custservice
-            = link_to t('participant.values_behaviours.captions.values_left_scroller.tabs-2'), "#tabs-2"
-          %li.trustrespect
-            = link_to t('participant.values_behaviours.captions.values_left_scroller.tabs-3'), "#tabs-3"
-          %li.sustainable
-            = link_to t('participant.values_behaviours.captions.values_left_scroller.tabs-4'), "#tabs-4"
-          %li.succeresult
-            = link_to t('participant.values_behaviours.captions.values_left_scroller.tabs-5'), "#tabs-5"
+        .behavioursvalue
+          %h3= t('participant.values_behaviours.captions.values')
+          %ul.behaviourstablist
+            %li.puttpeople
+              = link_to t('participant.values_behaviours.captions.values_left_scroller.tabs-1'), "#tabs-1"
+            %li.custservice
+              = link_to t('participant.values_behaviours.captions.values_left_scroller.tabs-2'), "#tabs-2"
+            %li.trustrespect
+              = link_to t('participant.values_behaviours.captions.values_left_scroller.tabs-3'), "#tabs-3"
+            %li.sustainable
+              = link_to t('participant.values_behaviours.captions.values_left_scroller.tabs-4'), "#tabs-4"
+            %li.succeresult
+              = link_to t('participant.values_behaviours.captions.values_left_scroller.tabs-5'), "#tabs-5"
       .behaviours-detail
-        %h3= t('participant.values_behaviours.captions.behaviours')
-        #tabs-1.behaviours-box
+        .behaviourstap-panel
+          .behaviourstap-detail
+            %span
+              = image_tag 'images/tap-behaviours.png'
+            %a.btn.tapbtn{:href => "#"} OK
+        %h3 Behaviours
+        #tabs-1.behaviours-box{:style => "display:block;"}
           .putting-people.clearfix
             = render partial: 'putting_people_behaviours'
         #tabs-2.behaviours-box
@@ -35,12 +41,14 @@
   .overlay{"data-sidebar-overlay" => ""}
 
 :javascript
-  $(document).ready(function()
-  {
-    $('#myStathalf2').circliful();
+  $(document).ready(function(){
+      $('#myStathalf2').circliful();
     $('.recentnote-slide').bxSlider({
       auto: true,
       controls:false
     });
-    $( "#behavioursTabs" ).tabs();
+    $(".tapbtn").click(function(){
+      $( "#behavioursTabs" ).tabs();
+      $(".behaviourstap-panel").css("display","none");
+    });
   });

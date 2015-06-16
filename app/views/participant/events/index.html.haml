@@ -1,7 +1,130 @@
 - content_for(:title, 'Drive Events')
+.main-panel
+  .event-panel
+    #eventTabs.clearfix.event-block
+      = render partial: 'events_month_scroller'
+      .eventtabs-detail{:style => "min-height: inherit;"}
+        .eventtabs-title
+          %h3 ARRIVA'S UPCOMING EVENTS FOR YOU
+          %p Filter by months of the year, past and present. View an event to download material.
+        #tabs-1.eventtabs-box.ui-tabs-panel.ui-widget-content.ui-corner-bottom{"aria-expanded" => "true", "aria-hidden" => "false", "aria-labelledby" => "ui-id-12", :role => "tabpanel"}
+          .monthevent-people.clearfix.border-bottom
+            %h4 March 2015
+            .montheventbox
+              .monthevent-box
+                .monthevent-img
+                  = image_tag "event-map.jpg"
+                  .monthevent-info.clearfix
+                    %h5
+                      Coaching Workshop
+                      %span 9AM Thusday 19th Feburary
+                    = link_to 'View', "#", 'data-modal' => 'modal-1', class: 'monthevent-view btn md-trigger'
+          .monthevent-people.clearfix
+            %h4 April 2015
+            .montheventbox
+              .monthevent-box
+                .monthevent-img
+                  = image_tag "event-map.jpg"
+                  .monthevent-info.clearfix
+                    %h5
+                      Drive Kick Off Event
+                      %span 9AM Thusday 19th Feburary
+                    = link_to 'View', "#", 'data-modal' => 'modal-1', class: 'monthevent-view btn md-trigger'
+            .montheventbox
+              .monthevent-box
+                .monthevent-img
+                  = image_tag "event-map.jpg"
+                  .monthevent-info.clearfix
+                    %h5
+                      DB Leadership
+                      %span 9AM Thusday 19th Feburary
+                    = link_to 'View', "#", 'data-modal' => 'modal-1', class: 'monthevent-view btn md-trigger'
+        #tabs-6.eventtabs-box.ui-tabs-panel.ui-widget-content.ui-corner-bottom{"aria-expanded" => "false", "aria-hidden" => "true", "aria-labelledby" => "ui-id-17", :role => "tabpanel", :style => "display: none;"}
+          .delivering-customer.clearfix
+            .puttingpeople-box
+              .puttingpeoplebox
+                %h4 Customer Orientation
+                %p Entails knowing customer expectations and implementing customer-orient solutions.
+                %p For executives this also means acting in a manner that has a positive effect on the customer orientation of the employess
+            .puttingpeople-box
+              .puttingpeoplebox
+                %h4 Target  Results Focus
+                %p Is the endeavour to achieve outstanding results in one's own area.
+                %p This also includes setting oneself challenging targets, reviewing these and setting priorities to ensure company success.
+            .puttingpeople-box
+              .puttingpeoplebox
+                %h4 Cross-Unit Co-Operation
+                %p Always Striving for solutions-focused collaboration across all stakeholder groups both inside and outside the immediate team and company to constantly optimise business performance
+            .puttingpeople-box
+              .puttingpeoplebox
+                %h4 Strategic Focus
+                %p Requires the ability to recognise understand structures and processes in organisations together with internal and external organisational influences, integrating these accordingly into one's own activities for the benefit of the company.
+            .puttingpeople-box
+              .puttingpeoplebox
+                %h4 Role Model Function
+                %p Requires the ability to recognise understand structures and processes in organisations together with internal and external organisational influences, integrating these accordingly into one's own activities for the benefit of the company.
+            .puttingpeople-box
+              .puttingpeoplebox
+                %h4 Dealing with Complexity
+                %p Entails the capability and will to improve the company's performance, for example, by developing and testing new processes and products.
+        #tabs-3.eventtabs-box.ui-tabs-panel.ui-widget-content.ui-corner-bottom{"aria-expanded" => "false", "aria-hidden" => "true", "aria-labelledby" => "ui-id-20", :role => "tabpanel", :style => "display: none;"}
+          %p Mauris eleifend est et turpis. Duis id erat. Suspendisse potenti. Aliquam vulputate, pede vel vehicula accumsan, mi neque rutrum erat, eu congue orci lorem eget lorem. Vestibulum non ante. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce sodales. Quisque eu urna vel enim commodo pellentesque. Praesent eu risus hendrerit ligula tempus pretium. Curabitur lorem enim, pretium nec, feugiat nec, luctus a, lacus.
+          %p Duis cursus. Maecenas ligula eros, blandit nec, pharetra at, semper at, magna. Nullam ac lacus. Nulla facilisi. Praesent viverra justo vitae neque. Praesent blandit adipiscing velit. Suspendisse potenti. Donec mattis, pede vel pharetra blandit, magna ligula faucibus eros, id euismod lacus dolor eget odio. Nam scelerisque. Donec non libero sed nulla mattis commodo. Ut sagittis. Donec nisi lectus, feugiat porttitor, tempor ac, tempor vitae, pede. Aenean vehicula velit eu tellus interdum rutrum. Maecenas commodo. Pellentesque nec elit. Fusce in lacus. Vivamus a libero vitae lectus hendrerit hendrerit.
+        #tabs-4.eventtabs-box.ui-tabs-panel.ui-widget-content.ui-corner-bottom{"aria-expanded" => "false", "aria-hidden" => "true", "aria-labelledby" => "ui-id-21", :role => "tabpanel", :style => "display: none;"}
+          %p Morbi tincidunt, dui sit amet facilisis feugiat, odio metus gravida ante, ut pharetra massa metus id nunc. Duis scelerisque molestie turpis. Sed fringilla, massa eget luctus malesuada, metus eros molestie lectus, ut tempus eros massa ut dolor. Aenean aliquet fringilla sem. Suspendisse sed ligula in ligula suscipit aliquam. Praesent in eros vestibulum mi adipiscing adipiscing. Morbi facilisis. Curabitur ornare consequat nunc. Aenean vel metus. Ut posuere viverra nulla. Aliquam erat volutpat. Pellentesque convallis. Maecenas feugiat, tellus pellentesque pretium posuere, felis lorem euismod felis, eu ornare leo nisi vel felis. Mauris consectetur tortor et purus.
+        #tabs-5.eventtabs-box.ui-tabs-panel.ui-widget-content.ui-corner-bottom{"aria-expanded" => "false", "aria-hidden" => "true", "aria-labelledby" => "ui-id-18", :role => "tabpanel", :style => "display: none;"}
+          %p Mauris eleifend est et turpis. Duis id erat. Suspendisse potenti. Aliquam vulputate, pede vel vehicula accumsan, mi neque rutrum erat, eu congue orci lorem eget lorem. Vestibulum non ante. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce sodales. Quisque eu urna vel enim commodo pellentesque. Praesent eu risus hendrerit ligula tempus pretium. Curabitur lorem enim, pretium nec, feugiat nec, luctus a, lacus.
+          %p Duis cursus. Maecenas ligula eros, blandit nec, pharetra at, semper at, magna. Nullam ac lacus. Nulla facilisi. Praesent viverra justo vitae neque. Praesent blandit adipiscing velit. Suspendisse potenti. Donec mattis, pede vel pharetra blandit, magna ligula faucibus eros, id euismod lacus dolor eget odio. Nam scelerisque. Donec non libero sed nulla mattis commodo. Ut sagittis. Donec nisi lectus, feugiat porttitor, tempor ac, tempor vitae, pede. Aenean vehicula velit eu tellus interdum rutrum. Maecenas commodo. Pellentesque nec elit. Fusce in lacus. Vivamus a libero vitae lectus hendrerit hendrerit.
+.overlay{"data-sidebar-overlay" => ""}
+#modal-1.md-modal.md-effect-5
+  .md-content.eventpopup-panel
+    .eventpopup-title
+      %h3
+        Coaching Workshop
+        %span 9am - 4pm
+      %p 53 Park Lane, London, W1K2FR
+    .eventpup-map
+      %img{:alt => "", :src => "images/event-map2.jpg"}/
+      .info-schedule
+        %h4 Information schedule
+        %p This event is designed to further develop your fit plans through group coaching and exploring your 360 feedback and assessment outputs
+        %h4 Download Material
+        .material-box
+          %h5 Map  Directions
+          %p Download all the infomation for travel to and from the event
+        .material-box
+          %h5 Event Information
+          %p Download all the infomation for the event
+        .material-box
+          %h5 Guest Speakers Information
+          %p Download all the infomation for travel to and from the event
+      .material-footer.clearfix
+        %p
+          Nedd help? Contact
+          %a{:href => "mailto:Support@drivedb.net"} Support@drivedb.net
+        %a.btn.addtocelendar{:href => "#"} Add to Calendar
+      %button.md-close Close
 
-%section.mainsection
-  = render partial: 'participants/components/left_side_bar'
-  #events_content
-    = render partial: 'participant/events/events'
-  = render partial: 'participants/components/right_side_bar'
+:javascript
+  $(document).ready(function(){
+    $('#myStathalf2').circliful();
+    $('.recentnote-slide').bxSlider({
+      auto: true,
+      controls:false
+    });
+    $( "#eventTabs" ).tabs();
+    $(".mouseWheelButtons .carousel").jCarouselLite({
+      btnNext: ".mouseWheelButtons .next",
+      btnPrev: ".mouseWheelButtons .prev",
+      mouseWheel: true,
+      vertical: true,
+      visible: 12,
+      circular: false
+    });
+    model_popup();
+  });
+/ %section.mainsection
+/   = render partial: 'participants/components/left_side_bar'
+/   #events_content
+/     = render partial: 'participant/events/events'
+/   = render partial: 'participants/components/right_side_bar'
