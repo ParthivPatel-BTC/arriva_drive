@@ -199,6 +199,12 @@ en:
         fit_plan_performance_summary_paragraph_1: "Our clients hire us because mobile apps are key to their bisiness success. We're their technology experts, delivering advice, design, development and support"
         fit_plan_performance_summary_paragraph_2: "At a glance you can access all areas of the application, see your fit plan performance summary and behaviours, and track your use of the DRIVE activities."
         fit_plan_performance_summary_paragraph_3: "if you have any questions please contact"
+    edit_profile:
+      captions:
+        edit_photo_link: 'Edit Picture'
+        lbl_block_notes: 'Block notes notification'
+        lbl_block_files: 'Block files notification'
+        lbl_block_network: 'Block network notification'
     values_behaviours:
       captions:
         values: 'Values'
