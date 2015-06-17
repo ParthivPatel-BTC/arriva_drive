@@ -3,7 +3,7 @@
   %ul.participantslist.clearfix
     - if @participants.present?
       - @participants.each do |participant|
-        - span_text_follow_unfollow = participant_ids.include?(participant.id) ? 'unfollow' : 'follow'
+        - span_text_follow_unfollow = participant_ids.include?(participant.id) ? t('participant.networks.caption.unfollow') : t('participant.networks.caption.follow')
         = link_to(action: :add_to_network, participant_id: participant.id, remote: true) do
           %li
             #c.network-img
@@ -15,7 +15,7 @@
               %span= span_text_follow_unfollow
     - else
       %li
-        %h4 No Participants Found
+        %h4= t('participant.networks.msg.no_networks_found')
 
 :javascript
   $(document).ready(function(){

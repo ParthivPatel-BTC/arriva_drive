@@ -1,6 +1,6 @@
 - participant_ids = current_participant.networks.pluck(:participant_id)
 %h3
-  Your Network
+  = t('participant.networks.caption.your_network')
   %span= "(#{@networks.count})"
 #content-4.participantsrow
   %ul.participantslist.clearfix
@@ -14,7 +14,7 @@
             %p= network.job_title.titleize
             %p.unfollow
               %i.mdi-navigation-check
-              %span unfollow
+              %span= t('participant.networks.caption.unfollow')
     - else
       %li
         %h4 No Participants Found

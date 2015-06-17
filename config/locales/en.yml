@@ -160,6 +160,9 @@ en:
         view_all_participants: 'View all participants'
         no_participant_msg_text: "You currently have no participants in your network, you can view all paticipants below and add them to your network."
         level: 'LEVEl %{level}'
+        your_network: 'Your Network'
+        unfollow: 'unfollow'
+        follow: 'follow'
       msg:
         no_networks_found: 'No Networks Found'
     nav_bar:
