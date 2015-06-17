@@ -1,44 +1,16 @@
 - content_for(:title, 'Drive My Network')
-
-%section.mainsection
-  = render partial: 'participants/components/left_side_bar'
-  .contentarea
-    - if @networks.present? || @participant.present? || (!@networks.present? && !@participant.present?)
-      .pagingrow
-        = link_to('javascript:void(0);', class: 'view_all_participants', title: t('participant.networks.caption.view_all_participants')) do
-          %i.icon-info
-          = t('participant.networks.caption.view_all_participants')
-    .spacer5
-    .mynetwork
-      #about.nano
-        .nano-content
-          .mynetworklist
-            - if @networks.present?
-              = render partial: 'participant/networks/current_participant_networks'
-            - elsif @participant.present?
-              = render partial: 'participant/networks/networks'
-            - else
-              = render partial: 'participant/networks/no_participant_in_network'
-          .monthalpha
+.main-panel
+  .network-panel
+    .networkfull
+      .yournetwork.clearfix
+        = render partial: 'participant/networks/current_participant_networks'
+      .allparticipants.clearfix
+        = render partial: 'participant/networks/networks'
+      .alphabetrow
+        .alphabetrow-sub
+          %ul.owl-carousel.row
             - ('A' .. 'Z').to_a.each do |e|
-              = link_to(e, 'javascript:void(0)', id: 'alpha_search', style: "margin-bottom: #{set_margin_for_alpha_character(@participants.size)}px !important;")
-            %br/
-  = render partial: 'participants/components/right_side_bar'
+              %li.item
+                = link_to e, {action: :seach_by_alpha_character, alpha_character: e}, remote: true
 
-:javascript
-  $(document).ready(function() {
-    $("a[id='alpha_search']").on("click", function (e) {
-      $.ajax({
-        url: "/participants/seach_by_alpha_character?alpha_character=" + $(this).text(),
-        dataType: "script"
-      });
-    });
-
-    $("#view_all_participants, .view_all_participants").on("click", function () {
-      $.ajax({
-        url: "/participants/all_participants?view_all=true",
-        dataType: "script"
-      });
-    });
-
-  });
+.overlay{"data-sidebar-overlay" => ""}

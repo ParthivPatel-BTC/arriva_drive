@@ -1,33 +1,20 @@
 - participant_ids = current_participant.networks.pluck(:participant_id)
-%ul
-  - @networks.each do |network|
-    %li.connected
-      .profilepic
-        - if network.participant.photo.exists?
-          = image_tag(network.participant.photo.url(:thumb), class: 'participant_img')
-        - else
-          = image_tag 'silhouette.jpg'
-      .mynetworkdetails
-        %h5= network.participant.full_name
-        %p= network.participant.job_title
-        %p= get_division_name(network.participant.division)
-        - if participant_ids.include?(network.participant.id)
-          = link_to('javascript:void(0);', value: network.participant.id, id: 'delete_from_network', class: 'noteslinks', title: t('common.caption.delete')) do
-            %i.icon-delete
-
-:javascript
-  $(document).ready(function() {
-    $("a[id='delete_from_network']").on("click", function () {
-     var confirmation = check_confirmation();
-     if(confirmation == true){
-      $.ajax({
-        url: "/participants/remove_participant?participant_id="+$(this).attr( "value" ),
-        dataType: "script"
-      });
-     }
-    });
-  });
-
-  function check_confirmation() {
-    return confirm('Are you sure?');
-  }
+%h3
+  Your Network
+  %span= "(#{@networks.count})"
+#content-4.participantsrow
+  %ul.participantslist.clearfix
+    - if @networks.present?
+      - @networks.each do |network|
+        = link_to(action: :remove_participant, participant_id: network.id, remote: true) do
+          %li
+            .network-img
+              = image_tag(network.photo.url(:thumb), class: 'participant_img')
+            %h4= network.full_name.titleize
+            %p= network.job_title.titleize
+            %p.unfollow
+              %i.mdi-navigation-check
+              %span unfollow
+    - else
+      %li
+        %h4 No Participants Found

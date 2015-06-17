@@ -536,7 +536,7 @@ header{padding:18px 20px 0;}
 .participantslist li{background:#ffffff; border:1px solid #dddddd; border-radius:6px; box-shadow:0 0 3px rgba(0,0,0,0.16); padding:30px 20px 16px 20px; position:relative; width:170px; margin-right:10px; float:left; text-align:center; cursor:pointer;}
 .participantslist li:hover, .participantslist li.active{ background:#008b9a;}
 .participantslist li .network-img{width:65px; height:65px; display:inline-block;}
-.participantslist li .network-img img{ width:100%; border-radius:100%; border:2px solid #cfe02b; }
+.participantslist li .network-img img{ width:100%; border-radius:100%; border:2px solid #cfe02b; height: 100%; }
 .participantslist li h4{ font-size:13px; color:#003d3b; margin-bottom:0px; font-weight:bold;}
 .participantslist li:hover h4, .participantslist li.active h4{ color:#fff;}
 .participantslist li p{ color:#003d3b; font-size:11px;}

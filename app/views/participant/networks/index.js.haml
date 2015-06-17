@@ -1,6 +1,2 @@
-- if @participants.present?
-  $('.mynetworklist').html("#{escape_javascript(render 'networks')}");
-- elsif @networks.present?
-  $('.mynetworklist').html("#{escape_javascript(render 'current_participant_networks')}");
-- else
-  $('.mynetworklist').html("#{escape_javascript(render 'no_networks_found')}");
+$('.yournetwork').html("#{escape_javascript(render 'current_participant_networks')}");
+$('.allparticipants').html("#{escape_javascript(render 'networks')}");

@@ -22,3 +22,5 @@
 //= require participant/classie
 //= require participant/modalEffects
 //= require participant/custom
+//= require participant/jquery.mCustomScrollbar.concat.min
+//= require participant/owl.carousel

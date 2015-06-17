@@ -10,10 +10,11 @@ class Participant::NetworksController < ApplicationController
 
   def seach_by_alpha_character
     respond_to do |format|
-      @participants = Participant.participant_by_alpha_search(params[:alpha_character]).all_participants(current_participant.id)
-        format.js{
-          render file: 'participant/networks/index'
-        }
+      @networks = Participant.participant_by_alpha_search(params[:alpha_character]).where(id: current_participant.networks.pluck(:participant_id))
+      @participants =  Participant.participant_by_alpha_search(params[:alpha_character]).where.not(id: current_participant.id)
+      format.js{
+        render file: 'participant/networks/index'
+      }
     end
   end
 
@@ -27,14 +28,16 @@ class Participant::NetworksController < ApplicationController
   end
 
   def add_to_network
+    return false if Network.find_by_current_participant_id_and_participant_id(current_participant.id, params[:participant_id])
     @network = Network.new(network_params)
     if @network.save
       Network.send_network_notification(@participant_in_network, current_participant) if @participant_in_network.network_notification
       respond_to do |format|
-        @networks = Network.find_all_by_current_participant_id(current_participant.id)
-          format.js{
-            render file: 'participant/networks/index'
-          }
+        @participants = Participant.all_participants(current_participant.id)
+        get_network_for_current_participant
+        format.js{
+          render file: 'participant/networks/index'
+        }
       end
     end
   end
@@ -42,7 +45,8 @@ class Participant::NetworksController < ApplicationController
   def remove_participant
     remove_participant_from_network_list
     respond_to do |format|
-      @networks = Network.find_all_by_current_participant_id(current_participant.id)
+      @participants = Participant.all_participants(current_participant.id)
+      get_network_for_current_participant
         format.js{
           render file: 'participant/networks/index'
         }
@@ -52,7 +56,8 @@ class Participant::NetworksController < ApplicationController
   private
 
   def get_network_for_current_participant
-    @networks = Network.find_all_by_current_participant_id(current_participant.id)
+    @current_participant_network_ids = Network.find_all_by_current_participant_id(current_participant.id).map(&:participant_id)
+    @networks = Participant.find(@current_participant_network_ids)
   end
 
   def network_params
