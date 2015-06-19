@@ -143,5 +143,7 @@ class Participant::ParticipantAttachmentsController < ApplicationController
 
   def shared_unshared_attachments
     @attachments = current_participant.participant_attachments + current_participant.shared_attachments.map(&:participant_attachment)
+    @shared_attachments = current_participant.shared_attachments
+    @tagged_participants = SharedAttachment.shared_attachment_participants(current_participant.id).pluck(:participant_id)
   end
 end

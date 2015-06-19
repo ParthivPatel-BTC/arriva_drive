@@ -14,15 +14,15 @@ module ActivitiesHelper
   def get_activity_icon_class(activity_type)
     case activity_type
       when 1
-        'bigicon-sustainable'
+        'icon3'
       when 2
-        'bigicon-delivering'
+        'icon2'
       when 3
-        'bigicon-brain'
+        'icon5'
       when 4
-        'bigicon-putting'
+        'icon4'
       when 5
-        'bigicon-putting'
+        'icon6'
     end
   end
 
@@ -59,5 +59,24 @@ module ActivitiesHelper
 
   def online_course_activities_for_participant(participant,activity)
     (activity.participant_online_course_activities.where participant_id: participant).empty?
+  end
+
+  def get_activity_icon_image(activity_type)
+    case activity_type
+      when 1
+        'book_icon@2x.png'
+      when 2
+        'video_icon@2x.png'
+      when 3
+        'app_icon@2x.png'
+      when 4
+        'magazine_icon@2x.png'
+      when 5
+        'onlinecourse_icon@2x.png'
+    end
+  end
+
+  def fetch_activity_image_from_scrach(activity)
+    ScreenScrapingService.fetch_data_from_web(activity.link) if activity.activity_type != 5
   end
 end

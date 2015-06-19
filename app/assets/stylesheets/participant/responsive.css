@@ -366,6 +366,8 @@
 	.behaviourstap-panel .behaviourstap-detail{width:86%;}
 	.behaviourstap-panel .tapbtn{width:75px; float:right;}
 	.md-effect-5 .md-content{height:auto; overflow:inherit; bottom:auto;}
+	.activitipopup-title .activitititle-text{width:64%;}
+	.activitititle-text h3{font-size:14px; line-height:18px;}
 }
 @media (min-width:320px) and (max-width:359px){
 	.activityprogress-list ul li{font-size:7px;}

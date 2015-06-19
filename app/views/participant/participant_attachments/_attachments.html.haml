@@ -1,54 +1,77 @@
-- if @attachments.blank?
-  .contentarea
-    .pagingrow.notes
-      %span.left.countnote= pluralize(@attachments.count, 'file')
-      %a.right{ href: new_participant_attachment_path }
-        = t('participant.caption.new_file')
-        %i.icon-newfile
-    .activities
-      %ul
-        %li.notes-custom
-          .activitiesinfo
-            %h5= t('participant_attachments.msg.no_files_found')
-- else
-  .contentarea
-    .eventssection
-      #about.nano
-        .nano-content{style: "right: -13px;", tabindex: "0"}
-          .pagingrow.notes
-            %span.left.countnote= pluralize(@attachments.count, 'file')
-            = link_to(new_participant_attachment_path, class: 'right') do
-              = t('participant.caption.new_file')
-              %i.icon-newfile
-          .notes-custom
-            %ul
-              - last_month = nil
-              - @attachments.each_with_index do |attachment, index|
-                %li
-                  .notes-left.notes-left-width
-                    .notedetails
-                      %p.uppercase
-                        %span.green AUTHOR:
-                        = file_owner_name(attachment)
-                      %h5
-                        %span.date= formatted_date(attachment.updated_at, true)
-                        &nbsp;
-                        %span.time= formatted_time_with_timezone(attachment.updated_at)
-                      / %p.uppercase
-                      /   %span.green= "#{t('participant.participant_attachments.caption.file_name')} : "
-                      /   = attachment.attachment_file_name
-                      %h3= link_to file_name_without_extension(attachment.attachment_file_name), '#', target: "_blank", 'data-popup' => 'true', 'data-url' => "#{show_attachment_path(attachment.id)}", 'data-id' => "#{attachment.id}"
+.myfiles-panel.clearfix
+  - @attachments.each do |attachment|
+    .myfiles-box
+      .myfiles-block
+        .myfilesbox-text
+          %h4= attachment.attachment_file_name
+          %p= attachment.file_description
+          %p
+            %span
+              Shared with:
+              %strong= shared_attachment_participants(attachment.participants.uniq)
+              = attachment.participants.count
+        %ul.myfilesbox-btn.clearfix
+          %li.delete-btn
+            = link_to "", participant_attachment_path(attachment), title: t('common.caption.delete'), method: :delete, data: { confirm: t('common.msg.confirm')}
+          %li.download-btn
+            = link_to "", "#{show_attachment_path(attachment.id)}", target: "_blank", 'data-popup' => 'true','data-id' =>"#{attachment.id}"
+          %li.share-btn
+            %a.md-trigger{"data-modal" => "modal-1", :href => "#"}             
 
-                      %h5= attachment.file_description
-                    .notesicon_myfile
-                      - if attachment.participant_id == current_participant.id
-                        = link_to participants_list_participant_shared_path(attachment), id: 'participantShareListingBtn', class: 'tag-network-link', title: t('participant.participant_attachments.caption.share_or_unshare'), style: 'width: 30px; margin-right: 5px' do
-                          %i.icon-somebody
-                      = link_to participant_attachment_path(attachment),  class: "confirmation", title: t('common.caption.delete'), method: :delete, data: { confirm: t('common.msg.confirm')}, style: 'width: 30px;' do
-                        %i.icon-delete
-                    .writeicon.writeicon-width
-                      / = link_to participants_list_participant_shared_path(attachment), id: 'participantShareListingBtn', class: 'tag-network-link', title: t('participant.participant_attachments.caption.share_or_unshare') do
-                      /   %i.icon-somebody
-                      %p.uppercase
-                        %span.green SHARED WITH:
-                        = shared_attachment_participants(attachment.participants.uniq)
+
+
+
+/ - if @attachments.blank?
+/   .contentarea
+/     .pagingrow.notes
+/       %span.left.countnote= pluralize(@attachments.count, 'file')
+/       %a.right{ href: new_participant_attachment_path }
+/         = t('participant.caption.new_file')
+/         %i.icon-newfile
+/     .activities
+/       %ul
+/         %li.notes-custom
+/           .activitiesinfo
+/             %h5= t('participant_attachments.msg.no_files_found')
+/ - else
+/   .contentarea
+/     .eventssection
+/       #about.nano
+/         .nano-content{style: "right: -13px;", tabindex: "0"}
+/           .pagingrow.notes
+/             %span.left.countnote= pluralize(@attachments.count, 'file')
+/             = link_to(new_participant_attachment_path, class: 'right') do
+/               = t('participant.caption.new_file')
+/               %i.icon-newfile
+/           .notes-custom
+/             %ul
+/               - last_month = nil
+/               - @attachments.each_with_index do |attachment, index|
+/                 %li
+/                   .notes-left.notes-left-width
+/                     .notedetails
+/                       %p.uppercase
+/                         %span.green AUTHOR:
+/                         = file_owner_name(attachment)
+/                       %h5
+/                         %span.date= formatted_date(attachment.updated_at, true)
+/                         &nbsp;
+/                         %span.time= formatted_time_with_timezone(attachment.updated_at)
+/                       / %p.uppercase
+/                       /   %span.green= "#{t('participant.participant_attachments.caption.file_name')} : "
+/                       /   = attachment.attachment_file_name
+/                       %h3= link_to file_name_without_extension(attachment.attachment_file_name), '#', target: "_blank", 'data-popup' => 'true', 'data-url' => "#{show_attachment_path(attachment.id)}", 'data-id' => "#{attachment.id}"
+
+/                       %h5= attachment.file_description
+/                     .notesicon_myfile
+/                       - if attachment.participant_id == current_participant.id
+/                         = link_to participants_list_participant_shared_path(attachment), id: 'participantShareListingBtn', class: 'tag-network-link', title: t('participant.participant_attachments.caption.share_or_unshare'), style: 'width: 30px; margin-right: 5px' do
+/                           %i.icon-somebody
+/                       = link_to participant_attachment_path(attachment),  class: "confirmation", title: t('common.caption.delete'), method: :delete, data: { confirm: t('common.msg.confirm')}, style: 'width: 30px;' do
+/                         %i.icon-delete
+/                     .writeicon.writeicon-width
+/                       / = link_to participants_list_participant_shared_path(attachment), id: 'participantShareListingBtn', class: 'tag-network-link', title: t('participant.participant_attachments.caption.share_or_unshare') do
+/                       /   %i.icon-somebody
+/                       %p.uppercase
+/                         %span.green SHARED WITH:
+/                         = shared_attachment_participants(attachment.participants.uniq)

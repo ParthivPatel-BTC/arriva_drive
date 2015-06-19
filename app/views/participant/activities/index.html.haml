@@ -1,7 +1,23 @@
 - content_for(:title, 'Drive Activities')
-
-%section.mainsection
-  = render partial: 'participants/components/left_side_bar'
-  #activities_content
-    = render partial: 'participant/activities/activities'
-  = render partial: 'participants/components/right_side_bar'
+- total_activities = Activity.count
+- activity_summary = activity_summary(completed_activities, total_activities)
+.main-panel.activitiesheight
+  .filteractivities.clearfix
+    .activities-value
+      .activitiesvalue
+        = render partial: 'left_activity_fiters'
+        .activityprogress
+          #myStathalf2.progress-main{"data-bgcolor" => "#d3d3d3", "data-fgcolor" => "#cddc39", "data-fontsize" => "28", "data-icon" => "fa-task", "data-info" => "Your Activities Complete", "data-percent" => "20", "data-text" => "#{completed_activities}/#{total_activities}", "data-width" => "10"}
+    .activities-detail
+      .titlerow
+        %h3 Select an activity
+        %p Press ‘MORE INFO’ to explore an Activity
+        .activitifilter-icon
+          %a.filterIcon{:href => "#"}
+        .activityrow.clearfix
+          = render partial: 'activities' 
+      = render partial: 'activity_filter_bottom'
+  .overlay{"data-sidebar-overlay" => ""}
+.activities_model_poup
+  = render partial: 'activities_model_popup'
+= javascript_include_tag 'participant/activities'

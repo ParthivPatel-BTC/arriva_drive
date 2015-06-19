@@ -1,0 +1,19 @@
+.activities-icon.activitifilter-bottom
+  = link_to(javascript_void, activity_type: '', class: "active") do
+    %i.icon1
+    %span All
+  = link_to(javascript_void, activity_type: 2) do
+    %i.icon2
+    %span Video
+  = link_to(javascript_void, activity_type: 1) do
+    %i.icon3
+    %span Book
+  = link_to(javascript_void, activity_type: 4) do
+    %i.icon4
+    %span Magazine
+  = link_to(javascript_void, activity_type: 3) do
+    %i.icon5
+    %span App
+  = link_to(javascript_void, activity_type: 5) do
+    %i.icon6
+    %span Online Course

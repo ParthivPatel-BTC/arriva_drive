@@ -63,7 +63,7 @@
             %h3
               = t('participant.dashboard.caption.your_network')
               %span= "(#{@networks.count})"
-            - @networks.each do |network|
+            - @networks.limit(3).each do |network|
               .yournetwork-panel
                 .yournetwork-box.clearfix
                   .yournetwork-profile

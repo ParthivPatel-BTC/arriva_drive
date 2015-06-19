@@ -1,5 +1,181 @@
-%section.mainsection
-  = render partial: 'participants/components/left_side_bar'
-  #attachments
-    = render partial: 'participant/participant_attachments/attachments'
-= render partial: 'participants/components/right_side_bar'
+.main-panel
+  .file-panel.clearfix
+    .filepanel-right
+      .addnote-view
+        %a.addnote-icon.md-trigger{"data-modal" => "modal-1", :href => "#"}
+        .addnote-text
+          = image_tag 'images/add-newfile.jpg'
+      #filepaneltab.filepanel-tab
+        .filepaneltab-value
+          %ul.clearfix
+            %li
+              %a{:href => "#tabs-1"} My File
+            %li
+              %a{:href => "#tabs-2"} Shared Files
+        .filepaneltab-detail
+          #tabs-1.filepaneltab-box
+            %h3
+              My Files
+              %span= "(#{@attachments.count})"
+            = render partial: 'participant/participant_attachments/attachments'
+          #tabs-2.filepaneltab-box
+            %h3
+              Shared Files
+              %span= "(#{@shared_attachments.count})"
+            .sharedfiles-panel.clearfix
+            - @shared_attachments.each do |s_attachment|
+              .myfiles-box
+                .myfiles-block
+                  .myfilesbox-text
+                    %h4 Arriva Meeting
+                    %p New to Arriva? Read through this Getting Started brochure for the ins and out.
+                    %p
+                      %span
+                        Shared with:
+                        %strong lan Butterfield
+                  %ul.myfilesbox-btn.clearfix
+                    %li.delete-btn
+                      %a{:href => "#"}
+                    %li.download-btn
+                      %a{:href => "#"}
+                    %li.share-btn
+                      %a{:href => "#"}
+.overlay{"data-sidebar-overlay" => ""}
+#modal-1.md-modal.md-effect-5
+  .md-content.notepopup-panel
+    .eventpopup-title
+      %h3 NEW FILE
+    .notepopup-list
+      .inputnote.clearfix
+        .inputnote-number 1
+        %textarea{:placeholder => "Write a note..."}
+      .tagsameone
+        .inputnote-number 2
+        .tagsameone-title
+          %h3.accord-toggle
+            Would you like to
+            %span tag someone
+            in your network?
+          .tagsameone-detail.accord-div
+            .accord-carousel
+              %ul.owl-carousel
+                %li.item
+                  %a{:href => "#"}
+                    .network-img
+                      = image_tag 'images/avtar-photo_active.png'
+                    %h4 Oliver Longwood
+                    %p Operations Support
+                %li.item
+                  %a{:href => "#"}
+                    .network-img
+                      = image_tag 'images/avtar-photo_active.png'
+                    %h4 Anna Worth
+                    %p Operations Support
+                %li.item
+                  %a{:href => "#"}
+                    .network-img
+                      = image_tag 'images/avtar-photo.png'
+                    %h4 Laura Hampstead
+                    %p Operations Support
+                %li.item
+                  %a{:href => "#"}
+                    .network-img
+                      = image_tag 'images/avtar-photo1.png'
+                    %h4 Andrew Cole
+                    %p Operations Support
+                %li.item
+                  %a{:href => "#"}
+                    .network-img
+                      = image_tag 'images/avtar-photo.png'
+                    %h4 Darren Sim
+                    %p Operations Support
+                %li.item
+                  %a{:href => "#"}
+                    .network-img
+                      = image_tag 'images/avtar-photo.png'
+                    %h4 Kyle Walker
+                    %p Operations Support
+                %li.item
+                  %a{:href => "#"}
+                    .network-img
+                      = image_tag 'images/avtar-photo1.png'
+                    %h4 Oliver Longwood
+                    %p Operations Support
+                %li.item
+                  %a{:href => "#"}
+                    .network-img
+                      = image_tag 'images/avtar-photo1.png'
+                    %h4 Oliver Longwood
+                    %p Operations Support
+                %li.item
+                  %a{:href => "#"}
+                    .network-img
+                      = image_tag 'images/avtar-photo1.png'
+                    %h4 Oliver Longwood
+                    %p Operations Support
+      .choosefile-btn
+        %a.btn{:href => "#"} Choose File
+      .notepopup-footer.clearfix
+        %p People you have tagged will be automatically notified
+        .notesend-btn
+          %a{:href => "#"} Send
+    %button.md-close Close
+:javascript
+  $(document).ready(function(){
+    model_popup();
+    $('#myStathalf2').circliful();
+    
+    $('.recentnote-slide').bxSlider({
+      auto: true,
+      controls:false
+    });
+    
+    $( "#filepaneltab" ).tabs();
+    $(".file-panel").click(function(){
+      $(".addnote-view").addClass("close")
+    });
+    
+    $(".sharedtablist-box").on("click", function() {
+      $(".sharedtablist-box").removeClass("active");
+      $(".sharemain-panel").removeClass("activeLnk");
+      $(this).addClass("active");
+      $("div[id=" + $(this).attr("data-related") + "]").addClass("activeLnk");
+    });
+    
+    
+    $(".accord-toggle").click(function(){
+      $(".accord-div").slideUp();
+      if($(this).next('.accord-div').is(':visible')){
+        $(this).next('.accord-div').slideUp();
+        $(this).removeClass("active");
+      }
+      else{
+        $(this).next('.accord-div').slideDown();
+        $(this).addClass("active");
+      }
+      
+      var owl = $('.owl-carousel');
+      owl.owlCarousel({
+        margin:0,
+        autoWidth:true,
+        nav:true,
+        items:7
+        
+      });
+      owl.on('mousewheel', '.owl-stage', function (e) {
+        if (e.deltaY>0) {
+          owl.trigger('next.owl');
+        } else {
+          owl.trigger('prev.owl');
+        }
+        e.preventDefault();
+      });
+    });
+  });
+
+
+/ %section.mainsection
+/   = render partial: 'participants/components/left_side_bar'
+/   #attachments
+/     = render partial: 'participant/participant_attachments/attachments'
+/ = render partial: 'participants/components/right_side_bar'

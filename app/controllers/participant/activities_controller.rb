@@ -7,20 +7,21 @@ class Participant::ActivitiesController < ApplicationController
   def index
     respond_to do |format|
       if current_participant.cohort.present?
-        @activities = current_participant.cohort.activities.get_activities(params)
-        if params[:page] || params[:behaviour_id].present?
-          format.js{
-            render file: 'participant/activities/index'
-          }
-        else
-          @activities = current_participant.cohort.activities.get_activities_for_pagination(params)
-          format.js{
-            render file: 'participant/activities/index'
-          }
-        end
+        @activities = Activity.get_activities(params, current_participant.cohort.activities)
       else
         @activities = nil
       end
+      format.js{
+        render file: 'participant/activities/index'
+      }
+        # @mcq = @activity.multiple_choice_question if @activity.activity_type != 5
+        # @activities = current_participant.cohort.activities.get_activities(params)
+        # if params[:page] || params[:behaviour_id].present?
+        #   format.js{
+        #     render file: 'participant/activities/index'
+        #   }
+        # else
+        #   @activities = current_participant.cohort.activities.get_activities_for_pagination(params)
       format.html
     end
   end
@@ -35,12 +36,13 @@ class Participant::ActivitiesController < ApplicationController
   end
 
   def create_review
+    redirect to participant_activities_path unless params[:review][:review_text]
     @review = current_participant.reviews.create(review_params.merge({ activity_id: @activity.id }))
     if @review.persisted?
       flash[:notice] = t('participant.msg.success.review_creation')
-      redirect_to participant_activity_path(@activity)
+      redirect_to participant_activities_path
     else
-      render :new
+      render :new_review
     end
   end
 

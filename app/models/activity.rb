@@ -25,15 +25,15 @@ class Activity < ActiveRecord::Base
 
   # For filter activities by multiple checkboxes from the left bar
   # And pagination will also change according to checked checkboxes
-  def self.get_activities(params)
-    if params[:page] && !params[:behaviour_id].present?
-      get_activities_for_pagination(params)
-    elsif params[:behaviour_id]
-      get_activities_by_behaviour_ids(params)
-    elsif params[:behaviour_id] && params[:page]
-      get_activities_by_behaviour_ids(params)
+  def self.get_activities(params, current_participant_cohort_activities)
+    if params[:activity_type].present? && !params[:behaviour_id].present?
+      current_participant_cohort_activities.where(activity_type: params[:activity_type])
+    elsif params[:behaviour_id].present? && !params[:activity_type].present?
+      current_participant_cohort_activities.where(behaviour_id: params[:behaviour_id])
+    elsif params[:activity_type].present? && params[:behaviour_id].present?
+      current_participant_cohort_activities.where(activity_type: params[:activity_type], behaviour_id: params[:behaviour_id])
     else
-      get_activities_for_pagination(params)
+      current_participant_cohort_activities
     end
   end
 

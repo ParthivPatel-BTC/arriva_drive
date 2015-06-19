@@ -114,7 +114,7 @@ module ApplicationHelper
   end
 
   def shared_attachment_participants(participants)
-    participants.inject('') { |str, participant| str << "#{participant.full_name}, " }.chop.chop
+    participants.inject('') { |str, participant| str << "#{participant.full_name.titleize}, " }.chop.chop
   end
 
   def formatted_tags_with_and(tags)

@@ -114,6 +114,7 @@ header{padding:18px 20px 0;}
 .md-perspective, .md-perspective body {	height: 100%;	overflow: hidden;}
 .md-close{cursor:pointer; border:none; border-radius:0; font-size:17px; color:#222222; line-height:21px; text-transform:uppercase; font-weight:400; background:none; padding:0; top:19px; right:18px; position:absolute;}
 .md-modal { background:rgba(0,0,0,0.8); position: fixed;  top:0; left:0; z-index: 2000; width:100%; height:100%; visibility: hidden;  }
+.md-modal .md-modal{ z-index: 9999;  }
 .md-effect-5 .md-content{height: auto; position:relative; top:auto; bottom:0; left: 50%; z-index:9999;}
 .md-show {visibility: visible;}
 .md-overlay {position: fixed; width: 100%; height: 100%; visibility: hidden; top: 0; left: 0; z-index: 1000; opacity: 0; background: rgba(143,27,15,0.8); -webkit-transition: all 0.3s; -moz-transition: all 0.3s; transition: all 0.3s; }
@@ -415,9 +416,24 @@ header{padding:18px 20px 0;}
 .tagsameone-detail .next{right:0;}
 .tagsameone-detail .prev.disabled{display:none;}
 .behaviou-detail ul{padding:10px 0 0; margin:0;}
-.behaviou-detail li{float:left; width:33.33%; font-weight:400; color:#727272; font-size:12px; line-height:12px; padding:0 0 10px 22px; margin:0; background:url(../list-icon.png) no-repeat left top; background-size:13px 13px;}
-.behaviou-detail li.active{background:url(../listActive-icon.png) no-repeat left top; background-size:13px 13px;}
+.behaviou-detail li{float:left; width:33.33%; font-weight:400; color:#727272; font-size:12px; line-height:12px; padding:0 0 10px 0; margin:0;}
+/*.behaviou-detail li.active{background:url(../listActive-icon.png) no-repeat left top; background-size:13px 13px;}*/
+.behaviou-detail li input{display:none;}
+.behaviou-detail li label{font-weight:400; color:#727272; font-size:12px; line-height:14px;}
+.behaviou-detail .checkboxbtn { display: inline-block; cursor: pointer; position: relative; padding-left:22px; margin-right: 0; margin-left:0;}  
+.behaviou-detail input[type="checkbox"] { opacity: 0;  margin: 0;}
+.behaviou-detail .checkboxbtn:before {content:""; display: inline-block; width: 15px;  height: 15px; margin-right:0; position: absolute;left: 0; top:0;}  
+.behaviou-detail input[type=checkbox] + label + label.checkboxbtn:before {background: url(../list-icon.png) 0 0 no-repeat; background-size:13px 13px;}  
+.behaviou-detail input[type=checkbox] + label.checkboxbtn:before {background: url(../list-icon.png) 0 0 no-repeat; background-size:13px 13px;}  
+.behaviou-detail input[type=checkbox]:checked + label + label.checkboxbtn:before {background: url(../listActive-icon.png) 0 0 no-repeat; background-size:13px 13px;}  
+.behaviou-detail input[type=checkbox]:checked + label.checkboxbtn:before {background: url(../listActive-icon.png) 0 0 no-repeat; background-size:13px 13px;}
 
+.tagsameone-detail .checkboxbtn { display: inline-block; cursor: pointer; position: relative; padding-left:0; margin-right: 0; margin-left:0;}  
+.tagsameone-detail input[type="checkbox"] { opacity: 0;  margin: 0; position:absolute;}
+.tagsameone-detail .checkboxbtn:before {content:""; display: inline-block; width: 15px;  height: 15px; margin-right:0; position: absolute;left: 0; top:0;}  
+.tagsameone-detail input[type=checkbox] + label.checkboxbtn:before {}   
+.tagsameone-detail input[type=checkbox]:checked + label.checkboxbtn .network-img img{display:none;}
+.tagsameone-detail input[type=checkbox]:checked + label.checkboxbtn .network-img{background:url(../images/avtar-photo_active.png) no-repeat left top; background-size:100% 100%;}
 
 .filepanel-right{position:relative; padding:20px 20px 0;}
 .filepanel-right .addnote-text{left:-187px; top:-4px;}
@@ -478,7 +494,7 @@ header{padding:18px 20px 0;}
 .activitipopup-title .activitititle-img{width:56px; height:56px; float:left;}
 .activitipopup-title .activitititle-img img{max-width:100%;}
 
-.activitipopup-title .activitititle-text{float:left; padding-left:15px;}
+.activitipopup-title .activitititle-text{float:left; padding-left:15px; width:72%;}
 .activitititle-text h3{font-size:17px; color:#000; line-height:22px; font-weight:600; padding:4px 0 2px; margin:0;}
 .activitititle-text p{color:#161616; font-size:14px; line-height:20px; font-weight:400; padding:0; margin:0;}
 .activitipopup-detail .activitidetail-img{width:24.73%; float:left;}
@@ -533,18 +549,32 @@ header{padding:18px 20px 0;}
 .participantsrow .mCSB_dragger{bottom:10px;}
 .participantsrow .mCSB_dragger_bar{border:1px solid #cdcdcd; background:#ffffff; width:100%; height:9px; border-radius:6px;}
 .participantslist{ margin:0px; padding:0px;}
-.participantslist li{background:#ffffff; border:1px solid #dddddd; border-radius:6px; box-shadow:0 0 3px rgba(0,0,0,0.16); padding:30px 20px 16px 20px; position:relative; width:170px; margin-right:10px; float:left; text-align:center; cursor:pointer;}
-.participantslist li:hover, .participantslist li.active{ background:#008b9a;}
+.participantslist li{position:relative; width:170px; margin-right:10px; float:left; text-align:center;}
+.participantslist li .checkboxbtn{background:#ffffff; border:1px solid #dddddd; border-radius:6px; box-shadow:0 0 3px rgba(0,0,0,0.16); padding:30px 20px 16px 20px; }
+.participantslist li .checkboxbtn:hover{ background:#008b9a;}
 .participantslist li .network-img{width:65px; height:65px; display:inline-block;}
-.participantslist li .network-img img{ width:100%; border-radius:100%; border:2px solid #cfe02b; height: 100%; }
+.participantslist li .network-img img{ width:100%; border-radius:100%; border:2px solid #cfe02b; }
 .participantslist li h4{ font-size:13px; color:#003d3b; margin-bottom:0px; font-weight:bold;}
 .participantslist li:hover h4, .participantslist li.active h4{ color:#fff;}
 .participantslist li p{ color:#003d3b; font-size:11px;}
 .participantslist li:hover p, .participantslist li.active p{ color:#fff;}
 .participantslist li p.unfollow{ margin-top:25px;}
-.participantslist li p.unfollow i{width:22px; text-align:center; height:22px; background:#cddc39; border-radius:100%; display:inline-block; margin-top:3px; font-size:12px; color:#fff; line-height:20px; margin-bottom:5px;}
-.participantslist li p.unfollow span{ display:block; text-transform:uppercase; font-size:12px;}
+.participantslist li p.unfollow .unfollow-text{display:none;}
+.participantslist li p.unfollow i{width:22px; text-align:center; height:22px; border:1px solid #cddc39; color:#cddc39; border-radius:100%; display:inline-block; margin-top:3px; font-size:12px; line-height:20px; margin-bottom:5px;}
+.participantslist li p.unfollow span{ display:block; text-transform:uppercase; font-size:12px; color:#727272;}
 .participantslist li:hover p.unfollow span, .participantslist li.active p.unfollow span{ color:#fff;}
+.participantslist .checkboxbtn { display:block; cursor: pointer; position: relative; padding-left:0; margin-right: 0; margin-left:0;}  
+.participantslist input[type="checkbox"] { opacity: 0;  margin: 0; position:absolute;}
+.participantslist .checkboxbtn:before {content:""; display: inline-block; width: 15px;  height: 15px; margin-right:0; position: absolute;left: 0; top:0;}  
+.participantslist input[type=checkbox] + label.checkboxbtn:before {}   
+.participantslist input[type=checkbox]:checked + label.checkboxbtn{background:#008b9a;}
+.participantslist input[type=checkbox]:checked + label.checkboxbtn .mdi-navigation-check{background:#cddc39; color:#fff;}
+.participantslist input[type=checkbox]:checked + label.checkboxbtn .unfollow span{color:#fff;}
+.participantslist input[type=checkbox]:checked + label.checkboxbtn h4{color:#fff;}
+.participantslist input[type=checkbox]:checked + label.checkboxbtn p{color:#fff;}
+.participantslist input[type=checkbox]:checked + label.checkboxbtn .unfollow-text{display:block;}
+.participantslist input[type=checkbox]:checked + label.checkboxbtn .follow-text{display:none;}
+
 
 .networkfull .alphabetrow{ border-bottom:0px solid #d1d1d1; background:#fff;}
 .networkfull .alphabetrow ul{padding:0 15px; margin:0;}
@@ -611,3 +641,4 @@ header{padding:18px 20px 0;}
 .activityrow .pointsrow{margin-top:15px; text-transform:uppercase; display:inline-block; width:100%;}
 .activityrow .pointsrow span{line-height:26px;}
 .activityrow .pointsrow a{border-radius:6px; background:#008b9a; color:#fff; padding:5px 15px; float:right;}
+

@@ -1,0 +1,8 @@
+%button.activiti-close X
+%h3 Filter Your Activities
+%ul#behaviours
+  %li{id: 'all_behaviour'}
+    = link_to 'All', javascript_void, id: ''
+  - Behaviour.all.order(:id).each do |behaviour|
+    %li
+      = link_to behaviour.title, javascript_void, id: behaviour.id
