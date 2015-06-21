@@ -417,7 +417,7 @@ header{padding:18px 20px 0;}
 .tagsameone-detail .prev.disabled{display:none;}
 .behaviou-detail ul{padding:10px 0 0; margin:0;}
 .behaviou-detail li{float:left; width:33.33%; font-weight:400; color:#727272; font-size:12px; line-height:12px; padding:0 0 10px 0; margin:0;}
-/*.behaviou-detail li.active{background:url(../listActive-icon.png) no-repeat left top; background-size:13px 13px;}*/
+/*.behaviou-detail li.active{background:url(../images/listActive-icon.png) no-repeat left top; background-size:13px 13px;}*/
 .behaviou-detail li input{display:none;}
 .behaviou-detail li label{font-weight:400; color:#727272; font-size:12px; line-height:14px;}
 .behaviou-detail .checkboxbtn { display: inline-block; cursor: pointer; position: relative; padding-left:22px; margin-right: 0; margin-left:0;}  
@@ -433,7 +433,7 @@ header{padding:18px 20px 0;}
 .tagsameone-detail .checkboxbtn:before {content:""; display: inline-block; width: 15px;  height: 15px; margin-right:0; position: absolute;left: 0; top:0;}  
 .tagsameone-detail input[type=checkbox] + label.checkboxbtn:before {}   
 .tagsameone-detail input[type=checkbox]:checked + label.checkboxbtn .network-img img{display:none;}
-.tagsameone-detail input[type=checkbox]:checked + label.checkboxbtn .network-img{background:url(../images/avtar-photo_active.png) no-repeat left top; background-size:100% 100%;}
+.tagsameone-detail input[type=checkbox]:checked + label.checkboxbtn .network-img{background:url(../avtar-photo_active.png) no-repeat left top; background-size:100% 100%;}
 
 .filepanel-right{position:relative; padding:20px 20px 0;}
 .filepanel-right .addnote-text{left:-187px; top:-4px;}

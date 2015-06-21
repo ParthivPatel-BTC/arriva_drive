@@ -10,11 +10,17 @@ class Participant::ParticipantAttachmentsController < ApplicationController
   skip_before_filter :verify_authenticity_token, only: [ :callback ]
 
   def new
-    @participants = shared_participants_list
-    @attachment = ParticipantAttachment.new
+    # @tagged_participants = SharedAttachment.shared_attachment_participants(params[:id]).pluck(:participant_id)
+    # @current_participant_networks = Network.all_participants_in_network(current_participant)
+    # @shared_list = shared_participants_list
+    # @attachment = ParticipantAttachment.new
   end
 
   def index
+    @tagged_participants = SharedAttachment.shared_attachment_participants(params[:id]).pluck(:participant_id)
+    @current_participant_networks = Network.all_participants_in_network(current_participant)
+    @shared_list = shared_participants_list
+    @attachment = ParticipantAttachment.new
   end
 
   def create

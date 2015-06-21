@@ -2,7 +2,7 @@
   .file-panel.clearfix
     .filepanel-right
       .addnote-view
-        %a.addnote-icon.md-trigger{"data-modal" => "modal-1", :href => "#"}
+        = link_to("", javascript_void, 'data-modal' => "modal", class: 'addnote-icon md-trigger') 
         .addnote-text
           = image_tag 'images/add-newfile.jpg'
       #filepaneltab.filepanel-tab
@@ -23,159 +23,91 @@
               Shared Files
               %span= "(#{@shared_attachments.count})"
             .sharedfiles-panel.clearfix
-            - @shared_attachments.each do |s_attachment|
-              .myfiles-box
-                .myfiles-block
-                  .myfilesbox-text
-                    %h4 Arriva Meeting
-                    %p New to Arriva? Read through this Getting Started brochure for the ins and out.
-                    %p
-                      %span
-                        Shared with:
-                        %strong lan Butterfield
-                  %ul.myfilesbox-btn.clearfix
-                    %li.delete-btn
-                      %a{:href => "#"}
-                    %li.download-btn
-                      %a{:href => "#"}
-                    %li.share-btn
-                      %a{:href => "#"}
+              - @attachments.each_with_object(0) do |attachment, index|
+                - if attachment.participants.present?
+                  - shared_attachment_count = attachment.participants.count > 1 ? "#{attachment.participants.count} PEOPLE" : shared_attachment_participants(attachment.participants.uniq)
+                  .myfiles-box
+                    .myfiles-block
+                      .myfilesbox-text
+                        %h4= attachment.attachment_file_name
+                        %p= attachment.file_description
+                        %p
+                          %span
+                            Shared with:
+                            %strong= shared_attachment_count
+                      %ul.myfilesbox-btn.clearfix
+                        %li.delete-btn
+                          = link_to "", participant_attachment_path(attachment), title: t('common.caption.delete'), method: :delete, data: { confirm: t('common.msg.confirm')}
+                        %li.download-btn
+                          = link_to "", "#{show_attachment_path(attachment.id)}", target: "_blank", 'data-popup' => 'true','data-id' =>"#{attachment.id}", title: t('participant.participant_attachments.caption.link_download') 
+                        %li.share-btn
+                          = link_to("", javascript_void, 'data-modal' => "modal-#{attachment.id}", title: t('participant.participant_attachments.caption.share_or_unshare'), class: 'md-trigger')
 .overlay{"data-sidebar-overlay" => ""}
-#modal-1.md-modal.md-effect-5
+#modal.md-modal.md-effect-5
   .md-content.notepopup-panel
     .eventpopup-title
       %h3 NEW FILE
-    .notepopup-list
-      .inputnote.clearfix
-        .inputnote-number 1
-        %textarea{:placeholder => "Write a note..."}
-      .tagsameone
-        .inputnote-number 2
-        .tagsameone-title
-          %h3.accord-toggle
-            Would you like to
-            %span tag someone
-            in your network?
-          .tagsameone-detail.accord-div
-            .accord-carousel
-              %ul.owl-carousel
-                %li.item
-                  %a{:href => "#"}
-                    .network-img
-                      = image_tag 'images/avtar-photo_active.png'
-                    %h4 Oliver Longwood
-                    %p Operations Support
-                %li.item
-                  %a{:href => "#"}
-                    .network-img
-                      = image_tag 'images/avtar-photo_active.png'
-                    %h4 Anna Worth
-                    %p Operations Support
-                %li.item
-                  %a{:href => "#"}
-                    .network-img
-                      = image_tag 'images/avtar-photo.png'
-                    %h4 Laura Hampstead
-                    %p Operations Support
-                %li.item
-                  %a{:href => "#"}
-                    .network-img
-                      = image_tag 'images/avtar-photo1.png'
-                    %h4 Andrew Cole
-                    %p Operations Support
-                %li.item
-                  %a{:href => "#"}
-                    .network-img
-                      = image_tag 'images/avtar-photo.png'
-                    %h4 Darren Sim
-                    %p Operations Support
-                %li.item
-                  %a{:href => "#"}
-                    .network-img
-                      = image_tag 'images/avtar-photo.png'
-                    %h4 Kyle Walker
-                    %p Operations Support
-                %li.item
-                  %a{:href => "#"}
-                    .network-img
-                      = image_tag 'images/avtar-photo1.png'
-                    %h4 Oliver Longwood
-                    %p Operations Support
-                %li.item
-                  %a{:href => "#"}
-                    .network-img
-                      = image_tag 'images/avtar-photo1.png'
-                    %h4 Oliver Longwood
-                    %p Operations Support
-                %li.item
-                  %a{:href => "#"}
-                    .network-img
-                      = image_tag 'images/avtar-photo1.png'
-                    %h4 Oliver Longwood
-                    %p Operations Support
-      .choosefile-btn
-        %a.btn{:href => "#"} Choose File
-      .notepopup-footer.clearfix
-        %p People you have tagged will be automatically notified
-        .notesend-btn
-          %a{:href => "#"} Send
+    = form_tag(participant_attachments_path, method: :post, id: 'newNoteForm', multipart: true) do
+      .notepopup-list
+        .inputnote.clearfix
+          .inputnote-number 1
+          = text_area_tag 'participant_attachments[file_description]', nil, placeholder: t('participant.participant_attachments.place_holder.file_description')
+        .tagsameone
+          .inputnote-number 2
+          .tagsameone-title
+            %h3.accord-toggle
+              Would you like to
+              %span tag someone
+              in your network?
+            .tagsameone-detail.accord-div
+              .accord-carousel
+                %ul.owl-carousel
+                  - @current_participant_networks.each do |participant|
+                    %li.item
+                      = check_box_tag "participant_attachments[participant_ids][]", participant.id, @tagged_participants.include?(participant.id), id: "participant_attachments_#{participant.id}"
+                      %label.checkboxbtn{:for => "participant_attachments_#{participant.id}"}
+                        .network-img
+                          = image_tag(participant.photo.url(:thumb))
+                        %h4= participant.full_name
+                        %p= participant.job_title.titleize
+        .choosefile-btn
+          = link_to "Choose File", javascript_void, class: 'btn', id: 'participant_attachment_id'
+          #upload_file_div{:style => "display: none"}
+            = file_field_tag 'participant_attachments[attachment]'
+        .notepopup-footer.clearfix
+          %p People you have tagged will be automatically notified
+          .notesend-btn
+            = link_to_submit("Send", participant_attachments_path, class: 'right')
     %button.md-close Close
-:javascript
-  $(document).ready(function(){
-    model_popup();
-    $('#myStathalf2').circliful();
-    
-    $('.recentnote-slide').bxSlider({
-      auto: true,
-      controls:false
-    });
-    
-    $( "#filepaneltab" ).tabs();
-    $(".file-panel").click(function(){
-      $(".addnote-view").addClass("close")
-    });
-    
-    $(".sharedtablist-box").on("click", function() {
-      $(".sharedtablist-box").removeClass("active");
-      $(".sharemain-panel").removeClass("activeLnk");
-      $(this).addClass("active");
-      $("div[id=" + $(this).attr("data-related") + "]").addClass("activeLnk");
-    });
-    
-    
-    $(".accord-toggle").click(function(){
-      $(".accord-div").slideUp();
-      if($(this).next('.accord-div').is(':visible')){
-        $(this).next('.accord-div').slideUp();
-        $(this).removeClass("active");
-      }
-      else{
-        $(this).next('.accord-div').slideDown();
-        $(this).addClass("active");
-      }
-      
-      var owl = $('.owl-carousel');
-      owl.owlCarousel({
-        margin:0,
-        autoWidth:true,
-        nav:true,
-        items:7
-        
-      });
-      owl.on('mousewheel', '.owl-stage', function (e) {
-        if (e.deltaY>0) {
-          owl.trigger('next.owl');
-        } else {
-          owl.trigger('prev.owl');
-        }
-        e.preventDefault();
-      });
-    });
-  });
 
-
-/ %section.mainsection
-/   = render partial: 'participants/components/left_side_bar'
-/   #attachments
-/     = render partial: 'participant/participant_attachments/attachments'
-/ = render partial: 'participants/components/right_side_bar'
+- @attachments.each_with_object(0) do |attachment, index|
+  .md-modal.md-effect-5{id: "modal-#{attachment.id}"}
+    .md-content.notepopup-panel
+      .eventpopup-title
+        %h3 NEW FILE
+      .notepopup-list
+        = form_tag(participant_attachments_path, method: :post, id: 'newNoteForm', multipart: true) do
+          .tagsameone
+            .inputnote-number 1
+            .tagsameone-title
+              %h3.accord-toggle
+                Would you like to
+                %span tag someone
+                in your network?
+              .tagsameone-detail.accord-div
+                .accord-carousel
+                  %ul.owl-carousel
+                    - @current_participant_networks.each do |participant|
+                      %li.item
+                        = check_box_tag "participant_attachments[participant_ids][]", participant.id, @tagged_participants.include?(participant.id), id: "participant_attachments_#{participant.id}"
+                        %label.checkboxbtn{:for => "participant_attachments_#{participant.id}"}
+                          .network-img
+                            = image_tag(participant.photo.url(:thumb))
+                          %h4= participant.full_name.titleize
+                          %p= participant.job_title.titleize
+          .notepopup-footer.clearfix
+            %p People you have tagged will be automatically notified
+            .notesend-btn
+              = link_to_submit("Send", participant_attachments_path, class: 'right')
+      %button.md-close Close
+= javascript_include_tag 'participant/files'

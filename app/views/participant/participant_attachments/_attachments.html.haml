@@ -1,25 +1,22 @@
 .myfiles-panel.clearfix
-  - @attachments.each do |attachment|
-    .myfiles-box
-      .myfiles-block
-        .myfilesbox-text
-          %h4= attachment.attachment_file_name
-          %p= attachment.file_description
-          %p
-            %span
-              Shared with:
-              %strong= shared_attachment_participants(attachment.participants.uniq)
-              = attachment.participants.count
-        %ul.myfilesbox-btn.clearfix
-          %li.delete-btn
-            = link_to "", participant_attachment_path(attachment), title: t('common.caption.delete'), method: :delete, data: { confirm: t('common.msg.confirm')}
-          %li.download-btn
-            = link_to "", "#{show_attachment_path(attachment.id)}", target: "_blank", 'data-popup' => 'true','data-id' =>"#{attachment.id}"
-          %li.share-btn
-            %a.md-trigger{"data-modal" => "modal-1", :href => "#"}             
-
-
-
+  - @attachments.each_with_object(0) do |attachment, index|
+    - unless attachment.participants.present?
+      .myfiles-box
+        .myfiles-block
+          .myfilesbox-text
+            %h4= attachment.attachment_file_name
+            %p= attachment.file_description
+            %p
+              %span
+                Shared with:
+                %strong= t('participant.participant_attachments.caption.lbl_me').upcase
+          %ul.myfilesbox-btn.clearfix
+            %li.delete-btn
+              = link_to "", participant_attachment_path(attachment), title: t('common.caption.delete'), method: :delete, data: { confirm: t('common.msg.confirm')}
+            %li.download-btn
+              = link_to "", "#{show_attachment_path(attachment.id)}", target: "_blank", 'data-popup' => 'true','data-id' =>"#{attachment.id}", title: t('participant.participant_attachments.caption.link_download') 
+            %li.share-btn
+              = link_to("", javascript_void, 'data-modal' => "modal-#{attachment.id}", title: t('participant.participant_attachments.caption.share_or_unshare'), class: 'md-trigger')
 
 / - if @attachments.blank?
 /   .contentarea
