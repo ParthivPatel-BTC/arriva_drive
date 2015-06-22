@@ -59,7 +59,7 @@ ArrivaDrive::Application.configure do
 
   # Precompile additional assets.
   # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
-  config.assets.precompile += %w(participant_assets.js participant_assets.css participant/style.css participants/pdf_style.css participants/style_behaviours.css participants/uniform.aristo.css participants/jquery-1.11.0.min.js participants/jquery.uniform.js participants/custom.js)
+  config.assets.precompile += %w(participant_assets.js participant_assets.css participant/style.css participants/pdf_style.css participants/style_behaviours.css participants/uniform.aristo.css participants/jquery-1.11.0.min.js participants/jquery.uniform.js participants/custom.js participant/owl.carousel.js)
   config.assets.precompile += [ Dir["#{Rails.root}/app/assets/images/images/**/*.png"].reject {|fn| File.directory?(fn) } ]
 
   # Ignore bad email addresses and do not raise email delivery errors.
