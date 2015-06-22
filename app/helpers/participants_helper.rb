@@ -68,12 +68,6 @@ module ParticipantsHelper
   end
 
   def count_shared_attachments(attachments)
-    count = 0
-    attachments.each do |attachment|
-      if attachment.participants.present?
-        count = count + 1
-      end
-    end
-    count
+   attachments.inject(0) { |result, element| element.participants.present? ? result + 1 : result }
   end
 end
