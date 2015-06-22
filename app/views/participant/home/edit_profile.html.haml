@@ -4,7 +4,7 @@
   .profile-panel.clearfix
     .profileedit-img
       .profileeditimg
-        = image_tag(current_participant.photo.url(:profile), id: 'preview_participant_photo')
+        = image_tag(current_participant.photo.url(:original), id: 'preview_participant_photo')
       = link_to t('participant.edit_profile.captions.edit_photo_link'), javascript_void, id: "edit_profile_pic"
       #div1{:style => "display: none"}
         = file_field_tag 'participants[photo]', id: 'participant_photo_upload'
