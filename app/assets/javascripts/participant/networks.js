@@ -56,12 +56,6 @@ $(document).ready(function(){
     $("div[id=" + $(this).attr("data-related") + "]").addClass("activeLnk");
   });
   
-  
-  $(".participantslist li").click(function(){
-    $(this).toggleClass("active")
-  });
-    
-    
   $(".accord-toggle").click(function(){
     $(".accord-div").slideUp();
     $(this).next('.accord-div').slideDown();
