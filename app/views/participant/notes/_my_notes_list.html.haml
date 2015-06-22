@@ -1,0 +1,14 @@
+.notetab-list.clearfix
+  %ul
+    - @my_notes.each_with_object(0) do |note, index|
+      = link_to(get_note_content_participant_notes_path(note_id: note.id), remote: true) do
+        %li
+          .sharedtablist-box.clearfix
+            .shared-img
+              = image_tag note.owner.photo.url(:profile)
+            .shared-text
+              %h4
+                Event Notes
+                %span= formatted_time_with_timezone(note.updated_at)
+              %p= truncate note.content, length: 70
+          = link_to '', participant_note_path(note),  class: "sharedtablist-delete", title: t('common.caption.delete'), method: :delete, data: { confirm: t('common.msg.confirm')}

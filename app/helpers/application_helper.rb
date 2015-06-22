@@ -42,9 +42,9 @@ module ApplicationHelper
     time.strftime('%H.%M')
   end
 
-  def formatted_time_with_timezone(time)
-    uk_time = time.in_time_zone("London").strftime('%H.%M')
-    uk_time += " GMT+1"
+  def formatted_time_with_timezone(date)
+    updated_note_date = date.in_time_zone("London").to_date
+    updated_note_date == Date.today.in_time_zone("London").to_date ? date.in_time_zone("London").strftime('%H.%M %p') : date.in_time_zone("London").strftime('%H %b')
   end
 
   def formatted_time_without(time)
@@ -110,7 +110,7 @@ module ApplicationHelper
   end
 
   def formatted_tags(tags)
-    tags.inject('') { |str, tag| str << "#{tag.taggable.tag_title}, " }.chop.chop
+    tags.inject('') { |str, tag| str << "#{tag.taggable.tag_title.titleize}, " }.chop.chop
   end
 
   def shared_attachment_participants(participants)
@@ -144,6 +144,14 @@ module ApplicationHelper
 
   def date_formatter(date)
     date.try(:strftime, "%A #{date.day.ordinalize} %B")
+  end
+
+  def note_time_formatters(date)
+    date.in_time_zone("London").strftime('%H.%M%P')
+  end
+
+  def note_date_formatters(date)
+    date.in_time_zone("London").strftime("#{date.day.ordinalize} %B %Y")
   end
 
   def time_formatter(date)

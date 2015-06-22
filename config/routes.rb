@@ -58,6 +58,7 @@ ArrivaDrive::Application.routes.draw do
         post 'tag_participants_list'
         post 'tag_behaviours_list'
         post 'tag_participants_behaviours'
+        get 'get_note_content'
       end
     end
 

@@ -1,0 +1,45 @@
+#modal-1.md-modal.md-effect-5
+  .md-content.notepopup-panel
+    .eventpopup-title
+      %h3 NEW NOTE
+    .notepopup-list
+      = form_tag(participant_notes_path, method: :post, multipart: true) do
+        .inputnote.clearfix
+          .inputnote-number 1
+          = text_area_tag 'note[content]', nil, class: 'textarea', placeholder: t('participant.place_holder.note_content')
+        .tagsameone
+          .inputnote-number 2
+          .tagsameone-title
+            %h3.accord-toggle
+              Would you like to
+              %span tag someone
+              in your network?
+            .tagsameone-detail.accord-div
+              .accord-carousel
+                %ul.owl-carousel
+                  - @participants.each_with_object(0) do |participant, index|
+                    %li.item
+                      = check_box_tag "participant_ids[]", participant.id, false, id: "participants#{participant.id}"
+                      %label.checkboxbtn{:for => "participants#{participant.id}"}
+                        .network-img
+                          = image_tag(participant.photo.url(:thumb), class: 'participant_img')
+                        %h4= participant.full_name.titleize
+                        %p= participant.job_title.titleize
+        .tagsameone
+          .inputnote-number 3
+          .tagsameone-title
+            %h3.accord-toggle
+              Would you like to
+              %span tag a behaviour
+              related to this note?
+            .behaviou-detail.accord-div
+              %ul.clearfix
+                - @behaviours.each_with_object(0) do |behaviour, index|
+                  %li
+                    = check_box_tag "behaviour_ids[]", behaviour.id, false, id: "behaviour#{behaviour.id}"
+                    = label_tag "behaviour#{behaviour.id}", behaviour.title, class: 'checkboxbtn'
+        .notepopup-footer.clearfix
+          %p People you have tagged will be automatically notified
+          .notesend-btn
+            = link_to_submit "Send"
+    %button.md-close Close

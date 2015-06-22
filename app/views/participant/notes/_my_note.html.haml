@@ -1,0 +1,16 @@
+.sharechat-main
+  .sharechat-box.clearfix
+    .sharechat-title
+      .sharechattitle-img
+        = image_tag @note.owner.photo.url(:profile)
+      .sharechattitle-text
+        %h4 You
+        %p= "to #{formatted_tags(@note.tags.participants_tags)}" if @note.tags.participants_tags.present?
+      .sharechattitle-date
+        %p
+          = note_time_formatters(@note.updated_at)
+          %span= note_date_formatters(@note.updated_at)
+    .sharechat-text
+      %p= @note.content
+.sharechat-input
+  %input{:name => "", :placeholder => "Click to reply...", :type => "text", :value => ""}/

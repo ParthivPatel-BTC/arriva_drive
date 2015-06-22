@@ -8,9 +8,20 @@ class Participant::NotesController < ApplicationController
   ]
 
   def index
-    @notes = get_tagged_notes.uniq
-    @my_notes = current_participant.notes
+    @my_notes = current_participant.notes.order(updated_at: :desc)
+    @shared_notes = current_participant.tags
     @points_earned = (@note.tags.behaviour_tags.count * Settings.activity_points.write_note) if @note.present?
+    @participants = Network.all_participants_in_network(current_participant)
+  end
+
+  def get_note_content
+    @note = Note.find_by_id(params[:note_id])
+    @shared_note = params[:shared_note]
+    respond_to do |format|
+      format.js{
+        render file: 'participant/notes/index'
+      }
+    end    
   end
 
   def export_notes
@@ -49,7 +60,7 @@ class Participant::NotesController < ApplicationController
           @note.send_notification_to_participant(@participants_id, current_participant, request.host)
         end
       end
-    redirect_to participant_notes_path(id: @note.id)
+    redirect_to participant_notes_path
     else
       render :new
     end
@@ -61,9 +72,9 @@ class Participant::NotesController < ApplicationController
     redirect_to participant_notes_path
   end
 
-  def tag_participants_list
-    @participants = Network.all_participants_in_network(current_participant)
-  end
+  # def tag_participants_list
+  #   @participants = Network.all_participants_in_network(current_participant)
+  # end
 
   def tag_participants_behaviours
     render :new

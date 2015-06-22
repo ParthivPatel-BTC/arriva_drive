@@ -140,7 +140,7 @@ en:
       new_note: 'NEW note'
       choose_file: 'Choose File'
     place_holder:
-      note_content: 'write note_'
+      note_content: 'Write a note...'
       review_text: 'Write your review...'
     activities:
       caption:
