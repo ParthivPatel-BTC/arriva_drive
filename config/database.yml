@@ -7,3 +7,12 @@ development:
   pool: 5
   username: postgres
   password: postgres
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: arriva_drive
+  host: localhost
+  pool: 5
+  username: root
+  password: root
