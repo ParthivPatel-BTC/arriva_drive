@@ -1,6 +1,7 @@
 class Participant::NotesController < ApplicationController
   layout 'participant'
   before_filter :participant_user_required!
+  before_filter :tag_behaviours_list, only: [:index]
   before_filter :find_set_note, only: [:index, :destroy, :export_notes]
   before_filter :set_tagged_behaviours_n_participants, only: [
     :tag_participants_list, :tag_behaviours_list, :tag_participants_behaviours, :create
@@ -8,6 +9,7 @@ class Participant::NotesController < ApplicationController
 
   def index
     @notes = get_tagged_notes.uniq
+    @my_notes = current_participant.notes
     @points_earned = (@note.tags.behaviour_tags.count * Settings.activity_points.write_note) if @note.present?
   end
 
