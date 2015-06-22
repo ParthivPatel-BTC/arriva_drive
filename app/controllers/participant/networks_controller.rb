@@ -31,6 +31,7 @@ class Participant::NetworksController < ApplicationController
     return false if Network.find_by_current_participant_id_and_participant_id(current_participant.id, params[:participant_id])
     @network = Network.new(network_params)
     if @network.save
+      @par = params[:participant_id]
       Network.send_network_notification(@participant_in_network, current_participant) if @participant_in_network.network_notification
       respond_to do |format|
         @participants = Participant.all_participants(current_participant.id)
@@ -69,6 +70,7 @@ class Participant::NetworksController < ApplicationController
 
   def remove_participant_from_network_list
     network = Network.delete_participant(params[:participant_id], current_participant.id)
+    @par = params[:participant_id]
     network.first.destroy
   end
 

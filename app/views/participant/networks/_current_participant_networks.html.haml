@@ -6,15 +6,16 @@
   %ul.participantslist.clearfix
     - if @networks.present?
       - @networks.each do |network|
-        = link_to(action: :remove_participant, participant_id: network.id, remote: true) do
-          %li
-            .network-img
-              = image_tag(network.photo.url(:thumb), class: 'participant_img')
-            %h4= network.full_name.titleize
-            %p= network.job_title.titleize
-            %p.unfollow
-              %i.mdi-navigation-check
-              %span= t('participant.networks.caption.unfollow')
+        %li
+          .network-img
+            = image_tag(network.photo.url(:thumb), class: 'participant_img')
+          %h4= network.full_name.titleize
+          %p= network.job_title.titleize
+          %p.unfollow
+            %i.mdi-navigation-check
+            %span= t('participant.networks.caption.unfollow')
     - else
-      %li
-        %h4 No Participants Found
+      .activityrow.participantsrow
+        .activityblock
+          .activitytitle
+            %h5 No Network Found
