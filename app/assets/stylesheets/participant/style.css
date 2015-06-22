@@ -53,7 +53,7 @@ input::focus, textarea::focus, input::active, textarea::active{ border:0px; outl
 .left-mainmenu:hover{overflow-y:auto;}
 .overlay[data-sidebar-overlay] {display: none; left: 0; background:rgba(0,0,0,0.5); min-height: inherit; opacity: 0; position: fixed; top: 0; height:100%;  width: 100%; z-index:9;}
 .home-page.main-panel{padding-left:0; }
-.homepage{background:url(../main-bg.svg) no-repeat left top; background-size:cover; min-height:100%; position:relative;}
+.homepage{background:url(/assets/main-bg.svg) no-repeat left top; background-size:cover; min-height:100%; position:relative;}
 .main{min-height:100%;}
 header{padding:18px 20px 0;}
 .logo h1{padding:0; margin:0;}
@@ -70,7 +70,7 @@ header{padding:18px 20px 0;}
 .login-form .input-field .input-text::-webkit-input-placeholder { color:#fff; }
 .login-form .input-field .input-text::-moz-input-placeholder { color:#fff; }
 .login-form .input-field .input-text::-ms-input-placeholder { color:#fff; }
-.login-form .input-field .input-text.user-name{border-radius:6px 6px 0 0; background:url(../username_icon.svg) no-repeat 12px center; background-size:16px 16px;}
+.login-form .input-field .input-text.user-name{border-radius:6px 6px 0 0; background:url(/assets/username_icon.svg) no-repeat 12px center; background-size:16px 16px;}
 .login-form .input-field .input-text.password{border-radius:0 0 6px 6px; border-top:none; background:url(../password_icon.svg) no-repeat 12px center; background-size:16px 16px;}
 .login-form .input-btn{padding-top:12px; padding-bottom:15px;}
 .login-form .input-btn .login-btn{background:#cfe02b; width:54.88%; border-radius:6px; height:43px; display:block; text-align:center; margin:0 auto; padding:0; cursor:pointer; font-size:17px; line-height:44px; color:#ffffff; font-weight:400; font-family: 'Lato', sans-serif; border:none;}
