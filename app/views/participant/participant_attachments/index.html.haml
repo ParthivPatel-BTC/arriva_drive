@@ -16,12 +16,12 @@
           #tabs-1.filepaneltab-box
             %h3
               My Files
-              %span= "(#{@attachments.count})"
+              %span= "(#{@attachments.size-count_shared_attachments(@attachments)})"
             = render partial: 'participant/participant_attachments/attachments'
           #tabs-2.filepaneltab-box
             %h3
               Shared Files
-              %span= "(#{@shared_attachments.count})"
+              %span= "(#{count_shared_attachments(@attachments)})"
             .sharedfiles-panel.clearfix
               - @attachments.each_with_object(0) do |attachment, index|
                 - if attachment.participants.present?

@@ -66,4 +66,14 @@ module ParticipantsHelper
     return 0 if total_activities == 0
     (completed_activities * 100) / total_activities
   end
+
+  def count_shared_attachments(attachments)
+    count = 0
+    attachments.each do |attachment|
+      if attachment.participants.present?
+        count = count + 1
+      end
+    end
+    count
+  end
 end
