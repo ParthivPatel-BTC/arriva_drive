@@ -48,7 +48,11 @@ $(document).ready(function(){
   $(".note-panel").click(function(){
     $(".addnote-view").addClass("close")
   });
-  
+ 
+  $(".participantslist li").hover(function(){
+    $(this).toggleClass("active")
+  });
+
   $(".sharedtablist-box").on("click", function() {
     $(".sharedtablist-box").removeClass("active");
     $(".sharemain-panel").removeClass("activeLnk");
