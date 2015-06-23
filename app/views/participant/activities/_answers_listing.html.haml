@@ -9,3 +9,14 @@
           = check_box_tag 'activity[answer]', answer.id, nil, disabled: disabled_attr_value, id: "score#{answer.id}"
           = label_tag "score#{answer.id}", answer.answer_text, class: 'checkboxbtn'
   = link_to_submit "Submit", class: 'scoresubmit md-trigger', 'data-modal' => 'modal'
+
+:javascript
+  $(document).ready(function(){
+    $('.scorelist').find('input[type=checkbox]:checked').removeAttr('checked')
+    $(':checkbox').on('change',function(){
+    var th = $(this), name = th.prop('name'); 
+      if(th.is(':checked')){
+        $(':checkbox[name="'  + name + '"]').not($(this)).prop('checked',false);   
+      }
+    });
+  });
