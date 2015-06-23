@@ -22,24 +22,17 @@
             = link_to t("participant.activities.caption.#{activity.activity_type_verbos}"), activity.link, class: 'btn readpurchase', target: '_blank' 
           / = link_to "Read & Purchase", activity.link, target: '_blank', class: 'btn readpurchase'
       .activitiaccord
-        .activitiscrore
-          .tagsameone-title
-            %h3.accord-toggle Take the Quiz and Score Points
-            .behaviou-detail.accord-div{:style => "display: none;"}
-              %h5 Question:
-              %p Who said, "Life is what happens to you while you're busy making other plans"?
-              %h5 Select your Answer:
-              %ul.scorelist
-                %li
-                  %input#score{:name => "", :type => "checkbox", :value => ""}/
-                  %label.checkboxbtn{:for => "score"} John Lennon
-                %li
-                  %input#score2{:name => "", :type => "checkbox", :value => ""}/
-                  %label.checkboxbtn{:for => "score2"} Robbie Williams
-                %li
-                  %input#score3{:name => "", :type => "checkbox", :value => ""}/
-                  %label.checkboxbtn{:for => "score3"} Tom Jones
-              %a.scoresubmit{:href => "#"} Submit
+        - if activity.activity_type != 5
+          .activitiscrore
+            .tagsameone-title
+              %h3.accord-toggle Take the Quiz and Score Points
+              .behaviou-detail.accord-div{:style => "display: none;"}
+                %h5 Question:
+                %p= activity.multiple_choice_question.question_text
+                - if current_participant.has_answered_this_activity?(activity)
+                  = render partial: 'participant/activities/answer', locals: {activity: activity}
+                - else
+                  = render partial: 'participant/activities/answers_listing', locals: {activity: activity}
         .writereview
           - if current_participant.has_reviewed_this_activity?(activity)
             %h5= current_participant.get_review_text_of_activity(activity)

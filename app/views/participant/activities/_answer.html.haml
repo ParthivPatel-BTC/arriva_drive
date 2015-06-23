@@ -1,23 +1,6 @@
-.leftblock
-  %p.reading
-    %span Question
-    %br
-      = @mcq.question_text
-  %ul.answer.uppercase
-    %p.reading
-      %span Your Answer
-      %br
-      %text= current_participant.answer_of_activity(@activity).answer_text
-    - if current_participant.has_given_wrong_answer?(@activity)
-      %br
-      %p.reading
-        %span Correct Answer
-        %br
-        %text= @activity.correct_answer.try(:answer_text)
-  %br
-  %p.reading
-    You have got
-    = @activity.total_score_of_participant(current_participant)
-    points in this activity
-
-.rightblock &nbsp;
+- multiple_choice_answer = activity.correct_answer.try(:answer_text)
+%h5 Answer:
+%p= multiple_choice_answer
+- if current_participant.answer_of_activity(activity)
+  %h5 Your Answer:
+  %p= current_participant.answer_of_activity(activity).answer_text

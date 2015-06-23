@@ -20,4 +20,13 @@
   .overlay{"data-sidebar-overlay" => ""}
 .activities_model_poup
   = render partial: 'activities_model_popup'
+
+#modal.md-modal.md-effect-5
+  .md-content.activitipopup-panel
+    .activitipopup-title.clearfix
+    .activitipopup-detail.clearfix
+    .activitiaccord
+      .activity_completed_message
+    %button.md-close Close
+
 = javascript_include_tag 'participant/activities'
