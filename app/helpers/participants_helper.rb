@@ -68,6 +68,10 @@ module ParticipantsHelper
   end
 
   def count_shared_attachments(attachments)
-   attachments.inject(0) { |result, element| element.participants.present? ? result + 1 : result }
+    attachments.inject(0) { |result, element| element.participants.present? ? result + 1 : result }
+  end
+
+  def find_tagged_participants(attachment)
+    SharedAttachment.shared_attachment_participants(attachment.id).pluck(:participant_id)
   end
 end

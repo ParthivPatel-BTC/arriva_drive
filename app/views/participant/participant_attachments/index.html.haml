@@ -64,8 +64,8 @@
                 %ul.owl-carousel
                   - @current_participant_networks.each do |participant|
                     %li.item
-                      = check_box_tag "participant_attachments[participant_ids][]", participant.id, @tagged_participants.include?(participant.id), id: "participant_attachments_#{participant.id}"
-                      %label.checkboxbtn{:for => "participant_attachments_#{participant.id}"}
+                      = check_box_tag "participant_attachments[participant_ids][]", participant.id, false, id: "participant_attachments1_#{participant.id}"
+                      %label.checkboxbtn{:for => "participant_attachments1_#{participant.id}"}
                         .network-img
                           = image_tag(participant.photo.url(:thumb))
                         %h4= participant.full_name
@@ -84,7 +84,7 @@
   .md-modal.md-effect-5{id: "modal-#{attachment.id}"}
     .md-content.notepopup-panel
       .eventpopup-title
-        %h3 NEW FILE
+        %h3 SHARE FILE
       .notepopup-list
         = form_tag(participant_attachments_path, method: :post, id: 'newNoteForm', multipart: true) do
           .tagsameone
@@ -97,14 +97,16 @@
               .tagsameone-detail.accord-div
                 .accord-carousel
                   %ul.owl-carousel
+                    - @tagged_participants = find_tagged_participants(attachment)
                     - @current_participant_networks.each do |participant|
                       %li.item
-                        = check_box_tag "participant_attachments[participant_ids][]", participant.id, @tagged_participants.include?(participant.id), id: "participant_attachments_#{participant.id}"
-                        %label.checkboxbtn{:for => "participant_attachments_#{participant.id}"}
+                        = check_box_tag "participant_attachments[participant_ids][]", participant.id, @tagged_participants.include?(participant.id), id: "participant_attachments_#{attachment.id}_#{participant.id}"
+                        %label.checkboxbtn{:for => "participant_attachments_#{attachment.id}_#{participant.id}"}
                           .network-img
                             = image_tag(participant.photo.url(:thumb))
                           %h4= participant.full_name.titleize
                           %p= participant.job_title.titleize
+                        = hidden_field_tag "participant_attachments[id]",attachment.id
           .notepopup-footer.clearfix
             %p People you have tagged will be automatically notified
             .notesend-btn

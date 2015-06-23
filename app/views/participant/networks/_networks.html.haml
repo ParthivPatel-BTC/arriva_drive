@@ -1,8 +1,6 @@
 - participant_ids = current_participant.networks.pluck(:participant_id)
 %h3
   All Participants
-  %span= "(#{@participants.size})"
-
 #content-5.participantsrow.horizontal-images.light.content
   %ul.participantslist.clearfix
     - if @participants.present?
@@ -31,10 +29,5 @@
                 %p.follow
                   %i.mdi-navigation-check
                   %span= span_text_follow_unfollow
-    - else
-      .activityrow.participantsrow
-        .activityblock
-          .activitytitle
-            %h5 No Network Found
             
 = javascript_include_tag "participant/networks"

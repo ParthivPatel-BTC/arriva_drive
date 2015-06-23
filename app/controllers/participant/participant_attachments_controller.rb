@@ -3,19 +3,12 @@ class Participant::ParticipantAttachmentsController < ApplicationController
   layout 'participant'
   require 'mail'
   before_filter :shared_unshared_attachments, only: [ :index, :destroy ]
-  # before_filter :get_participant_attachments, only: [ :index, :destroy ]
   before_filter :find_attachment, only: [ :index, :destroy, :shared_participants_list, :create_shared_participants, :show_attachment ]
   before_filter :shared_participants_list, only: [:create]
   before_filter :find_shared_ids, only: [ :create_shared_participants ]
   skip_before_filter :verify_authenticity_token, only: [ :callback ]
-
-  def new
-    # @tagged_participants = SharedAttachment.shared_attachment_participants(params[:id]).pluck(:participant_id)
-    # @current_participant_networks = Network.all_participants_in_network(current_participant)
-    # @shared_list = shared_participants_list
-    # @attachment = ParticipantAttachment.new
-  end
-
+  before_filter :find_attachment_by_participant_attachments_id, only: [ :create ]
+  
   def index
     @tagged_participants = SharedAttachment.shared_attachment_participants(params[:id]).pluck(:participant_id)
     @current_participant_networks = Network.all_participants_in_network(current_participant)
@@ -24,14 +17,31 @@ class Participant::ParticipantAttachmentsController < ApplicationController
   end
 
   def create
-    @attachment = ParticipantAttachment.new(participant_attachment_params)
-    @attachment.participant = current_participant
     if @attachment.present?
-      @attachment.save
-      send_notification(params[:participant_attachments][:participant_ids])
-      redirect_to participant_attachments_path
+      if @attachment.update_attributes(participant_attachment_params)
+        if params[:participant_attachments][:participant_ids].present?
+          send_notification(params[:participant_attachments][:participant_ids])
+        else
+          @shared_attachment = SharedAttachment.find_by participant_attachment_id: @attachment.id
+          SharedAttachment.destroy(@shared_attachment)
+          @attachment.participant = current_participant
+          @attachment.save
+        end
+        redirect_to participant_attachments_path
+      else
+        render :index
+      end
     else
-      render :index
+      @attachment = ParticipantAttachment.new(participant_attachment_params)
+      @attachment.participant = current_participant
+      @attachment.save
+      if @attachment.present?
+        @attachment.save
+        send_notification(params[:participant_attachments][:participant_ids])
+        redirect_to participant_attachments_path
+      else
+        render :index
+      end
     end
   end
 
@@ -112,7 +122,7 @@ class Participant::ParticipantAttachmentsController < ApplicationController
   private
 
   def participant_attachment_params
-    params.require(:participant_attachments).permit(:file_title, :content, :participant_id, :attachment, :participant_attachment_id, :owner_id, :file_description, participant_ids: []
+    params.require(:participant_attachments).permit(:id, :file_title, :content, :participant_id, :attachment, :participant_attachment_id, :owner_id, :file_description, participant_ids: []
     )
   end
 
@@ -122,6 +132,12 @@ class Participant::ParticipantAttachmentsController < ApplicationController
 
   def find_attachment
     @attachment = ParticipantAttachment.find_by_id(params[:id])
+  end
+
+  def find_attachment_by_participant_attachments_id
+    if params[:participant_attachments][:id].present?
+      @attachment = ParticipantAttachment.find(params[:participant_attachments][:id])
+    end
   end
 
   def share_from_params(tag_params)
