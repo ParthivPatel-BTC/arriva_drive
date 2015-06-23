@@ -44,7 +44,7 @@ module ApplicationHelper
 
   def formatted_time_with_timezone(date)
     updated_note_date = date.in_time_zone("London").to_date
-    updated_note_date == Date.today.in_time_zone("London").to_date ? date.in_time_zone("London").strftime('%H.%M %p') : date.in_time_zone("London").strftime('%H %b')
+    updated_note_date == Date.today.in_time_zone("London").to_date ? date.in_time_zone("London").strftime('%H.%M %p') : date.in_time_zone("London").strftime('%d %b')
   end
 
   def formatted_time_without(time)
