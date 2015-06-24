@@ -554,45 +554,31 @@ header{padding:18px 20px 0;}
 .participantslist li .checkboxbtn:hover{ background:#008b9a;}
 .participantslist li .network-img{width:65px; height:65px; display:inline-block;}
 .participantslist li .network-img img{ width:100%; border-radius:100%; border:2px solid #cfe02b; }
-.participantslist li h4{ font-size:13px; color:#003d3b; margin-bottom:0px; font-weight:bold;}
-.participantslist li:hover h4, .participantslist li.active h4{ background:#008b9a !important;color:#fff;}
-.participantslist li p{ color:#003d3b; font-size:11px;}
-.participantslist li:hover p{ background:#008b9a !important;color:#fff;}
-.participantslist li.active p{ color:#fff;}
-.participantslist li:hover {background:#008b9a !important;}
-/*.participantslist li p.unfollow{ margin-top:25px;}
-.participantslist li p.unfollow .unfollow-text{display:none;}
-.participantslist li p.unfollow i{width:22px; text-align:center; height:22px; border:1px solid #cddc39; color:#cddc39 !important; border-radius:100%; display:inline-block; margin-top:3px; font-size:12px; line-height:20px; margin-bottom:5px;}
-.participantslist li p.unfollow span{ display:block; text-transform:uppercase; font-size:12px; color:#727272;}
-*/
-#content-5 .participantslist li.active p.unfollow i{background:#cddc39;color:#fff;}
-#content-5 .participantslist li:hover p.unfollow i{background:#cddc39 !important;color:#fff;}
-.participantslist li.active p.unfollow i{/*background:#cddc39;*/color:#fff;}
-.participantslist li:hover p.unfollow span, .participantslist p.unfollow span{ color:#fff;}
-.participantslist .checkboxbtn { display:block; cursor: pointer; position: relative; padding-left:0; margin-right: 0; margin-left:0;}  
-.participantslist input[type="checkbox"] { opacity: 0;  margin: 0; position:absolute;}
-.participantslist .checkboxbtn:before {content:""; display: inline-block; width: 15px;  height: 15px; margin-right:0; position: absolute;left: 0; top:0;}  
-.participantslist input[type=checkbox] + label.checkboxbtn:before {}   
-.participantslist li.active label.checkboxbtn{background:#008b9a !important;}
-.participantslist input[type=checkbox]:checked + label.checkboxbtn .mdi-navigation-check{background:#cddc39; color:#fff;}
-.participantslist li.active label.checkboxbtn .unfollow span{color:#fff;}
-.participantslist input[type=checkbox]:checked + label.checkboxbtn h4{color:#fff;}
-.participantslist input[type=checkbox]:checked + label.checkboxbtn p{color:#fff;}
-.participantslist input[type=checkbox]:checked + label.checkboxbtn .unfollow-text{display:block;}
-.participantslist input[type=checkbox]:checked + label.checkboxbtn .follow-text{display:none;}
+.participantslist li h4{ font-size:13px; color:#0a4f56; margin-bottom:0px; font-weight:bold;}
+.participantslist li:hover h4, .participantslist li.active h4{ color:#fff;}
+.participantslist li p{ color:#0a4f56; font-size:11px;}
+.participantslist li:hover p, .participantslist li.active p{ color:#fff;}
 .participantslist li p.unfollow{ margin-top:25px;}
 .participantslist li p.unfollow .unfollow-text{display:none;}
 .participantslist li p.unfollow i{width:22px; text-align:center; height:22px; border:1px solid #cddc39; color:#cddc39; border-radius:100%; display:inline-block; margin-top:3px; font-size:12px; line-height:20px; margin-bottom:5px;}
 .participantslist li p.unfollow span{ display:block; text-transform:uppercase; font-size:12px; color:#727272;}
-.participantslist li.active p.follow i{/*background:#cddc39;*/color:#fff;}
-.participantslist li:hover p.follow span, .participantslist p.follow span{ color:#fff;}
-.participantslist li p.follow{ margin-top:25px;}
-.participantslist li p.follow .unfollow-text{display:none;}
-.participantslist li p.follow i{width:22px; text-align:center; height:22px; border:1px solid #cddc39; color:#cddc39; border-radius:100%; display:inline-block; margin-top:3px; font-size:12px; line-height:20px; margin-bottom:5px;}
-.participantslist li p.follow span{ display:block; text-transform:uppercase; font-size:12px; color:#727272;}
-#content-5 .participantslist li.active p.follow i{color:#fff;}
-#content-5 .participantslist li:hover p.follow i{color:#fff;}
+.participantslist li:hover p.unfollow span, .participantslist li.active p.unfollow span{ color:#fff;}
+.participantslist .checkboxbtn { display:block; cursor: pointer; position: relative; padding-left:0; margin-right: 0; margin-left:0;}  
+.participantslist input[type="checkbox"] { opacity: 0;  margin: 0; position:absolute;}
+.participantslist .checkboxbtn:before {content:""; display: inline-block; width: 15px;  height: 15px; margin-right:0; position: absolute;left: 0; top:0;}  
+.participantslist input[type=checkbox] + label.checkboxbtn:before {}   
+.participantslist input[type=checkbox]:checked + label.checkboxbtn{background:#008b9a;}
+.participantslist input[type=checkbox]:checked + label.checkboxbtn .mdi-navigation-check{background:#cddc39; color:#fff;}
+.participantslist input[type=checkbox]:checked + label.checkboxbtn .unfollow span{color:#fff;}
+.participantslist input[type=checkbox]:checked + label.checkboxbtn h4{color:#fff;}
+.participantslist input[type=checkbox]:checked + label.checkboxbtn p{color:#fff;}
+.participantslist input[type=checkbox]:checked + label.checkboxbtn .unfollow-text{display:block;}
+.participantslist input[type=checkbox]:checked + label.checkboxbtn .follow-text{display:none;}
 
+.yournetwork .participantslist input[type=checkbox]:checked + label.checkboxbtn{background:#fff;}
+.yournetwork .participantslist input[type=checkbox]:checked + label.checkboxbtn .unfollow span{color:#727272;}
+.yournetwork .participantslist input[type=checkbox]:checked + label.checkboxbtn h4{color:#0a4f56;}
+.yournetwork .participantslist input[type=checkbox]:checked + label.checkboxbtn p{color:#0a4f56;}
 
 
 .networkfull .alphabetrow{ border-bottom:0px solid #d1d1d1; background:#fff;}

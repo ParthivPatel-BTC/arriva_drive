@@ -2,23 +2,23 @@
 %h3
   = t('participant.networks.caption.your_network')
   %span= "(#{@networks.count})"
-  #content-4.participantsrow
-    %ul.participantslist.clearfix
-      - if @networks.present?
-        - @networks.each do |network|
-          = link_to(action: :remove_participant, participant_id: network.id, remote: true) do
-            %li
-              %input{:name => "", :type => "checkbox", :value => "", id: "participants#{network.id}"}
-              %label.checkboxbtn{:for => "participants#{network.id}"}
-                .network-img
-                  = image_tag(network.photo.url(:thumb), class: 'participant_img')
-                %h4= network.full_name.titleize
-                %p= network.job_title.titleize
-                %p.unfollow
-                  %i.mdi-navigation-check
-                  %span= t('participant.networks.caption.unfollow')
-      - else
-        .activityrow.participantsrow
-          .activityblock
-            .activitytitle
-              %h5 No Network Found
+#content-4.participantsrow
+  %ul.participantslist.clearfix
+    - if @networks.present?
+      - @networks.each do |network|
+        = link_to(action: :remove_participant, participant_id: network.id, remote: true) do
+          %li
+            %input{:name => "", :type => "checkbox", :value => "", id: "participants#{network.id}"}
+            %label.checkboxbtn{:for => "participants#{network.id}"}
+              .network-img
+                = image_tag(network.photo.url(:thumb), class: 'participant_img')
+              %h4= network.full_name.titleize
+              %p= network.job_title.titleize
+              %p.unfollow
+                %i.mdi-navigation-check
+                %span= t('participant.networks.caption.unfollow')
+    - else
+      .activityrow
+        .activityblock
+          .activitytitle
+            %h5 No Network Found

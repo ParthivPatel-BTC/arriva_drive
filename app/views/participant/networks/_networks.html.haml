@@ -5,29 +5,114 @@
   %ul.participantslist.clearfix
     - if @participants.present?
       - @participants.each_with_object(0) do |participant, index|
-        - span_text_follow_unfollow = participant_ids.include?(participant.id) ? t('participant.networks.caption.unfollow') : t('participant.networks.caption.follow')
         - if participant_ids.include?(participant.id)
-          %li.active
-            %input{:name => "", :type => "checkbox", :value => "", id: "participants#{participant.id}"}
+          %li
+            %input{:name => "", :type => "checkbox", :value => "#{participant.id}", id: "participants#{participant.id}", :checked => true}
             %label.checkboxbtn{:for => "participants#{participant.id}"}
-              #c.network-img
+              .network-img{id: "participant#{participant.id}"}
                 = image_tag(participant.photo.url(:thumb), class: 'participant_img')
               %h4= participant.full_name.titleize
               %p= participant.job_title.titleize
               %p.unfollow
                 %i.mdi-navigation-check
-                %span= span_text_follow_unfollow
+                %span.unfollow-text Unfollow
         - else
-          = link_to(action: :add_to_network, participant_id: participant.id, remote: true) do
-            %li{id: "participants#{participant.id}"}
-              %input{:name => "", :type => "checkbox", :value => "", id: "participants#{participant.id}"}
-              %label.checkboxbtn{:for => "participants#{participant.id}"}
-                #c.network-img
-                  = image_tag(participant.photo.url(:thumb), class: 'participant_img')
-                %h4= participant.full_name.titleize
-                %p= participant.job_title.titleize
-                %p.follow
-                  %i.mdi-navigation-check
-                  %span= span_text_follow_unfollow
-            
-= javascript_include_tag "participant/networks"
+          %li
+            %input{:name => "", :type => "checkbox", :value => "#{participant.id}", id: "participants#{participant.id}"}
+            %label.checkboxbtn{:for => "participants#{participant.id}"}
+              .network-img{id: "participant#{participant.id}"}
+                = image_tag(participant.photo.url(:thumb), class: 'participant_img')
+              %h4= participant.full_name.titleize
+              %p= participant.job_title.titleize
+              %p.unfollow
+                %i.mdi-navigation-check
+                %span.follow-text Follow
+    - else
+      .activityrow
+        .activityblock
+          .activitytitle
+            %h5 No Participant Found
+
+:javascript
+  $(document).ready(function(){
+    $("#content-5, #content-4").mCustomScrollbar({
+      axis:"x",
+      theme:"dark-thin",
+      autoExpandScrollbar:true,
+      advanced:{autoExpandHorizontalScroll:true},
+      scrollInertia:400
+    });  
+    var owl = $('.owl-carousel');
+    owl.owlCarousel({
+      margin:0,
+      autoWidth:false,
+      nav:true,
+      items:8,
+      responsive:{
+        320:{
+          autoWidth:true,
+          items:4
+        },
+        600:{
+          autoWidth:true,
+          items:12
+        },
+        1000:{
+          items:14
+        },
+        1600:{
+          items:18
+        }
+      }
+    });
+    owl.on('mousewheel', '.owl-stage', function (e) {
+      if (e.deltaY>0) {
+        owl.trigger('next.owl');
+      } else {
+        owl.trigger('prev.owl');
+      }
+      e.preventDefault();
+    });
+     $('#myStathalf2').circliful();
+    
+    $('.recentnote-slide').bxSlider({
+      auto: true,
+      controls:false
+    });
+    
+    $( "#noteTabs" ).tabs();
+    $(".note-panel").click(function(){
+      $(".addnote-view").addClass("close")
+    });
+   
+    $(".participantslist li").hover(function(){
+      $(this).toggleClass("active")
+    });
+
+    $(".sharedtablist-box").on("click", function() {
+      $(".sharedtablist-box").removeClass("active");
+      $(".sharemain-panel").removeClass("activeLnk");
+      $(this).addClass("active");
+      $("div[id=" + $(this).attr("data-related") + "]").addClass("activeLnk");
+    });
+    
+    $(".accord-toggle").click(function(){
+      $(".accord-div").slideUp();
+      $(this).next('.accord-div').slideDown();
+      
+      $(".mouseWheelButtons .carousel2").jCarouselLite({
+        btnNext: ".mouseWheelButtons .next",
+        btnPrev: ".mouseWheelButtons .prev",
+        mouseWheel: true,
+        visible: 6,
+        circular: false      
+      });
+    });
+
+    $("#content-5 li").click(function() {
+      $.ajax({
+      url: "/participants/add_to_network?participant_id="+$(this).find('[type=checkbox]').val(),
+      dataType: "script"
+      }); 
+    });
+  });
