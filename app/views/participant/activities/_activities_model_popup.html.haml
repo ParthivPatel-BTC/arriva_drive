@@ -27,12 +27,13 @@
             .tagsameone-title
               %h3.accord-toggle Take the Quiz and Score Points
               .behaviou-detail.accord-div{:style => "display: none;"}
-                %h5 Question:
-                %p= activity.multiple_choice_question.question_text
-                - if current_participant.has_answered_this_activity?(activity)
-                  = render partial: 'participant/activities/answer', locals: {activity: activity}
-                - else
-                  = render partial: 'participant/activities/answers_listing', locals: {activity: activity}
+                - if activity.multiple_choice_question.present?
+                  %h5 Question:
+                  %p= activity.multiple_choice_question.question_text
+                  - if current_participant.has_answered_this_activity?(activity)
+                    = render partial: 'participant/activities/answer', locals: {activity: activity}
+                  - else
+                    = render partial: 'participant/activities/answers_listing', locals: {activity: activity}
         .writereview
           - if current_participant.has_reviewed_this_activity?(activity)
             %h5= current_participant.get_review_text_of_activity(activity)
