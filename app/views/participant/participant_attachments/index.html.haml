@@ -17,99 +17,14 @@
             %h3
               My Files
               %span= "(#{@attachments.size-count_shared_attachments(@attachments)})"
-            = render partial: 'participant/participant_attachments/attachments'
+            = render partial: 'attachments'
           #tabs-2.filepaneltab-box
             %h3
               Shared Files
               %span= "(#{count_shared_attachments(@attachments)})"
             .sharedfiles-panel.clearfix
-              - @attachments.each_with_object(0) do |attachment, index|
-                - if attachment.participants.present?
-                  - shared_attachment_count = attachment.participants.count > 1 ? "#{attachment.participants.count} PEOPLE" : shared_attachment_participants(attachment.participants.uniq)
-                  .myfiles-box
-                    .myfiles-block
-                      .myfilesbox-text
-                        %h4= attachment.attachment_file_name
-                        %p= attachment.file_description
-                        %p
-                          %span
-                            Shared with:
-                            %strong= shared_attachment_count
-                      %ul.myfilesbox-btn.clearfix
-                        %li.delete-btn
-                          = link_to "", participant_attachment_path(attachment), title: t('common.caption.delete'), method: :delete, data: { confirm: t('common.msg.confirm')}
-                        %li.download-btn
-                          = link_to "", "#{show_attachment_path(attachment.id)}", target: "_blank", 'data-popup' => 'true','data-id' =>"#{attachment.id}", title: t('participant.participant_attachments.caption.link_download') 
-                        %li.share-btn
-                          = link_to("", javascript_void, 'data-modal' => "modal-#{attachment.id}", title: t('participant.participant_attachments.caption.share_or_unshare'), class: 'md-trigger')
+            = render partial: 'shared_attachments'
 .overlay{"data-sidebar-overlay" => ""}
-#modal.md-modal.md-effect-5
-  .md-content.notepopup-panel
-    .eventpopup-title
-      %h3 NEW FILE
-    = form_tag(participant_attachments_path, method: :post, id: 'newNoteForm', multipart: true) do
-      .notepopup-list
-        .inputnote.clearfix
-          .inputnote-number 1
-          = text_area_tag 'participant_attachments[file_description]', nil, placeholder: t('participant.participant_attachments.place_holder.file_description')
-        .tagsameone
-          .inputnote-number 2
-          .tagsameone-title
-            %h3.accord-toggle{id: 'toggle1'}
-              Would you like to
-              %span tag someone
-              in your network?
-            .tagsameone-detail.accord-div{id: 'div1'}
-              .accord-carousel{id: 'accord1'}
-                %ul.owl-carousel{id: 'owl1'}
-                  - @current_participant_networks.each do |participant|
-                    %li.item
-                      = check_box_tag "participant_attachments[participant_ids][]", participant.id, false, id: "participant_attachments1_#{participant.id}"
-                      %label.checkboxbtn{:for => "participant_attachments1_#{participant.id}"}
-                        .network-img
-                          = image_tag(participant.photo.url(:thumb))
-                        %h4= participant.full_name
-                        %p= participant.job_title.titleize
-        .choosefile-btn
-          = link_to "Choose File", javascript_void, class: 'btn', id: 'participant_attachment_id'
-          #upload_file_div{:style => "display: none"}
-            = file_field_tag 'participant_attachments[attachment]'
-        .notepopup-footer.clearfix
-          %p People you have tagged will be automatically notified
-          .notesend-btn
-            = link_to_submit("Send", participant_attachments_path, class: 'right')
-    %button.md-close Close
-
-- @attachments.each_with_object(0) do |attachment, index|
-  .md-modal.md-effect-5{id: "modal-#{attachment.id}"}
-    .md-content.notepopup-panel
-      .eventpopup-title
-        %h3 NEW FILE
-      .notepopup-list
-        = form_tag(participant_attachments_path, method: :post, id: 'newNoteForm', multipart: true) do
-          .tagsameone
-            .inputnote-number 1
-            .tagsameone-title
-              %h3.accord-toggle.custom-toggle
-                Would you like to
-                %span tag someone
-                in your network?
-              .tagsameone-detail.accord-div{id: "div2#{attachment.id}"}
-                .accord-carousel{id: "accord2#{attachment.id}"}
-                  %ul.owl-carousel.mulcaro.custom-carousel{id: "owl2#{attachment.id}"}
-                    - @tag_par = find_tagged_participants(attachment)
-                    - @current_participant_networks.each do |participant|
-                      %li.item
-                        = check_box_tag "participant_attachments[participant_ids][]", participant.id, @tag_par.include?(participant.id), id: "participant_attachments_#{attachment.id}_#{participant.id}"
-                        %label.checkboxbtn{:for => "participant_attachments_#{attachment.id}_#{participant.id}"}
-                          .network-img
-                            = image_tag(participant.photo.url(:thumb))
-                          %h4= participant.full_name.titleize
-                          %p= participant.job_title.titleize
-                        = hidden_field_tag "participant_attachments[id]",attachment.id
-          .notepopup-footer.clearfix
-            %p People you have tagged will be automatically notified
-            .notesend-btn
-              = link_to_submit("Send", participant_attachments_path, class: 'right')
-      %button.md-close Close
+= render partial: 'activities_model_popup_new_attachment'
+= render partial: 'activities_model_popup_share_attachments'
 = javascript_include_tag 'participant/files'

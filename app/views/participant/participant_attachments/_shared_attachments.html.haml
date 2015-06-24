@@ -1,0 +1,19 @@
+- @attachments.each_with_object(0) do |attachment, index|
+  - if attachment.participants.present?
+    - shared_attachment_count = attachment.participants.count > 1 ? "#{attachment.participants.count} PEOPLE" : shared_attachment_participants(attachment.participants.uniq)
+    .myfiles-box
+      .myfiles-block
+        .myfilesbox-text
+          %h4= attachment.attachment_file_name
+          %p= attachment.file_description
+          %p
+            %span
+              Shared with:
+              %strong= shared_attachment_count
+        %ul.myfilesbox-btn.clearfix
+          %li.delete-btn
+            = link_to "", participant_attachment_path(attachment), title: t('common.caption.delete'), method: :delete, data: { confirm: t('common.msg.confirm')}
+          %li.download-btn
+            = link_to "", "#{show_attachment_path(attachment.id)}", target: "_blank", 'data-popup' => 'true','data-id' =>"#{attachment.id}", title: t('participant.participant_attachments.caption.link_download') 
+          %li.share-btn
+            = link_to("", javascript_void, 'data-modal' => "modal-#{attachment.id}", title: t('participant.participant_attachments.caption.share_or_unshare'), class: 'md-trigger')

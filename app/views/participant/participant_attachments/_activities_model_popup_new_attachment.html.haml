@@ -1,0 +1,36 @@
+#modal.md-modal.md-effect-5
+  .md-content.notepopup-panel
+    .eventpopup-title
+      %h3 NEW FILE
+    = form_tag(participant_attachments_path, method: :post, id: 'newNoteForm', multipart: true) do
+      .notepopup-list
+        .inputnote.clearfix
+          .inputnote-number 1
+          = text_area_tag 'participant_attachments[file_description]', nil, placeholder: t('participant.participant_attachments.place_holder.file_description')
+        .tagsameone
+          .inputnote-number 2
+          .tagsameone-title
+            %h3.accord-toggle{id: 'toggle1'}
+              Would you like to
+              %span tag someone
+              in your network?
+            .tagsameone-detail.accord-div{id: 'div1'}
+              .accord-carousel{id: 'accord1'}
+                %ul.owl-carousel{id: 'owl1'}
+                  - @current_participant_networks.each do |participant|
+                    %li.item
+                      = check_box_tag "participant_attachments[participant_ids][]", participant.id, false, id: "participant_attachments1_#{participant.id}"
+                      %label.checkboxbtn{:for => "participant_attachments1_#{participant.id}"}
+                        .network-img
+                          = image_tag(participant.photo.url(:thumb))
+                        %h4= participant.full_name
+                        %p= participant.job_title.titleize
+        .choosefile-btn
+          = link_to "Choose File", javascript_void, class: 'btn', id: 'participant_attachment_id'
+          #upload_file_div{:style => "display: none"}
+            = file_field_tag 'participant_attachments[attachment]'
+        .notepopup-footer.clearfix
+          %p People you have tagged will be automatically notified
+          .notesend-btn
+            = link_to_submit("Send", participant_attachments_path, class: 'right')
+    %button.md-close Close
