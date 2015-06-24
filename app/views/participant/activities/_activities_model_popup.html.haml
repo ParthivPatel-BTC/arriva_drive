@@ -21,24 +21,15 @@
           - else
             = link_to t("participant.activities.caption.#{activity.activity_type_verbos}"), activity.link, class: 'btn readpurchase', target: '_blank' 
           / = link_to "Read & Purchase", activity.link, target: '_blank', class: 'btn readpurchase'
-      .activitiaccord
-        - if activity.activity_type != 5
-          .activitiscrore
-            .tagsameone-title
-              %h3.accord-toggle Take the Quiz and Score Points
-              .behaviou-detail.accord-div{:style => "display: none;"}
-                - if activity.multiple_choice_question.present?
-                  %h5 Question:
-                  %p= activity.multiple_choice_question.question_text
-                  - if current_participant.has_answered_this_activity?(activity)
-                    = render partial: 'participant/activities/answer', locals: {activity: activity}
-                  - else
-                    = render partial: 'participant/activities/answers_listing', locals: {activity: activity}
-        .writereview
-          - if current_participant.has_reviewed_this_activity?(activity)
-            %h5= current_participant.get_review_text_of_activity(activity)
-          - else
-            %a.md-trigger.writereview-link{"data-modal" => "sub-modal-#{activity.id}", :href => "#"} Write a Review
+      - if activity.activity_type != 5
+        .activitiscrore
+          .tagsameone-title
+            = render partial: 'take_quiz_review', locals: { activity: activity }
+      .writereview
+        - if current_participant.has_reviewed_this_activity?(activity)
+          %h5= current_participant.get_review_text_of_activity(activity)
+        - else
+          %a.md-trigger.writereview-link{"data-modal" => "sub-modal-#{activity.id}", :href => "#"} Write a Review 
       %button.md-close Close
   .md-modal.md-effect-5.sub-model-div{id: "sub-modal-#{activity.id}"}
     .md-content.activitipopup-panel
@@ -54,3 +45,21 @@
               %a{:href => "mailto:Support@drivedb.net"} Support@drivedb.net
             = link_to_submit  t('common.caption.button.submit'), create_review_participant_activity_path(activity), id: 'btn_new_note', title: t('common.caption.button.submit'), class: 'add-submitbtn', data: {disable_with: "Submitting..."}
       %button.md-close Close
+
+
+:javascript
+  $(document).ready(function(){
+    $('#modal').find('button').on('click',function(){
+    $(".accord-toggle").click(function(){
+      $(".accord-div").slideUp();
+      if($(this).next('.accord-div').is(':visible')){
+        $(this).next('.accord-div').slideUp();
+        $(this).removeClass("active");
+      }
+      else{
+        $(this).next('.accord-div').slideDown();
+        $(this).addClass("active");
+      }
+    });  
+    });
+  });

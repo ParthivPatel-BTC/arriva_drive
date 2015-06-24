@@ -1,1 +1,2 @@
 $('.activity_completed_message').html("#{escape_javascript(@popup_msg.html_safe)}");
+$('.tagsameone-title').html("#{escape_javascript(render partial: 'take_quiz_review', locals: {activity: @activity}) }");

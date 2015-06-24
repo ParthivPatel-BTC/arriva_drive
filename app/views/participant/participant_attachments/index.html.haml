@@ -55,13 +55,13 @@
         .tagsameone
           .inputnote-number 2
           .tagsameone-title
-            %h3.accord-toggle
+            %h3.accord-toggle{id: 'toggle1'}
               Would you like to
               %span tag someone
               in your network?
-            .tagsameone-detail.accord-div
-              .accord-carousel
-                %ul.owl-carousel
+            .tagsameone-detail.accord-div{id: 'div1'}
+              .accord-carousel{id: 'accord1'}
+                %ul.owl-carousel{id: 'owl1'}
                   - @current_participant_networks.each do |participant|
                     %li.item
                       = check_box_tag "participant_attachments[participant_ids][]", participant.id, false, id: "participant_attachments1_#{participant.id}"
@@ -84,23 +84,23 @@
   .md-modal.md-effect-5{id: "modal-#{attachment.id}"}
     .md-content.notepopup-panel
       .eventpopup-title
-        %h3 SHARE FILE
+        %h3 NEW FILE
       .notepopup-list
         = form_tag(participant_attachments_path, method: :post, id: 'newNoteForm', multipart: true) do
           .tagsameone
             .inputnote-number 1
             .tagsameone-title
-              %h3.accord-toggle
+              %h3.accord-toggle.custom-toggle
                 Would you like to
                 %span tag someone
                 in your network?
-              .tagsameone-detail.accord-div
-                .accord-carousel
-                  %ul.owl-carousel
-                    - @tagged_participants = find_tagged_participants(attachment)
+              .tagsameone-detail.accord-div{id: "div2#{attachment.id}"}
+                .accord-carousel{id: "accord2#{attachment.id}"}
+                  %ul.owl-carousel.mulcaro.custom-carousel{id: "owl2#{attachment.id}"}
+                    - @tag_par = find_tagged_participants(attachment)
                     - @current_participant_networks.each do |participant|
                       %li.item
-                        = check_box_tag "participant_attachments[participant_ids][]", participant.id, @tagged_participants.include?(participant.id), id: "participant_attachments_#{attachment.id}_#{participant.id}"
+                        = check_box_tag "participant_attachments[participant_ids][]", participant.id, @tag_par.include?(participant.id), id: "participant_attachments_#{attachment.id}_#{participant.id}"
                         %label.checkboxbtn{:for => "participant_attachments_#{attachment.id}_#{participant.id}"}
                           .network-img
                             = image_tag(participant.photo.url(:thumb))

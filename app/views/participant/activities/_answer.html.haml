@@ -1,6 +1,6 @@
 - multiple_choice_answer = activity.correct_answer.try(:answer_text)
-%h5 Answer:
-%p= multiple_choice_answer
 - if current_participant.answer_of_activity(activity)
   %h5 Your Answer:
   %p= current_participant.answer_of_activity(activity).answer_text
+%h5 Current Answer:
+%p= multiple_choice_answer
