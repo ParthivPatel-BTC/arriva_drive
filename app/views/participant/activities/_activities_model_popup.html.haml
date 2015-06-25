@@ -19,7 +19,8 @@
           - if activity.activity_type == 5 && online_course_activities_for_participant(current_participant.id, activity)
             = link_to t("participant.activities.caption.#{activity.activity_type_verbos}"), activity.link, class: 'btn readpurchase', target: '_blank'
           - else
-            = link_to t("participant.activities.caption.#{activity.activity_type_verbos}"), activity.link, class: 'btn readpurchase', target: '_blank' 
+            = link_to t("participant.activities.caption.#{activity.activity_type_verbos}"), activity.link, class: 'btn readpurchase', target: '_blank'
+          %div.spacer5
           / = link_to "Read & Purchase", activity.link, target: '_blank', class: 'btn readpurchase'
       - if activity.activity_type != 5
         .activitiscrore
@@ -30,7 +31,7 @@
           %h5= current_participant.get_review_text_of_activity(activity)
         - else
           %a.md-trigger.writereview-link{"data-modal" => "sub-modal-#{activity.id}", :href => "#"} Write a Review 
-      %button.md-close Close
+      %button.md-close.present-popup-close-btn Close
   .md-modal.md-effect-5.sub-model-div{id: "sub-modal-#{activity.id}"}
     .md-content.activitipopup-panel
       .activitiaccord.writereview-popup
@@ -44,22 +45,26 @@
               Nedd help? Contact
               %a{:href => "mailto:Support@drivedb.net"} Support@drivedb.net
             = link_to_submit  t('common.caption.button.submit'), create_review_participant_activity_path(activity), id: 'btn_new_note', title: t('common.caption.button.submit'), class: 'add-submitbtn', data: {disable_with: "Submitting..."}
-      %button.md-close Close
+      %button.md-close.new-note-close-btn Close
 
 
 :javascript
   $(document).ready(function(){
     $('#modal').find('button').on('click',function(){
-    $(".accord-toggle").click(function(){
-      $(".accord-div").slideUp();
-      if($(this).next('.accord-div').is(':visible')){
-        $(this).next('.accord-div').slideUp();
-        $(this).removeClass("active");
-      }
-      else{
-        $(this).next('.accord-div').slideDown();
-        $(this).addClass("active");
-      }
-    });  
+      $(".accord-toggle").click(function(){
+        $(".accord-div").slideUp();
+        if($(this).next('.accord-div').is(':visible')){
+          $(this).next('.accord-div').slideUp();
+          $(this).removeClass("active");
+        }
+        else{
+          $(this).next('.accord-div').slideDown();
+          $(this).addClass("active");
+        }
+      });  
+    });
+
+    $('.btn_new_note').on('click', function(){
+      $('.new-note-close-btn').click();
     });
   });

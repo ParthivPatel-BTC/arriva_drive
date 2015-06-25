@@ -79,4 +79,8 @@ module ActivitiesHelper
   def fetch_activity_image_from_scrach(activity)
     ScreenScrapingService.fetch_data_from_web(activity.link) if activity.activity_type != 5
   end
+
+  def apply_color_for_completed_activities(activity)
+    current_participant.has_answered_this_activity?(activity) && current_participant.get_review_text_of_activity(activity) ? 'color:#FFA500' : ''
+  end
 end

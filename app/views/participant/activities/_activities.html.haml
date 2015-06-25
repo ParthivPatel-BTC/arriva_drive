@@ -7,9 +7,9 @@
             %i{class: get_activity_icon_class(activity.activity_type)}
         %h3= activity.title
         %p= activity.behaviour.title if activity.behaviour.present?
-      %p= truncate activity.description, length: 60
+      %p= truncate activity.description, length: 70
       %p.pointsrow
-        %span.points= "#{activity.total_score_of_participant(current_participant)} Points"
+        %span.points{style:"#{apply_color_for_completed_activities(activity)}"}= "#{activity.total_score_of_participant(current_participant)} Points"
         = link_to("More info", javascript_void, 'data-modal' => "modal-#{activity.id}", class: 'md-trigger')
 
 :javascript

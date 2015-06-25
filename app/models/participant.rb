@@ -87,7 +87,7 @@ class Participant < ActiveRecord::Base
   end
 
   def answer_of_activity(activity)
-    activity_answer_participants.find_by_activity_id(activity.id).answer
+    activity_answer_participants.find_by_activity_id(activity.id).answer if activity_answer_participants.find_by_activity_id(activity.id).present?
   end
 
   def has_given_correct_answer?(activity)

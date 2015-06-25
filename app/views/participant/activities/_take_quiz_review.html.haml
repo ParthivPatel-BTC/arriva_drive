@@ -1,4 +1,7 @@
-%h3.accord-toggle Take the Quiz and Score Points
+- if current_participant.has_answered_this_activity?(activity)
+  %h3.accord-toggle COMPLETE
+- else
+  %h3.accord-toggle Take the Quiz and Score Points
 .behaviou-detail.accord-div{:style => "display: none;"}
   - if activity.multiple_choice_question.present?
     %h5 Question:

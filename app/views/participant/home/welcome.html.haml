@@ -72,8 +72,8 @@
                   %p= network.participant.job_title.titleize
                   %span
                     %i.mdi-navigation-check
-              .viewnetwork
-                = link_to t('participant.dashboard.caption.view_network'), participant_networks_path, class: 'btn viewnetwork-btn rippler rippler-inverse'
+            .viewnetwork
+              = link_to t('participant.dashboard.caption.view_network'), participant_networks_path, class: 'btn viewnetwork-btn rippler rippler-inverse'
     .overlay{"data-sidebar-overlay" => ""}
     = render partial: 'fit_plan_performance_summary_popup'
 :javascript

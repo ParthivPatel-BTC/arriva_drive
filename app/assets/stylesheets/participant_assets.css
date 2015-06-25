@@ -12,5 +12,6 @@
  *= require participant/ghpages-materialize
  *= require participant/style
  *= require participant/responsive
+ *= require participant/custom
  *= require_self
  */
