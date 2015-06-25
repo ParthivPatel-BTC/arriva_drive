@@ -22,8 +22,8 @@ class Participant::ParticipantAttachmentsController < ApplicationController
         if params[:participant_attachments][:participant_ids].present?
           send_notification(params[:participant_attachments][:participant_ids])
         else
-          @shared_attachment = SharedAttachment.find_by participant_attachment_id: @attachment.id
-          SharedAttachment.destroy(@shared_attachment)
+          @shared_attachments = SharedAttachment.where(participant_attachment_id: @attachment.id)
+          @shared_attachments.delete_all
           @attachment.participant = current_participant
           @attachment.save
         end
