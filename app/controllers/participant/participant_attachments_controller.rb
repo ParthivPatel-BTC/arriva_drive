@@ -25,7 +25,6 @@ class Participant::ParticipantAttachmentsController < ApplicationController
           @shared_attachments = SharedAttachment.where(participant_attachment_id: @attachment.id)
           @shared_attachments.delete_all
           @attachment.participant = current_participant
-          @attachment.save
         end
         redirect_to participant_attachments_path
       else
