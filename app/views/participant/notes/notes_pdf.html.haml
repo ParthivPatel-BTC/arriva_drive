@@ -2,12 +2,9 @@
 %html
   %head
     %meta{"http-equiv" => "Content-Type", :content => "text/html; charset=utf-8"}
-    = wicked_pdf_stylesheet_link_tag "participants/pdf_style"
-    = wicked_pdf_stylesheet_link_tag "participants/uniform.aristo"
-    = wicked_pdf_stylesheet_link_tag "participants/style_behaviours"
-    = wicked_pdf_javascript_include_tag "participants/jquery-1.11.0.min"
-    = wicked_pdf_javascript_include_tag "participants/jquery.uniform"
-    = wicked_pdf_javascript_include_tag "participants/custom"
+    = wicked_pdf_stylesheet_link_tag "participant/pdf_style"
+    = wicked_pdf_javascript_include_tag "participant/jquery-2.1.1.min"
+    = wicked_pdf_javascript_include_tag "participant/jquery.circliful.min"   
   %body
     .container
       %header
@@ -24,10 +21,25 @@
           of
           = @total_activities.count
           activities.
-        .contentarea
-          %h3 LEADERSHIP BEHAVIOURS
-          = render partial: 'participant/home/leadership_behaviours.html.haml'
-          = render partial: 'participant/home/behaviour_scores.html.haml'
+        .activitysummary
+          %h4= t('participant.dashboard.caption.activity_summary')
+          = render partial: 'participant/home/fit_plan_summary_behaviours'
+        .plansummary
+          %h4{style: 'width:35%;'}
+            = t('participant.dashboard.caption.fit_plan_summary')
+          %ul.summery-hit
+            %li
+              %span.youf
+              = t('participant.dashboard.caption.fit_plan_summary_you')
+            %li
+              %span.performer
+              = t('participant.dashboard.caption.fit_plan_summary_top_performer')
+          .plansummery-list
+            %ul
+              - current_participant.scores.behaviour_scores.each do |score|
+                %li
+                  .progress-bar.progress-you{:style => "width:#{score.percentile_score}%;"}
+                  .progress-bar.progress-performer{:style => "width:#{score.percentile_difference_with_top_score}%;"}
         %div{style: 'height:300px;'}
         %h3 YOUR FIT PLAN SUMMARY
         %p
@@ -40,3 +52,12 @@
           = render partial: 'participant/notes/pfd_notes.html.haml'
         - else
           %h4= t('participant.notes.pdf.msg.no_notes_found')
+
+:javascript
+  $(document).ready(function(){
+    $('#myStathalf2').circliful();
+    $('.recentnote-slide').bxSlider({
+      auto: true,
+      controls:false
+    });
+  });
