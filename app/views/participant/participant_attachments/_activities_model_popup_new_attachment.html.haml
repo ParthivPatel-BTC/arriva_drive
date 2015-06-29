@@ -23,7 +23,7 @@
                       %label.checkboxbtn{:for => "participant_attachments1_#{participant.id}"}
                         .network-img
                           = image_tag(participant.photo.url(:thumb))
-                        %h4= participant.full_name
+                        %h4= participant.full_name.titleize
                         %p= participant.job_title.titleize
         .choosefile-btn
           = link_to "Choose File", javascript_void, class: 'btn', id: 'participant_attachment_id'
