@@ -82,6 +82,7 @@ ArrivaDrive::Application.routes.draw do
     get '/remove_participant' => 'participant/networks#remove_participant'
     get '/export_notes/:id' => 'participant/notes#export_notes', as: :export_notes
     post '/participant_attachments/callback' => 'participant/participant_attachments#callback'
+    post 'notes/save_reply_note_content' => 'participant/notes#save_reply_note_content', as: :save_reply_note_content
     get '/participant_attachments/show_attachment/:id' => 'participant/participant_attachments#show_attachment', as: :show_attachment
   end
   get 'admin' => 'static_pages#admin'

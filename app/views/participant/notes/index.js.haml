@@ -1,2 +1,1 @@
-- if @note.present?
-  $('#note1').html("#{escape_javascript(render 'my_note')}");
+$('#note1').html("#{escape_javascript(render partial: 'my_note')}");

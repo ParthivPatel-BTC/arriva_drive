@@ -2,9 +2,12 @@ class Note < ActiveRecord::Base
   belongs_to :owner, class_name: 'Participant', foreign_key: 'owner_id'
   has_many :tags, dependent: :destroy
   has_many :anonymous_activities, dependent: :destroy
+
   accepts_nested_attributes_for :tags
 
   after_create :update_participant_score
+
+  scope :find_by_id_and_parent_id, -> (id) { where('id = ? OR parent_id = ?', id, id) }
 
   def behaviour_tags
     tags.behaviour_tags

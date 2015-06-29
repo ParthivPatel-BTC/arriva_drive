@@ -11,4 +11,4 @@
                 Event Notes
                 %span= formatted_time_with_timezone(note.updated_at)
               %p= truncate note.content, length: 70
-          = link_to '', participant_note_path(note),  class: "sharedtablist-delete", title: t('common.caption.delete'), method: :delete, data: { confirm: t('common.msg.confirm')}
+          = link_to '', participant_note_path(note),  class: "sharedtablist-delete", method: :delete, data: { confirm: t('common.msg.confirm')}

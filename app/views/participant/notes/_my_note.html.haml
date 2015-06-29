@@ -1,16 +1,24 @@
 .sharechat-main
-  .sharechat-box.clearfix
-    .sharechat-title
-      .sharechattitle-img
-        = image_tag @note.owner.photo.url(:profile)
-      .sharechattitle-text
-        %h4 You
-        %p= "to #{formatted_tags(@note.tags.participants_tags)}" if @note.tags.participants_tags.present?
-      .sharechattitle-date
-        %p
-          = note_time_formatters(@note.updated_at)
-          %span= note_date_formatters(@note.updated_at)
-    .sharechat-text
-      %p= @note.content
-.sharechat-input
-  %input{:name => "", :placeholder => "Click to reply...", :type => "text", :value => ""}/
+  - @notes.each do |note|
+    .sharechat-box.clearfix
+      .sharechat-title
+        .sharechattitle-img
+          = image_tag note.owner.photo.url(:profile)
+        .sharechattitle-text
+          %h4= note.owner.name.titleize
+          %p= "to #{formatted_tags(note.tags.participants_tags)}" if note.tags.participants_tags.present?
+        .sharechattitle-date
+          %p
+            = note_time_formatters(note.updated_at)
+            %span= note_date_formatters(note.updated_at)
+      .sharechat-text
+        %p= note.content 
+= form_tag(save_reply_note_content_path, method: :post, remote: :true) do
+  = hidden_field_tag 'note[owner_id]', @note.owner.id
+  = hidden_field_tag 'note[parent_id]', @note.id
+  .sharechat-input
+    = text_field_tag 'note[content]', nil, placeholder: "Click to reply..."
+    .spacer5
+    .notepopup-footer.clearfix
+      .notesend-btn
+        = link_to_submit "Send"

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141215085446) do
+ActiveRecord::Schema.define(version: 20150629090832) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -187,6 +187,7 @@ ActiveRecord::Schema.define(version: 20141215085446) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "owner_id"
+    t.integer  "parent_id",  default: 0
   end
 
   create_table "participant_attachments", force: true do |t|

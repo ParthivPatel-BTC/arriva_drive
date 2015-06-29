@@ -53,17 +53,12 @@ h3 {
   width: 230px !important;
   line-height: 16px !important;
 }
-.deshboardsummery-panel{padding:15px 13px; border-radius:6px; border:1px solid #e3e3e3; margin-bottom:15px;}
-.deshboardsummery-panel h3{font-size:16px; color:#3e383d; line-height:20px; text-transform:uppercase; font-weight:600; padding:0 0 22px; margin:0;}
-.deshboardsummery-panel h3 i{font-size:16px; vertical-align:top; color:#008b9a; padding-left:5px;}
+
 .activitysummary{width:100%; float:left;}
 .activityprogress-list{float:left; }
 .activityprogress-list ul{padding:0; margin:0; text-align:right;}
 .activityprogress-list ul li{color:#68696a; line-height:20px; font-size:14px; padding:0 0 2px; margin:0; font-weight:400;}
 .activityprogress-list ul li span{color:#cddc39; width:23px; display:inline-block;}
-.activitiesvalue .activityprogress{width:59.55%; margin:0 auto; float:none; padding:30px 0 0 0;}
-.activitiesvalue .circle-info-half{font-size:13px; line-height:16px !important;}
-.activitiesvalue .circle-text{top:37%;}
 .plansummary{float:left; padding:0 0 0 20px; width:60.45%; position:relative;}
 .summery-hit {right:0; top:0; padding:0;}
 .summery-hit li{color:#68696a; line-height:20px; font-size:14px; padding:0 0 0 12px; text-transform:uppercase; margin:0; font-weight:400; display:inline-block;}

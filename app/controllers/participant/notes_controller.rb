@@ -8,13 +8,14 @@ class Participant::NotesController < ApplicationController
   ]
 
   def index
-    @my_notes = current_participant.notes.order(updated_at: :desc)
-    @shared_notes = current_participant.tags
+    @my_notes = current_participant.notes.where(parent_id: 0).order(updated_at: :desc)
+    @shared_notes = Note.where(id: current_participant.tags.pluck(:note_id)).where(parent_id: 0).order(updated_at: :desc)
     @points_earned = (@note.tags.behaviour_tags.count * Settings.activity_points.write_note) if @note.present?
     @participants = Network.all_participants_in_network(current_participant)
   end
 
   def get_note_content
+    @notes = Note.find_by_id_and_parent_id(params[:note_id])
     @note = Note.find_by_id(params[:note_id])
     @shared_note = params[:shared_note]
     respond_to do |format|
@@ -44,6 +45,26 @@ class Participant::NotesController < ApplicationController
                no_background: false
         return
       end
+    end
+  end
+
+  def save_reply_note_content
+    note = Note.new(reply_note_params)
+    note[:owner_id] = current_participant.id
+    if note.save
+      tag = Tag.new
+      tag.note = note
+      tag.taggable = Participant.find_by_id(params[:note][:owner_id])
+      if !tag.save
+        puts "#{tag.errors.full_messages}"
+      end
+      @notes = Note.find_by_id_and_parent_id(params[:note][:parent_id])
+      @note = Note.find_by_id(params[:note][:parent_id])
+    end
+    respond_to do |format|
+      format.js{
+        render file: 'participant/notes/index'
+      }
     end
   end
 
@@ -105,6 +126,10 @@ class Participant::NotesController < ApplicationController
     params.require(:note).permit(:content).merge!({
       tags_attributes: prepare_tags_map
     })
+  end
+
+  def reply_note_params
+    params.require(:note).permit(:owner_id, :parent_id, :cohort_type, :content)
   end
 
   def find_set_note
