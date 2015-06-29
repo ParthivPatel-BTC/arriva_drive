@@ -271,7 +271,7 @@ en:
        no_notes_found: 'No Notes Found'
     events:
       caption:
-        calendar_feed: 'Calendar Feed'
+        calendar_feed: 'Add to Calendar'
       msg:
        no_events_found: 'No Events Found'
     participant_attachments:

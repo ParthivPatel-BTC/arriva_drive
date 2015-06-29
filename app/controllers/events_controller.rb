@@ -39,16 +39,16 @@ class EventsController < ApplicationController
   def update
     if params[:event_files_attributes].present?
       params[:event_files_attributes].each do |file|
-          if file[:id].present? && file[:event_doc].present?
-            @file = EventFile.find_by_id(file[:id])
-            @file.destroy
-          end
-          if file[:event_doc].present?
-            @event.event_files.create(event_doc: file[:event_doc], display_name: file[:display_name])  
-          elsif file[:id].present? && file[:display_name].present?
-            @file = EventFile.find_by_id(file[:id])
-            @file.update(display_name: file[:display_name])
-          end
+        if file[:id].present? && file[:event_doc].present?
+          @file = EventFile.find_by_id(file[:id])
+          @file.destroy
+        end
+        if file[:event_doc].present?
+          @event.event_files.create(event_doc: file[:event_doc], display_name: file[:display_name])  
+        elsif file[:id].present? && file[:display_name].present?
+          @file = EventFile.find_by_id(file[:id])
+          @file.update(display_name: file[:display_name])
+        end
       end
     end
     processed_params = mark_nested_attr_for_destroy(event_params, 'cohort_events_attributes', 'cohort_id')

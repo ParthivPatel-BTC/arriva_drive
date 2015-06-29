@@ -22,7 +22,7 @@
             %i.menu-icon.mdi-action-settings
             = t('participant.nav_bar.activities')
         %li
-          = link_to "#", class: left_side_bar_class('events') do
+          = link_to participant_events_path, class: left_side_bar_class('events') do
             %i.menu-icon.mdi-communication-location-on
             = t('participant.nav_bar.events')
         %li

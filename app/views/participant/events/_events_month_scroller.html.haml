@@ -3,88 +3,26 @@
     %a.prev{:href => "#"} Past Events
     .carousel
       %ul
-        %li
-          %a{:href => "#tabs-1"}
-            JAN-FEB
-            %span 2014
-        %li
-          %a{:href => "#tabs-3"}
-            MAR-APR
-            %span 2014
-        %li
-          %a{:href => "#tabs-4"}
-            MAY-JUNE
-            %span 2014
-        %li
-          %a{:href => "#tabs-5"}
-            JUL-AUG
-            %span 2014
-        %li
-          %a{:href => "#tabs-6"}
-            SEPT-OCT
-            %span 2014
-        %li
-          %a{:href => "#tabs-1"}
-            NOV-DEC
-            %span 2014
-        %li
-          %a{:href => "#tabs-2"}
-            JAN-FEB
-            %span 2014
-        %li
-          %a{:href => "#tabs-3"}
-            MAR-APR
-            %span 2014
-        %li
-          %a{:href => "#tabs-4"}
-            MAY-JUNE
-            %span 2014
-        %li
-          %a{:href => "#tabs-5"}
-            JUL-AUG
-            %span 2014
-        %li
-          %a{:href => "#tabs-6"}
-            SEPT-OCT
-            %span 2014
-        %li
-          %a{:href => "#tabs-1"}
-            NOV-DEC
-            %span 2014
-        %li
-          %a{:href => "#tabs-2"}
-            JAN-FEB
-            %span 2015
-        %li
-          %a{:href => "#tabs-3"}
-            MAR-APR
-            %span 2015
-        %li
-          %a{:href => "#tabs-4"}
-            MAY-JUNE
-            %span 2015
-        %li
-          %a{:href => "#tabs-5"}
-            JUL-AUG
-            %span 2015
-        %li
-          %a{:href => "#tabs-6"}
-            SEPT-OCT
-            %span 2015
-        %li
-          %a{:href => "#tabs-5"}
-            NOV-DEC
-            %span 2015
-        %li
-          %a{:href => "#tabs-2"}
-            JAN-FEB
-            %span 2016
-        %li.current
-          %a{:href => "#tabs-3"}
-            MAR-APR
-            %span 2016
-        %li
-          %a{:href => "#tabs-4"}
-            MAY-JUNE
-            %span 2016
+        - @events_months_with_year.each do |date|
+          - first_month = date[0][4..6]
+          - second_month = date[1].present? ? date[1][4..6] : Date::MONTHNAMES[Date::MONTHNAMES.index(date[0][4..12]).to_i + 1][0..2]
+          - event_year = date[0].first(4)
+          - first_month_for_seach = date[0][4..12]
+          - second_month_for_seach = date[1].present? ? date[1][4..12] : Date::MONTHNAMES[Date::MONTHNAMES.index(date[0][4..12]).to_i + 1][0..10]
+          
+          %li{class: set_month_scroller_active(first_month_for_seach, second_month_for_seach, event_year)}
+            = link_to('javascript:void(0);', year: date[0][0..3], first_month: first_month_for_seach, second_month: second_month_for_seach, id: 'month',  remote: true) do
+              = "#{first_month}-#{second_month}"
+              %span= "#{event_year}"
     %a.next{:href => "#"} Future Events
+
+:javascript
+  $(document).ready(function() {
+    $(".carousel").find("li a").on( "click", function() {
+      $.ajax({
+        url: "/participants/get_monthly_events?year="+$(this).attr("year")+"&first_month="+$(this).attr("first_month")+"&second_month="+$(this).attr("second_month"),
+        dataType: "script"
+      })
+    });
+    $(".carousel").find("li.ui-tabs-active a").click();
+  });

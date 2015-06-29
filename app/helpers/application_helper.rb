@@ -139,7 +139,7 @@ module ApplicationHelper
   end
 
   def event_time_formatter(time)
-    time.try(:strftime, '%l:%M%p')
+    time.try(:strftime, '%H%p')
   end
 
   def date_formatter(date)

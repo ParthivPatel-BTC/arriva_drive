@@ -1,98 +1,17 @@
-- if @events.blank?
-  .contentarea
-    .activities
-      %ul
-        %li
-          .activitiesinfo
-            %h5= t('participant.events.msg.no_events_found')
+%h4= "#{month} #{year}"
+- if events.present?
+  - events.each do |event|
+    .montheventbox
+      .monthevent-box
+        .monthevent-img
+          = image_tag event.image.url(:listing)
+        .monthevent-info.clearfix
+          %h5
+            = event.title.titleize
+            %span= "#{event_time_formatter(event.event_start_time)} #{date_formatter(event.event_date)}"
+          = link_to 'View', javascript_void, 'data-modal' => "modal-#{event.id}", class: 'monthevent-view btn md-trigger'
 - else
-  .contentarea
-    .eventssection
-      #about.nano
-        .nano-content{style: "right: -13px;", tabindex: "0"}
-          .events
-            %ul
-              - @events.each do |event|
-                %li#events-li-width{class: event_listing_class(event)}
-                  .left{style: "padding-bottom:0px;"}
-                    = link_to event.link, target: '_blank' do
-                      %h5.uppercase
-                        %span.date= participant_event_date_formatted(event.event_date)
-                        %span.time= participant_event_time_formatted(event.event_start_time)
-                        %span.eventname= "#{event.title}, #{event.location}"
-                      .break-long-url
-                        %p= event.description
-                    %p.links
-                      = link_to(calendar_feed_participant_event_path(event,  :format => :ics), title: t('participant.events.caption.calendar_feed')) do
-                        %i.icon-notesave
-                      / %a.right{href: "#"}
-                      /   share
-                      /   %i.icon-share
-                  .right
-                    = image_tag event.image.url(:medium), style: 'height:100px;width:122px;'
-                  - if event.is_completed?
-                    .completed completed
-                  - if !(event.event_files.blank?)
-                    %ul.spacingfiles
-                      - event.event_files.each do |file|
-                        - if !(file.display_name.blank?)
-                          %h5.uppercase
-                            %span.date
-                            = link_to file.display_name, '#', target: "_blank", 'data-popup' => 'true', 'data-url' => "#{event_file_download_path(file.id)}", 'data-id' => "#{file.id}"
-
-                    .spacer5
-        .nano-pane
-          .nano-slider#nano_slider
-      .monthright
-        - margin_bottom = @month_arr.size > 6 ? 'margin-bottom: 20px;' : 'margin-bottom: 60px;'
-        - @month_arr.each do |month|
-          = link_to(month, 'javascript:void(0);', id: 'month', style: "margin-bottom: #{margin_for_months_scroller(@month_arr.size)}px !important;")
-
-      .pagingrow
-        = paginate @events, exclude: [:first, :last], remote: true
-:javascript
-  $(document).ready(function() {
-    $('.page-right, .page-left').on( "click", function(e) {
-      var URL = $("#paginationNext, #paginationBack").attr('href');
-      var month = getURLParameter(URL, 'month');
-
-     e.preventDefault();
-      if ($(this).attr("href").split("page").length > 1) {
-        var pageNum = $(this).attr("href").match(/page=([0-9]+)/)[1];
-      } else { var pageNum = '1'; }
-
-      if(month != null) {
-        var event_path = "/participants/get_monthly_events?month="+month+"&page="+pageNum
-      }
-      else {
-        var event_path = "/participants/events?page="+pageNum
-      }
-      $.ajax({
-        url: event_path,
-        dataType: "script"
-      }).done(function() {
-       $('.nano-pane').addClass('nano_slider_display_block');
-       $(".nano").nanoScroller();
-      });
-    });
-
-    $("a[id='month']").on("click", function (e) {
-      e.preventDefault();
-      if ($(this).attr("href").split("page").length > 1) {
-        var pageNum = $(this).attr("href").match(/page=([0-9]+)/)[1];
-      } else { var pageNum = '1'; }
-      $.ajax({
-        url: "/participants/get_monthly_events?month="+$(this).text()+"&page="+pageNum,
-        dataType: "script"
-      }).done(function() {
-       $('.nano-pane').addClass('nano_slider_display_block');
-       $(".nano").nanoScroller();
-      });
-    });
-  $('.nano-pane').addClass('nano_slider_display_block');
-  $(".nano").nanoScroller();
-  });
-
-  function getURLParameter(url, name) {
-      return (RegExp(name + '=' + '(.+?)(&|$)').exec(url)||[,null])[1];
-  }
+  .montheventbox
+    .monthevent-box
+      .monthevent-img
+        No Events Founds

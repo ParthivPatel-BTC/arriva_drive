@@ -1,0 +1,32 @@
+- events.each do |event|
+  .md-modal.md-effect-5{id: "modal-#{event.id}"}
+    .md-content.eventpopup-panel
+      .eventpopup-title
+        %h3
+          = event.title.titleize
+          %span= event_time_interval(event.event_start_time, event.event_end_time)
+        %p= event.location
+      .eventpup-map
+        = image_tag event.image.url(:detail)
+        .info-schedule
+          %h4 Information schedule
+          %p= event.description
+          - if !(event.event_files.blank?)
+            %h4 Download Material
+            - event.event_files.each do |file|
+              - if file.event_doc_file_name.present?
+                = link_to(event_file_download_path(file.id), target: "_blank") do
+                  .material-box
+                    %h5= file.display_name.titleize if file.display_name.present?
+                    %p Download
+        .material-footer.clearfix
+          %p
+            Nedd help? Contact
+            %a{:href => "mailto:Support@drivedb.net"} Support@drivedb.net
+          = link_to t('participant.events.caption.calendar_feed'), calendar_feed_participant_event_path(event,  :format => :ics), class: "btn addtocelendar"
+        %button.md-close Close
+
+:javascript
+  $(document).ready(function(){
+    model_popup();
+  });            
