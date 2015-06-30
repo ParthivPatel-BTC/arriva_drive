@@ -28,7 +28,11 @@
             = render partial: 'take_quiz_review', locals: { activity: activity }
       .writereview
         - if current_participant.has_reviewed_this_activity?(activity)
-          %h5= current_participant.get_review_text_of_activity(activity)
+          .writereview-link 
+            Write a Review
+            %span{style: 'font-style: normal; margin-left: 30%; font-size: 15px ! important; font-weight: normal;'} 
+              %b 1 
+              Review Submitted
         - else
           %a.md-trigger.writereview-link{"data-modal" => "sub-modal-#{activity.id}", :href => "#"} Write a Review 
       %button.md-close.present-popup-close-btn Close
@@ -44,7 +48,7 @@
             %p
               Nedd help? Contact
               %a{:href => "mailto:Support@drivedb.net"} Support@drivedb.net
-            = link_to_submit  t('common.caption.button.submit'), create_review_participant_activity_path(activity), id: 'btn_new_note', title: t('common.caption.button.submit'), class: 'add-submitbtn', data: {disable_with: "Submitting..."}
+            = link_to_submit t('common.caption.button.submit'), create_review_participant_activity_path(activity), id: 'btn_new_note', title: t('common.caption.button.submit'), class: 'add-submitbtn', data: {disable_with: "Submitting..."}, style: 'top: "";'
       %button.md-close.new-note-close-btn Close
 
 
