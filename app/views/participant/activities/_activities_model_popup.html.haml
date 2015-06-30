@@ -27,28 +27,21 @@
           .tagsameone-title
             = render partial: 'take_quiz_review', locals: { activity: activity }
       .writereview
-        - if current_participant.has_reviewed_this_activity?(activity)
-          .writereview-link 
-            Write a Review
-            %span{style: 'font-style: normal; margin-left: 30%; font-size: 15px ! important; font-weight: normal;'} 
-              %b 1 
-              Review Submitted
-        - else
-          %a.md-trigger.writereview-link{"data-modal" => "sub-modal-#{activity.id}", :href => "#"} Write a Review 
+        = render partial: 'write_review', locals: { activity: activity }
       %button.md-close.present-popup-close-btn Close
   .md-modal.md-effect-5.sub-model-div{id: "sub-modal-#{activity.id}"}
     .md-content.activitipopup-panel
       .activitiaccord.writereview-popup
         .writereview
           %h3.writereview-link Write a Review
-        = form_tag(create_review_participant_activity_path(activity), method: :post, multipart: true, class: 'writereview-form') do
+        = form_tag(create_review_participant_activity_path(activity), method: :post, remote: true, class: 'writereview-form') do
           .input-field
             = text_area_tag 'review[review_text]', nil, placeholder: t('participant.place_holder.review_text')
           .submit-bottom.clearfix
             %p
               Nedd help? Contact
               %a{:href => "mailto:Support@drivedb.net"} Support@drivedb.net
-            = link_to_submit t('common.caption.button.submit'), create_review_participant_activity_path(activity), id: 'btn_new_note', title: t('common.caption.button.submit'), class: 'add-submitbtn', data: {disable_with: "Submitting..."}, style: 'top: "";'
+            = link_to_submit t('common.caption.button.submit'), javascript_void, id: 'btn_new_note', title: t('common.caption.button.submit'), class: 'add-submitbtn', data: {disable_with: "Submitting..."}
       %button.md-close.new-note-close-btn Close
 
 
@@ -68,7 +61,7 @@
       });  
     });
 
-    $('.btn_new_note').on('click', function(){
-      $('.new-note-close-btn').click();
+    $('.add-submitbtn').on('click', function(){
+      $('div.sub-model-div').find("button").click();
     });
   });

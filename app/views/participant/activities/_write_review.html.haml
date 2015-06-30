@@ -1,0 +1,9 @@
+- if current_participant.has_reviewed_this_activity?(activity)
+  .writereview-link 
+    Write a Review
+    %span{style: 'font-style: normal; margin-left: 30%; font-size: 15px ! important; font-weight: normal;'} 
+      %b 1 
+      Review Submitted
+- else
+  %a.md-trigger.writereview-link{"data-modal" => "sub-modal-#{activity.id}", :href => "#"} Write a Review
+  
