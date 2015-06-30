@@ -1,0 +1,16 @@
+.deshboardyour-right
+  .yournetwork.clearfix
+    %h3
+      = t('participant.dashboard.caption.your_network')
+      %span= "(#{@networks.count})"
+    - @networks.limit(3).each do |network|
+      .yournetwork-panel
+        .yournetwork-box.clearfix
+          .yournetwork-profile
+            = image_tag network.participant.photo(:medium)
+          %h4= network.participant.name.titleize
+          %p= network.participant.job_title.titleize
+          %span
+            %i.mdi-navigation-check
+    .viewnetwork
+      = link_to t('participant.dashboard.caption.view_network'), participant_networks_path, class: 'btn viewnetwork-btn rippler rippler-inverse'

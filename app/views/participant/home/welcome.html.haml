@@ -23,57 +23,13 @@
           %li
             %span.performer
             = t('participant.dashboard.caption.fit_plan_summary_top_performer')
-        .plansummery-list
-          %ul
-            - current_participant.scores.behaviour_scores.each do |score|
-              %li
-                .progress-bar.progress-you{:style => "width:#{score.percentile_score}%;"}
-                .progress-bar.progress-performer{:style => "width:#{score.percentile_difference_with_top_score}%;"}
+        = render partial: 'behaviour_scores'
     .deshboardyour-panel
       .row
         .deshboardyour-left
-          .recentnote
-            %h3
-              = t('participant.dashboard.caption.recent_notes')
-              %span= "(#{@notes.count})"
-            .recentnote-panel
-              %ul.recentnote-slide
-                - @notes.each_with_index do |note, index|
-                  %li.recentnote-box.clearfix
-                    .recent-profile
-                      = image_tag note.owner.photo.url(:profile)
-                    %h4= note_owners_name(note)
-                    %p= raw sanitize(simple_format(note.content))
-                    .viewallnote
-                      = link_to t('participant.dashboard.caption.view_notes'), participant_notes_path, class: 'btn viewallnote-btn rippler rippler-inverse'
-          .nextevent
-            %h3= t('participant.dashboard.caption.next_event')
-            - if @upcomming_event.present?
-              .nextevent-panel.clearfix
-                .nextevent-text
-                  %h4= @upcomming_event.title
-                  %span= event_time_formatter(@upcomming_event.event_start_time)
-                  = date_formatter(@upcomming_event.event_date)
-                .nextevent-img
-                  = image_tag("london-map.jpg")
-              .viewallevent
-                = link_to t('participant.dashboard.caption.view_events'), participant_events_path, class: 'btn viewallevent-btn rippler rippler-inverse'
-        .deshboardyour-right
-          .yournetwork.clearfix
-            %h3
-              = t('participant.dashboard.caption.your_network')
-              %span= "(#{@networks.count})"
-            - @networks.limit(3).each do |network|
-              .yournetwork-panel
-                .yournetwork-box.clearfix
-                  .yournetwork-profile
-                    = image_tag network.participant.photo(:medium)
-                  %h4= network.participant.name.titleize
-                  %p= network.participant.job_title.titleize
-                  %span
-                    %i.mdi-navigation-check
-            .viewnetwork
-              = link_to t('participant.dashboard.caption.view_network'), participant_networks_path, class: 'btn viewnetwork-btn rippler rippler-inverse'
+          = render partial: 'participant_recent_notes'
+          = render partial: 'upcoming_event'
+        = render partial: 'your_network_list'
     .overlay{"data-sidebar-overlay" => ""}
     = render partial: 'fit_plan_performance_summary_popup'
 :javascript

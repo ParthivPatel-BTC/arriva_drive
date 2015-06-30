@@ -1,0 +1,12 @@
+.nextevent
+  %h3= t('participant.dashboard.caption.next_event')
+  - if @upcomming_event.present?
+    .nextevent-panel.clearfix
+      .nextevent-text
+        %h4= @upcomming_event.title
+        %span= event_time_formatter(@upcomming_event.event_start_time)
+        = date_formatter(@upcomming_event.event_date)
+      .nextevent-img
+        = image_tag("london-map.jpg")
+    .viewallevent
+      = link_to t('participant.dashboard.caption.view_events'), participant_events_path, class: 'btn viewallevent-btn rippler rippler-inverse'
