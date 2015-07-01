@@ -31,7 +31,6 @@
 	.filepaneltab-box{display:block !important;}
 	.eventtabs-value{width:19.9%;}
 	.eventtabs-detail{width:79.9%;}
-	.montheventbox{width:50%;}
 	.event-panel{position:inherit;}
 	.eventtabs-value{padding-top:70px;}
 	.activities-value{width:22.92%;}
@@ -58,7 +57,6 @@
 	.filepaneltab-box{display:block !important;}
 	.eventtabs-value{width:12.2%;}
 	.eventtabs-detail{width:87.8%;}
-	.montheventbox{width:28.4%;}
 	.event-panel{position:inherit;}
 	.eventtabs-value{padding-top:70px;}
 	.activitiesvalue .activityprogress{width:100%;}
@@ -143,7 +141,7 @@
 	.eventtabs-value{width:28.33%;}
 	.eventtabs-detail{width:71.67%;}
 	.eventtabs-value .mouseWheelButtons{padding:15px;}
-	.montheventbox{width:50%; padding-right:10px;}
+	.montheventbox{width:230px; padding-right:10px;}
 	.monthevent-box h5{font-size:13px;}
 	.monthevent-box h5 span{font-size:10px;}
 	.eventtabs-detail{padding-left:15px; padding-right:5px;}
@@ -263,7 +261,7 @@
 	.md-show.md-effect-5 .md-content{transform:translateY(0px) translateX(0px); -webkit-transform:translateY(0px) translateX(0px); -ms-transform:translateY(0px) translateX(0px);}
 	.md-effect-5 .md-content{top:0; left:0;}
 	.eventpopup-title h3{padding:0 63px 0 0;}
-	.montheventbox{width:100%; padding-bottom:15px;}
+	.montheventbox{width:230px;}
 	.monthevent-box h5{font-size:13px;}
 	.monthevent-box h5 span{font-size:10px;}
 	.eventtabs-detail{padding-left:15px; padding-right:5px;}
@@ -295,10 +293,10 @@
 	.md-close{font-size:15px; right:12px;}
 	.md-effect-5 .md-content{top:auto; bottom:0; left:0;}
 	.eventpopup-title h3{padding:0 63px 0 0;}
-	.montheventbox{width:100%; padding-right:0; padding-bottom:15px;}
 	.eventtabs-detail{padding-left:15px; padding-right:15px;}
 	.monthevent-people{padding:5px 0;}
 	.circle-text{top:44px;}
+	.montheventbox{width:205px;}
 	.behaviou-detail li{width:100%;}
 	.participantsrow{padding-bottom:15px;}
 	.alphabetrow{background:#fff;}

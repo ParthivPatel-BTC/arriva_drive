@@ -184,7 +184,7 @@ en:
         password: 'password'
         remember_me: 'Remember Me'
         button:
-          log_in: 'Login In'
+          log_in: 'Login'
     dashboard:
       caption:
         view_activities: 'view activities'

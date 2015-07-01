@@ -4,10 +4,10 @@
       .menu-header.clearfix
         .login-profile
           = image_tag current_participant.photo.url(:profile)
-        .login-title.let-menu-profile-width
+        .login-title
           %h3= current_participant.name
           %p= current_participant.job_title.titleize
-          = link_to "Edit", edit_profile_path(current_participant.id), class: 'edit-profile let-menu-profile-width'
+          = link_to "Edit", edit_profile_path(current_participant.id), class: 'edit-profile'
       %ul.left-menu
         %li
           = link_to participant_dashboard_path, class: left_side_bar_class('home') do

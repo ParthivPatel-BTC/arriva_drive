@@ -2,13 +2,14 @@
   %h3
     = t('participant.dashboard.caption.recent_notes')
     %span= "(#{@notes.count})"
-  .recentnote-panel
-    %ul.recentnote-slide
-      - @notes.each_with_index do |note, index|
-        %li.recentnote-box.clearfix
-          .recent-profile
-            = image_tag note.owner.photo.url(:profile)
-          %h4= note_owners_name(note)
-          %p= raw sanitize(simple_format(note.content))
-          .viewallnote
-            = link_to t('participant.dashboard.caption.view_notes'), participant_notes_path, class: 'btn viewallnote-btn rippler rippler-inverse'
+  - if @notes.present?
+    .recentnote-panel
+      %ul.recentnote-slide
+        - @notes.each_with_index do |note, index|
+          %li.recentnote-box.clearfix
+            .recent-profile
+              = image_tag note.owner.photo.url(:profile)
+            %h4= note_owners_name(note)
+            %p= raw sanitize(simple_format(note.content))
+            .viewallnote
+              = link_to t('participant.dashboard.caption.view_notes'), participant_notes_path, class: 'btn viewallnote-btn rippler rippler-inverse'
