@@ -1,4 +1,5 @@
 $(document).ready(function(){
+  model_popup();
   $('#myStathalf2').circliful();
 
   $('.recentnote-slide').bxSlider({
@@ -9,14 +10,6 @@ $(document).ready(function(){
   $( "#noteTabs" ).tabs();
   $(".note-panel").click(function(){
     $(".addnote-view").addClass("close")
-  });
-
-  $('#tabs-2').on('click',function(){
-    $('#note1').css('display','block');
-  });
-
-  $('#tabs-1').on('click',function(){
-    $('#note1').css('display','block');
   });
 
   $(".sharedtablist-box").on("click", function() {
@@ -37,13 +30,13 @@ $(document).ready(function(){
       $(this).addClass("active");
     }
     
-    
-     var owl = $('.owl-carousel');
+    var owl = $('.owl-carousel');
     owl.owlCarousel({
       margin:0,
       autoWidth:true,
       nav:true,
-      items:7
+      items:1,
+      autoHeight:true
       
     });
     owl.on('mousewheel', '.owl-stage', function (e) {
@@ -59,5 +52,13 @@ $(document).ready(function(){
   $(".notepopuphead-back .back-btn").click(function(){
     $(".sharemain-panel").removeClass("activeLnk")
   });
-  model_popup();
+
+  $('#tabs-2').on('click',function(){
+    $('#note1').css('display','block');
+  });
+
+  $('#tabs-1').on('click',function(){
+    $('#note1').css('display','block');
+  });
+
 });

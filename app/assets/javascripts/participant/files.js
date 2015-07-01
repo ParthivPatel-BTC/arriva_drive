@@ -55,9 +55,7 @@ $(document).ready(function(){
   $('#participant_attachment_id').on( "click", function() {
     $('#participant_attachments_attachment').trigger( "click" );
   });
-});
 
-$(document).ready(function(){
   $('.custom-toggle').on('click', function(){
    parentObj = $(this).parent();
    customCarousel = parentObj.find('.custom-carousel');
@@ -71,7 +69,6 @@ $(document).ready(function(){
       tagsameoneDetailObj.slideDown();
       $(this).addClass("active");
     }
-
 
     customCarousel.owlCarousel({
       margin:0,
@@ -88,9 +85,6 @@ $(document).ready(function(){
       customCarousel.trigger('prev.owl');
     }
     e1.preventDefault();
-   
+    });
   });
-  
-});
-
 });
