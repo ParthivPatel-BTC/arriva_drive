@@ -14,11 +14,11 @@
       = hidden_field_tag('id', current_participant.id)
       .changepass-form
         .input-field
-          = password_field_tag 'password', nil, class: 'input-text'
+          = password_field_tag 'password', nil, placeholder: t('participant.edit_profile.captions.place_holder.create_new_password'), class: 'input-text'
         .input-field
-          = password_field_tag 'participants[password]', nil, class: 'input-text'
+          = password_field_tag 'participants[password]', nil, placeholder: t('participant.edit_profile.captions.place_holder.confirm_new_password'), class: 'input-text'
         .password-save
-          = submit_tag 'save', class: 'save-btn'
+          = submit_tag 'Save', class: 'save-btn'
     .profile-block
       .note-notification
         %span

@@ -205,9 +205,12 @@ en:
     edit_profile:
       captions:
         edit_photo_link: 'Edit Picture'
-        lbl_block_notes: 'Block notes notification'
-        lbl_block_files: 'Block files notification'
-        lbl_block_network: 'Block network notification'
+        lbl_block_notes: 'Block notes notifications'
+        lbl_block_files: 'Block files notifications'
+        lbl_block_network: 'Block network notifications'
+        place_holder:
+          create_new_password: 'Create new password'
+          confirm_new_password: 'Confirm new password'
     values_behaviours:
       captions:
         values: 'Values'
