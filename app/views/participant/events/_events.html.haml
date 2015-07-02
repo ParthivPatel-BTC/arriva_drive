@@ -1,17 +1,30 @@
 %h4= "#{month} #{year}"
-- if events.present?
-  - events.each do |event|
-    .montheventbox
-      .monthevent-box
-        .monthevent-img
-          = image_tag event.image.url(:listing)
-        .monthevent-info.clearfix
-          %h5
-            = event.title.titleize
-            %span= "#{event_time_formatter(event.event_start_time)} #{date_formatter(event.event_date)}"
-          = link_to 'View', javascript_void, 'data-modal' => "modal-#{event.id}", class: 'monthevent-view btn md-trigger'
-- else
-  .montheventbox
-    .monthevent-box
-      .monthevent-img
-        No Events Founds
+#content-5.eventscroll-block.horizontal-images.light.content
+  .clearfix
+    - if events.present?
+      - events.each do |event|
+        .montheventbox
+          .monthevent-box
+            .monthevent-img
+              = image_tag event.image.url(:listing)
+            .monthevent-info.clearfix
+              %h5
+                = event.title.titleize
+                %span= "#{event_time_formatter(event.event_start_time)} #{date_formatter(event.event_date)}"
+              = link_to 'View', javascript_void, 'data-modal' => "modal-#{event.id}", class: 'monthevent-view btn md-trigger'
+    - else
+      .montheventbox
+        .monthevent-box
+          .monthevent-img
+            No Events Founds
+
+:javascript
+  $(document).ready(function(){
+    $(".content.eventscroll-block").mCustomScrollbar({
+      axis:"x",
+      theme:"dark-thin",
+      autoExpandScrollbar:true,
+      advanced:{autoExpandHorizontalScroll:true},
+      scrollInertia:400
+    });
+  });

@@ -33,5 +33,15 @@
       visible: 12,
       circular: false
     });
+
+    $(window).load(function(){
+      $(".content.eventscroll-block").mCustomScrollbar({
+            axis:"x",
+            theme:"dark-thin",
+            autoExpandScrollbar:true,
+            advanced:{autoExpandHorizontalScroll:true},
+            scrollInertia:400
+          });
+    });
     model_popup();
   });
