@@ -3,7 +3,7 @@
     - @my_notes.each_with_object(0) do |note, index|
       = link_to(get_note_content_participant_notes_path(note_id: note.id), remote: true) do
         %li
-          .sharedtablist-box.clearfix
+          .sharedtablist-box.clearfix{"data-related" => "shared1"}
             .shared-img
               = image_tag note.owner.photo.url(:profile)
             .shared-text

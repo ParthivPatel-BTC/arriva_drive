@@ -40,12 +40,12 @@ $(document).ready(function() {
     overlay.click(function() {
         hideSidebar();
     });
-	if($(window).width() < 1025 ) {
+	/*if($(window).width() < 1025 ) {
 		 sidebar.css('margin-left', sidebar.width() * -1 + 'px');
 	}
 	else{
 		sidebar.css('margin-left', '0');
-		}
+		}*/
 	 /*$(window).resize(function(){   
 		if($(window).width() < 1025 ) {
 			 sidebar.css('margin-left', sidebar.width() * -1 + 'px');

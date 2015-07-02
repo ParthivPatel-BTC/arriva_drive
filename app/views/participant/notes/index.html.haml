@@ -22,7 +22,7 @@
         = link_to "", javascript_void, 'data-modal' => 'modal-1', class: 'addnote-icon md-trigger'
         .addnote-text
           = image_tag 'images/create-note.jpg'
-      #note1.sharemain-panel
+      #shared1.sharemain-panel
         = render partial: 'my_note' if @notes.present?
 .overlay{"data-sidebar-overlay" => ""}
 = render partial: 'new_note_model_popup'

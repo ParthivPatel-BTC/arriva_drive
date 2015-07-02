@@ -1,3 +1,8 @@
+.notepopuphead.clearfix
+  .notepopuphead-back
+    %a.back-btn{href:"#"}
+  %span
+    = @note.owner.name
 .sharechat-main
   - @notes.each do |note|
     .sharechat-box.clearfix
@@ -22,3 +27,8 @@
     .notepopup-footer.clearfix
       .notesend-btn
         = link_to_submit "Send"
+
+:javascript
+  $(".notepopuphead-back .back-btn").click(function(){
+    $(".sharemain-panel").removeClass("activeLnk")
+  });
