@@ -27,7 +27,7 @@
                         %p= participant.job_title.titleize
         .choosefile-btn
           = link_to "Choose File", javascript_void, class: 'btn', id: 'participant_attachment_id'
-          #file_name
+          #file_name 
           #upload_file_div{:style => "display: none"}
             = file_field_tag 'participant_attachments[attachment]'
         .notepopup-footer.clearfix
