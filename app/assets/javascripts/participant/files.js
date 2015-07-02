@@ -56,6 +56,10 @@ $(document).ready(function(){
     $('#participant_attachments_attachment').trigger( "click" );
   });
 
+  $('#participant_attachments_attachment').change(function() {
+    $("#file_name").html($(this).val());
+  });
+
   $('.custom-toggle').on('click', function(){
    parentObj = $(this).parent();
    customCarousel = parentObj.find('.custom-carousel');

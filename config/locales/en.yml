@@ -173,7 +173,7 @@ en:
       notes: 'NOTES'
       network: 'My network'
       my_files: 'My Files'
-      logout: 'LOGOUT'
+      logout: 'LOG OUT'
     login_in:
       captions:
         text_welcome_to: 'Welcome to'
