@@ -188,7 +188,8 @@
 	.activitiesvalue ul li.active::after{right:-23px;}
 	.activities-detail{width:100%; padding:15px 14px 85px 14px}
 	.activityrow{padding:0;}
-	.activityrow .activityrow-box{width:100%; padding:0 0 12px;}
+	.activityrow .activityrow-box{ width:450px;}
+	.activities-icon{ left:0px; bottom:0px;}
 	.activities-icon.activitifilter-bottom{position:fixed; background:#fff; padding:12px 0 12px; box-shadow:0 0 3px rgba(0, 0, 0, 0.16);}
 	.activities-icon.activitifilter-bottom i{width:35px; height:35px; }
 	.activities-icon.activitifilter-bottom i.icon1, .activities-icon.activitifilter-bottom a:hover i.icon1, .activities-icon a.active i.icon1{background-size:100% 100%;}
@@ -312,13 +313,14 @@
 	.activities-value{display:none;}
 	.activitiesvalue .activityprogress{width:100%;}
 	.activities-value.open{display:block; width:100%; background:rgba(0,0,0,0.5); min-height:100%; height:100%; padding-top:0;}
-	.activitiesvalue{width:245px; padding:15px; position:relative; height:100%;}
+	.activitiesvalue{width:245px; padding:15px; position:relative;}
 	.activitiesvalue .activiti-close{display:block;}
 	.activitiesvalue ul li.active::before{right:-25px;}
 	.activitiesvalue ul li.active::after{right:-23px;}
 	.activities-detail{width:100%; padding:15px 14px 85px 14px}
 	.activityrow{padding:0;}
-	.activityrow .activityrow-box{width:100%; padding:0 0 12px;}
+	.activityrow .row{ margin-left:0px; margin-right:0px;}
+	.activityrow .activityrow-box{}
 	.activities-icon.activitifilter-bottom{position:fixed; background:#fff; padding:12px 0 12px; box-shadow:0 0 3px rgba(0, 0, 0, 0.16);}
 	.activities-icon.activitifilter-bottom i{width:35px; height:35px; }
 	.activities-icon.activitifilter-bottom i.icon1, .activities-icon.activitifilter-bottom a:hover i.icon1{background-size:100% 100%;}

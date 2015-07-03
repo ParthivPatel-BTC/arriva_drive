@@ -43,25 +43,3 @@
               %a{:href => "mailto:Support@drivedb.net"} Support@drivedb.net
             = link_to_submit t('common.caption.button.submit'), javascript_void, id: 'btn_new_note', title: t('common.caption.button.submit'), class: 'add-submitbtn', data: {disable_with: "Submitting..."}
       %button.md-close.new-note-close-btn Close
-
-
-:javascript
-  $(document).ready(function(){
-    $('#modal').find('button').on('click',function(){
-      $(".accord-toggle").click(function(){
-        $(".accord-div").slideUp();
-        if($(this).next('.accord-div').is(':visible')){
-          $(this).next('.accord-div').slideUp();
-          $(this).removeClass("active");
-        }
-        else{
-          $(this).next('.accord-div').slideDown();
-          $(this).addClass("active");
-        }
-      });  
-    });
-
-    $('.add-submitbtn').on('click', function(){
-      $('div.sub-model-div').find("button").click();
-    });
-  });

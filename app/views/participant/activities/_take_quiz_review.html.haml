@@ -1,4 +1,4 @@
-- if current_participant.has_answered_this_activity?(activity)
+- if current_participant.has_answered_this_activity?(activity) || current_participant.has_reviewed_this_activity?(activity)
   %h3.accord-toggle 
     COMPLETE 
     %label{style: 'margin-left: 23%;'}= "#{activity.total_score_of_participant(current_participant)} POINTS ACHIEVED"
@@ -12,3 +12,25 @@
       = render partial: 'participant/activities/answer', locals: {activity: activity}
     - else
       = render partial: 'participant/activities/answers_listing', locals: {activity: activity}
+
+
+:javascript
+  $(document).ready(function(){
+    $('#modal').find('button').on('click',function(){
+      $(".accord-toggle").click(function(){
+        $(".accord-div").slideUp();
+        if($(this).next('.accord-div').is(':visible')){
+          $(this).next('.accord-div').slideUp();
+          $(this).removeClass("active");
+        }
+        else{
+          $(this).next('.accord-div').slideDown();
+          $(this).addClass("active");
+        }
+      });  
+    });
+
+    $('.add-submitbtn').on('click', function(){
+      $('div.sub-model-div').find("button").click();
+    });
+  });

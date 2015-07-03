@@ -4,7 +4,7 @@ class Event < ActiveRecord::Base
   has_many :cohort_events
   has_many :cohorts, through: :cohort_events
   has_many :event_files
-  has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "100x100>", :listing => '208x129!', :detail => '492x120!' }, :default_url => "/images/:style/missing.png"
+  has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "100x100>", :listing => '208x129!', :detail => '450x350!' }, :default_url => "/images/:style/missing.png"
   accepts_nested_attributes_for :behaviours_events, allow_destroy: true
   accepts_nested_attributes_for :event_files, allow_destroy: true
   accepts_nested_attributes_for :cohort_events, allow_destroy: true
