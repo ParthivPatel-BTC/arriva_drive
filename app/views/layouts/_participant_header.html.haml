@@ -1,4 +1,5 @@
 - page_name = set_page_name_with_logo(controller_name)
+- span_class = controller.controller_name == 'behaviours' ? 'spanyour' : ''
 %header.inner-header
   = render partial: 'layouts/participant_left_side_menu' unless action_name == 'edit_profile'
   .header-top
@@ -12,7 +13,7 @@
             %span.icon-toggle{"aria-label" => "Toggle Navigation", :role => "button"}
               %span.lines
       .logo
-        %span.spanyour= t('participant.header_navigation.text_your')
+        %span{class: span_class}= t('participant.header_navigation.text_your')
         %h1
           = link_to((image_tag "logo@2x.png"), participant_dashboard_path)
         %span= page_name
