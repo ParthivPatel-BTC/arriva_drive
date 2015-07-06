@@ -287,7 +287,7 @@ header{padding:18px 20px 0;}
 .eventtabs-detail{float:right; width:85.9%; padding:20px 7px 0 22px;}
 .eventtabs-value .ui-tabs-nav{padding:0 0 0 5px !important; margin:0; }
 .eventtabs-value .carousel{}
-.eventtabs-value .ui-tabs-nav li{padding:0 0 1px 0; position:relative; border-left:1px solid #e0e0e0; overflow:inherit !important; height:auto !important;}
+.eventtabs-value .ui-tabs-nav li{padding:0 0 1px 0; position:relative; border-left:1px solid #e0e0e0; overflow:inherit !important; }
 .eventtabs-value .ui-tabs-nav li:last-child{padding-bottom:0;}
 .eventtabs-value .ui-tabs-nav li:before{content:""; width:10px; height:10px; display:block; background:#979797; border-radius:100%; position:absolute; left:-5px; top:3px;}
 .eventtabs-value .ui-tabs-nav li.ui-tabs-active:before{background:#cddc39;}
@@ -635,7 +635,7 @@ header{padding:18px 20px 0;}
 .activities-icon a:hover span{ color:#000;}
 
 
-.activityrow{ padding:0px 8px; margin-top:20px;}
+.activityrow{ padding:0px 8px; margin-top:20px; position:relative; overflow: hidden;}
 .activityrow .row{margin:0px -8px; margin-bottom:15px;}
 .activityrow .activityrow-box{padding:0 8px 15px;}
 .activityrow .activityblock{ background:#ffffff; border:1px solid #dddddd; border-radius:6px; box-shadow:0 0 3px rgba(0,0,0,0.16); padding:10px 10px 10px 10px; position:relative; text-align:left; min-height:150px;}
