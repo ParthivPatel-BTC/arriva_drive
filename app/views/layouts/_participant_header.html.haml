@@ -11,8 +11,8 @@
           %span.menu-icon
             %span.icon-toggle{"aria-label" => "Toggle Navigation", :role => "button"}
               %span.lines
-      .logo.spanyour
-        %span= t('participant.header_navigation.text_your')
+      .logo
+        %span.spanyour= t('participant.header_navigation.text_your')
         %h1
           = link_to((image_tag "logo@2x.png"), participant_dashboard_path)
         %span= page_name
