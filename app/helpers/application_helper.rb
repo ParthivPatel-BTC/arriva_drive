@@ -127,7 +127,7 @@ module ApplicationHelper
   end
 
   def note_owners_name(note)
-    note.owner == current_participant ? 'ME' : note.owner.try(:full_name)
+    note.owner == current_participant ? 'YOU' : note.owner.try(:full_name)
   end
 
   def note_owner_full_names(note)

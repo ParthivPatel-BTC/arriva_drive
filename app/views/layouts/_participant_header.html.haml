@@ -7,11 +7,12 @@
       - if action_name == 'edit_profile'
         .backbtn-panel
           = link_to "", participant_dashboard_path, class: 'back-btn'
-      .menu-toggle
-        %a#navigation-toggle{"data-sidebar-button" => "", :href => "#"}
-          %span.menu-icon
-            %span.icon-toggle{"aria-label" => "Toggle Navigation", :role => "button"}
-              %span.lines
+      - unless action_name == 'edit_profile'
+        .menu-toggle
+          %a#navigation-toggle{"data-sidebar-button" => "", :href => "#"}
+            %span.menu-icon
+              %span.icon-toggle{"aria-label" => "Toggle Navigation", :role => "button"}
+                %span.lines
       .logo
         %span{class: span_class}= t('participant.header_navigation.text_your')
         %h1

@@ -3,7 +3,10 @@
     .menufull
       .menu-header.clearfix
         .login-profile
-          = image_tag current_participant.photo.url(:profile)
+          - if current_participant.photo.exists?
+            = image_tag current_participant.photo.url(:profile)
+          - else
+            = image_tag "profile-img.png"
         .login-title
           %h3= current_participant.name
           %p= current_participant.job_title.titleize

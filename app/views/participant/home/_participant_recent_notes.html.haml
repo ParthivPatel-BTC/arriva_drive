@@ -8,7 +8,10 @@
         - @notes.each_with_index do |note, index|
           %li.recentnote-box.clearfix
             .recent-profile
-              = image_tag note.owner.photo.url(:profile)
+              - if note.owner.photo.exists?
+                = image_tag note.owner.photo.url(:profile)
+              - else
+                = image_tag "avtar-photo1.png"
             %h4= note_owners_name(note)
             %p= raw sanitize(simple_format(note.content))
             .viewallnote

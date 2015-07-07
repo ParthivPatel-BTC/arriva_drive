@@ -8,7 +8,10 @@
         .yournetwork-panel
           .yournetwork-box.clearfix
             .yournetwork-profile
-              = image_tag network.participant.photo(:medium)
+              - if network.participant.photo.exists?
+                = image_tag network.participant.photo(:medium)
+              - else
+                = image_tag "avtar-photo1.png"
             %h4= network.participant.name.titleize
             %p= network.participant.job_title.titleize
             %span
