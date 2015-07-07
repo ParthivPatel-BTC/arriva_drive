@@ -15,7 +15,7 @@
               %p= participant.job_title.titleize
               %p.unfollow
                 %i.mdi-navigation-check
-                %span.unfollow-text Unfollow
+                %span.unfollow-text= t('participant.networks.caption.unfollow')
         - else
           %li
             %input{:name => "", :type => "checkbox", :value => "#{participant.id}", id: "participants#{participant.id}"}
@@ -110,9 +110,16 @@
     });
 
     $("#content-5 li").click(function() {
+      var span_text = $(this).find("span").html();
+      if(span_text == 'Follow'){
+        var url = "/participants/add_to_network?participant_id="+$(this).find('[type=checkbox]').val();
+      }
+      else{
+        var url = "/participants/remove_participant?participant_id="+$(this).find('[type=checkbox]').val();
+      }
       $.ajax({
-      url: "/participants/add_to_network?participant_id="+$(this).find('[type=checkbox]').val(),
-      dataType: "script"
+        url: url,
+        dataType: "script"
       }); 
     });
   });

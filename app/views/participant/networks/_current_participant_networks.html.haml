@@ -6,17 +6,16 @@
   %ul.participantslist.clearfix
     - if @networks.present?
       - @networks.each do |network|
-        = link_to(action: :remove_participant, participant_id: network.id, remote: true) do
-          %li
-            %input{:name => "", :type => "checkbox", :value => "", id: "participants#{network.id}"}
-            %label.checkboxbtn{:for => "participants#{network.id}"}
-              .network-img
-                = image_tag(network.photo.url(:thumb), class: 'participant_img')
-              %h4= network.full_name.titleize
-              %p= network.job_title.titleize
-              %p.unfollow
-                %i.mdi-navigation-check
-                %span= t('participant.networks.caption.unfollow')
+        %li
+          %input{:name => "", :type => "checkbox", :value => "", id: "participants#{network.id}", :checked => true}
+          %label.checkboxbtn{:for => "participants#{network.id}"}
+            .network-img
+              = image_tag(network.photo.url(:thumb), class: 'participant_img')
+            %h4= network.full_name.titleize
+            %p= network.job_title.titleize
+            %p.unfollow
+              %i.mdi-navigation-check
+              %span= t('participant.networks.caption.unfollow')
     - else
       .activityrow
         .activityblock.network-no-records-div-height
