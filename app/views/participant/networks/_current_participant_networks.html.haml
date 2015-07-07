@@ -10,7 +10,10 @@
           %input{:name => "", :type => "checkbox", :value => "", id: "participants#{network.id}", :checked => true}
           %label.checkboxbtn{:for => "participants#{network.id}"}
             .network-img
-              = image_tag(network.photo.url(:thumb), class: 'participant_img')
+              - if network.photo.exists?
+                = image_tag(network.photo.url(:thumb), class: 'participant_img')
+              - else
+                = image_tag "avtar-photo1.png"
             %h4= network.full_name.titleize
             %p= network.job_title.titleize
             %p.unfollow
