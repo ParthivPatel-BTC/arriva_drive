@@ -7,7 +7,10 @@
           %li
             .sharedtablist-box.clearfix{"data-related" => "shared1"}
               .shared-img
-                = image_tag note_owner.photo.url(:profile)
+                - if note_owner.photo.exists?
+                  = image_tag note_owner.photo.url(:profile)
+                - else
+                  = image_tag "avtar-photo1.png"
               .shared-text
                 %h4
                   = note_owner.name.titleize

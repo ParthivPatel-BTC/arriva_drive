@@ -50,4 +50,15 @@
     $('#edit_profile_pic').on( "click", function() {
       $('#participant_photo_upload').trigger( "click" );
     });
+
+    $("#password, #participants_password").keyup(function(){
+      var password = $("#password").val();
+      var participants_password = $("#participants_password").val();
+      if(password.length > 0 && participants_password.length > 0) {
+        $(".save-btn").css("background", "#cbe042");
+      }
+      else{
+        $(".save-btn").css("background", "#d2d2d2");
+      }
+    });
   });

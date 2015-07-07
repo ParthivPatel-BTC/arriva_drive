@@ -8,9 +8,15 @@
     .sharechat-box.clearfix
       .sharechat-title
         .sharechattitle-img
-          = image_tag note.owner.photo.url(:profile)
+          - if note.owner.photo.exists?
+            = image_tag note.owner.photo.url(:profile)
+          - else
+            - if note.owner == current_participant
+              = image_tag "profile-img.png"
+            - else
+              = image_tag "avtar-photo1.png"
         .sharechattitle-text
-          %h4= note.owner.name.titleize
+          %h4= get_note_owner_name(note)
           %p= "to #{formatted_tags(note.tags.participants_tags)}" if note.tags.participants_tags.present?
         .sharechattitle-date
           %p

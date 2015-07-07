@@ -179,6 +179,7 @@ header{padding:18px 20px 0;}
 .viewnetwork .viewnetwork-btn{width:185px;}
 .recentnote-panel{padding-top:12px;}
 .viewallnote{float:left; width:100%; padding-top:5px;}
+.recentnote-panel .viewallnote{position:absolute; bottom:0; right:0;}
 .recentnote-slide > li.recentnote-box{ min-height:110px;}
 .recentnote-box .recent-profile{width:55px; height:55px; border-radius:100%; border:1px solid #d1dc37; background:#fff; overflow:hidden; float:left; margin-right:20px;}
 .recentnote-box .recent-profile img{max-width:100%; min-width:100%;}
@@ -478,7 +479,12 @@ header{padding:18px 20px 0;}
 .profile-textform p{font-size:15px; color:#404040; line-height:20px; padding:0; margin:0; font-weight:400;}
 .changepass-form{padding:35px 0 0;}
 .changepass-form .input-field{padding-bottom:15px;}
-.changepass-form .input-field input{border:1px solid #d7d8db; border-radius:5px; background:#fff; width:100%; height:42px; font-size:16px; color:#3c4040; line-height:42px; padding:0 15px; margin:0; font-weight:400;}
+.changepass-form .input-field input{border:1px solid #d7d8db; border-radius:5px; background:#fff; width:100%; height:42px; font-size:16px; color:#cfe02b; line-height:42px; padding:0 15px; margin:0; font-weight:400;}
+.changepass-form .input-field input:-moz-placeholder{color:#3c4040;}
+.changepass-form .input-field input::-moz-placeholder{color:#3c4040;}
+.changepass-form .input-field input::-webkit-placeholder{color:#3c4040;}
+.changepass-form .input-field input:-ms-placeholder{color:#3c4040;}
+.changepass-form .input-field input:focus{border:1px solid #cfe02b; outline: none !important;}
 .password-save .save-btn{height:44px; background:#d2d2d2; color:#fff; font-size:18px; line-height:44px; width:100%; border-radius:5px; text-align:center; font-weight:600; cursor:pointer; border:none; }
 .profile-block .notification-text{font-size:15px; color:#3c4040; line-height:20px; padding:0; margin:0; font-weight:400; width:84%; display:inline-block;}
 .profile-block .notifications, .profile-block .notifications2, .profile-block .notifications3{display:inline-block;}

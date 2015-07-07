@@ -74,4 +74,8 @@ module ParticipantsHelper
   def find_tagged_participants(attachment)
     SharedAttachment.shared_attachment_participants(attachment.id).pluck(:participant_id)
   end
+
+  def get_note_owner_name(note)
+    note.owner == current_participant ? 'You' : note.owner.name.titleize
+  end
 end
