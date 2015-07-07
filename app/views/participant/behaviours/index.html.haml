@@ -7,7 +7,7 @@
           %h3= t('participant.values_behaviours.captions.values')
           %ul.behaviourstablist
             %li.puttpeople
-              = link_to t('participant.values_behaviours.captions.values_left_scroller.tabs-1'), "#tabs-1"
+              = link_to t('participant.values_behaviours.captions.values_left_scroller.tabs-1'), "#tabs-1", id: 'putting_people_first'
             %li.custservice
               = link_to t('participant.values_behaviours.captions.values_left_scroller.tabs-2'), "#tabs-2"
             %li.trustrespect
@@ -21,7 +21,6 @@
           .behaviourstap-detail
             %span
               = image_tag 'images/tap-behaviours.png'
-            %a.btn.tapbtn{:href => "#"} OK
         %h3 Behaviours
         #tabs-1.behaviours-box{:style => "display:block;"}
           .putting-people.clearfix
@@ -47,7 +46,7 @@
       auto: true,
       controls:false
     });
-    $(".tapbtn").click(function(){
+    $("#putting_people_first").click(function(){
       $( "#behavioursTabs" ).tabs();
       $(".behaviourstap-panel").css("display","none");
     });
