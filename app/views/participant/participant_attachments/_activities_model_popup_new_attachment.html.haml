@@ -22,7 +22,10 @@
                       = check_box_tag "participant_attachments[participant_ids][]", participant.id, false, id: "participant_attachments1_#{participant.id}"
                       %label.checkboxbtn{:for => "participant_attachments1_#{participant.id}"}
                         .network-img
-                          = image_tag(participant.photo.url(:thumb))
+                          - if participant.photo.exists?
+                            = image_tag(participant.photo.url(:thumb))
+                          - else
+                            = image_tag "avtar-photo1.png"
                         %h4= participant.full_name.titleize
                         %p= participant.job_title.titleize
         .choosefile-btn
