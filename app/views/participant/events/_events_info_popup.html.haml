@@ -7,7 +7,10 @@
           %span= event_time_interval(event.event_start_time, event.event_end_time)
         %p= event.location
       .eventpup-map
-        = image_tag event.image.url(:detail)
+        - if event.image.exists?
+          = image_tag event.image.url(:detail)
+        - else
+          = image_tag "event-map2.jpg"
         .info-schedule
           %h4 Information schedule
           %p= event.description

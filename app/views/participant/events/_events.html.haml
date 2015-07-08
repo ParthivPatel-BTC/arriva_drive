@@ -6,7 +6,10 @@
         .montheventbox
           .monthevent-box
             .monthevent-img
-              = image_tag event.image.url(:listing)
+              - if event.image.exists?
+                = image_tag event.image.url(:listing)
+              - else
+                = image_tag "event-map.jpg"
             .monthevent-info.clearfix
               %h5
                 = event.title.titleize
