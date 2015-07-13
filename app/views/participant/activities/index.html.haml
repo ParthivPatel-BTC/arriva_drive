@@ -18,8 +18,9 @@
           = render partial: 'activities' 
       = render partial: 'activity_filter_bottom'
   .overlay{"data-sidebar-overlay" => ""}
-.activities_model_poup
-  = render partial: 'activities_model_popup'
+- if @activities.present?
+  .activities_model_poup
+    = render partial: 'activities_model_popup'
 
 #modal.md-modal.md-effect-5
   .md-content.activitipopup-panel
