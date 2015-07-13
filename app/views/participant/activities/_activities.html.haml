@@ -1,17 +1,21 @@
-- @activities.each_with_object(0) do |activity, index|
+- if @activities.present?
+  - @activities.each_with_object(0) do |activity, index|
+    .col-lg-4.activityrow-box
+      .activityblock
+        .activitytitle
+          .activities-icon
+            = link_to(javascript_void, 'data-modal' => "modal-#{activity.id}", class: 'md-trigger') do
+              %i{class: get_activity_icon_class(activity.activity_type)}
+          %h3= truncate activity.title, length: 30
+          %p= activity.behaviour.title if activity.behaviour.present?
+        %p= truncate activity.description, length: 90
+        %p.pointsrow
+          %span.points{style:"#{apply_color_for_completed_activities(activity)}"}= "#{activity.total_score_of_participant(current_participant)} Points"
+          = link_to("More info", javascript_void, 'data-modal' => "modal-#{activity.id}", class: 'md-trigger')
+- else
   .col-lg-4.activityrow-box
     .activityblock
-      .activitytitle
-        .activities-icon
-          = link_to(javascript_void, 'data-modal' => "modal-#{activity.id}", class: 'md-trigger') do
-            %i{class: get_activity_icon_class(activity.activity_type)}
-        %h3= truncate activity.title, length: 30
-        %p= activity.behaviour.title if activity.behaviour.present?
-      %p= truncate activity.description, length: 90
-      %p.pointsrow
-        %span.points{style:"#{apply_color_for_completed_activities(activity)}"}= "#{activity.total_score_of_participant(current_participant)} Points"
-        = link_to("More info", javascript_void, 'data-modal' => "modal-#{activity.id}", class: 'md-trigger')
-
+      .activitytitle No Activity Found
 :javascript
   $(document).ready(function(){
     model_popup();
