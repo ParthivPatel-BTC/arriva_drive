@@ -2,7 +2,7 @@
 .main-panel
   .event-panel
     #eventTabs.clearfix.event-block
-      = render partial: 'events_month_scroller'
+      = render partial: 'events_month_scroller' if @events_months_with_year.present?
       .eventtabs-detail{:style => "min-height: inherit;"}
         .eventtabs-title
           %h3 ARRIVA'S UPCOMING EVENTS FOR YOU
