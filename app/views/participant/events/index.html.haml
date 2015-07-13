@@ -14,6 +14,7 @@
             = render partial: 'events', locals: { events: @events_by_second_month, month: @second_month_name, year: @event_year}
 
 .overlay{"data-sidebar-overlay" => ""}
+- if @events_by_first_month.present? || @events_by_second_month.present?
 #events_info_popup
   = render partial: 'events_info_popup', locals: { events: @events_by_first_month + @events_by_second_month }
 
