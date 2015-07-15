@@ -1,8 +1,7 @@
 #modal-1.md-modal.md-effect-5
   .md-content.dashboardpopup-panel
     %h3= t('participant.dashboard.caption.fit_plan_performance_summary')
-    %p= t('participant.dashboard.caption.fit_plan_performance_summary_paragraph_1')
-    %p= t('participant.dashboard.caption.fit_plan_performance_summary_paragraph_2') 
+    %p= current_participant.performance_summary
     %p.question-con
       = t('participant.dashboard.caption.fit_plan_performance_summary_paragraph_3')
       %span
