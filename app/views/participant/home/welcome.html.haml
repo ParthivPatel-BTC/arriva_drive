@@ -7,7 +7,7 @@
       .activitysummary
         %h3= t('participant.dashboard.caption.activity_summary')
         .activityprogress
-          #myStathalf2.progress-main{"data-bgcolor" => "#d3d3d3", "data-fgcolor" => "#cddc39", "data-fontsize" => "28", "data-icon" => "fa-task", "data-info" => "New Clients", "data-percent" => "#{activity_summary}", "data-text" => "#{completed_activities}/#{total_activities}", "data-width" => "14"}
+          #myStathalf2.progress-main{"data-bgcolor" => "#d3d3d3", "data-fgcolor" => "#cddc39", "data-fontsize" => "28", "data-icon" => "fa-task", "data-info" => "ACTIVITIES", "data-percent" => "#{activity_summary}", "data-text" => "#{completed_activities}/#{total_activities}", "data-width" => "14"}
           .vieactivity
             = link_to t('participant.dashboard.caption.view_activities'), participant_activities_path, class: 'btn vieactivity-btn rippler rippler-inverse'
         = render partial: 'fit_plan_summary_behaviours'
