@@ -20,34 +20,39 @@
         .behaviourstap-panel
           .behaviourstap-detail
             %span
-              = image_tag 'images/tap-behaviours.png'
+              = image_tag 'tap-behaviours.png'
+              = link_to "OK", "javascript:void(0)", class: 'btn tapbtn'
         %h3 Behaviours
         #tabs-1.behaviours-box{:style => "display:block;"}
           .putting-people.clearfix
             = render partial: 'putting_people_behaviours'
         #tabs-2.behaviours-box
           .delivering-customer.clearfix
-            = render partial: 'common_behaviours'
+            = render partial: 'delivering_outstanding'
         #tabs-3.behaviours-box
           .delivering-respect.clearfix
-            = render partial: 'common_behaviours'
+            = render partial: 'acting_with_trust'
         #tabs-4.behaviours-box
           .delivering-business.clearfix
-            = render partial: 'common_behaviours'
+            = render partial: 'growing_sustainable_business'
         #tabs-5.behaviours-box
           .delivering-results.clearfix
-            = render partial: 'common_behaviours'
+            = render partial: 'delivering_results'
   .overlay{"data-sidebar-overlay" => ""}
 
 :javascript
   $(document).ready(function(){
-      $('#myStathalf2').circliful();
+    $('#myStathalf2').circliful();
     $('.recentnote-slide').bxSlider({
       auto: true,
       controls:false
     });
-    $("#putting_people_first").click(function(){
-      $( "#behavioursTabs" ).tabs();
+    $(".tapbtn").click(function(){
       $(".behaviourstap-panel").css("display","none");
+    });
+
+    $("#behavioursTabs").tabs();
+    $(".ui-tabs-anchor").click(function () {
+      $(".behaviourstap-panel").css("display", "none");
     });
   });
