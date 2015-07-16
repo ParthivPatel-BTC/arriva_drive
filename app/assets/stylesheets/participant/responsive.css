@@ -12,13 +12,13 @@
 	.circle-text{font-size:24px !important; top:39%;}
 	.recentnote-box p, .nextevent-text p span, .nextevent-text p{font-size:12px;}
 	.yournetwork-box{padding:11px 0 12px;}
-	.behaviours-value{width:23.53%; padding:20px 10px 20px 20px;}
+	.behaviours-value{width:24%; padding:20px 10px 20px 0px;}
 	.behaviours-value .behaviourstablist a{font-size:14px;}
-	.behaviours-detail{width:76.47%;}
+	.behaviours-detail{width:76%;}
 	.puttingpeople-box{width:50%;}
 	.putting-people .puttingpeoplebox{min-height:180px;}
-	.behaviours-value .ui-tabs-nav .ui-tabs-active a:after{right:-20px;}
-	.behaviours-value .ui-tabs-nav .ui-tabs-active a:before{right:-21px;}
+	.behaviours-value .ui-tabs-nav .ui-tabs-active a:after{right:-30px;}
+	.behaviours-value .ui-tabs-nav .ui-tabs-active a:before{right:-31px;}
 	.notepanel-left{width:33.32%;}
 	.sharedtablist-box .shared-text{width:79.6%;}
 	.notepanel-right{width:66.68%;}
@@ -38,9 +38,14 @@
 	.activitiesvalue .activityprogress{width:100%;}
 	.activitiesvalue .circle-text{top:35%;}
 	.activitiesvalue .circle-info-half{font-size:12px; line-height:14px !important;}
-	
-	.sharechat-main{min-height:815px; max-height:815px;}
-
+	.activities-detail{width:77.08%;}
+	.activities-detail .titlerow h3{padding-left:0;}
+	.activityrow .activitytitle h3{padding-left:16px;}
+    .activities-detail .titlerow p{padding-left:0;}
+	.activityrow .activityblock p{padding-left:16px;}
+	.filteractivities{position:relative; min-height:100%; }
+	.activities-value{padding-top:0;}
+	.activitiesheight{height:calc(100vh - 140px);}
 	
 }
 @media (min-width:992px) and (max-width:1024px){
@@ -64,11 +69,21 @@
 	.activities-value{width:23.92%;}
 	
 	.sharechat-main{min-height:565px; max-height:565px;}
+	.activities-detail{width:76.8%;}
+	.filteractivities{position:relative; min-height:100%; }
+	.activities-value{padding-top:0;}
 	
+	
+}
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation : landscape){
+	.behaviours-value .behaviourstablist li{padding-bottom:60px;}
+	.main-panel{height:calc(100vh - 140px);}
 }
 @media (min-width:1025px) and (max-width:1500px){
 	.activitiesvalue .circle-info-half{font-size:9px; line-height:12px !important; padding:0px 10px;}
 	.sharedtablist-box .shared-text{ width:75.6%;}
+	.notepanel-left{width:28.32%;}
+	.notepanel-right{width:71.68%;}
 }
 @media (min-width:1025px){
 	.filepaneltab-value{display:none;}
@@ -139,7 +154,7 @@
 	.eventtabs-detail{width:71.67%;}
 	.eventtabs-value .mouseWheelButtons{padding:15px;}
 	.montheventbox{width:230px; padding-right:10px;}
-	.monthevent-box h5{font-size:13px;}
+	.monthevent-box h5{font-size:13px; width:130px;}
 	.monthevent-box h5 span{font-size:10px;}
 	.eventtabs-detail{padding-left:15px; padding-right:5px;}
 	.monthevent-people h4{padding-bottom:15px;}
@@ -180,7 +195,7 @@
 	.activitifilter-icon{display:block; right:5px;}
 	.activities-value{display:none;}
 	.activitiesvalue .activityprogress{width:100%;}
-	.activities-value.open{display:block; width:100%; background:rgba(0,0,0,0.5); min-height:100%; height:100%; padding-top:0;}
+	.activities-value.open{display:block; width:100%; background:rgba(0,0,0,0.5); min-height:100%; height:auto; padding-top:0;}
 	.activitiesheight{position:relative;}
 	.activitiesvalue{width:245px; padding:15px; position:relative;}
 	.activitiesvalue .activiti-close{display:block;}
@@ -207,7 +222,7 @@
 	.activitiesvalue .circle-info-half{font-size:13px; line-height:18px !important; padding:0 20px;}
 	.activitiesvalue .circle-text{top:41%;}
 	
-	.behaviours-value{width:32.53%;}
+	.behaviours-value{width:32.53%; padding-top:0px;}
 	.behaviours-detail{width:67.47%;}
 	.puttingpeople-box{width:100%;}
 	.putting-people .puttingpeoplebox{min-height:inherit;}
@@ -216,6 +231,12 @@
 	.behaviourstap-detail span img{max-width:100%;}
 	.behaviourstap-panel .behaviourstap-detail{width:86%;}
 	.md-effect-5 .md-content{height: calc(100% - 40px); overflow:auto; bottom:20px;}
+	
+	.recentnote-panel{padding-bottom:30px;}
+	.activities-detail .titlerow h3{padding-right:55px; padding-left:0;}
+	.activities-detail .titlerow p{padding-right:55px; padding-left:0;}
+	.filteractivities{position:relative; height:100%; }
+	.activities-value{padding-top:0;}
 }
 @media (max-width:639px){
 	.logo{width:100px;}
@@ -288,6 +309,7 @@
 	.monthevent-people{padding:5px 0;}
 	.circle-text{top:44px;}
 	.montheventbox{width:205px;}
+	.montheventbox h5{width: 120px;}
 	.behaviou-detail li{width:100%;}
 	.participantsrow{padding-bottom:15px;}
 	.alphabetrow{background:#fff;}
@@ -295,8 +317,8 @@
 	.dashboardpopup-panel h3{font-size:17px; line-height:20px;}
 	
 	.dashboardpopup-panel{border-radius:3px;}
-	.behaviours-value{width:43.5%; padding:13px;}
-	.behaviours-detail{width:56.5%; padding-left:13px; padding-right:13px;}
+	.behaviours-value{width:44%; padding:0px 0px 13px 0px;}
+	.behaviours-detail{width:56%; padding-left:13px; padding-right:13px;}
 	.puttingpeople-box{width:100%; padding:0 0 12px;}
 	.putting-people .puttingpeoplebox{min-height:inherit;}
 	.behaviours-value .behaviourstablist a{font-size:11px; line-height:16px; padding-left:20px;}
@@ -312,14 +334,14 @@
 	.activitifilter-icon{display:block; right:5px;}
 	.activities-value{display:none;}
 	.activitiesvalue .activityprogress{width:100%;}
-	.activities-value.open{display:block; width:100%; background:rgba(0,0,0,0.5); min-height:100%; height:100%; padding-top:0;}
+	.activities-value.open{display:block; width:100%; background:rgba(0,0,0,0.5); min-height:100%; height:auto; padding-top:0;}
 	.activitiesvalue{width:245px; padding:15px; position:relative;}
 	.activitiesvalue .activiti-close{display:block;}
 	.activitiesvalue ul li.active::before{right:-25px;}
 	.activitiesvalue ul li.active::after{right:-23px;}
 	.activities-detail{width:100%; padding:15px 14px 85px 14px}
 	.activityrow{padding:0;}
-	.activityrow .row{ margin-left:0px; margin-right:0px;}
+	.activityrow .row{ margin-left:-8px; margin-right:-8px;}
 	.activityrow .activityrow-box{}
 	.activities-icon.activitifilter-bottom{position:fixed; background:#fff; padding:12px 0 12px; box-shadow:0 0 3px rgba(0, 0, 0, 0.16);}
 	.activities-icon.activitifilter-bottom i{width:35px; height:35px; }
@@ -353,6 +375,13 @@
 	.md-effect-5 .md-content{height:auto; overflow:inherit; bottom:auto;}
 	.activitipopup-title .activitititle-text{width:64%;}
 	.activitititle-text h3{font-size:14px; line-height:18px;}
+	
+	.download-notehist{text-align:left; padding-left:20px;}
+	.sharechat-input .notepopup-footer{position:absolute; right:25px; top:12px; padding-left:0;}
+	.sharechat-input input{padding-right:100px;}
+	.behaviours-value .ui-tabs-nav .ui-tabs-active a:before{right:-31px;}
+	.behaviours-value .ui-tabs-nav .ui-tabs-active a:after{right:-30px;}
+	
 }
 @media (min-width:320px) and (max-width:359px){
 	.activityprogress-list ul li{font-size:7px;}
@@ -362,4 +391,7 @@
 	.home-page.main-panel{position:relative;}
 	.md-effect-5 .md-content{height: calc(100% - 40px); overflow:auto; bottom:20px;}
 	.eventtabs-value .mouseWheelButtons{padding:15px 10px;}
+	
+	.welcome-text{padding-top:40px;}
+	
 }

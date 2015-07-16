@@ -223,7 +223,7 @@ en:
             caption: 
               customer_orientation: 'Customer Orientation'
               paragraph_1: 'Entails knowing customer expectations and implementing customer-orient solutions.'
-              paragraph_2: 'For executives this also means acting in a manner that has a positive effect on the customer orientation of the employess'
+              paragraph_2: 'For executives this also means acting in a manner that has a positive effect on the customer orientation of the employess.'
           behaviour_div_2:
             caption:
               change_management: 'Change Management'
@@ -232,7 +232,7 @@ en:
           behaviour_div_3:
             caption:
               cross_unit: 'Cross-Unit Co-Operation'
-              paragraph: ' Always Striving for solutions-focused collaboration across all stakeholder groups both inside and outside the immediate team and company to constantly optimise business performance'
+              paragraph: ' Always Striving for solutions-focused collaboration across all stakeholder groups both inside and outside the immediate team and company to constantly optimise business performance.'
           behaviour_div_4:
             caption:
               managing_developing: 'Managing & Developing People'
@@ -261,6 +261,11 @@ en:
             caption:
               delealing: 'Dealing with Complexity'
               paragraph: 'Refers to the ability to understand the complexity within and across the areas in which he/she works and to take decisions based on both analytical and people-centred approaches.'
+          behaviour_div_10:
+            caption:
+              corporate_responsibility: 'Corporate Responsibility'
+              paragraph_1: 'Is the willingness to assume responsibility for topics going over and beyond one’s own area, to take decisions for the good of the company and to be aware of the short-term and long-term consequences for oneself and others.'
+              paragraph_2: 'This means making high demands of the quality of both one’s own actions and the actions of others.'
     notes:
       caption:
         tag_behaviours: 'Tag The Behaviour'
