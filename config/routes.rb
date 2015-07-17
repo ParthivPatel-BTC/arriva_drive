@@ -38,7 +38,11 @@ ArrivaDrive::Application.routes.draw do
     get '/dashboard' => 'participant/home#dashboard', as: 'participant_dashboard'
     get '/:id/edit_profile' => 'participant/home#edit_profile', :as => :edit_profile
     post '/:id/update_profile' => 'participant/home#update_profile', :as => :update_profile
-    resources :activities, controller: 'participant/activities', as: 'participant_activities'
+    resources :activities, controller: 'participant/activities', as: 'participant_activities' do
+      collection do
+        get 'activity_by_id'
+      end
+    end
     resources :behaviours, only: [:index], controller: 'participant/behaviours', as: 'participant_behaviours'
     resources :networks, only: [:index], controller: 'participant/networks', as: 'participant_networks'
     resources :participant_attachments, controller: 'participant/participant_attachments'
