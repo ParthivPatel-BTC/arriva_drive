@@ -1,7 +1,6 @@
 - if current_participant.has_answered_this_activity?(activity) || current_participant.has_reviewed_this_activity?(activity)
   %h3.accord-toggle 
-    COMPLETE 
-    %label{style: 'margin-left: 23%;'}= "#{activity.total_score_of_participant(current_participant)} POINTS ACHIEVED"
+    = "COMPLETE  #{activity.total_score_of_participant(current_participant)} POINTS"
 - else
   %h3.accord-toggle Take the Quiz and Score Points
 .behaviou-detail.accord-div{:style => "display: none;"}

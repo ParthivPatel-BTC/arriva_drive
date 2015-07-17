@@ -1,0 +1,17 @@
+- if @activity.present?
+  $('.activities_model_popup_div').html("#{escape_javascript(render partial: 'activities_model_popup', locals: {activity: @activity}) }");
+
+  $('.activities_model_popup_div').children().addClass("md-show", 500);
+
+  $('.main-modal-close').on('click',function(){
+  $('.main-modal-close').parent().parent().removeClass("md-show", 500);
+  });
+  - unless current_participant.has_reviewed_this_activity?(@activity)
+    $(".writereview-link").click(function(){
+    setTimeout("$('.sub-model-div').addClass('md-show')",500);
+    $('.sub-model-div').addClass('activity-sub-popup-z-index', 500);
+    });
+  
+  $('.sub-model-div').find('button').on('click', function(){
+  $('.sub-model-div').removeClass('md-show', 500);
+  });

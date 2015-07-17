@@ -1,2 +1,14 @@
 $('.tagsameone-title').html("#{escape_javascript(render partial: 'take_quiz_review', locals: {activity: @activity}) }");
 $('.writereview').html("#{escape_javascript(render partial: 'write_review', locals: {activity: @activity}) }");
+
+$(".accord-toggle").click(function(){
+$(".accord-div").slideUp();
+if($(this).next('.accord-div').is(':visible')){
+$(this).next('.accord-div').slideUp();
+$(this).removeClass("active");
+}
+else{
+$(this).next('.accord-div').slideDown();
+$(this).addClass("active");
+}
+});

@@ -2,7 +2,7 @@ class Participant::ActivitiesController < ApplicationController
   require 'screen_scraping_service'
   layout 'participant'
   before_filter :participant_user_required!
-  before_filter :find_set_activity, only: [:show, :new_review, :create_review, :answer_question]
+  before_filter :find_set_activity, only: [:show, :new_review, :create_review, :answer_question, :activity_by_id]
 
   def index
     respond_to do |format|
@@ -47,6 +47,7 @@ class Participant::ActivitiesController < ApplicationController
       format.js{
         render file: 'participant/activities/create_review'
       }
+      format.html
     end
   end
 
@@ -65,6 +66,15 @@ class Participant::ActivitiesController < ApplicationController
                    t('participant.msg.success.wrong_answer', relevant: @activity.behaviour.title)
                  end
   end
+
+  def activity_by_id
+    respond_to do |format|
+      format.js{
+        render file: 'participant/activities/activity_by_id'
+      }
+    end
+  end
+
 
   private
 

@@ -4,3 +4,10 @@
 .network-no-records-div-height{
   height: 223px !important;
 }
+.activity-remove-anchor{
+  pointer-events: none;
+  cursor: default;
+}
+.activity-sub-popup-z-index{
+  z-index: 9999 !important;
+}

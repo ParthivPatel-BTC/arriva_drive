@@ -1,4 +1,12 @@
 $(document).ready(function(){    
+  $("#content-5, #content-4").mCustomScrollbar({
+      axis:"x",
+      theme:"dark-thin",
+      autoExpandScrollbar:true,
+      advanced:{autoExpandHorizontalScroll:true},
+      scrollInertia:400
+    });
+
   $('#all_behaviour').addClass('active');
   $('#myStathalf2').circliful();
   $('.recentnote-slide').bxSlider({
@@ -25,7 +33,7 @@ $(document).ready(function(){
     $(".activities-value").removeClass("open");
   });
 
-  model_popup();
+  //model_popup();
   $('.activitifilter-bottom a').on('click', function() {
     $(window).unbind("scroll");
     $(this).addClass('active').siblings().removeClass('active');

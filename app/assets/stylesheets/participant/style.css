@@ -602,7 +602,7 @@ header{padding:18px 20px 0;}
 
 .filteractivities{background:#fafafa;}
 .activitiesheight{min-height:100%; }
-.activities-value{float:left; width:20.92%;  height:100%; padding-top:69px; position:absolute; top:0px; z-index:1;}
+.activities-value{float:left; width:21%;  height:100%; padding-top:69px; position:absolute; top:0px; z-index:1;}
 .activitiesvalue{background:#fff; box-shadow:0 0px 2px rgba(0, 0, 0, 0.16); padding:20px 20px 20px 20px; min-height:100%;}
 .activitiesvalue ul li{position:relative;}
 .activitiesvalue ul li.active:after{border-top:10px solid transparent; border-bottom:10px solid transparent; border-left:10px solid #fff; content:""; display:block; width:0; height:0; position:absolute; top:3px; right:-29px;}
@@ -615,7 +615,7 @@ header{padding:18px 20px 0;}
 .activities-value ul li a{ padding:3px 15px 3px 15px; display:block; border-radius:15px; position:relative;}
 .activities-value ul li:hover a, .activities-value ul li.active a{background:#cddc39; color:#000000;}
 .activities-value ul li:hover a:after, .activities-value ul li.active a:after{content:"X"; display:inline-block; width:10px; height:10px; position:absolute; right:15px; font-size:11px;}
-.activities-detail{float:right; width:76.08%; padding:20px 7px 85px 22px; position:relative; height:100%;}
+.activities-detail{float:right; width: calc(100% - 21%); padding:20px 7px 100px 22px; position:relative; height:100%;}
 .activities-detail .titlerow{position:relative;}
 .activities-detail .titlerow h3{font-size:16px; line-height:20px; font-weight:600; padding:0 0 0 16px; margin:0px 0px 5px 0px; color:#454342; text-transform:uppercase;}
 .activities-detail .titlerow p{ padding:0 0 0 16px;}
@@ -643,9 +643,9 @@ header{padding:18px 20px 0;}
 .activities-icon a:hover span{ color:#000;}
 
 
-.activityrow{ padding:0px 8px; margin-top:20px; position:relative; overflow: hidden;}
+.activityrow{ padding:0px 8px; margin-top:20px; position:relative; overflow: hidden; width:100%;}
 .activityrow .row{margin:0px -8px; margin-bottom:15px;}
-.activityrow .activityrow-box{padding:0 8px 15px;}
+.activityrow .activityrow-box{padding:0 8px 15px; width:450px;}
 .activityrow .activityblock{ background:#ffffff; border:1px solid #dddddd; border-radius:6px; box-shadow:0 0 3px rgba(0,0,0,0.16); padding:10px 10px 10px 10px; position:relative; text-align:left; min-height:150px;}
 
 .activityrow .activitytitle{ margin-bottom:15px;}

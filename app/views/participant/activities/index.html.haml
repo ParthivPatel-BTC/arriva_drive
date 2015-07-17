@@ -14,20 +14,10 @@
         %p Press ‘MORE INFO’ to explore an Activity
         .activitifilter-icon
           %a.filterIcon{:href => "#"}
-        .activityrow.clearfix
+        #content-5.activityrow.clearfix.horizontal-images.light.content
           = render partial: 'activities' 
       = render partial: 'activity_filter_bottom'
   .overlay{"data-sidebar-overlay" => ""}
-- if @activities.present?
-  .activities_model_poup
-    = render partial: 'activities_model_popup'
-
-#modal.md-modal.md-effect-5
-  .md-content.activitipopup-panel
-    .activitipopup-title.clearfix
-    .activitipopup-detail.clearfix
-    .activitiaccord
-      .activity_completed_message
-    %button.md-close Close
+.activities_model_popup_div
 
 = javascript_include_tag 'participant/activities'

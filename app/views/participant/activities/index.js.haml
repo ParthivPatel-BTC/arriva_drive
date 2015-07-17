@@ -1,4 +1,12 @@
 - if @activities.present?
-  $('.activityrow').html("#{escape_javascript(render 'activities')}");
+  $('.activityrow').html("#{escape_javascript(render partial: 'activities')}");
 - else
-  $('.activityrow').html("#{escape_javascript(render 'no_activities_found')}");
+  $('.activityrow').html("#{escape_javascript(render partial: 'no_activities_found')}");
+
+$(".scrollbar-div-123").mCustomScrollbar({
+axis:"x",
+theme:"dark-thin",
+autoExpandScrollbar:true,
+advanced:{autoExpandHorizontalScroll:true},
+scrollInertia:400
+});
