@@ -9,6 +9,8 @@
       .alphabetrow
         .alphabetrow-sub
           %ul.owl-carousel.row
+            %li.item
+              = link_to "All", {action: :seach_by_alpha_character, alpha_character: ''}, remote: true
             - ('A' .. 'Z').to_a.each do |e|
               %li.item
                 = link_to e, {action: :seach_by_alpha_character, alpha_character: e}, remote: true
