@@ -28,7 +28,7 @@ class Participant::ActivitiesController < ApplicationController
 
   def show
     @mcq = @activity.multiple_choice_question if @activity.present? && @activity.activity_type != 5
-    @activity_image = ScreenScrapingService.fetch_data_from_web(@activity.link) if @activity.activity_type != 5
+    @activity_image = ScreenScrapingService.fetch_data_from_web(@activity.link) @activity.present? && if @activity.activity_type != 5
   end
 
   def new_review
