@@ -83,4 +83,20 @@ module ActivitiesHelper
   def apply_color_for_completed_activities(activity)
     current_participant.has_answered_this_activity?(activity) && current_participant.get_review_text_of_activity(activity) ? 'color:#FFA500' : ''
   end
+
+  def get_activities_array(a)
+    arr1 = []
+    arr2 = []
+    arr3 = [] 
+    a.each_with_index do |element, index|
+      if( (index+1) % 3 == 2)
+        arr2 << a[index]
+      elsif( (index+1) % 3 == 1)
+        arr1 << a[index]
+      else
+        arr3 << a[index]
+      end
+    end
+    [[arr1],[arr2],[arr3]]    
+  end
 end

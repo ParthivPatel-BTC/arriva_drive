@@ -1,24 +1,50 @@
+- activities_arrays = get_activities_array(@activities)
 .scrollbar-div-123
   .row
     - if @activities.present?
-      - count = 0
-      - @activities.each_with_object(0) do |activity, index|
-        .col-lg-4.activityrow-box
-          .activityblock
-            .activitytitle
-              .activities-icon
-                = link_to(javascript_void, 'data-modal' => "modal-#{activity.id}", class: 'md-trigger', id: "#{activity.id}") do
-                  %i{class: get_activity_icon_class(activity.activity_type)}
-              %h3= truncate activity.title
-              %p= activity.behaviour.title if activity.behaviour.present?
-            %p= truncate activity.description, length: 90
-            %p.pointsrow
-              %span.points{style:"#{apply_color_for_completed_activities(activity)}"}= "#{activity.total_score_of_participant(current_participant)} Points"
-              = link_to "More info", javascript_void, 'data-modal' => "modal-#{activity.id}", class: 'md-trigger', id: "#{activity.id}"
-        - count += 1
-        - if count % 3 == 0
-          %br/
-
+      - ind = 0
+      - activities_arrays.each do |act|
+        - act[ind].each_with_object(0) do |activity, index|
+          .col-lg-4.activityrow-box
+            .activityblock
+              .activitytitle
+                .activities-icon
+                  = link_to(javascript_void, 'data-modal' => "modal-#{activity.id}", class: 'md-trigger', id: "#{activity.id}") do
+                    %i{class: get_activity_icon_class(activity.activity_type)}
+                %h3= truncate activity.title
+                %p= activity.behaviour.title if activity.behaviour.present?
+              %p= truncate activity.description, length: 90
+              %p.pointsrow
+                %span.points{style:"#{apply_color_for_completed_activities(activity)}"}= "#{activity.total_score_of_participant(current_participant)} Points"
+                = link_to "More info", javascript_void, 'data-modal' => "modal-#{activity.id}", class: 'md-trigger', id: "#{activity.id}"
+        %br/
+        / - activities_arrays.second.each_with_object(0) do |activity, index|
+        /   .col-lg-4.activityrow-box
+        /     .activityblock
+        /       .activitytitle
+        /         .activities-icon
+        /           = link_to(javascript_void, 'data-modal' => "modal-#{activity.id}", class: 'md-trigger', id: "#{activity.id}") do
+        /             %i{class: get_activity_icon_class(activity.activity_type)}
+        /         %h3= truncate activity.title
+        /         %p= activity.behaviour.title if activity.behaviour.present?
+        /       %p= truncate activity.description, length: 90
+        /       %p.pointsrow
+        /         %span.points{style:"#{apply_color_for_completed_activities(activity)}"}= "#{activity.total_score_of_participant(current_participant)} Points"
+        /         = link_to "More info", javascript_void, 'data-modal' => "modal-#{activity.id}", class: 'md-trigger', id: "#{activity.id}"
+        / %br/
+        / - activities_arrays.third.each_with_object(0) do |activity, index|
+        /   .col-lg-4.activityrow-box
+        /     .activityblock
+        /       .activitytitle
+        /         .activities-icon
+        /           = link_to(javascript_void, 'data-modal' => "modal-#{activity.id}", class: 'md-trigger', id: "#{activity.id}") do
+        /             %i{class: get_activity_icon_class(activity.activity_type)}
+        /         %h3= truncate activity.title
+        /         %p= activity.behaviour.title if activity.behaviour.present?
+        /       %p= truncate activity.description, length: 90
+        /       %p.pointsrow
+        /         %span.points{style:"#{apply_color_for_completed_activities(activity)}"}= "#{activity.total_score_of_participant(current_participant)} Points"
+        /         = link_to "More info", javascript_void, 'data-modal' => "modal-#{activity.id}", class: 'md-trigger', id: "#{activity.id}"
     - else
       .col-lg-4.activityrow-box
         .activityblock
@@ -35,3 +61,4 @@
       });
     });
   });
+
