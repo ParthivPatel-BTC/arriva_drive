@@ -13,8 +13,8 @@
 	.recentnote-box p, .nextevent-text p span, .nextevent-text p{font-size:12px;}
 	.yournetwork-box{padding:11px 0 12px;}
 	.behaviours-value{width:24%; padding:20px 10px 20px 0px;}
-	.behaviours-value .behaviourstablist a{font-size:14px;}
-	.behaviours-detail{width:76%;}
+	.behaviours-value .behaviourstablist .button{font-size:14px;}
+	.behaviours-detail{width:76%; padding-left:0;}
 	.puttingpeople-box{width:50%;}
 	.putting-people .puttingpeoplebox{min-height:180px;}
 	.behaviours-value .ui-tabs-nav .ui-tabs-active a:after{right:-30px;}
@@ -226,8 +226,8 @@
 	.behaviours-detail{width:67.47%;}
 	.puttingpeople-box{width:100%;}
 	.putting-people .puttingpeoplebox{min-height:inherit;}
-	.behaviours-value .behaviourstablist a{font-size:13px;}
-	.behaviours-panel{position:relative;}
+	.behaviours-value .behaviourstablist .button{font-size:13px;}
+	.behaviours-panel{position:relative; height:auto; min-height:100%;}
 	.behaviourstap-detail span img{max-width:100%;}
 	.behaviourstap-panel .behaviourstap-detail{width:86%;}
 	.md-effect-5 .md-content{height: calc(100% - 40px); overflow:auto; bottom:20px;}
@@ -321,7 +321,7 @@
 	.behaviours-detail{width:56%; padding-left:13px; padding-right:13px;}
 	.puttingpeople-box{width:100%; padding:0 0 12px;}
 	.putting-people .puttingpeoplebox{min-height:inherit;}
-	.behaviours-value .behaviourstablist a{font-size:11px; line-height:16px; padding-left:20px;}
+	.behaviours-value .behaviourstablist .button{font-size:11px; line-height:16px; padding-left:20px;}
 	.behaviours-value .ui-tabs-nav .ui-tabs-active a::after{right:-23px;}
 	.behaviours-value .ui-tabs-nav .ui-tabs-active a::before{right:-24px;}
 	.inner-header .logo .spanyour{display:none;}
