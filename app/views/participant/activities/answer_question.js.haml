@@ -1,2 +1,6 @@
 $('.activity_completed_message').html("#{escape_javascript(@popup_msg.html_safe)}");
+$('#modal').addClass('md-show');
+$("#modal").find("button").click(function(){
+$('#modal').removeClass('md-show');
+});
 $('.tagsameone-title').html("#{escape_javascript(render partial: 'take_quiz_review', locals: {activity: @activity}) }");
