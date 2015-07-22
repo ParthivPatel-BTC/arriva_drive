@@ -1,7 +1,7 @@
 - activities_arrays = get_activities_array(@activities)
 .scrollbar-div-123
   .row
-    - if @activities.present?
+    - if @activities.present? 
       - ind = 0
       - activities_arrays.each do |act|
         - act[ind].each_with_object(0) do |activity, index|
@@ -22,7 +22,7 @@
       .col-lg-4.activityrow-box
         .activityblock
           .activitytitle
-            %h5 No Activities Found
+            %h5= t('participant.activities.msg.no_activities_found')
 
 :javascript
   $(document).ready(function(){

@@ -625,7 +625,8 @@ header{padding:18px 20px 0;}
 .activitiesvalue .circle-text{top:37%;}
 
 .activities-icon{ text-align:center; position:fixed; bottom:20px; left:20.92%; right:0px;}
-.activities-icon a{ margin:0px 5px; display:inline-block;}
+.activities-icon a{ margin:0px 5px; display:inline-block; width:55px;}
+.activities-icon a:last-child {margin-left:-7px; width: auto;}
 .activities-icon i{ width:50px; height:50px; display:inline-block; border-radius:100%;}
 .activities-icon i.icon1{ background:url(/assets/all_icon@2x.png) no-repeat; background-size:50px auto;}
 .activities-icon a:hover i.icon1, .activities-icon a.active i.icon1{ background:url(/assets/all_icon@2x-hover.png) no-repeat; background-size:50px auto;}
@@ -644,18 +645,20 @@ header{padding:18px 20px 0;}
 .activities-icon a:hover span{ color:#000;}
 
 
-.activityrow{ padding:0px 8px; margin-top:20px; position:relative; overflow: hidden; width:100%;}
+.activityrow{ padding:0px; margin-top:0; position:relative; overflow: hidden; width:100%;}
 .activityrow .row{margin:0px -8px; margin-bottom:15px;}
-.activityrow .activityrow-box{padding:0 8px 15px; width:450px;}
+.activityrow .activityrow-box{padding:0 8px 5px; width:450px;}
 .activityrow .activityblock{ background:#ffffff; border:1px solid #dddddd; border-radius:6px; box-shadow:0 0 3px rgba(0,0,0,0.16); padding:10px 10px 10px 10px; position:relative; text-align:left; min-height:150px;}
+.activityrow .network-no-records-div-height{height:270px !important;}
+.activityrow .network-no-records-div-height h5{font-size:15px;}
 
 .activityrow .activitytitle{ margin-bottom:15px;}
-.activityrow .activitytitle h3{ font-size:14px; text-transform:none; margin-bottom:0px;}
+.activityrow .activitytitle h3{ font-size:14px; text-transform:none; margin-bottom:0px; padding-left:0;}
 .activityrow .activitytitle p{font-size:12px;}
 .activityrow .activities-icon{ float:right; position:relative; bottom:0px; left:0px; right:0px;}
 .activityrow .activities-icon i{ width:35px; height:35px; background-size:35px auto;}
 .activityrow .activities-icon a:hover i{background-size:35px auto;}
-.activityrow .activityblock p{ font-size:12px; line-height:normal;}
+.activityrow .activityblock p{ font-size:12px; line-height:normal; padding-left:0;}
 .activityrow .pointsrow{margin-top:15px; text-transform:uppercase; display:inline-block; width:100%;}
 .activityrow .pointsrow span{line-height:26px;}
 .activityrow .pointsrow a{border-radius:6px; background:#008b9a; color:#fff; padding:5px 15px; float:right;}

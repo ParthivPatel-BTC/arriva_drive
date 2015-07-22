@@ -40,12 +40,12 @@
 	.activitiesvalue .circle-info-half{font-size:12px; line-height:14px !important;}
 	.activities-detail{width:77.08%;}
 	.activities-detail .titlerow h3{padding-left:0;}
-	.activityrow .activitytitle h3{padding-left:16px;}
+	.activityrow .activitytitle h3{padding-left:0;}
     .activities-detail .titlerow p{padding-left:0;}
-	.activityrow .activityblock p{padding-left:16px;}
+	.activityrow .activityblock p{padding-left:0;}
 	.filteractivities{position:relative; min-height:100%; }
 	.activities-value{padding-top:0;}
-	.activitiesheight{height:calc(100vh - 140px);}
+	.activitiesheight{height:calc(100vh - 120px);}
 	
 }
 @media (min-width:992px) and (max-width:1024px){
@@ -72,6 +72,7 @@
 	.activities-detail{width:76.8%;}
 	.filteractivities{position:relative; min-height:100%; }
 	.activities-value{padding-top:0;}
+	.circle-info-half{padding:0 50px;}
 	
 	
 }
