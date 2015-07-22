@@ -88,6 +88,8 @@ class Participant::NotesController < ApplicationController
   end
 
   def destroy
+    find_notes_by_parent_id = Note.where(parent_id: @note.id)
+    find_notes_by_parent_id.destroy_all
     @note.destroy
     flash[:notice] = t('participant.msg.success.note_destroy')
     redirect_to participant_notes_path

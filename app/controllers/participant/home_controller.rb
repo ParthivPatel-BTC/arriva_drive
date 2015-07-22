@@ -7,7 +7,7 @@ class Participant::HomeController < ApplicationController
     @networks = current_participant.networks
     @upcomming_event = Event.where("event_date::date > ?", Time.now.end_of_day).order(event_date: :asc).first
     # @notes = get_tagged_notes.uniq
-    @notes = current_participant.notes.order(created_at: :desc).limit(5)
+    @notes = current_participant.notes.where(parent_id: 0).order(created_at: :desc).limit(5)
     render :welcome
   end
   alias :dashboard :welcome
