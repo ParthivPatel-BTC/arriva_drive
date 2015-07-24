@@ -60,5 +60,5 @@ $(document).ready(function(){
   $('#tabs-1').on('click',function(){
     $('#note1').css('display','block');
   });
-
+  $("#my-notes-tab").click();
 });

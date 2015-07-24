@@ -9,7 +9,7 @@
               %li
                 %a{:href => "#tabs-1"} Shared
               %li
-                %a{:href => "#tabs-2"} My Notes
+                %a{:href => "#tabs-2", id: 'my-notes-tab'} My Notes
           .eventtabs-detail
             #tabs-1.notetabs-box
               = render partial: 'shared_notes_list'
@@ -21,7 +21,7 @@
       .addnote-view
         = link_to "", javascript_void, 'data-modal' => 'modal-1', class: 'addnote-icon md-trigger'
         .addnote-text
-          = image_tag 'images/create-note.jpg'
+          = image_tag 'create-note.jpg'
       #shared1.sharemain-panel
         = render partial: 'my_note' if @notes.present?
 .overlay{"data-sidebar-overlay" => ""}
