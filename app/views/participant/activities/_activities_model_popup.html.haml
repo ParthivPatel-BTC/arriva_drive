@@ -2,7 +2,7 @@
   .md-content.activitipopup-panel
     .activitipopup-title.clearfix
       .activitititle-img
-        = image_tag "images/#{get_activity_icon_image(activity.activity_type)}"
+        = image_tag "#{get_activity_icon_image(activity.activity_type)}"
       .activitititle-text
         %h3= activity.title
         %p= activity.behaviour.title if activity.behaviour.present?

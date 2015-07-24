@@ -55,10 +55,13 @@ $(document).ready(function(){
 
   $('#tabs-2').on('click',function(){
     $('#note1').css('display','block');
+    $(".addnote-text").hide();
   });
 
   $('#tabs-1').on('click',function(){
     $('#note1').css('display','block');
+    $(".addnote-text").hide();
   });
   $("#my-notes-tab").click();
+  $(".addnote-text").show();
 });
