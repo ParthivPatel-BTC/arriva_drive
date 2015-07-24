@@ -15,19 +15,6 @@
 
 :javascript
   $(document).ready(function(){
-    $('#modal').find('button').on('click',function(){
-      $(".accord-toggle").click(function(){
-        $(".accord-div").slideUp();
-        if($(this).next('.accord-div').is(':visible')){
-          $(this).next('.accord-div').slideUp();
-          $(this).removeClass("active");
-        }
-        else{
-          $(this).next('.accord-div').slideDown();
-          $(this).addClass("active");
-        }
-      });  
-    });
 
     $('.add-submitbtn').on('click', function(){
       $('div.sub-model-div').find("button").click();

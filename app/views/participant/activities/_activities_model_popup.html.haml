@@ -56,4 +56,12 @@
         $(this).addClass("active");
       }
     });
+
+    $('.present-popup-close-btn').click(function(){
+      $.ajax({
+        method: "get",
+        url: "/participants/activities",
+        dataType: "script"
+      });
+    });
   });
