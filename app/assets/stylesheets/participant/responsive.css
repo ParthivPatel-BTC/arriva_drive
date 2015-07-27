@@ -46,6 +46,8 @@
 	.filteractivities{position:relative; min-height:100%; }
 	.activities-value{padding-top:0;}
 	.activitiesheight{height:calc(100vh - 120px);}
+	.eventmain-panel{height:calc(100vh - 120px);}
+	.networkmain-panel{height:calc(100vh - 120px);}
 	
 }
 @media (min-width:992px) and (max-width:1024px){
@@ -73,7 +75,18 @@
 	.filteractivities{position:relative; min-height:100%; }
 	.activities-value{padding-top:0;}
 	.circle-info-half{padding:0 50px;}
-	
+	.event-block{position:relative;}
+	.event-block .eventtabs-value{padding-top:0;}
+	.eventtabs-value .ui-tabs-nav li{height:40px !important;}
+	.eventtabs-value .prev{margin-bottom:15px;}
+	.mouseWheelButtons{padding-top:15px;}
+	.eventtabs-value .next{margin-top:15px;}
+	.monthevent-people{padding-top:12px;}
+	.monthevent-people h4{padding-bottom:15px;}
+	.monthevent-img{height:117px; overflow:hidden;}
+	.myfiles-block{padding-top:10px; padding-bottom:12px;}
+	.myfiles-box{padding-bottom:12px;}
+	.myfiles-block h4{padding-bottom:4px;}
 	
 }
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation : landscape){

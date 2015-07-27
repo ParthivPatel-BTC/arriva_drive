@@ -301,17 +301,18 @@ header{padding:18px 20px 0;}
 .eventtabs-value .next{font-size:12px; color:#008b9a; line-height:18px; padding:0; margin:30px 0 0; font-weight:400; display:inline-block;}
 .eventtabs-title h3{font-size:16px; line-height:22px; padding:0 0 5px; margin:0; font-weight:400;}
 .eventtabs-title p{font-size:13px; line-height:18px; line-height:18px; padding:0 0 5px}
-.monthevent-people{padding:25px 0;}
+.monthevent-people{padding:25px 0 0;}
 .monthevent-people h4{font-size:17px; color:#008b9a; line-height:22px; padding:0 0 28px; margin:0; font-weight:400; text-transform:uppercase;}
-.montheventbox{width:280px; float:left; padding-right:17px;}
+.montheventbox{width:260px; float:left; padding-right:17px;}
 .monthevent-box{border:1px solid #d1d1d1; padding:10px; border-radius:3px;}
 .monthevent-info{padding-top:10px;}
 .monthevent-img img{max-width:100%; display:block; min-width:100%;}
-.monthevent-box h5{width:175px; font-size:14px; color:#000; line-height:16px; padding:0; font-weight:400; margin:0; float:left; min-height:60px;}
+.monthevent-box h5{width:160px; font-size:14px; color:#000; line-height:16px; padding:0; font-weight:400; margin:0; float:left; min-height:60px;}
 .monthevent-box h5 span{font-size:11px; line-height:18px; line-height:18px; color:#727272; font-weight:400; padding:4px 0 0; margin:0; display:block;}
 .monthevent-view.btn{height:23px; width:57px; line-height:20px; float:right; font-size:14px; text-transform:none; margin-top:3px;}
 .border-bottom{border-bottom:1px solid #efefef;}
 .eventtabs-box{overflow:auto;}
+.eventtabs-detail .monthevent-box h5{min-height:inherit;}
 
 
 .eventpopup-panel{max-width:495px; background:#ffffff; border-radius:6px}
@@ -368,7 +369,10 @@ header{padding:18px 20px 0;}
 .addnote-text{position:absolute; left:-130px; top:70px;}
 .close .addnote-text{display:none;}
 .sharemain-panel{padding-bottom:0px;}
-.sharechat-main{padding-top:12px; padding-right:20px; height:calc(100% - 60px); overflow:auto;}
+.sharechat-main{padding-top:12px; padding-right:20px; height:calc(100% - 60px); overflow:auto; display:flex; flex-direction:column;}
+.sharechat-main .sharechatmain{display:flex; flex-direction:column; min-height:100%}
+.sharechat-box{margin-bottom:15px;}
+.pane-chat-empty{flex: 1 1 auto; }
 .sharechat-title{float:left; width:100%; padding-top:10px; position:relative;}
 .sharechat-title  .sharechattitle-img{width:44px; height:44px; border-radius:100%; overflow:hidden; float:left;  border:1px solid #cfe02b;}
 .sharechat-title  .sharechattitle-img img{max-width:100%; min-width:100%;}
@@ -647,10 +651,11 @@ header{padding:18px 20px 0;}
 
 .activityrow{ padding:0px; margin-top:0; position:relative; overflow: hidden; width:100%;}
 .activityrow .row{margin:0px -8px; margin-bottom:15px;}
-.activityrow .activityrow-box{padding:0 8px 5px; width:450px;}
+.activityrow .activityrow-box{padding:0 8px 5px; width:450px; position:initial !important;}
 .activityrow .activityblock{ background:#ffffff; border:1px solid #dddddd; border-radius:6px; box-shadow:0 0 3px rgba(0,0,0,0.16); padding:10px 10px 10px 10px; position:relative; text-align:left; min-height:150px;}
 .activityrow .network-no-records-div-height{height:270px !important;}
 .activityrow .network-no-records-div-height h5{font-size:15px;}
+.activities-detail .grid{height:auto !important;}
 
 .activityrow .activitytitle{ margin-bottom:15px;}
 .activityrow .activitytitle h3{ font-size:14px; text-transform:none; margin-bottom:0px; padding-left:0;}

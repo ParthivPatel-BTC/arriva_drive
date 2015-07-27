@@ -4,26 +4,28 @@
   %span
     = @note.owner.name
 .sharechat-main
-  - @notes.each do |note|
-    .sharechat-box.clearfix
-      .sharechat-title
-        .sharechattitle-img
-          - if note.owner.photo.exists?
-            = image_tag note.owner.photo.url(:profile)
-          - else
-            - if note.owner == current_participant
-              = image_tag "profile-img.png"
+  .sharechatmain
+    .pane-chat-empty
+    - @notes.each do |note|
+      .sharechat-box.clearfix
+        .sharechat-title
+          .sharechattitle-img
+            - if note.owner.photo.exists?
+              = image_tag note.owner.photo.url(:profile)
             - else
-              = image_tag "avtar-photo1.png"
-        .sharechattitle-text
-          %h4= get_note_owner_name(note)
-          %p= "to #{formatted_tags(note.tags.participants_tags)}" if note.tags.participants_tags.present?
-        .sharechattitle-date
-          %p
-            = note_time_formatters(note.updated_at)
-            %span= note_date_formatters(note.updated_at)
-      .sharechat-text
-        %p= note.content 
+              - if note.owner == current_participant
+                = image_tag "profile-img.png"
+              - else
+                = image_tag "avtar-photo1.png"
+          .sharechattitle-text
+            %h4= get_note_owner_name(note)
+            %p= "to #{formatted_tags(note.tags.participants_tags)}" if note.tags.participants_tags.present?
+          .sharechattitle-date
+            %p
+              = note_time_formatters(note.updated_at)
+              %span= note_date_formatters(note.updated_at)
+        .sharechat-text
+          %p= note.content 
 = form_tag(save_reply_note_content_path, method: :post, remote: :true) do
   = hidden_field_tag 'note[owner_id]', @note.owner.id
   = hidden_field_tag 'note[parent_id]', @note.id
