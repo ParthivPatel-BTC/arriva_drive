@@ -3,7 +3,7 @@
   - if @upcomming_event.present?
     .nextevent-panel.clearfix
       .nextevent-text
-        %h4= @upcomming_event.title
+        %h4= truncate(@upcomming_event.title, length: 35)
         %span= event_time_formatter(@upcomming_event.event_start_time)
         = date_formatter(@upcomming_event.event_date)
       .nextevent-img

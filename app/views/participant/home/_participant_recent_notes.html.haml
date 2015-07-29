@@ -13,6 +13,6 @@
               - else
                 = image_tag "avtar-photo1.png"
             %h4= note_owners_name(note)
-            %p= raw sanitize(simple_format(note.content))
+            %p= raw sanitize(simple_format(truncate(note.content, length: 80)))
             .viewallnote
               = link_to t('participant.dashboard.caption.view_notes'), participant_notes_path, class: 'btn viewallnote-btn rippler rippler-inverse'

@@ -251,6 +251,7 @@
 	.activities-detail .titlerow p{padding-right:55px; padding-left:0;}
 	.filteractivities{position:relative; height:100%; }
 	.activities-value{padding-top:0;}
+	.recentnote-box p{height:inherit; overflow:inherit;}
 }
 @media (max-width:639px){
 	.logo{width:100px;}
@@ -329,7 +330,7 @@
 	.alphabetrow{background:#fff;}
 	.alphabetrow .row{margin:0;}
 	.dashboardpopup-panel h3{font-size:17px; line-height:20px;}
-	
+	.recentnote-slide > li.recentnote-box{padding-bottom:45px;}
 	.dashboardpopup-panel{border-radius:3px;}
 	.behaviours-value{width:44%; padding:0px 0px 13px 0px;}
 	.behaviours-detail{width:56%; padding-left:13px; padding-right:13px;}
