@@ -37,7 +37,7 @@ en:
         email: 'Email (this will also be their User Name)'
         email_without_note: 'Email'
         password: 'Password'
-        photo: 'Photo' 
+        photo: 'Photo'
         photo_size: 'Maximum File Size: 20Mb'
         fit_plan_results: 'Fit Plan Results'
         behaviour: 'Behaviour'
@@ -221,10 +221,10 @@ en:
           tabs-5: 'Delivering successful results'
         behaviours_content:
           behaviour_div_1:
-            caption: 
+            caption:
               customer_orientation: 'Customer Orientation'
-              paragraph_1: 'Entails knowing customer expectations and implementing customer-orient solutions.'
-              paragraph_2: 'For executives this also means acting in a manner that has a positive effect on the customer orientation of the employess.'
+              paragraph_1: 'Entails knowing customer expectations and implementing customer-orientated solutions.'
+              paragraph_2: 'For executives this also means acting in a manner that has a positive effect on the customer orientation of the employees.'
           behaviour_div_2:
             caption:
               change_management: 'Change Management'
@@ -238,7 +238,7 @@ en:
             caption:
               managing_developing: 'Managing & Developing People'
               paragraph_1: 'Refers to the ability to create a trusting, appreciative and collaborative working environment and managing conflict constructively to achieve impoved staff performance and employee satisfaction.'
-              paragraph_2: 'This also includes the ability to identify and develop employee potential'
+              paragraph_2: 'This also includes the ability to identify and develop employee potential.'
           behaviour_div_5:
             caption:
               striving: 'Striving for Innovation'

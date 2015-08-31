@@ -48,7 +48,7 @@
     - # Right Panel (MCQ and it's answers)
     .col-xs-12.col-md-4
       .panel-padding
-        - if @activity.activity_type != 5
+        - if @activity.activity_type != 5 && @activity.multiple_choice_question
           %h4
             %strong.dark-blue= t('activity.fields.multiple_choice_question')
           = render partial: 'multiple_choice_questions/show', locals: { mcq: @activity.multiple_choice_question, disable: true }
