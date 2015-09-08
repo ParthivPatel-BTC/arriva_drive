@@ -58,9 +58,11 @@
     });
 
     $('.present-popup-close-btn').click(function(){
+      var behaviour_id = $(".activitiesvalue").find("li.active a").attr("id");
+      var activity_type = $(".activitifilter-bottom").find("a.active").attr("activity_type");
       $.ajax({
         method: "get",
-        url: "/participants/activities",
+        url: "/participants/activities?activity_type="+activity_type+"&behaviour_id="+behaviour_id,
         dataType: "script"
       });
     });
