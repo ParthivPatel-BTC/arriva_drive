@@ -77,7 +77,7 @@ ArrivaDrive::Application.configure do
       :enable_starttls_auto => true,
       :openssl_verify_mode  => 'none'
   }
-  config.action_mailer.default_url_options = { host: 'drivedb.net' }
+  config.action_mailer.default_url_options = { host: 'young-sierra-5915.herokuapp.com' }
 
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
